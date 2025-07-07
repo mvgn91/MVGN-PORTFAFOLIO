@@ -1,0 +1,21 @@
+{
+  "name": "mvgn-labs-portfolio",
+  "version": "1.0.0",
+  "description": "MVGN LABS - Portfolio personal de Armando Ibañez",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server . -o -p 3000",
+    "start": "http-server . -o -p 3000",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [
+    "portfolio",
+    "web-design",
+    "digital-marketing"
+  ],
+  "author": "Armando Ibañez - MVGN LABS",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
