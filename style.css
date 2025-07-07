@@ -32,6 +32,7 @@ body {
 body, p, span, li, a, .persona3-role, .persona3-contact, .persona3-contact-row, .persona3-phrase, .main-footer {
   font-family: 'Poppins', Arial, sans-serif !important;
 }
+
 h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-content h2, header h1, .persona3-stamp {
   font-family: 'Fraunces', serif !important;
   font-weight: 900;
@@ -77,7 +78,7 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
 /* Mensaje de bienvenida flotante */
 .welcome-message {
   position: absolute;
-  top: 8%;
+  top: 12%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -114,24 +115,24 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
   }
 }
 
-/* ID Card Principal - Estilo Anime */
-.persona3-idcard {
+/* ID Card Principal - Minimal & Elegant */
+.persona3-idcard.minimal-card {
+  width: 700px;
+  height: 420px;
   background: linear-gradient(145deg, #1a1d23 0%, #0f1419 100%);
-  border: 3px solid var(--color-accent);
-  border-radius: 20px;
-  width: 420px;
-  height: 280px;
+  border: 4px solid var(--color-accent);
+  border-radius: 24px;
+  box-shadow: 
+    0 0 60px rgba(0, 212, 255, 0.25), 
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    inset 0 0 30px rgba(0, 212, 255, 0.05);
   position: relative;
   overflow: hidden;
-  box-shadow: 
-    0 0 40px rgba(0, 212, 255, 0.4),
-    0 20px 40px rgba(0, 0, 0, 0.6),
-    inset 0 0 30px rgba(0, 212, 255, 0.1);
-  animation: cardDrop 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: cardFadeSlideIn 1.2s cubic-bezier(0.4, 0.8, 0.4, 1) both;
   transform-style: preserve-3d;
 }
 
-.persona3-idcard::before {
+.persona3-idcard.minimal-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -139,36 +140,36 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-gold), var(--color-accent), transparent);
-  animation: energyFlow 2s ease-in-out infinite;
+  animation: energyFlow 3s ease-in-out infinite;
 }
 
-.persona3-idcard::after {
+.persona3-idcard.minimal-card::after {
   content: '';
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
   background: radial-gradient(circle, var(--color-gold) 0%, transparent 70%);
   border-radius: 50%;
-  animation: hologramGlow 3s ease-in-out infinite;
+  animation: hologramGlow 4s ease-in-out infinite;
 }
 
-@keyframes cardDrop {
+@keyframes cardFadeSlideIn {
   0% {
     opacity: 0;
-    transform: translateY(-100vh) rotateX(90deg) scale(0.8);
+    filter: blur(16px);
+    transform: translateY(-80px) scale(0.96);
   }
   60% {
     opacity: 1;
-    transform: translateY(20px) rotateX(-5deg) scale(1.05);
-  }
-  80% {
-    transform: translateY(-10px) rotateX(2deg) scale(0.98);
+    filter: blur(2px);
+    transform: translateY(12px) scale(1.03);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -182,276 +183,120 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* Header de la ID Card */
-.idcard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 1.5rem;
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), rgba(255, 215, 0, 0.1));
-  border-bottom: 2px solid var(--color-accent);
-  font-family: 'Courier New', monospace;
-  font-weight: bold;
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-}
-
-.id-number {
-  color: var(--color-accent);
-  text-shadow: 0 0 10px var(--color-accent);
-}
-
-.access-level {
-  color: var(--color-gold);
-  text-shadow: 0 0 10px var(--color-gold);
-}
-
 /* Contenido principal de la ID */
-.idcard-content {
+.idcard-content.minimal-content {
   display: flex;
-  padding: 1.2rem;
-  gap: 1.2rem;
-  height: calc(100% - 120px);
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 3.5rem;
+  padding: 0 3.5rem;
 }
 
 .idcard-left {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 120px;
-  gap: 0.8rem;
+  justify-content: center;
+  gap: 1.2rem;
+  height: 100%;
 }
 
-.photo-container {
-  position: relative;
-}
-
-.persona3-photo {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border: 2px solid var(--color-accent);
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
-  filter: brightness(1.1) contrast(1.1);
-}
-
-.photo-overlay {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background: var(--color-success);
-  border-radius: 50%;
-  padding: 4px;
-  border: 2px solid var(--color-bg);
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
-}
-
-.status-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.2); }
-}
-
-.persona3-logo {
-  background: var(--color-bg);
-  border: 2px solid var(--color-accent);
-  border-radius: 8px;
-  padding: 0.3rem;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-}
-
-.persona3-logo img {
-  width: 35px;
-  height: 35px;
-  object-fit: contain;
-}
-
-.verification-badge {
+.logo-container {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  background: rgba(76, 175, 80, 0.2);
-  color: var(--color-success);
-  padding: 0.3rem 0.6rem;
-  border-radius: 15px;
-  border: 1px solid var(--color-success);
-  font-size: 0.7rem;
-  font-weight: 600;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+  justify-content: center;
+  height: 170px;
+  width: 170px;
+  background: #101214;
+  border-radius: 20px;
+  box-shadow: 0 0 32px rgba(0, 212, 255, 0.18);
+  padding: 1rem;
 }
 
-.verification-badge i {
-  width: 0.8rem;
-  height: 0.8rem;
+.persona3-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  border: 3px solid var(--color-accent);
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.18);
+  background: #181a1b;
 }
 
-/* Lado derecho de la ID */
 .idcard-right {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-}
-
-.persona3-header {
-  border-bottom: 1px solid var(--color-accent);
-  padding-bottom: 0.8rem;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.2rem;
+  min-width: 280px;
+  flex: 1;
 }
 
 .persona3-title {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-family: 'Fraunces', serif !important;
+  font-size: 2.1rem;
+  font-weight: 900;
   color: var(--color-accent);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-transform: none;
   margin-bottom: 0.2rem;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-}
-
-.persona3-subtitle {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 0.2rem;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  line-height: 1.1;
 }
 
 .persona3-role {
-  font-size: 0.8rem;
-  color: rgba(245, 245, 245, 0.8);
-  font-style: italic;
-  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+  color: #b2f7ee;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
 }
 
-.experience-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-size: 0.75rem;
-}
-
-.bar {
-  flex: 1;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-gold));
-  border-radius: 2px;
-  animation: fillBar 2s ease-out 1s forwards;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
-}
-
-@keyframes fillBar {
-  from { width: 0%; }
-  to { width: 85%; }
-}
-
-/* Stats compactas */
-.persona3-stats {
-  display: flex;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
-}
-
-.stat-item {
+.persona3-contact {
+  margin: 0.2rem 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-  padding: 0.4rem;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  flex: 1;
-}
-
-.stat-item:hover {
-  background: rgba(0, 212, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
-}
-
-.stat-item i {
-  width: 1rem;
-  height: 1rem;
-  color: var(--color-accent);
-}
-
-.stat-item span {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* Información de contacto compacta */
-.persona3-contact {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.6rem;
-  border-radius: 6px;
-  border-left: 3px solid var(--color-accent);
-}
-
-.contact-title {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  margin-bottom: 0.4rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  gap: 0.4rem;
 }
 
 .persona3-contact-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
-  font-size: 0.75rem;
+  gap: 0.6rem;
+  font-size: 1rem;
+  color: #e0f7fa;
+  transition: all 0.3s ease;
+}
+
+.persona3-contact-row:hover {
+  color: var(--color-accent);
+  transform: translateX(5px);
 }
 
 .persona3-contact-row i {
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 1.1rem;
+  height: 1.1rem;
   color: var(--color-accent);
 }
 
-/* Sección de acciones en la parte inferior */
-.idcard-actions {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
-  border-top: 1px solid rgba(0, 212, 255, 0.3);
+.persona3-phrase {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #b2f7ee;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 0.8rem;
+  opacity: 0.85;
+  margin: 0.5rem 0;
 }
 
-.action-title {
-  text-align: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  margin-bottom: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.persona3-actions {
+.persona3-actions.minimal-actions {
+  margin-top: 0.7rem;
   display: flex;
-  gap: 0.8rem;
+  gap: 1.2rem;
 }
 
 .persona3-btn {
@@ -459,16 +304,15 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.8rem 1rem;
+  padding: 1rem 2rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: inherit;
   position: relative;
   overflow: hidden;
-  flex: 1;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -496,8 +340,8 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
 }
 
 .contact-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
 }
 
 .portfolio-btn {
@@ -507,8 +351,8 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
 }
 
 .portfolio-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
 }
 
 .persona3-btn i {
@@ -516,103 +360,32 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
   height: 1rem;
 }
 
-/* Contacto rápido */
-.quick-contact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-top: 0.8rem;
-  font-size: 0.7rem;
-}
-
-.quick-buttons {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.quick-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.quick-btn.whatsapp {
-  background: #25d366;
-  color: white;
-}
-
-.quick-btn.call {
-  background: var(--color-accent);
-  color: white;
-}
-
-.quick-btn.email {
-  background: #ea4335;
-  color: white;
-}
-
-.quick-btn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-.quick-btn i {
-  width: 0.9rem;
-  height: 0.9rem;
-}
-
 /* Footer de invitación */
 .invitation-footer {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 3rem;
   animation: fadeInUp 2s ease-out 2s both;
 }
 
-.invitation-footer p {
-  font-size: 0.9rem;
-  color: rgba(245, 245, 245, 0.6);
-  margin-bottom: 1rem;
+.magic-gradient-text {
+  background: linear-gradient(90deg, #00d4ff, #3a8dde, #7f7fff, #00d4ff, #3a8dde);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: magic-gradient-move 6s linear infinite;
+  font-weight: 700;
+  filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.18));
+  font-family: inherit !important;
+  font-size: 1.1rem;
   font-style: italic;
 }
 
-.typing-indicator {
-  display: flex;
-  justify-content: center;
-  gap: 0.3rem;
-}
-
-.typing-indicator span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  animation: typing 1.4s infinite ease-in-out;
-}
-
-.typing-indicator span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.typing-indicator span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes typing {
-  0%, 80%, 100% {
-    transform: scale(0.8);
-    opacity: 0.5;
-  }
-  40% {
-    transform: scale(1);
-    opacity: 1;
-  }
+@keyframes magic-gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes fadeInUp {
@@ -632,27 +405,26 @@ h1, h2, h3, .persona3-title, .projects-section h2, .project-card h3, .hero-conte
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.7) rotate(-12deg);
-  background: transparent;
-  color: var(--color-gold);
-  border: 4px solid var(--color-gold);
-  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-gold));
+  color: #fff;
+  border: none;
+  border-radius: 14px;
   font-family: 'Impact', 'Arial Black', Arial, sans-serif;
   font-size: 1.8rem;
-  padding: 0.4em 1em;
+  padding: 0.5em 1.5em;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  box-shadow: 0 4px 32px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 6px 32px rgba(0, 212, 255, 0.4);
   opacity: 0;
   z-index: 30;
   pointer-events: none;
   transition: opacity 0.2s, transform 0.2s;
-  filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.4));
-  animation: none;
+  filter: drop-shadow(0 2px 12px rgba(0, 212, 255, 0.3));
 }
 
 .persona3-stamp.show {
   opacity: 1;
-  animation: stamp-pop 0.6s cubic-bezier(.2,1.8,.4,.9) forwards;
+  animation: stamp-pop 0.6s cubic-bezier(.2, 1.8, .4, .9) forwards;
 }
 
 @keyframes stamp-pop {
@@ -1159,41 +931,30 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .landing-page {
-    padding: 1rem;
+@media (max-width: 900px) {
+  .persona3-idcard.minimal-card {
+    width: 95vw;
+    height: 350px;
+    max-width: 600px;
+  }
+  
+  .idcard-content.minimal-content {
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+  
+  .logo-container {
+    height: 120px;
+    width: 120px;
+    padding: 0.5rem;
+  }
+  
+  .persona3-title {
+    font-size: 1.8rem;
   }
   
   .welcome-text h2 {
     font-size: 1.5rem;
-  }
-  
-  .welcome-text p {
-    font-size: 0.9rem;
-  }
-  
-  .persona3-idcard {
-    width: 350px;
-    height: 250px;
-  }
-  
-  .idcard-content {
-    padding: 1rem;
-    gap: 1rem;
-  }
-  
-  .persona3-photo {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .persona3-title {
-    font-size: 1.2rem;
-  }
-  
-  .persona3-actions {
-    flex-direction: column;
-    gap: 0.6rem;
   }
   
   .hero-content h2 {
@@ -1212,344 +973,11 @@ footer {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-<<<<<<< HEAD
-}
-
-@media (max-width: 480px) {
-  .persona3-idcard {
-    width: 320px;
-    height: 230px;
-  }
-  
-  .idcard-header {
-    padding: 0.6rem 1rem;
-    font-size: 0.7rem;
-  }
-  
-  .welcome-message {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin-bottom: 1.5rem;
-  }
-  
-  .persona3-title {
-    font-size: 1.1rem;
-  }
-  
-  .persona3-btn {
-    font-size: 0.75rem;
-    padding: 0.6rem 0.8rem;
-  }
-}
-
-.persona3-idcard.minimal-card {
-  width: 700px;
-  height: 420px;
-  background: linear-gradient(145deg, #1a1d23 0%, #0f1419 100%);
-  border: 4px solid var(--color-accent);
-  border-radius: 24px;
-  box-shadow: 0 0 60px rgba(0,212,255,0.25), 0 20px 40px rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: visible;
-  animation: cardFadeSlideIn 1.2s cubic-bezier(0.4,0.8,0.4,1) both;
-}
-
-.persona3-idcard.minimal-card::before,
-.persona3-idcard.minimal-card::after {
-  display: none !important;
-  content: none !important;
-}
-
-.idcard-content.minimal-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  gap: 3.5rem;
-  padding: 0 3.5rem;
-}
-
-.idcard-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  height: 100%;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 170px;
-  width: 170px;
-  background: #101214;
-  border-radius: 20px;
-  box-shadow: 0 0 32px rgba(0,212,255,0.18);
-  padding: 1rem;
-}
-
-.persona3-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 16px;
-  border: 3px solid var(--color-accent);
-  box-shadow: 0 0 24px rgba(0,212,255,0.18);
-  background: #181a1b;
-}
-
-.idcard-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.2rem;
-  min-width: 220px;
-}
-
-.persona3-title {
-  font-family: 'Fraunces', serif !important;
-  font-size: 2.1rem;
-  font-weight: 900;
-  color: var(--color-accent);
-  letter-spacing: 0.5px;
-  text-transform: none;
-  margin-bottom: 0.2rem;
-  text-shadow: none;
-  line-height: 1.1;
-  word-break: break-word;
-  max-width: 100%;
-}
-
-.persona3-role {
-  font-size: 1.1rem;
-  color: #b2f7ee;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.5px;
-}
-
-.persona3-contact {
-  margin: 0.2rem 0 0.2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.persona3-contact-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 1.05rem;
-  color: #e0f7fa;
-}
-
-.persona3-contact-row i {
-  width: 1.1rem;
-  height: 1.1rem;
-  color: var(--color-accent);
-}
-
-.persona3-phrase.minimal-phrase {
-  font-size: 1.05rem;
-  font-style: italic;
-  color: #b2f7ee;
-  border-left: 3px solid var(--color-accent);
-  padding-left: 0.8rem;
-  opacity: 0.85;
-}
-
-.persona3-actions.minimal-actions {
-  margin-top: 0.7rem;
-  display: flex;
-  gap: 1.2rem;
-}
-
-.persona3-btn.portfolio-btn {
-  background: var(--color-accent);
-  color: #101214;
-  border: none;
-  padding: 1.1rem 2.2rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.15rem;
-  cursor: pointer;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  box-shadow: 0 2px 8px rgba(0,212,255,0.10);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.persona3-btn.portfolio-btn:hover {
-  background: #fff;
-  color: var(--color-accent);
-  transform: translateY(-2px) scale(1.04);
-}
-
-.persona3-stamp.turquoise {
-  color: var(--color-accent) !important;
-  border-color: var(--color-accent) !important;
-  background: rgba(0,212,255,0.08) !important;
-  box-shadow: 0 4px 32px rgba(0,212,255,0.25);
-}
-
-.magic-gradient-text {
-  background: linear-gradient(90deg, #00d4ff, #3a8dde, #7f7fff, #00d4ff, #3a8dde);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  animation: magic-gradient-move 6s linear infinite;
-  font-weight: 700;
-  filter: drop-shadow(0 2px 8px rgba(0,212,255,0.18));
-  font-family: inherit !important;
-}
-@keyframes magic-gradient-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.idcard-footer-phrase {
-  margin-top: 1.2rem;
-  text-align: center;
-  font-size: 1.05rem;
-  font-style: italic;
-  opacity: 0.95;
-}
-
-.persona3-stamp, .persona3-stamp.turquoise {
-  font-size: 2.1rem;
-  font-weight: 900;
-  color: #fff;
-  background: linear-gradient(90deg, #00d4ff 60%, #00b4cc 100%);
-  box-shadow: 0 6px 32px 0 rgba(0,212,255,0.25), 0 1px 16px 0 #00d4ff;
-  border: none !important;
-  border-radius: 14px;
-  padding: 0.5em 1.5em;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  filter: drop-shadow(0 2px 12px rgba(0,212,255,0.22));
-  transition: opacity 0.2s, transform 0.2s;
-}
-
-/* Animación de entrada solo para la tarjeta, fondo siempre visible */
-.landing-page.persona3-slide-in {
-  animation: none;
-}
-.persona3-idcard.minimal-card {
-  animation: persona3-card-slide-in 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-@keyframes persona3-card-slide-in {
-  0% {
-    opacity: 0;
-    filter: blur(16px);
-    transform: translateY(-80px) scale(0.96);
-  }
-  60% {
-    opacity: 1;
-    filter: blur(2px);
-    transform: translateY(12px) scale(1.03);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Animaciones para elementos del portafolio al hacer scroll */
-.portfolio-animate {
-  opacity: 0;
-  transform: translateY(40px) scale(0.98);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.portfolio-animate.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-@media (max-width: 900px) {
-  .persona3-idcard.minimal-card {
-    width: 98vw;
-    height: 320px;
-    min-width: 0;
-    max-width: 99vw;
-  }
-  .idcard-content.minimal-content {
-    gap: 1.2rem;
-    padding: 0 1.2rem;
-  }
-  .logo-container {
-    height: 90px;
-    width: 90px;
-    padding: 0.3rem;
-  }
-  .persona3-title {
-    font-size: 1.5rem;
-  }
-  .persona3-btn.portfolio-btn {
-    font-size: 1rem;
-    padding: 0.8rem 1.2rem;
-  }
 }
 
 @media (max-width: 600px) {
-  .persona3-idcard.minimal-card {
-    flex-direction: column;
-    width: 98vw;
-    height: auto;
-    min-width: 0;
-    max-width: 99vw;
-    padding: 1rem 0;
-  }
-  .idcard-content.minimal-content {
-    flex-direction: column;
-    gap: 1.2rem;
-    padding: 0 0.5rem;
-    align-items: center;
-  }
-  .idcard-right {
-    align-items: center;
-    min-width: 0;
-  }
-  .persona3-title {
-    font-size: 1.1rem;
-  }
-  .persona3-btn.portfolio-btn {
-    font-size: 0.9rem;
-    padding: 0.7rem 1rem;
-  }
-  .logo-container {
-    height: 60px;
-    width: 60px;
-    padding: 0.1rem;
-  }
-=======
-}
-
-@media (max-width: 480px) {
-  .persona3-idcard {
-    width: 320px;
-    height: 230px;
-  }
-  
-  .idcard-header {
-    padding: 0.6rem 1rem;
-    font-size: 0.7rem;
+  .landing-page {
+    padding: 1rem;
   }
   
   .welcome-message {
@@ -1557,16 +985,84 @@ footer {
     top: auto;
     left: auto;
     transform: none;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .persona3-idcard.minimal-card {
+    width: 95vw;
+    height: auto;
+    min-height: 300px;
+    padding: 1.5rem 0;
+  }
+  
+  .idcard-content.minimal-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    align-items: center;
+  }
+  
+  .idcard-right {
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+  }
+  
+  .logo-container {
+    height: 100px;
+    width: 100px;
+    padding: 0.3rem;
   }
   
   .persona3-title {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+  }
+  
+  .persona3-actions.minimal-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
   }
   
   .persona3-btn {
-    font-size: 0.75rem;
-    padding: 0.6rem 0.8rem;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
->>>>>>> 3a0bad471fec69bc02119d1b7f8b805e3beb092f
+  
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text h2 {
+    font-size: 1.3rem;
+  }
+  
+  .welcome-text p {
+    font-size: 0.9rem;
+  }
+  
+  .persona3-title {
+    font-size: 1.3rem;
+  }
+  
+  .persona3-role {
+    font-size: 1rem;
+  }
+  
+  .persona3-contact-row {
+    font-size: 0.9rem;
+  }
+  
+  .persona3-phrase {
+    font-size: 0.95rem;
+  }
 }

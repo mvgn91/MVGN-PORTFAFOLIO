@@ -21,41 +21,25 @@ enterBtn.addEventListener('click', function() {
   setTimeout(() => {
     const landingPage = document.getElementById('landing-page');
     const portfolioPage = document.getElementById('portfolio-page');
-<<<<<<< HEAD
-    // Animación de salida elegante: fade + blur
+    
+    // Animación de salida elegante
     landingPage.style.transition = 'opacity 0.7s cubic-bezier(.4,1.8,.4,.9), filter 0.7s cubic-bezier(.4,1.8,.4,.9)';
     landingPage.style.opacity = '0';
     landingPage.style.filter = 'blur(18px)';
-=======
     
-    landingPage.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    landingPage.style.opacity = '0';
-    landingPage.style.transform = 'scale(0.95)';
-    
->>>>>>> 3a0bad471fec69bc02119d1b7f8b805e3beb092f
     setTimeout(() => {
       landingPage.style.display = 'none';
       portfolioPage.classList.remove('hidden');
       portfolioPage.style.opacity = '0';
-<<<<<<< HEAD
       portfolioPage.style.filter = 'blur(18px)';
       portfolioPage.style.transition = 'opacity 1.2s cubic-bezier(.4,1.8,.4,.9), filter 1.2s cubic-bezier(.4,1.8,.4,.9)';
+      
       setTimeout(() => {
         portfolioPage.style.opacity = '1';
         portfolioPage.style.filter = 'blur(0)';
       }, 50);
     }, 700);
-  }, 900); // Duración de la animación del sello
-=======
-      portfolioPage.style.transform = 'translateY(20px)';
-      portfolioPage.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      
-      setTimeout(() => {
-        portfolioPage.style.opacity = '1';
-        portfolioPage.style.transform = 'translateY(0)';
-      }, 100);
-    }, 500);
-  }, 800);
+  }, 900);
 });
 
 // Contacto directo desde la ID Card
@@ -67,7 +51,6 @@ contactBtn.addEventListener('click', function() {
     const whatsappUrl = `https://wa.me/523322621939?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   }, 800);
->>>>>>> 3a0bad471fec69bc02119d1b7f8b805e3beb092f
 });
 
 // Scroll suave para navegación interna
@@ -127,46 +110,16 @@ document.querySelectorAll('.project-card, .hero-content, .contact-container').fo
   observer.observe(el);
 });
 
-// Efectos adicionales para la ID Card
-document.querySelectorAll('.stat-item, .quick-btn').forEach(item => {
+// Efectos adicionales para hover en elementos interactivos
+document.querySelectorAll('.persona3-contact-row').forEach(item => {
   item.addEventListener('mouseenter', function() {
-    if (this.classList.contains('stat-item')) {
-      this.style.transform = 'translateY(-3px)';
-    } else {
-      this.style.transform = 'scale(1.1)';
-    }
+    this.style.transform = 'translateX(5px)';
   });
   
   item.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateY(0) scale(1)';
+    this.style.transform = 'translateX(0)';
   });
 });
-
-// Efecto de typing para el mensaje de bienvenida
-const welcomeTitle = document.querySelector('.welcome-text h2');
-if (welcomeTitle) {
-  const text = welcomeTitle.textContent;
-  welcomeTitle.textContent = '';
-  
-  let i = 0;
-  const typeWriter = () => {
-    if (i < text.length) {
-      welcomeTitle.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 80);
-    }
-  };
-  
-  setTimeout(typeWriter, 1000);
-}
-
-// Animación de la barra de experiencia
-const experienceBar = document.querySelector('.fill');
-if (experienceBar) {
-  setTimeout(() => {
-    experienceBar.style.width = '85%';
-  }, 1500);
-}
 
 // Efecto de hover para los botones principales
 document.querySelectorAll('.persona3-btn').forEach(btn => {
@@ -182,26 +135,28 @@ document.querySelectorAll('.persona3-btn').forEach(btn => {
 // Actualizar iconos después de cambios dinámicos
 setTimeout(() => {
   lucide.createIcons();
-<<<<<<< HEAD
 }, 100);
 
+// Animaciones para elementos del portafolio al hacer scroll
 document.addEventListener('DOMContentLoaded', () => {
-  // Selecciona todos los elementos que deben animarse al hacer scroll
   const animatedEls = document.querySelectorAll('.project-card, .hero-content, .hero-stats, .projects-section, .contact-section, .contact-container');
-  animatedEls.forEach(el => el.classList.add('portfolio-animate'));
+  
+  animatedEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(40px) scale(0.98)';
+    el.style.transition = 'opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)';
+  });
 
   function revealOnScroll() {
     animatedEls.forEach(el => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight - 60) {
-        el.classList.add('visible');
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0) scale(1)';
       }
     });
   }
 
   window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // Revela los que ya están en pantalla
+  revealOnScroll();
 });
-=======
-}, 100);
->>>>>>> 3a0bad471fec69bc02119d1b7f8b805e3beb092f
