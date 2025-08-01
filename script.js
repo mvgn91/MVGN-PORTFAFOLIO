@@ -477,6 +477,8 @@ function updateScrollState() {
 
 // ===== EFECTOS DE PARALLAX =====
 function initializeParallaxEffects() {
+  console.log('🎨 Inicializando efectos de parallax...');
+  
   // Agregar clases de parallax a elementos específicos
   const parallaxElements = document.querySelectorAll('.hero-content, .about-content, .service-card, .project-card, .experience-item');
   
@@ -503,12 +505,14 @@ function initializeParallaxEffects() {
   // Agregar efectos de hover mejorados
   const hoverElements = document.querySelectorAll('.service-card, .project-card');
   hoverElements.forEach(el => el.classList.add('hover-lift'));
+  
+  console.log(`✅ Parallax inicializado: ${parallaxElements.length} elementos`);
 }
 
 function applyParallaxEffects() {
   const scrolled = AppState.scrollY;
-  const rate = scrolled * -0.5;
-  const rateMedium = scrolled * -0.3;
+  const rate = scrolled * -0.3;
+  const rateMedium = scrolled * -0.2;
   const rateFast = scrolled * -0.1;
   
   // Aplicar parallax a elementos lentos
@@ -516,7 +520,7 @@ function applyParallaxEffects() {
   slowElements.forEach(element => {
     const rect = element.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      element.style.transform = `translateY(${rate * 0.1}px)`;
+      element.style.transform = `translateY(${rate * 0.05}px)`;
     }
   });
   
@@ -525,7 +529,7 @@ function applyParallaxEffects() {
   mediumElements.forEach(element => {
     const rect = element.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      element.style.transform = `translateY(${rateMedium * 0.1}px)`;
+      element.style.transform = `translateY(${rateMedium * 0.05}px)`;
     }
   });
   
@@ -534,7 +538,7 @@ function applyParallaxEffects() {
   fastElements.forEach(element => {
     const rect = element.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      element.style.transform = `translateY(${rateFast * 0.1}px)`;
+      element.style.transform = `translateY(${rateFast * 0.05}px)`;
     }
   });
 }
@@ -555,6 +559,11 @@ function debounce(func, wait) {
 // ===== INICIALIZACIÓN CUANDO EL DOM ESTÉ LISTO =====
 document.addEventListener('DOMContentLoaded', () => {
   initializeApp();
+  
+  // Inicializar Lucide Icons si está disponible
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
 });
 
 // ===== MANEJO DE ERRORES =====
