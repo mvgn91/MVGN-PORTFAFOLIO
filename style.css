@@ -1055,39 +1055,40 @@ body::before {
 .workflow-timeline {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2xl);
-  margin-top: var(--spacing-2xl);
+  gap: var(--spacing-3xl);
+  margin-top: var(--spacing-3xl);
   position: relative;
+  padding: 0 var(--spacing-xl);
 }
 
 .workflow-timeline::before {
   content: '';
   position: absolute;
-  left: 30px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
+  left: 50%;
+  top: 60px;
+  bottom: 60px;
+  width: 3px;
   background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
-  opacity: 0.3;
+  opacity: 0.2;
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .workflow-step {
   display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-xl);
+  align-items: center;
+  gap: var(--spacing-2xl);
   position: relative;
-  padding-left: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
 }
 
 .workflow-step:nth-child(even) {
   flex-direction: row-reverse;
-  padding-left: 0;
-  padding-right: var(--spacing-lg);
 }
 
 .workflow-icon {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
@@ -1096,43 +1097,51 @@ body::before {
   flex-shrink: 0;
   position: relative;
   z-index: 2;
-  box-shadow: var(--shadow-lg);
-  border: 3px solid var(--color-background);
+  box-shadow: var(--shadow-xl);
+  border: 4px solid var(--color-background);
+  transition: all var(--transition-normal);
+}
+
+.workflow-icon:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-2xl);
 }
 
 .workflow-icon i {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--color-text-light);
 }
 
 .workflow-content {
   background: var(--color-surface);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-2xl);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
   flex: 1;
   position: relative;
   transition: all var(--transition-normal);
+  max-width: 500px;
 }
 
 .workflow-content::before {
   content: '';
   position: absolute;
-  top: 20px;
-  left: -8px;
+  top: 50%;
+  left: -12px;
   width: 0;
   height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 8px solid var(--color-surface);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid var(--color-surface);
+  transform: translateY(-50%);
 }
 
 .workflow-step:nth-child(even) .workflow-content::before {
   left: auto;
-  right: -8px;
+  right: -12px;
   border-right: none;
-  border-left: 8px solid var(--color-surface);
+  border-left: 12px solid var(--color-surface);
 }
 
 .workflow-content:hover {
@@ -1143,10 +1152,22 @@ body::before {
 
 .workflow-content h3 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text);
   margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+.workflow-content h3::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
 }
 
 .workflow-content p {
@@ -1162,13 +1183,14 @@ body::before {
 }
 
 .workflow-tag {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: var(--color-text-light);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-md);
-  font-size: 0.85rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-lg);
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
 }
 
 .workflow-tag:hover {
@@ -1702,19 +1724,32 @@ body::before {
   
   .workflow-timeline {
     gap: var(--spacing-xl);
+    padding: 0;
   }
   
   .workflow-step {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-left: 0;
-    padding-right: 0;
+    gap: var(--spacing-lg);
   }
   
   .workflow-step:nth-child(even) {
     flex-direction: column;
-    padding-right: 0;
+  }
+  
+  .workflow-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .workflow-icon i {
+    font-size: 1.75rem;
+  }
+  
+  .workflow-content {
+    max-width: 100%;
+    padding: var(--spacing-xl);
   }
   
   .workflow-timeline::before {
