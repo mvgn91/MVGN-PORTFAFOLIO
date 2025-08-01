@@ -1031,6 +1031,151 @@ body::before {
   border: 1px solid var(--color-border);
 }
 
+/* ===== WORKFLOW SECTION ===== */
+.workflow-section {
+  padding: var(--spacing-3xl) 0;
+  background: var(--color-background) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.workflow-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.workflow-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-2xl);
+  position: relative;
+}
+
+.workflow-timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  opacity: 0.3;
+}
+
+.workflow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xl);
+  position: relative;
+  padding-left: var(--spacing-lg);
+}
+
+.workflow-step:nth-child(even) {
+  flex-direction: row-reverse;
+  padding-left: 0;
+  padding-right: var(--spacing-lg);
+}
+
+.workflow-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--color-background);
+}
+
+.workflow-icon i {
+  font-size: 1.5rem;
+  color: var(--color-text-light);
+}
+
+.workflow-content {
+  background: var(--color-surface);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  flex: 1;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.workflow-content::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--color-surface);
+}
+
+.workflow-step:nth-child(even) .workflow-content::before {
+  left: auto;
+  right: -8px;
+  border-right: none;
+  border-left: 8px solid var(--color-surface);
+}
+
+.workflow-content:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary);
+}
+
+.workflow-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+.workflow-content p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.workflow-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.workflow-tag {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+}
+
+.workflow-tag:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+}
+
 /* ===== TECNOLOGÍAS SECTION ===== */
 .technologies-section {
   padding: var(--spacing-3xl) 0;
@@ -1553,6 +1698,35 @@ body::before {
   
   .tech-carousel {
     overflow: hidden;
+  }
+  
+  .workflow-timeline {
+    gap: var(--spacing-xl);
+  }
+  
+  .workflow-step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .workflow-step:nth-child(even) {
+    flex-direction: column;
+    padding-right: 0;
+  }
+  
+  .workflow-timeline::before {
+    display: none;
+  }
+  
+  .workflow-content::before {
+    display: none;
+  }
+  
+  .workflow-step:nth-child(even) .workflow-content::before {
+    display: none;
   }
   
   /* Footer para tablets */
@@ -2081,8 +2255,9 @@ body::before {
   
   .contact-form input,
   .contact-form textarea {
-    padding: var(--spacing-xs);
-    font-size: 0.85rem;
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+    min-height: 44px;
   }
   
   .contact-form textarea {
@@ -2225,8 +2400,9 @@ body::before {
   
   .contact-form input,
   .contact-form textarea {
-    padding: var(--spacing-xs);
-    font-size: 0.8rem;
+    padding: var(--spacing-sm);
+    font-size: 0.85rem;
+    min-height: 40px;
   }
   
   .contact-form textarea {
@@ -2625,9 +2801,10 @@ body::before {
 
 .mobile-device .contact-form input,
 .mobile-device .contact-form textarea {
-  padding: var(--spacing-xs);
-  font-size: 0.85rem;
+  padding: var(--spacing-sm);
+  font-size: 0.9rem;
   border-radius: var(--radius-md);
+  min-height: 44px;
 }
 
 .mobile-device .contact-form textarea {
@@ -2818,8 +2995,9 @@ body::before {
   
   .mobile-device .contact-form input,
   .mobile-device .contact-form textarea {
-    padding: var(--spacing-xs);
-    font-size: 0.75rem;
+    padding: var(--spacing-sm);
+    font-size: 0.8rem;
+    min-height: 36px;
   }
   
   .mobile-device .contact-form textarea {
