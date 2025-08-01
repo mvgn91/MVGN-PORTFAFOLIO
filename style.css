@@ -72,6 +72,39 @@ body {
   color: var(--color-text) !important;
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Fondo dinámico elegante */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+    linear-gradient(135deg, var(--color-background) 0%, var(--color-surface) 100%);
+  z-index: -1;
+  animation: backgroundShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundShift {
+  0% {
+    background-position: 0% 0%;
+    opacity: 1;
+  }
+  50% {
+    background-position: 100% 100%;
+    opacity: 0.95;
+  }
+  100% {
+    background-position: 0% 0%;
+    opacity: 1;
+  }
 }
 
 /* ===== NAVEGACIÓN ===== */
@@ -1257,6 +1290,18 @@ body {
     grid-template-columns: 1fr;
     gap: var(--spacing-2xl);
   }
+  
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+  
+  .tech-carousel {
+    max-width: 90%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1382,6 +1427,31 @@ body {
   .section-title {
     font-size: 2rem;
   }
+  
+  .nav-brand {
+    gap: var(--spacing-xs);
+  }
+  
+  .nav-title {
+    font-size: 1.25rem;
+  }
+  
+  .nav-icon {
+    font-size: 1rem;
+  }
+  
+  .footer-brand {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .footer-logo {
+    font-size: 1.25rem;
+  }
+  
+  .footer-icon {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1429,6 +1499,97 @@ body {
     right: 20px;
     width: 45px;
     height: 45px;
+  }
+  
+  .nav-title {
+    font-size: 1.1rem;
+  }
+  
+  .nav-icon {
+    font-size: 0.9rem;
+  }
+  
+  .footer-logo {
+    font-size: 1.1rem;
+  }
+  
+  .footer-icon {
+    font-size: 0.9rem;
+  }
+  
+  .tech-slide {
+    min-width: 100px;
+    padding: var(--spacing-sm);
+  }
+  
+  .tech-slide i {
+    font-size: 1.5rem;
+  }
+  
+  .tech-slide span {
+    font-size: 0.7rem;
+  }
+  
+  .service-card {
+    padding: var(--spacing-md);
+  }
+  
+  .project-card {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Breakpoint para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .hero-name {
+    font-size: 1.75rem;
+  }
+  
+  .hero-greeting {
+    font-size: 1.25rem;
+  }
+  
+  .stat-number {
+    font-size: 1.75rem;
+  }
+  
+  .nav-title {
+    font-size: 1rem;
+  }
+  
+  .nav-icon {
+    font-size: 0.8rem;
+  }
+  
+  .footer-logo {
+    font-size: 1rem;
+  }
+  
+  .footer-icon {
+    font-size: 0.8rem;
+  }
+  
+  .tech-slide {
+    min-width: 80px;
+    padding: var(--spacing-xs);
+  }
+  
+  .tech-slide i {
+    font-size: 1.25rem;
+  }
+  
+  .tech-slide span {
+    font-size: 0.65rem;
+  }
+  
+  .profile-container {
+    width: 240px;
+    height: 240px;
+  }
+  
+  .profile-frame {
+    width: 200px;
+    height: 200px;
   }
 }
 
