@@ -110,6 +110,24 @@ body {
   color: var(--color-primary) !important;
 }
 
+.nav-icon {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-left: var(--spacing-xs);
+  animation: boltPulse 2s ease-in-out infinite;
+}
+
+@keyframes boltPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
 .nav-menu {
   display: flex;
   align-items: center;
@@ -759,6 +777,15 @@ body {
   line-height: 1.7;
 }
 
+.freelance-highlight {
+  color: var(--color-primary) !important;
+  font-weight: 600;
+  background: rgba(220, 38, 38, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-primary);
+}
+
 
 
 /* ===== PROYECTOS SECTION ===== */
@@ -1120,6 +1147,13 @@ body {
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-primary);
+}
+
+.footer-icon {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-left: var(--spacing-xs);
+  animation: boltPulse 2s ease-in-out infinite;
 }
 
 .footer-brand p {
