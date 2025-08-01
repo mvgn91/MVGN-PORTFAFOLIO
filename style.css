@@ -899,11 +899,12 @@ body {
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   margin-top: var(--spacing-2xl);
-  max-width: 800px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 var(--spacing-xl);
 }
 
 .tech-item {
@@ -1304,8 +1305,9 @@ body {
   
   .tech-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     max-width: 100%;
+    padding: 0 var(--spacing-md);
   }
   
   .tech-item {
