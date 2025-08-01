@@ -562,73 +562,148 @@ body {
 /* ===== SERVICIOS SECTION ===== */
 .services-section {
   padding: var(--spacing-3xl) 0;
+  background: var(--color-background) !important;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
 }
 
 .service-card {
+  position: relative;
   background: var(--color-surface) !important;
   padding: var(--spacing-xl);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
   transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-xl);
   border-color: var(--color-primary);
+}
+
+.service-card.featured {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 30px rgba(220, 38, 38, 0.2);
+}
+
+.service-card.featured::before {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+  transform: scaleX(1);
+}
+
+.service-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: var(--color-primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 .service-icon {
   width: 60px;
   height: 60px;
-  background: var(--color-primary);
-  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-xl);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--spacing-lg);
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
 }
 
 .service-icon i {
   font-size: 1.75rem;
-  color: var(--color-text-light);
+  color: white;
 }
 
 .service-card h3 {
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-md);
+  color: var(--color-text) !important;
+  margin: 0;
 }
 
-.service-card p {
+.service-description {
   color: var(--color-text-secondary);
   line-height: 1.7;
   margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
 }
 
 .service-features {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
 }
 
-.service-features span {
-  background: var(--color-background);
-  color: var(--color-text-secondary);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-md);
+.feature-tag {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--color-primary);
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-lg);
   font-size: 0.875rem;
   font-weight: 500;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.feature-tag:hover {
+  background: rgba(220, 38, 38, 0.2);
+  transform: translateY(-1px);
+}
+
+.service-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.service-price {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 /* ===== EXPERIENCIA SECTION ===== */
@@ -1216,6 +1291,26 @@ body {
   
   .services-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .service-card {
+    padding: var(--spacing-lg);
+  }
+  
+  .service-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .service-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .service-icon i {
+    font-size: 1.5rem;
   }
   
   .projects-grid {
