@@ -324,13 +324,7 @@ body::before {
   align-items: center;
 }
 
-/* Foto de perfil para móviles - oculta por defecto */
-.hero-image-mobile {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  margin: var(--spacing-lg) 0;
-}
+
 
 .profile-container {
   position: relative;
@@ -1393,12 +1387,18 @@ body::before {
   }
   
   /* Control de fotos en tablets */
-  .hero-image {
-    display: flex; /* Mantener foto de desktop en tablets */
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   
-  .hero-image-mobile {
-    display: none; /* Ocultar foto móvil en tablets */
+  .hero-text {
+    order: unset;
+  }
+  
+  .hero-image {
+    order: unset;
+    margin: 0;
   }
   
   .hero-name {
@@ -1530,17 +1530,16 @@ body::before {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);
     text-align: center;
+    display: flex;
+    flex-direction: column;
   }
   
-  /* Control de fotos en móviles */
+  .hero-text {
+    order: 1;
+  }
+  
   .hero-image {
-    display: none; /* Ocultar foto de desktop en móviles */
-  }
-  
-  .hero-image-mobile {
-    display: flex; /* Mostrar foto móvil */
-    justify-content: center;
-    align-items: center;
+    order: 2;
     margin: var(--spacing-lg) 0;
   }
   
@@ -1822,16 +1821,7 @@ body::before {
     height: 240px;
   }
   
-  /* Optimizar foto móvil en pantallas pequeñas */
-  .hero-image-mobile .profile-container {
-    width: 260px;
-    height: 260px;
-  }
-  
-  .hero-image-mobile .profile-frame {
-    width: 220px;
-    height: 220px;
-  }
+
   
   .section-title {
     font-size: 1.75rem;
@@ -2016,16 +2006,7 @@ body::before {
     height: 200px;
   }
   
-  /* Optimizar foto móvil en pantallas muy pequeñas */
-  .hero-image-mobile .profile-container {
-    width: 220px;
-    height: 220px;
-  }
-  
-  .hero-image-mobile .profile-frame {
-    width: 180px;
-    height: 180px;
-  }
+
   
   .section-title {
     font-size: 1.5rem;
@@ -2364,20 +2345,7 @@ body::before {
   line-height: 1.2;
 }
 
-/* Optimizaciones del footer en móviles */
-.mobile-device .footer-content {
-  text-align: center;
-  gap: var(--spacing-xl);
-}
 
-.mobile-device .footer-brand {
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.mobile-device .footer-links {
-  gap: var(--spacing-lg);
-}
 
 /* Mejoras de las estadísticas en móviles */
 .mobile-device .hero-stats {
@@ -2497,16 +2465,7 @@ body::before {
     height: 180px;
   }
   
-  /* Optimizar foto móvil en pantallas muy pequeñas */
-  .hero-image-mobile .profile-container {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .hero-image-mobile .profile-frame {
-    width: 160px;
-    height: 160px;
-  }
+
   
   .mobile-device .btn {
     padding: var(--spacing-sm) var(--spacing-md);
