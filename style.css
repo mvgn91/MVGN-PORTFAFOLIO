@@ -1,32 +1,32 @@
 /* ===== VARIABLES CSS ===== */
 :root {
-  /* Colores modernos y elegantes */
-  --color-primary: #2563eb;
-  --color-primary-light: #3b82f6;
-  --color-primary-dark: #1d4ed8;
-  --color-secondary: #64748b;
+  /* Colores negro/rojo profesionales */
+  --color-primary: #dc2626;
+  --color-primary-light: #ef4444;
+  --color-primary-dark: #b91c1c;
+  --color-secondary: #6b7280;
   --color-accent: #f59e0b;
   --color-accent-light: #fbbf24;
   --color-accent-dark: #d97706;
   
   /* Colores de texto */
-  --color-text: #1e293b;
-  --color-text-secondary: #475569;
-  --color-text-muted: #64748b;
+  --color-text: #ffffff;
+  --color-text-secondary: #e5e7eb;
+  --color-text-muted: #9ca3af;
   --color-text-light: #ffffff;
   
   /* Colores de fondo */
-  --color-background: #ffffff;
-  --color-surface: #f8fafc;
-  --color-surface-dark: #f1f5f9;
-  --color-border: #e2e8f0;
-  --color-border-light: #f1f5f9;
+  --color-background: #0f0f0f;
+  --color-surface: #1a1a1a;
+  --color-surface-dark: #111111;
+  --color-border: #374151;
+  --color-border-light: #4b5563;
   
   /* Sombras */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.5);
   
   /* Transiciones */
   --transition-fast: 0.15s ease;
@@ -147,7 +147,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(15, 15, 15, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border);
   z-index: 1000;
@@ -233,12 +233,29 @@ body {
 .hero-section {
   padding: calc(70px + var(--spacing-3xl)) 0 var(--spacing-3xl);
   background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .hero-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
@@ -330,6 +347,7 @@ body {
   object-fit: cover;
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-xl);
+  border: 3px solid var(--color-primary);
 }
 
 .profile-bg {
@@ -341,7 +359,7 @@ body {
   background: var(--color-primary);
   border-radius: var(--radius-2xl);
   z-index: -1;
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 .hero-contact {
@@ -432,12 +450,14 @@ body {
   background: var(--color-background);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
   transition: all var(--transition-normal);
 }
 
 .specialty-item:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
 }
 
 .specialty-item i {
@@ -463,7 +483,7 @@ body {
 }
 
 .service-card {
-  background: var(--color-background);
+  background: var(--color-surface);
   padding: var(--spacing-xl);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
@@ -474,6 +494,7 @@ body {
 .service-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary);
 }
 
 .service-icon {
@@ -513,12 +534,13 @@ body {
 }
 
 .service-features span {
-  background: var(--color-surface);
+  background: var(--color-background);
   color: var(--color-text-secondary);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-md);
   font-size: 0.875rem;
   font-weight: 500;
+  border: 1px solid var(--color-border);
 }
 
 /* ===== EXPERIENCIA SECTION ===== */
@@ -593,6 +615,7 @@ body {
   background: var(--color-background);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
 }
 
 .education h3 {
@@ -633,7 +656,7 @@ body {
 }
 
 .project-card {
-  background: var(--color-background);
+  background: var(--color-surface);
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -673,7 +696,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(37, 99, 235, 0.9);
+  background: rgba(220, 38, 38, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -741,12 +764,13 @@ body {
 }
 
 .project-tech span {
-  background: var(--color-surface);
+  background: var(--color-background);
   color: var(--color-text-secondary);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-md);
   font-size: 0.875rem;
   font-weight: 500;
+  border: 1px solid var(--color-border);
 }
 
 /* ===== TECNOLOGÍAS SECTION ===== */
@@ -902,13 +926,14 @@ body {
   font-size: 1rem;
   transition: all var(--transition-normal);
   background: var(--color-background);
+  color: var(--color-text);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
 }
 
 .contact-form textarea {
@@ -936,9 +961,10 @@ body {
 
 /* ===== FOOTER ===== */
 .footer {
-  background: var(--color-text);
+  background: var(--color-surface-dark);
   color: var(--color-text-light);
   padding: var(--spacing-2xl) 0 var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
 }
 
 .footer-content {
@@ -997,7 +1023,7 @@ body {
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--color-secondary);
+  border-top: 1px solid var(--color-border);
   padding-top: var(--spacing-lg);
   text-align: center;
 }

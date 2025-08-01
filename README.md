@@ -1,74 +1,50 @@
-# Mvgn Labs - Portafolio Digital
+# Armando Ibañez - Portafolio Digital
 
-![Mvgn Labs Logo](assets/mvgn%20icon.png)
+Portafolio profesional moderno y elegante de Armando Ibañez, desarrollador web y diseñador digital.
 
-## 🚀 Descripción
+## 🚀 Características
 
-Portafolio digital moderno y responsive de **Armando Ibañez** - Desarrollador Web & Diseñador Digital. Una aplicación web unificada que presenta servicios profesionales, proyectos destacados y información de contacto de manera elegante y funcional.
-
-## ✨ Características
-
-### 🎨 Diseño Moderno
-- **Paleta de colores suavizada** con rojo como acento principal
-- **Tipografías elegantes**: Fraunces para títulos, Poppins para texto
-- **Efectos visuales sutiles** con partículas animadas y gradientes
-- **Interfaz limpia** con Material Design inspirado
-
-### 📱 Responsive Design
-- **Diseño unificado** para desktop y móvil (sin versiones separadas)
-- **Navegación adaptativa** con menú hamburguesa en móvil
-- **Optimización para todos los dispositivos**
-- **Touch-friendly** en dispositivos móviles
-
-### ⚡ Performance Optimizado
-- **Loading screen** con animaciones suaves
-- **Lazy loading** para imágenes
-- **Preload de recursos críticos**
-- **Animaciones optimizadas** con Intersection Observer
-- **Código modular** y mantenible
-
-### 🎯 Funcionalidades
-- **Navegación suave** entre secciones
-- **Estadísticas animadas** con contadores
-- **Efectos de hover** interactivos
-- **Back to top** button
-- **Enlaces de contacto** directos (WhatsApp, Email, Teléfono)
-- **SEO optimizado** con metadatos completos
+- **Diseño Moderno**: Interfaz limpia y profesional con tipografías elegantes
+- **Totalmente Responsivo**: Optimizado para todos los dispositivos
+- **Navegación Suave**: Scroll suave entre secciones
+- **Formulario de Contacto**: Integrado con validación
+- **Animaciones Sutiles**: Efectos hover elegantes
+- **SEO Optimizado**: Meta tags y estructura semántica
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **HTML5** - Estructura semántica
-- **CSS3** - Estilos modernos con variables CSS
-- **JavaScript ES6+** - Funcionalidad interactiva
-- **Boxicons** - Iconografía elegante
-- **Google Fonts** - Tipografías web optimizadas
+- **HTML5**: Estructura semántica moderna
+- **CSS3**: Diseño responsive con CSS Grid y Flexbox
+- **JavaScript**: Interactividad y animaciones
+- **Boxicons**: Iconografía moderna
+- **Google Fonts**: Tipografías Inter y Playfair Display
 
 ## 📁 Estructura del Proyecto
 
 ```
-MVGN PORTFAFOLIO/
-├── index.html          # Página principal unificada
-├── style.css           # Estilos modernos y responsive
-├── script.js           # JavaScript modular y optimizado
+MVGN-PORTFAFOLIO/
+├── index.html          # Página principal
+├── style.css           # Estilos principales
+├── script.js           # Funcionalidad JavaScript
+├── assets/             # Imágenes y recursos
+│   ├── profile.jpg     # Foto de perfil
+│   ├── captura notaria80.png
+│   ├── captura pietrafina.png
+│   ├── crm captura.png
+│   └── miniatura youtube.png
 ├── package.json        # Configuración del proyecto
-├── README.md           # Documentación
-├── .gitignore          # Archivos ignorados por Git
-└── assets/
-    ├── mvgn icon.png   # Logo de Mvgn Labs
-    └── profile.jpg     # Foto de perfil
+├── vercel.json         # Configuración de Vercel
+└── README.md           # Este archivo
 ```
 
-## 🚀 Instalación y Uso
+## 🚀 Despliegue
 
-### Requisitos
-- Node.js >= 14.0.0
-- Navegador web moderno
+### Despliegue Local
 
-### Instalación
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/tu-usuario/mvgn-labs-portfolio.git
-cd mvgn-labs-portfolio
+git clone https://github.com/mvgn91/MVGN-PORTFAFOLIO.git
+cd MVGN-PORTFAFOLIO
 ```
 
 2. Instala las dependencias:
@@ -76,170 +52,60 @@ cd mvgn-labs-portfolio
 npm install
 ```
 
-3. Inicia el servidor de desarrollo:
+3. Ejecuta el servidor de desarrollo:
 ```bash
 npm run dev
 ```
 
 4. Abre tu navegador en `http://localhost:3000`
 
-### Scripts Disponibles
-- `npm run dev` - Inicia servidor de desarrollo
-- `npm start` - Inicia servidor de producción
-- `npm run build` - Build del proyecto (no necesario para sitio estático)
+### Despliegue en Vercel
 
-## 🎨 Secciones del Portafolio
+El proyecto está configurado para desplegarse automáticamente en Vercel:
 
-### 🏠 Hero Section
-- **Información personal** de Armando Ibañez
-- **Enlaces de contacto** directos
-- **Call-to-action** buttons
-- **Efectos visuales** con partículas animadas
+1. Conecta tu repositorio de GitHub a Vercel
+2. Vercel detectará automáticamente la configuración
+3. El sitio se desplegará en `https://tu-proyecto.vercel.app`
 
-### 📊 Servicios
-- **Diseño Web** - Sitios modernos y responsivos
-- **Marketing Digital** - Estrategias online
-- **Branding** - Identidad visual corporativa
-- **Estadísticas animadas** de experiencia
+## 📱 Secciones del Portafolio
 
-### 💼 Proyectos
-- **Portfolio visual** con imágenes de proyectos
-- **Tecnologías utilizadas** en cada proyecto
-- **Enlaces a repositorios** y demos
-- **Overlay interactivo** con información adicional
+- **Hero**: Presentación personal y estadísticas
+- **Sobre Mí**: Información personal y especialidades
+- **Servicios**: Diseño web, branding y catálogos digitales
+- **Experiencia**: Trayectoria profesional y educación
+- **Proyectos**: Trabajos destacados con enlaces
+- **Tecnologías**: Stack tecnológico utilizado
+- **Contacto**: Formulario e información de contacto
 
-### 🔄 Proceso de Trabajo
-- **Metodología de 4 pasos**:
-  1. Descubrimiento
-  2. Diseño
-  3. Desarrollo
-  4. Entrega
-
-### 🛠️ Tecnologías
-- **Frontend**: HTML5, CSS3, JavaScript, React, Vue.js, Sass
-- **Backend**: Node.js, PHP, Python, MySQL, MongoDB
-- **Herramientas**: Git, Figma, Adobe XD, Photoshop, VS Code
-
-### 💬 Testimonios
-- **Opiniones de clientes** satisfechos
-- **Casos de éxito** documentados
-- **Credibilidad profesional** demostrada
-
-### 📞 Contacto
-- **Información de contacto** completa
-- **Botones de acción** directos
-- **Formularios pre-rellenados** para facilitar contacto
-
-## 🎯 Características Técnicas
-
-### Performance
-- **Loading optimizado** con preload de recursos críticos
-- **Lazy loading** para imágenes no críticas
-- **Animaciones suaves** con CSS transitions
-- **Código modular** para fácil mantenimiento
-
-### SEO
-- **Metadatos completos** para mejor indexación
-- **Estructura semántica** HTML5
-- **Open Graph** tags para redes sociales
-- **Schema markup** para rich snippets
-
-### Accesibilidad
-- **Navegación por teclado** completa
-- **Contraste adecuado** de colores
-- **Textos alternativos** en imágenes
-- **ARIA labels** donde es necesario
-
-## 🔧 Personalización
+## 🎨 Personalización
 
 ### Colores
-Los colores se pueden modificar en las variables CSS:
+Los colores se pueden modificar en las variables CSS en `style.css`:
+
 ```css
 :root {
-  --color-accent: #e53e3e;        /* Rojo principal */
-  --color-accent-light: #fc8181;  /* Rojo claro */
-  --color-accent-dark: #c53030;   /* Rojo oscuro */
+  --color-primary: #2563eb;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  /* ... más colores */
 }
 ```
 
 ### Contenido
-- **Información personal** en `index.html`
-- **Proyectos** en la sección correspondiente
-- **Estadísticas** en la sección de servicios
-- **Enlaces de contacto** en el JavaScript
+- Actualiza la información personal en `index.html`
+- Modifica las imágenes en la carpeta `assets/`
+- Ajusta los enlaces de contacto y redes sociales
 
-### Imágenes
-- Reemplazar `assets/profile.jpg` con tu foto
-- Actualizar `assets/mvgn icon.png` con tu logo
-- Agregar imágenes de proyectos en la sección correspondiente
+## 📞 Contacto
 
-## 📱 Compatibilidad
-
-### Navegadores Soportados
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-
-### Dispositivos
-- ✅ Desktop (1920px+)
-- ✅ Laptop (1366px+)
-- ✅ Tablet (768px+)
-- ✅ Mobile (375px+)
-
-## 🚀 Deployment
-
-### GitHub Pages
-1. Sube el código a GitHub
-2. Ve a Settings > Pages
-3. Selecciona la rama main
-4. El sitio estará disponible en `https://tu-usuario.github.io/repo-name`
-
-### Netlify
-1. Conecta tu repositorio a Netlify
-2. Configura el directorio raíz como `/`
-3. Deploy automático en cada push
-
-### Vercel
-1. Importa el proyecto en Vercel
-2. Configuración automática para sitios estáticos
-3. Deploy instantáneo
-
-## 📈 Analytics y Tracking
-
-El proyecto incluye:
-- **Console logging** para debugging
-- **Section tracking** para analytics
-- **Error handling** para monitoreo
-- **Performance monitoring** básico
-
-## 🤝 Contribuciones
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+- **WhatsApp**: +52 33 2262 1939
+- **Email**: jazzfatale@gmail.com
+- **Ubicación**: Tlajomulco de Zuñiga, Jal.
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
-
-## 👨‍💻 Autor
-
-**Armando Ibañez** - [Mvgn Labs](https://mvgnlabs.com)
-
-- **Email**: jazzfatale@gmail.com
-- **WhatsApp**: +52 33 2262 1939
-- **Portfolio**: [mvgnlabs.com](https://mvgnlabs.com)
-
-## 🙏 Agradecimientos
-
-- **Boxicons** por la iconografía elegante
-- **Google Fonts** por las tipografías web
-- **Comunidad web** por las mejores prácticas
-- **Clientes** por la confianza en los proyectos
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
 ---
 
-**Transformando ideas en realidades digitales** 🚀 
+**Desarrollado con ❤️ por Armando Ibañez** 

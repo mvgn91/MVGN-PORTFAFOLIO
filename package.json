@@ -1,14 +1,12 @@
 {
-  "name": "mvgn-labs-portfolio",
+  "name": "armando-ibanez-portfolio",
   "version": "2.0.0",
-  "description": "Mvgn Labs - Portafolio digital moderno y responsive de Armando Ibañez",
+  "description": "Portafolio digital moderno y elegante de Armando Ibañez - Desarrollador Web & Diseñador Digital",
   "main": "index.html",
   "scripts": {
     "dev": "http-server . -o -p 3000",
     "start": "http-server . -o -p 3000",
-    "build": "echo 'Static site - no build needed'",
-    "lint": "echo 'No linting configured for static site'",
-    "test": "echo 'No tests configured for static site'"
+    "build": "echo 'Static site - no build needed'"
   },
   "keywords": [
     "portfolio",
@@ -16,15 +14,16 @@
     "digital-marketing",
     "responsive",
     "modern",
-    "spa"
+    "developer",
+    "designer"
   ],
-  "author": "Armando Ibañez - MVGN LABS",
+  "author": "Armando Ibañez",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tu-usuario/mvgn-labs-portfolio"
+    "url": "https://github.com/mvgn91/MVGN-PORTFAFOLIO"
   },
-  "homepage": "https://mvgnlabs.com",
+  "homepage": "https://armando-ibanez.vercel.app",
   "devDependencies": {
     "http-server": "^14.1.1"
   },
