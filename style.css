@@ -277,19 +277,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: containerShadow 4s ease-in-out infinite alternate;
 }
 
 .profile-frame {
   position: relative;
   width: 280px;
   height: 280px;
-  animation: frameRotate 20s linear infinite;
   transition: all var(--transition-normal);
 }
 
 .profile-container:hover .profile-frame {
-  animation-play-state: paused;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .profile-frame::before {
@@ -303,6 +302,7 @@ body {
   clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
   animation: frameGlow 3s ease-in-out infinite alternate;
   z-index: -1;
+  filter: blur(2px);
 }
 
 .profile-frame::after {
@@ -321,6 +321,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
   transition: transform var(--transition-normal);
 }
@@ -329,21 +330,21 @@ body {
   transform: scale(1.05);
 }
 
-@keyframes frameRotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes frameGlow {
   0% {
     box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
   }
   100% {
     box-shadow: 0 0 40px rgba(220, 38, 38, 0.8), 0 0 60px rgba(245, 158, 11, 0.4);
+  }
+}
+
+@keyframes containerShadow {
+  0% {
+    filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 50px rgba(220, 38, 38, 0.6)) drop-shadow(0 0 80px rgba(245, 158, 11, 0.2));
   }
 }
 
