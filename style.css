@@ -894,25 +894,30 @@ body {
 .technologies-section {
   padding: var(--spacing-3xl) 0;
   background: var(--color-surface) !important;
+  overflow: hidden;
 }
 
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--spacing-xl);
+.tech-carousel {
   margin-top: var(--spacing-2xl);
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--spacing-2xl);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
-.tech-item {
+.tech-track {
+  display: flex;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+}
+
+.tech-slide {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-sm);
+  justify-content: center;
+  min-width: 140px;
   padding: var(--spacing-lg);
+  margin: 0 var(--spacing-md);
   background: var(--color-background);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
@@ -920,24 +925,38 @@ body {
   text-align: center;
 }
 
-.tech-item:hover {
+.tech-slide:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: var(--color-primary);
   background: rgba(220, 38, 38, 0.05);
 }
 
-.tech-item i {
-  font-size: 2rem;
+.tech-slide i {
+  font-size: 2.5rem;
   color: var(--color-primary);
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
 }
 
-.tech-item span {
+.tech-slide span {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text);
+  font-weight: 600;
+  color: var(--color-primary);
   line-height: 1.2;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pausar animación en hover */
+.tech-carousel:hover .tech-track {
+  animation-play-state: paused;
 }
 
 /* ===== CONTACTO SECTION ===== */
@@ -1303,22 +1322,16 @@ body {
     grid-template-columns: 1fr;
   }
   
-  .tech-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
-    max-width: 100%;
-    padding: 0 var(--spacing-lg);
-  }
-  
-  .tech-item {
+  .tech-slide {
+    min-width: 120px;
     padding: var(--spacing-md);
   }
   
-  .tech-item i {
-    font-size: 1.75rem;
+  .tech-slide i {
+    font-size: 2rem;
   }
   
-  .tech-item span {
+  .tech-slide span {
     font-size: 0.8rem;
   }
   
