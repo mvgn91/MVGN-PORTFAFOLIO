@@ -572,6 +572,14 @@ body::before {
   font-size: 1.25rem;
 }
 
+.about-location-text {
+  margin-top: var(--spacing-md);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
 .about-specialties h3 {
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -2051,12 +2059,33 @@ body::before {
   
   .contact-actions {
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
   }
   
   .contact-actions .btn {
     width: 100%;
     justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+  
+  .contact-form-container {
+    padding: var(--spacing-md);
+  }
+  
+  .contact-form {
+    gap: var(--spacing-md);
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+  
+  .contact-form textarea {
+    min-height: 100px;
   }
 }
 
@@ -2142,6 +2171,26 @@ body::before {
   .contact-form,
   .contact-card {
     padding: var(--spacing-sm);
+  }
+  
+  .contact-actions .btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+  
+  .contact-form-container {
+    padding: var(--spacing-sm);
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: var(--spacing-xs);
+    font-size: 0.85rem;
+  }
+  
+  .contact-form textarea {
+    min-height: 80px;
   }
   
   .project-content {
@@ -2456,6 +2505,37 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-sm);
+}
+
+/* Mejoras específicas para botones de contacto en móviles */
+.mobile-device .contact-actions {
+  gap: var(--spacing-sm);
+}
+
+.mobile-device .contact-actions .btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 0.9rem;
+  min-height: 44px;
+  border-radius: var(--radius-md);
+}
+
+.mobile-device .contact-form-container {
+  padding: var(--spacing-md);
+}
+
+.mobile-device .contact-form {
+  gap: var(--spacing-md);
+}
+
+.mobile-device .contact-form input,
+.mobile-device .contact-form textarea {
+  padding: var(--spacing-sm);
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+}
+
+.mobile-device .contact-form textarea {
+  min-height: 100px;
 }
 
 /* Mejoras del carousel de tecnologías en móviles */
