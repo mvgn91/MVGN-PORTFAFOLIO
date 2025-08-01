@@ -176,13 +176,19 @@ function initializeScrollEffects() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('fade-in-up');
+        entry.target.classList.add('visible');
       }
     });
   }, observerOptions);
   
   // Observar elementos para animaciones
-  const animateElements = document.querySelectorAll('.service-card, .project-card, .tech-category, .specialty-item');
+  const animateElements = document.querySelectorAll('.service-card, .project-card, .tech-category, .specialty-item, .experience-item, .smooth-scroll-element');
   animateElements.forEach(el => observer.observe(el));
+  
+  // Inicializar efectos de parallax
+  if (!CONFIG.isMobile) {
+    initializeParallaxEffects();
+  }
 }
 
 // ===== ANIMACIONES =====
@@ -462,6 +468,75 @@ function updateScrollState() {
   
   updateActiveNavigation();
   toggleBackToTop();
+  
+  // Aplicar efectos de parallax
+  if (!CONFIG.isMobile) {
+    applyParallaxEffects();
+  }
+}
+
+// ===== EFECTOS DE PARALLAX =====
+function initializeParallaxEffects() {
+  // Agregar clases de parallax a elementos específicos
+  const parallaxElements = document.querySelectorAll('.hero-content, .about-content, .service-card, .project-card, .experience-item');
+  
+  parallaxElements.forEach((element, index) => {
+    if (index % 3 === 0) {
+      element.classList.add('parallax-slow');
+    } else if (index % 3 === 1) {
+      element.classList.add('parallax-medium');
+    } else {
+      element.classList.add('parallax-fast');
+    }
+  });
+  
+  // Agregar clases de animación de entrada
+  const slideElements = document.querySelectorAll('.service-card:nth-child(odd), .project-card:nth-child(odd)');
+  slideElements.forEach(el => el.classList.add('slide-in-left'));
+  
+  const slideRightElements = document.querySelectorAll('.service-card:nth-child(even), .project-card:nth-child(even)');
+  slideRightElements.forEach(el => el.classList.add('slide-in-right'));
+  
+  const experienceItems = document.querySelectorAll('.experience-item');
+  experienceItems.forEach(el => el.classList.add('slide-in-bottom'));
+  
+  // Agregar efectos de hover mejorados
+  const hoverElements = document.querySelectorAll('.service-card, .project-card');
+  hoverElements.forEach(el => el.classList.add('hover-lift'));
+}
+
+function applyParallaxEffects() {
+  const scrolled = AppState.scrollY;
+  const rate = scrolled * -0.5;
+  const rateMedium = scrolled * -0.3;
+  const rateFast = scrolled * -0.1;
+  
+  // Aplicar parallax a elementos lentos
+  const slowElements = document.querySelectorAll('.parallax-slow');
+  slowElements.forEach(element => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      element.style.transform = `translateY(${rate * 0.1}px)`;
+    }
+  });
+  
+  // Aplicar parallax a elementos medianos
+  const mediumElements = document.querySelectorAll('.parallax-medium');
+  mediumElements.forEach(element => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      element.style.transform = `translateY(${rateMedium * 0.1}px)`;
+    }
+  });
+  
+  // Aplicar parallax a elementos rápidos
+  const fastElements = document.querySelectorAll('.parallax-fast');
+  fastElements.forEach(element => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      element.style.transform = `translateY(${rateFast * 0.1}px)`;
+    }
+  });
 }
 
 // ===== UTILIDADES =====
