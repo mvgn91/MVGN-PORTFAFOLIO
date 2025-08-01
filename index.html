@@ -28,7 +28,12 @@
     <link rel="stylesheet" href="style.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/mvgn icon.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="shortcut icon" href="assets/favicon.png">
+    <meta name="msapplication-TileImage" content="assets/favicon.png">
 </head>
 <body>
     <!-- Navigation -->
@@ -138,11 +143,26 @@
                             <p>Soy un profesional con experiencia en reparación de computadoras, ventas, diseño de publicidad y marketing digital. Me especializo en transformar ideas en soluciones tecnológicas y estrategias de comunicación que generan resultados reales para mis clientes.</p>
                         </div>
                         <div class="map-rect">
-                            <img 
-                                src="https://maps.googleapis.com/maps/api/staticmap?center=20.6,-103.35&zoom=10&size=600x400&maptype=roadmap&markers=color:red%7Clabel:A%7C20.55344268628259,-103.4368376845952&markers=color:blue%7Clabel:B%7C20.5,-103.4&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg" 
-                                alt="Zona de trabajo: Sur de Guadalajara (ZMG)" 
-                                class="map-image"
-                            />
+                            <div class="map-container">
+                                <div class="map-placeholder">
+                                    <i class='bx bx-map'></i>
+                                    <h4>Zona de Trabajo</h4>
+                                    <p>Sur de Guadalajara (ZMG)</p>
+                                    <div class="map-coordinates">
+                                        <span>20.6°N, 103.35°W</span>
+                                    </div>
+                                </div>
+                                <div class="map-overlay">
+                                    <div class="map-marker primary">
+                                        <i class='bx bx-location-plus'></i>
+                                        <span>Zona Principal</span>
+                                    </div>
+                                    <div class="map-marker secondary">
+                                        <i class='bx bx-location-plus'></i>
+                                        <span>Zona Extendida</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="about-location">
                             <h3><i class='bx bx-map'></i> Zona de Trabajo</h3>
