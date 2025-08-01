@@ -898,13 +898,13 @@ body {
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--spacing-lg);
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
-  max-width: 1000px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 var(--spacing-xl);
+  padding: 0 var(--spacing-2xl);
 }
 
 .tech-item {
@@ -1304,10 +1304,10 @@ body {
   }
   
   .tech-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
     max-width: 100%;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-lg);
   }
   
   .tech-item {
