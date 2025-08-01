@@ -2091,6 +2091,11 @@ body::before {
   
   .contact-card {
     padding: var(--spacing-sm);
+    width: 100%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
   
   .contact-items {
@@ -2099,6 +2104,28 @@ body::before {
   
   .contact-item {
     padding: var(--spacing-sm);
+  }
+  
+  .contact-form-container {
+    width: 100%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .contact-actions {
+    width: 100%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-actions .btn {
+    width: 100%;
+    max-width: 280px;
   }
 }
 
@@ -2208,6 +2235,11 @@ body::before {
   
   .contact-card {
     padding: var(--spacing-xs);
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
   
   .contact-items {
@@ -2216,6 +2248,28 @@ body::before {
   
   .contact-item {
     padding: var(--spacing-xs);
+  }
+  
+  .contact-form-container {
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .contact-actions {
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-actions .btn {
+    width: 100%;
+    max-width: 260px;
   }
   
   .project-content {
@@ -2464,6 +2518,10 @@ body::before {
 
 .mobile-device .contact-content {
   gap: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* Mejoras de legibilidad en móviles */
@@ -2535,6 +2593,13 @@ body::before {
 /* Mejoras específicas para botones de contacto en móviles */
 .mobile-device .contact-actions {
   gap: var(--spacing-xs);
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mobile-device .contact-actions .btn {
@@ -2542,10 +2607,16 @@ body::before {
   font-size: 0.85rem;
   min-height: 40px;
   border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 300px;
 }
 
 .mobile-device .contact-form-container {
   padding: var(--spacing-sm);
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mobile-device .contact-form {
@@ -2565,6 +2636,11 @@ body::before {
 
 .mobile-device .contact-card {
   padding: var(--spacing-sm);
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .mobile-device .contact-items {
@@ -2752,10 +2828,37 @@ body::before {
   
   .mobile-device .contact-card {
     padding: var(--spacing-xs);
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
   
   .mobile-device .contact-item {
     padding: var(--spacing-xs);
+  }
+  
+  .mobile-device .contact-form-container {
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .mobile-device .contact-actions {
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mobile-device .contact-actions .btn {
+    width: 100%;
+    max-width: 240px;
   }
   
 
