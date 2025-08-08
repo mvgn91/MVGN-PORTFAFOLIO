@@ -139,6 +139,41 @@ body::before {
   box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
 }
 
+/* ===== DETECCIÓN MÓVIL ===== */
+@media (max-width: 768px) {
+  /* Ocultar elementos desktop en móvil */
+  .navbar,
+  .nav-container,
+  .nav-brand,
+  .nav-menu,
+  .nav-link,
+  .hero-section,
+  .hero-container,
+  .hero-content,
+  .hero-text,
+  .hero-image,
+  .about-section,
+  .services-section,
+  .projects-section,
+  .contact-section,
+  .footer {
+    display: none !important;
+  }
+  
+  /* Mostrar elementos móviles */
+  .mobile-header,
+  .mobile-bottom-nav,
+  .mobile-main,
+  .mobile-hero,
+  .mobile-section,
+  .mobile-footer {
+    display: block !important;
+  }
+  
+  /* Importar estilos móviles */
+  @import url('mobile.css');
+}
+
 /* ===== NAVEGACIÓN ===== */
 .navbar {
   position: fixed;

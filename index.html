@@ -65,7 +65,18 @@
         </div>
     </nav>
 
-    <!-- Mobile Bottom Navigation -->
+    <!-- Header Móvil -->
+    <header class="mobile-header">
+        <div class="mobile-brand">
+            <span>MVGN Labs</span>
+            <i class='bx bx-bolt mobile-brand-icon'></i>
+        </div>
+        <button class="mobile-menu-toggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </button>
+    </header>
+
+    <!-- Navegación Inferior Móvil -->
     <nav class="mobile-bottom-nav" id="mobileBottomNav">
         <a href="#inicio" class="mobile-nav-item active" data-section="inicio">
             <i class='bx bx-home'></i>
@@ -801,7 +812,337 @@
         <i class='bx bx-chevron-up'></i>
     </button>
 
+    <!-- Contenido Móvil -->
+    <main class="mobile-main">
+        <!-- Sección Hero Móvil -->
+        <section id="inicio-mobile" class="mobile-hero">
+            <div class="mobile-profile">
+                <img src="assets/profile.jpg" alt="Armando Ibañez" loading="eager">
+            </div>
+            
+            <h1 class="mobile-hero-title">Armando Ibañez</h1>
+            <p class="mobile-hero-subtitle">Desarrollador Web & Diseñador Digital</p>
+            <p class="mobile-hero-description">Transformo ideas en experiencias digitales únicas y estrategias de marketing que generan resultados reales.</p>
+            
+            <div class="mobile-stats">
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" data-target="15">0</span>
+                    <span class="mobile-stat-label">Proyectos</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" data-target="8">0</span>
+                    <span class="mobile-stat-label">Clientes</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" data-target="2">0</span>
+                    <span class="mobile-stat-label">Años</span>
+                </div>
+            </div>
+            
+            <div class="mobile-hero-actions">
+                <a href="#contacto" class="mobile-btn mobile-btn-primary">
+                    <i class='bx bx-message-square'></i>
+                    Iniciar Proyecto
+                </a>
+                <a href="#proyectos" class="mobile-btn mobile-btn-secondary">
+                    <i class='bx bx-briefcase'></i>
+                    Ver Trabajos
+                </a>
+            </div>
+        </section>
+
+        <!-- Sección Sobre Mí Móvil -->
+        <section id="sobre-mi-mobile" class="mobile-section">
+            <div class="mobile-section-header">
+                <h2 class="mobile-section-title">Sobre Mí</h2>
+                <p class="mobile-section-subtitle">Técnico y creativo con experiencia en tecnología, ventas y marketing digital</p>
+            </div>
+            
+            <div class="mobile-card">
+                <p class="mobile-card-description">
+                    Soy un profesional con experiencia en reparación de computadoras, ventas, diseño de publicidad y marketing digital. 
+                    Me especializo en transformar ideas en soluciones tecnológicas y estrategias de comunicación que generan resultados reales para mis clientes.
+                </p>
+                
+                <div class="mobile-card-header">
+                    <div class="mobile-card-icon">
+                        <i class='bx bx-map'></i>
+                    </div>
+                    <h3 class="mobile-card-title">Zona de Trabajo</h3>
+                </div>
+                
+                <p class="mobile-card-description">
+                    Principalmente en la zona sur de la ZMG (Zona Metropolitana de Guadalajara)
+                </p>
+                
+                <div class="mobile-tags">
+                    <span class="mobile-tag">Diagnóstico y reparación de equipo de cómputo</span>
+                    <span class="mobile-tag">Diseño en publicidad</span>
+                    <span class="mobile-tag">Ventas y marketing</span>
+                    <span class="mobile-tag">Consultoría tecnológica</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Servicios Móvil -->
+        <section id="servicios-mobile" class="mobile-section">
+            <div class="mobile-section-header">
+                <h2 class="mobile-section-title">Servicios</h2>
+                <p class="mobile-section-subtitle">Soluciones digitales que transforman tu negocio</p>
+            </div>
+            
+            <div class="mobile-services">
+                <div class="mobile-card mobile-service-card">
+                    <div class="mobile-card-header">
+                        <div class="mobile-card-icon">
+                            <i class='bx bx-desktop'></i>
+                        </div>
+                        <h3 class="mobile-card-title">Diseño Web</h3>
+                    </div>
+                    <p class="mobile-card-description">
+                        Sitios web modernos y responsivos con HTML, CSS, JavaScript y React.js. 
+                        Landing pages, sitios corporativos y aplicaciones web funcionales.
+                    </p>
+                    <div class="mobile-tags">
+                        <span class="mobile-tag">Diseño Responsivo</span>
+                        <span class="mobile-tag">SEO Optimizado</span>
+                        <span class="mobile-tag">Firebase Integration</span>
+                        <span class="mobile-tag">React Components</span>
+                    </div>
+                </div>
+                
+                <div class="mobile-card mobile-service-card">
+                    <div class="mobile-card-header">
+                        <div class="mobile-card-icon">
+                            <i class='bx bx-palette'></i>
+                        </div>
+                        <h3 class="mobile-card-title">Branding</h3>
+                    </div>
+                    <p class="mobile-card-description">
+                        Identidad visual y posicionamiento de marca que diferencia tu negocio de la competencia.
+                    </p>
+                    <div class="mobile-tags">
+                        <span class="mobile-tag">Logo Design</span>
+                        <span class="mobile-tag">Identidad Visual</span>
+                        <span class="mobile-tag">Brand Guidelines</span>
+                    </div>
+                </div>
+                
+                <div class="mobile-card mobile-service-card">
+                    <div class="mobile-card-header">
+                        <div class="mobile-card-icon">
+                            <i class='bx bx-book-open'></i>
+                        </div>
+                        <h3 class="mobile-card-title">Catálogos Digitales</h3>
+                    </div>
+                    <p class="mobile-card-description">
+                        Diseño de catálogos interactivos y PDFs profesionales que destacan productos y servicios.
+                    </p>
+                    <div class="mobile-tags">
+                        <span class="mobile-tag">InDesign</span>
+                        <span class="mobile-tag">Photoshop</span>
+                        <span class="mobile-tag">Illustrator</span>
+                        <span class="mobile-tag">PDF Interactivo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Proyectos Móvil -->
+        <section id="proyectos-mobile" class="mobile-section">
+            <div class="mobile-section-header">
+                <h2 class="mobile-section-title">Proyectos Destacados</h2>
+                <p class="mobile-section-subtitle">Trabajos que demuestran mi pasión por la excelencia</p>
+            </div>
+            
+            <div class="mobile-projects">
+                <div class="mobile-card mobile-project-card">
+                    <div class="mobile-project-image">
+                        <img src="assets/captura notaria80.png" alt="Notaría 80 GDL" loading="lazy">
+                        <div class="mobile-project-overlay">
+                            <a href="https://www.notaria80gdl.mx/" class="mobile-project-link" target="_blank" rel="noopener">
+                                <i class='bx bx-link-external'></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-card-header">
+                        <div class="mobile-card-icon">
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <h3 class="mobile-card-title">Notaría 80 GDL</h3>
+                    </div>
+                    <p class="mobile-card-description">
+                        Diseño y desarrollo completo del sitio web corporativo para Notaría 80 de Guadalajara. 
+                        Implementación de diseño moderno con enfoque en la confianza y profesionalismo.
+                    </p>
+                    <div class="mobile-tags">
+                        <span class="mobile-tag">HTML5</span>
+                        <span class="mobile-tag">CSS3</span>
+                        <span class="mobile-tag">JavaScript</span>
+                        <span class="mobile-tag">Diseño Responsivo</span>
+                    </div>
+                </div>
+                
+                <div class="mobile-card mobile-project-card">
+                    <div class="mobile-project-image">
+                        <img src="assets/captura pietrafina.png" alt="Pietrafina MX" loading="lazy">
+                        <div class="mobile-project-overlay">
+                            <a href="https://www.pietrafina.mx/" class="mobile-project-link" target="_blank" rel="noopener">
+                                <i class='bx bx-link-external'></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-card-header">
+                        <div class="mobile-card-icon">
+                            <i class='bx bx-world'></i>
+                        </div>
+                        <h3 class="mobile-card-title">Pietrafina MX</h3>
+                    </div>
+                    <p class="mobile-card-description">
+                        Diseño, desarrollo y mantenimiento continuo del sitio web corporativo. 
+                        Implementación de funcionalidades avanzadas y optimización SEO.
+                    </p>
+                    <div class="mobile-tags">
+                        <span class="mobile-tag">HTML5</span>
+                        <span class="mobile-tag">CSS3</span>
+                        <span class="mobile-tag">JavaScript</span>
+                        <span class="mobile-tag">SEO</span>
+                    </div>
+                </div>
+                
+                <div class="mobile-card mobile-project-card">
+                    <div class="mobile-project-image">
+                        <img src="assets/miniatura youtube.png" alt="Sabor y Salud YouTube" loading="lazy">
+                        <div class="mobile-project-overlay">
+                            <a href="https://www.youtube.com/@pietrafinamx" class="mobile-project-link" target="_blank" rel="noopener">
+                                <i class='bx bxl-youtube'></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-card-header">
+                        <div class="mobile-card-icon">
+                            <i class='bx bx-video'></i>
+                        </div>
+                        <h3 class="mobile-card-title">Sabor y Salud</h3>
+                    </div>
+                    <p class="mobile-card-description">
+                        Editor y productor del programa de YouTube "Sabor y Salud", auspiciado por Pietrafina MX. 
+                        Producción de contenido digital, edición de video y estrategia de marketing en redes sociales.
+                    </p>
+                    <div class="mobile-tags">
+                        <span class="mobile-tag">YouTube</span>
+                        <span class="mobile-tag">Edición de Video</span>
+                        <span class="mobile-tag">Marketing Digital</span>
+                        <span class="mobile-tag">Producción</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto Móvil -->
+        <section id="contacto-mobile" class="mobile-section">
+            <div class="mobile-section-header">
+                <h2 class="mobile-section-title">¿Listo para Crear Algo Increíble?</h2>
+                <p class="mobile-section-subtitle">Hablemos sobre tu proyecto y cómo puedo ayudarte a alcanzar tus objetivos</p>
+            </div>
+            
+            <div class="mobile-contact">
+                <a href="https://wa.me/523322621939?text=Hola%20Armando!%20Vi%20tu%20portafolio%20y%20me%20interesa%20trabajar%20contigo%20en%20un%20proyecto%20web.%20¿Podríamos%20agendar%20una%20llamada?" class="mobile-contact-card" target="_blank" rel="noopener">
+                    <div class="mobile-contact-icon">
+                        <i class='bx bxl-whatsapp'></i>
+                    </div>
+                    <div class="mobile-contact-info">
+                        <h4>WhatsApp</h4>
+                        <p>33 2262 1939</p>
+                    </div>
+                </a>
+                
+                <a href="mailto:jazzfatale@gmail.com?subject=Consulta%20de%20Proyecto%20Web%20-%20Portafolio&body=Hola%20Armando,%0A%0AVi%20tu%20portafolio%20y%20me%20interesa%20trabajar%20contigo%20en%20un%20proyecto%20web.%0A%0ADetalles%20del%20proyecto:%0A-%20Tipo%20de%20proyecto:%20[Describir%20brevemente]%0A-%20Presupuesto:%20[Mencionar%20si%20aplica]%0A-%20Timeline:%20[Tiempo%20estimado]%0A%0A¿Podrías%20contactarme%20para%20discutir%20más%20detalles?%0A%0ASaludos,%0A[Tu%20nombre]" class="mobile-contact-card">
+                    <div class="mobile-contact-icon">
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                    <div class="mobile-contact-info">
+                        <h4>Email</h4>
+                        <p>jazzfatale@gmail.com</p>
+                    </div>
+                </a>
+                
+                <a href="tel:+523322621939" class="mobile-contact-card">
+                    <div class="mobile-contact-icon">
+                        <i class='bx bx-phone'></i>
+                    </div>
+                    <div class="mobile-contact-info">
+                        <h4>Teléfono</h4>
+                        <p>33 2262 1939</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mobile-form">
+                <h3 class="mobile-card-title mobile-mb-2">Envíame un mensaje</h3>
+                <p class="mobile-card-description mobile-mb-3">Cuéntame sobre tu proyecto y te responderé en menos de 24 horas</p>
+                
+                <form id="contactFormMobile" onsubmit="return enviarFormulario(event)">
+                    <div class="mobile-form-group">
+                        <label for="nombre-mobile" class="mobile-form-label">Nombre completo</label>
+                        <input type="text" id="nombre-mobile" name="nombre" class="mobile-form-input" required maxlength="50" placeholder="Tu nombre">
+                    </div>
+                    
+                    <div class="mobile-form-group">
+                        <label for="email-mobile" class="mobile-form-label">Email</label>
+                        <input type="email" id="email-mobile" name="email" class="mobile-form-input" required maxlength="60" placeholder="tu@email.com">
+                    </div>
+                    
+                    <div class="mobile-form-group">
+                        <label for="mensaje-mobile" class="mobile-form-label">Mensaje</label>
+                        <textarea id="mensaje-mobile" name="mensaje" class="mobile-form-textarea" required maxlength="500" placeholder="Cuéntame sobre tu proyecto, presupuesto y timeline..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="mobile-btn mobile-btn-primary mobile-form-submit">
+                        <i class='bx bx-send'></i>
+                        Enviar mensaje
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Móvil -->
+    <footer class="mobile-footer">
+        <div class="mobile-footer-brand">
+            <div class="mobile-footer-logo">
+                MVGN Labs
+                <i class='bx bx-bolt'></i>
+            </div>
+            <p class="mobile-footer-description">
+                Transformando ideas en realidades digitales. Especialistas en diseño web, marketing digital y soluciones tecnológicas que generan resultados reales para empresas y emprendedores.
+            </p>
+        </div>
+        
+        <div class="mobile-footer-social">
+            <a href="https://wa.me/523322621939" class="mobile-social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <i class='bx bxl-whatsapp'></i>
+            </a>
+            <a href="mailto:jazzfatale@gmail.com" class="mobile-social-link" aria-label="Email">
+                <i class='bx bx-envelope'></i>
+            </a>
+            <a href="tel:+523322621939" class="mobile-social-link" aria-label="Teléfono">
+                <i class='bx bx-phone'></i>
+            </a>
+        </div>
+        
+        <div class="mobile-footer-bottom">
+            <p>&copy; 2024 Armando Ibañez - MVGN Labs. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Toast de notificación móvil -->
+    <div id="toast-mobile" class="mobile-hidden" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--mobile-primary); color: white; padding: 1rem; border-radius: 8px; z-index: 10000; font-size: 0.875rem; font-weight: 500;">
+        ¡Mensaje enviado! Me pondré en contacto contigo pronto.
+    </div>
+
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="mobile.js"></script>
 </body>
 </html>
