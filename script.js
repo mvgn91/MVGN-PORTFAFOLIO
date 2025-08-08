@@ -61,61 +61,29 @@ function detectDevice() {
 
 // ===== NAVEGACIÓN =====
 function initializeNavigation() {
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
   
-  // Toggle del menú móvil
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleMobileMenu();
-    });
-  }
-  
-  // Navegación suave
+  // Navegación suave para menú superior (desktop)
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = link.getAttribute('href').substring(1);
       scrollToSection(targetId);
-      
-      // Cerrar menú móvil si está abierto
-      if (AppState.isNavOpen) {
-        closeMobileMenu();
-      }
+    });
+  });
+  
+  // Navegación suave para menú inferior (móvil)
+  mobileNavItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = item.getAttribute('href').substring(1);
+      scrollToSection(targetId);
     });
   });
 }
 
-function toggleMobileMenu() {
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
-  
-  AppState.isNavOpen = !AppState.isNavOpen;
-  
-  if (navToggle) navToggle.classList.toggle('active');
-  if (navMenu) navMenu.classList.toggle('active');
-  
-  // Prevenir scroll del body cuando el menú está abierto
-  if (AppState.isNavOpen) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-}
 
-function closeMobileMenu() {
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
-  
-  AppState.isNavOpen = false;
-  
-  if (navToggle) navToggle.classList.remove('active');
-  if (navMenu) navMenu.classList.remove('active');
-  document.body.style.overflow = '';
-}
 
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);
@@ -141,6 +109,7 @@ function scrollToSection(sectionId) {
 function updateActiveNavigation() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
   
   let currentSection = '';
   
@@ -153,11 +122,33 @@ function updateActiveNavigation() {
     }
   });
   
+  // Actualizar menú superior (desktop)
   navLinks.forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href') === `#${currentSection}`) {
       link.classList.add('active');
     }
+  });
+  
+  // Actualizar menú inferior (móvil)
+  mobileNavItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === `#${currentSection}`) {
+      item.classList.add('active');
+    }
+  });
+}
+
+// ===== BARRA DE PROGRESO =====
+function initializeProgressBar() {
+  const progressBar = document.getElementById('progressBar');
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    progressBar.style.width = scrollPercent + '%';
   });
 }
 
@@ -165,6 +156,9 @@ function updateActiveNavigation() {
 function initializeScrollEffects() {
   // Actualizar navegación activa
   updateActiveNavigation();
+  
+  // Inicializar barra de progreso
+  initializeProgressBar();
   
   // Efectos de aparición en scroll optimizados para móviles
   const observerOptions = {
@@ -441,24 +435,7 @@ function setupGlobalEventListeners() {
     // Recalcular posiciones si es necesario
   }, 250));
   
-  // Click fuera del menú móvil para cerrarlo
-  document.addEventListener('click', (e) => {
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    if (AppState.isNavOpen && 
-        !navToggle.contains(e.target) && 
-        !navMenu.contains(e.target)) {
-      closeMobileMenu();
-    }
-  });
-  
-  // Prevenir scroll cuando el menú móvil está abierto
-  document.addEventListener('touchmove', (e) => {
-    if (AppState.isNavOpen) {
-      e.preventDefault();
-    }
-  }, { passive: false });
+
 }
 
 function updateScrollState() {

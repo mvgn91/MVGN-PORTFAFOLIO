@@ -61,6 +61,25 @@
   box-sizing: border-box;
 }
 
+/* Ocultar barras de scroll globalmente */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -105,6 +124,19 @@ body::before {
     background-position: 0% 0%;
     opacity: 1;
   }
+}
+
+/* ===== BARRA DE PROGRESO ===== */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  z-index: 1001;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
 }
 
 /* ===== NAVEGACIÓN ===== */
@@ -211,6 +243,72 @@ body::before {
   height: 3px;
   background: var(--color-text);
   transition: all var(--transition-normal);
+}
+
+/* ===== MOBILE BOTTOM NAVIGATION ===== */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--color-border);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 0.5rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.mobile-nav-item i {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  transition: all var(--transition-fast);
+}
+
+.mobile-nav-item span {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.mobile-nav-item:hover,
+.mobile-nav-item.active {
+  color: var(--color-primary);
+}
+
+.mobile-nav-item.active i {
+  transform: scale(1.1);
+}
+
+.mobile-nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-normal);
+}
+
+.mobile-nav-item.active::after {
+  width: 60%;
 }
 
 /* ===== HERO SECTION ===== */
@@ -1054,41 +1152,63 @@ body::before {
 
 .workflow-timeline {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3xl);
+  flex-direction: row;
+  gap: var(--spacing-md);
   margin-top: var(--spacing-3xl);
   position: relative;
-  padding: 0 var(--spacing-xl);
+  padding: 0 var(--spacing-lg);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  /* Ocultar scrollbar en todos los navegadores */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.workflow-timeline::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.workflow-timeline::-webkit-scrollbar-track {
+  display: none;
+}
+
+.workflow-timeline::-webkit-scrollbar-thumb {
+  display: none;
 }
 
 .workflow-timeline::before {
   content: '';
   position: absolute;
-  left: 50%;
-  top: 60px;
-  bottom: 60px;
-  width: 3px;
-  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  top: 50%;
+  left: 60px;
+  right: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   opacity: 0.2;
-  transform: translateX(-50%);
+  transform: translateY(-50%);
   border-radius: 2px;
 }
 
 .workflow-step {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--spacing-2xl);
+  gap: var(--spacing-md);
   position: relative;
-  padding: var(--spacing-lg) 0;
-}
-
-.workflow-step:nth-child(even) {
-  flex-direction: row-reverse;
+  padding: var(--spacing-md);
+  min-width: 200px;
+  max-width: 220px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 
 .workflow-icon {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
@@ -1097,8 +1217,8 @@ body::before {
   flex-shrink: 0;
   position: relative;
   z-index: 2;
-  box-shadow: var(--shadow-xl);
-  border: 4px solid var(--color-background);
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--color-background);
   transition: all var(--transition-normal);
 }
 
@@ -1108,40 +1228,33 @@ body::before {
 }
 
 .workflow-icon i {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--color-text-light);
 }
 
 .workflow-content {
   background: var(--color-surface);
-  padding: var(--spacing-2xl);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
-  flex: 1;
+  width: 100%;
   position: relative;
   transition: all var(--transition-normal);
-  max-width: 500px;
+  text-align: center;
 }
 
 .workflow-content::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: -12px;
+  bottom: -12px;
+  left: 50%;
   width: 0;
   height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-right: 12px solid var(--color-surface);
-  transform: translateY(-50%);
-}
-
-.workflow-step:nth-child(even) .workflow-content::before {
-  left: auto;
-  right: -12px;
-  border-right: none;
-  border-left: 12px solid var(--color-surface);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--color-surface);
+  transform: translateX(-50%);
 }
 
 .workflow-content:hover {
@@ -1152,10 +1265,10 @@ body::before {
 
 .workflow-content h3 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   position: relative;
 }
 
@@ -1163,31 +1276,34 @@ body::before {
   content: '';
   position: absolute;
   bottom: -8px;
-  left: 0;
+  left: 50%;
   width: 40px;
   height: 3px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   border-radius: 2px;
+  transform: translateX(-50%);
 }
 
 .workflow-content p {
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--spacing-lg);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.85rem;
 }
 
 .workflow-features {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
+  justify-content: center;
 }
 
 .workflow-tag {
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: var(--color-text-light);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-lg);
-  font-size: 0.9rem;
+  padding: var(--spacing-xs) var(--spacing-xs);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
   font-weight: 500;
   transition: all var(--transition-normal);
   box-shadow: var(--shadow-sm);
@@ -1304,79 +1420,135 @@ body::before {
 }
 
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-3xl);
 }
 
-.contact-card {
-  background: var(--color-surface);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
-}
-
-.contact-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-lg);
-}
-
-.contact-items {
-  display: flex;
-  flex-direction: column;
+/* Contact Info Grid */
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-lg);
 }
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-}
-
-.contact-item i {
-  font-size: 1.5rem;
-  color: var(--color-primary);
-  flex-shrink: 0;
-}
-
-.contact-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-label {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  font-weight: 500;
-}
-
-.contact-value {
-  color: var(--color-text);
-  font-weight: 600;
-}
-
-.contact-actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
-}
-
-.contact-form-container {
+.contact-info-card {
   background: var(--color-surface);
   padding: var(--spacing-xl);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+}
+
+.contact-info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.contact-info-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.contact-info-icon i {
+  font-size: 1.5rem;
+  color: var(--color-text-light);
+}
+
+.contact-info-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.contact-info-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.contact-info-content p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all var(--transition-normal);
+  margin-top: var(--spacing-xs);
+}
+
+.contact-link:hover {
+  color: var(--color-accent);
+  transform: translateX(4px);
+}
+
+.contact-link i {
+  font-size: 0.8rem;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+  background: var(--color-surface);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contact-form-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.contact-form-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.contact-form-header p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin: 0;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--spacing-lg);
 }
 
@@ -1387,14 +1559,15 @@ body::before {
 }
 
 .contact-form label {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text);
+  font-size: 0.9rem;
 }
 
 .contact-form input,
 .contact-form textarea {
   padding: var(--spacing-md);
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-lg);
   font-family: var(--font-primary);
   font-size: 1rem;
@@ -1413,6 +1586,18 @@ body::before {
 .contact-form textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.btn-full i {
+  font-size: 1.2rem;
 }
 
 .toast {
@@ -1704,8 +1889,47 @@ body::before {
   }
   
   .contact-content {
-    grid-template-columns: 1fr;
     gap: var(--spacing-2xl);
+  }
+  
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .contact-info-card {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+  
+  .contact-info-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .contact-info-icon i {
+    font-size: 1.25rem;
+  }
+  
+  .contact-info-content h4 {
+    font-size: 1.1rem;
+  }
+  
+  .contact-info-content p {
+    font-size: 0.9rem;
+  }
+  
+  .contact-form-wrapper {
+    padding: var(--spacing-xl);
+  }
+  
+  .contact-form-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
   }
   
   .services-grid {
@@ -1722,47 +1946,7 @@ body::before {
     overflow: hidden;
   }
   
-  .workflow-timeline {
-    gap: var(--spacing-xl);
-    padding: 0;
-  }
-  
-  .workflow-step {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--spacing-lg);
-  }
-  
-  .workflow-step:nth-child(even) {
-    flex-direction: column;
-  }
-  
-  .workflow-icon {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .workflow-icon i {
-    font-size: 1.75rem;
-  }
-  
-  .workflow-content {
-    max-width: 100%;
-    padding: var(--spacing-xl);
-  }
-  
-  .workflow-timeline::before {
-    display: none;
-  }
-  
-  .workflow-content::before {
-    display: none;
-  }
-  
-  .workflow-step:nth-child(even) .workflow-content::before {
-    display: none;
-  }
+
   
   /* Footer para tablets */
   .footer-content {
@@ -1790,70 +1974,235 @@ body::before {
 
 /* Móviles grandes y tablets pequeñas */
 @media (max-width: 768px) {
-  /* Navegación móvil mejorada */
+  /* Ocultar menú superior en móviles */
   .nav-menu {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: rgba(15, 15, 15, 0.98);
-    backdrop-filter: blur(15px);
-    flex-direction: column;
-    padding: var(--spacing-xl) var(--spacing-lg);
-    border-bottom: 1px solid var(--color-border);
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-normal);
-    box-shadow: var(--shadow-xl);
+    display: none;
   }
   
-  .nav-menu.active {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
+  /* Mostrar menú de navegación inferior */
+  .mobile-bottom-nav {
+    display: flex;
   }
   
-  .nav-menu .nav-link {
-    padding: var(--spacing-md) 0;
-    font-size: 1.1rem;
-    border-bottom: 1px solid var(--color-border-light);
-    width: 100%;
+  /* Ajustar padding del contenido principal para el menú inferior */
+  .main-content {
+    padding-bottom: 80px;
+  }
+  
+  /* Ajustar footer para el menú inferior */
+  .footer {
+    margin-bottom: 80px;
+  }
+  
+  /* Mejorar responsividad de secciones */
+  .hero-section {
+    padding: calc(70px + var(--spacing-xl)) 0 var(--spacing-xl);
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
     text-align: center;
   }
   
-  .nav-menu .nav-link:last-child {
-    border-bottom: none;
+  .hero-text {
+    order: 1;
   }
   
-  .nav-toggle {
-    display: flex;
+  .hero-image {
+    order: 2;
+    margin: var(--spacing-md) 0;
+  }
+  
+  .hero-name {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  .hero-greeting {
+    font-size: 1.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .hero-stats {
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .stat-item {
+    text-align: center;
+  }
+  
+  .hero-actions {
     flex-direction: column;
-    gap: 4px;
-    padding: var(--spacing-xs);
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    gap: var(--spacing-md);
+    align-items: center;
   }
   
-  .nav-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--color-primary);
-    border-radius: 2px;
-    transition: all var(--transition-normal);
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 280px;
   }
   
-  .nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+  /* Mejorar sección Sobre Mí */
+  .about-content {
+    flex-direction: column;
+    gap: var(--spacing-xl);
   }
   
-  .nav-toggle.active span:nth-child(2) {
-    opacity: 0;
+  .about-info {
+    order: 1;
   }
   
-  .nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+  .about-specialties {
+    order: 2;
+  }
+  
+  .map-rect {
+    margin: var(--spacing-md) 0;
+  }
+  
+  /* Mejorar sección de Servicios */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .service-card {
+    padding: var(--spacing-lg);
+  }
+  
+  /* Mejorar sección de Proyectos */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .project-card {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  /* Mejorar sección de Contacto */
+  .contact-content {
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+  
+  .contact-info {
+    order: 1;
+  }
+  
+  .contact-form-container {
+    order: 2;
+  }
+  
+  .contact-actions {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .contact-actions .btn {
+    width: 100%;
+  }
+  
+  /* Optimizar workflow para móviles */
+  .workflow-timeline {
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .workflow-step {
+    min-width: 180px;
+    max-width: 200px;
+    scroll-snap-align: start;
+    padding: var(--spacing-sm);
+  }
+  
+  .workflow-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .workflow-icon i {
+    font-size: 1.5rem;
+  }
+  
+  .workflow-content {
+    padding: var(--spacing-sm);
+  }
+  
+  .workflow-content h3 {
+    font-size: 0.9rem;
+  }
+  
+  .workflow-content p {
+    font-size: 0.8rem;
+  }
+  
+  .workflow-tag {
+    font-size: 0.75rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  /* Mejorar experiencia en pantallas muy pequeñas */
+  .mobile-nav-item {
+    padding: 0.4rem 0.25rem;
+  }
+  
+  .mobile-nav-item i {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .mobile-nav-item span {
+    font-size: 0.65rem;
+  }
+  
+  /* Ajustar espaciado para pantallas pequeñas */
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .section-header {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  /* Mejorar legibilidad en móviles */
+  .hero-description,
+  .service-description,
+  .project-content p {
+    line-height: 1.6;
+  }
+  
+  /* Optimizar botones para touch */
+  .btn {
+    min-height: 44px;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  /* Mejorar formulario de contacto */
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px; /* Prevenir zoom en iOS */
   }
 
   /* Hero section optimizado para móviles */
@@ -2124,6 +2473,205 @@ body::before {
 
 /* Móviles medianos */
 @media (max-width: 480px) {
+  /* Mejorar menú de navegación inferior */
+  .mobile-bottom-nav {
+    padding: 0.4rem 0;
+  }
+  
+  .mobile-nav-item {
+    padding: 0.3rem 0.2rem;
+  }
+  
+  .mobile-nav-item i {
+    font-size: 1rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  .mobile-nav-item span {
+    font-size: 0.6rem;
+  }
+  
+  /* Ajustar espaciado general */
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  /* Optimizar hero section */
+  .hero-name {
+    font-size: 2rem;
+  }
+  
+  .hero-greeting {
+    font-size: 1.25rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-description {
+    font-size: 0.9rem;
+  }
+  
+  .hero-stats {
+    gap: var(--spacing-md);
+  }
+  
+  .stat-item {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  /* Optimizar botones */
+  .hero-actions .btn {
+    max-width: 100%;
+    padding: var(--spacing-md);
+  }
+  
+  /* Mejorar secciones */
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  /* Optimizar cards */
+  .service-card,
+  .project-card {
+    padding: var(--spacing-md);
+  }
+  
+  .service-card h3,
+  .project-content h3 {
+    font-size: 1.25rem;
+  }
+  
+  .service-description,
+  .project-content p {
+    font-size: 0.9rem;
+  }
+  
+  /* Mejorar formulario */
+  .contact-form {
+    padding: var(--spacing-lg);
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: var(--spacing-md);
+    font-size: 16px;
+  }
+  
+  .contact-form button {
+    padding: var(--spacing-md);
+    font-size: 1rem;
+  }
+  
+  /* Nueva estructura de contacto */
+  .contact-info-card {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+  
+  .contact-info-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .contact-info-icon i {
+    font-size: 1.1rem;
+  }
+  
+  .contact-info-content h4 {
+    font-size: 1rem;
+  }
+  
+  .contact-info-content p {
+    font-size: 0.85rem;
+  }
+  
+  .contact-form-wrapper {
+    padding: var(--spacing-lg);
+  }
+  
+  .contact-form-header h3 {
+    font-size: 1.25rem;
+  }
+  
+  .contact-form-header p {
+    font-size: 0.9rem;
+  }
+  
+  .btn-full {
+    padding: var(--spacing-md);
+    font-size: 1rem;
+  }
+  
+  /* Optimizar footer */
+  .footer-content {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .footer-brand p {
+    font-size: 0.9rem;
+  }
+  
+  .footer-social .social-link {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .footer-social .social-link i {
+    font-size: 1rem;
+  }
+  
+  /* Optimizar workflow para pantallas pequeñas */
+  .workflow-timeline {
+    gap: var(--spacing-sm);
+    padding: 0 var(--spacing-xs);
+  }
+  
+  .workflow-step {
+    min-width: 160px;
+    max-width: 180px;
+    padding: var(--spacing-xs);
+  }
+  
+  .workflow-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .workflow-icon i {
+    font-size: 1.25rem;
+  }
+  
+  .workflow-content {
+    padding: var(--spacing-sm);
+  }
+  
+  .workflow-content h3 {
+    font-size: 0.85rem;
+  }
+  
+  .workflow-content p {
+    font-size: 0.75rem;
+  }
+  
+  .workflow-tag {
+    font-size: 0.7rem;
+    padding: var(--spacing-xs);
+  }
   .container {
     padding: 0 var(--spacing-sm);
   }
@@ -2341,6 +2889,200 @@ body::before {
 
 /* Móviles pequeños */
 @media (max-width: 360px) {
+  /* Optimizar menú de navegación inferior */
+  .mobile-bottom-nav {
+    padding: 0.3rem 0;
+  }
+  
+  .mobile-nav-item {
+    padding: 0.25rem 0.15rem;
+  }
+  
+  .mobile-nav-item i {
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+  }
+  
+  .mobile-nav-item span {
+    font-size: 0.55rem;
+  }
+  
+  /* Ajustar espaciado */
+  .container {
+    padding: 0 var(--spacing-xs);
+  }
+  
+  /* Optimizar hero section */
+  .hero-name {
+    font-size: 1.75rem;
+  }
+  
+  .hero-greeting {
+    font-size: 1.1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .hero-description {
+    font-size: 0.85rem;
+  }
+  
+  .hero-stats {
+    gap: var(--spacing-sm);
+  }
+  
+  .stat-number {
+    font-size: 1.25rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+  }
+  
+  /* Optimizar botones */
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+  }
+  
+  /* Mejorar secciones */
+  .section-title {
+    font-size: 1.25rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  /* Optimizar cards */
+  .service-card,
+  .project-card {
+    padding: var(--spacing-sm);
+  }
+  
+  .service-card h3,
+  .project-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .service-description,
+  .project-content p {
+    font-size: 0.85rem;
+  }
+  
+  /* Mejorar formulario */
+  .contact-form {
+    padding: var(--spacing-md);
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: var(--spacing-sm);
+    font-size: 16px;
+  }
+  
+  .contact-form button {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+  
+  /* Nueva estructura de contacto para pantallas muy pequeñas */
+  .contact-info-card {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-xs);
+  }
+  
+  .contact-info-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .contact-info-icon i {
+    font-size: 1rem;
+  }
+  
+  .contact-info-content h4 {
+    font-size: 0.9rem;
+  }
+  
+  .contact-info-content p {
+    font-size: 0.8rem;
+  }
+  
+  .contact-form-wrapper {
+    padding: var(--spacing-md);
+  }
+  
+  .contact-form-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .contact-form-header p {
+    font-size: 0.85rem;
+  }
+  
+  .btn-full {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+  
+  /* Optimizar footer */
+  .footer-content {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+  
+  .footer-brand p {
+    font-size: 0.85rem;
+  }
+  
+  .footer-social .social-link {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .footer-social .social-link i {
+    font-size: 0.9rem;
+  }
+  
+  /* Optimizar workflow para pantallas muy pequeñas */
+  .workflow-timeline {
+    gap: var(--spacing-xs);
+    padding: 0 var(--spacing-xs);
+  }
+  
+  .workflow-step {
+    min-width: 140px;
+    max-width: 160px;
+    padding: var(--spacing-xs);
+  }
+  
+  .workflow-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .workflow-icon i {
+    font-size: 1.1rem;
+  }
+  
+    .workflow-content {
+    padding: var(--spacing-xs);
+  }
+
+  .workflow-content h3 {
+    font-size: 0.8rem;
+  }
+
+  .workflow-content p {
+    font-size: 0.7rem;
+  }
+  
+  .workflow-tag {
+    font-size: 0.65rem;
+    padding: var(--spacing-xs);
+  }
   .hero-name {
     font-size: 2rem;
   }
@@ -2637,10 +3379,7 @@ body::before {
   min-width: 44px;
 }
 
-.touch-device .nav-toggle {
-  min-height: 44px;
-  min-width: 44px;
-}
+
 
 .touch-device .contact-item {
   min-height: 44px;
@@ -2648,6 +3387,14 @@ body::before {
 
 .touch-device .nav-link {
   min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.touch-device .mobile-nav-item {
+  min-height: 44px;
+  min-width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2696,6 +3443,10 @@ body::before {
   }
   
   .nav-link {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .mobile-nav-item {
     -webkit-tap-highlight-color: transparent;
   }
 }
