@@ -468,92 +468,198 @@ body {
   text-decoration: none;
 }
 
-/* ===== CONTACTO MÓVIL ===== */
+/* ===== NUEVO DISEÑO DE CONTACTO MÓVIL ===== */
+
+/* Contenedor de contacto móvil */
 .mobile-contact {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
+/* Tarjetas de contacto móvil */
 .mobile-contact-card {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
-  background: var(--mobile-surface);
-  border: 1px solid var(--mobile-border);
-  border-radius: var(--mobile-card-radius);
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 16px;
+  padding: 1.25rem;
   text-decoration: none;
-  color: var(--mobile-text);
-  transition: var(--mobile-transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
+.mobile-contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #dc2626, #ef4444, #f97316);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.mobile-contact-card:hover,
 .mobile-contact-card:active {
-  background: rgba(255, 255, 255, 0.05);
-  transform: scale(0.98);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(220, 38, 38, 0.15);
+  border-color: rgba(220, 38, 38, 0.4);
 }
 
+.mobile-contact-card:hover::before,
+.mobile-contact-card:active::before {
+  transform: scaleX(1);
+}
+
+/* Icono de contacto móvil */
 .mobile-contact-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, var(--mobile-primary), var(--mobile-accent));
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.mobile-contact-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.mobile-contact-card:hover .mobile-contact-icon::before,
+.mobile-contact-card:active .mobile-contact-icon::before {
+  left: 100%;
+}
+
+.mobile-contact-icon i {
+  font-size: 1.5rem;
   color: white;
+  z-index: 1;
+}
+
+/* Información de contacto móvil */
+.mobile-contact-info {
+  flex: 1;
 }
 
 .mobile-contact-info h4 {
-  margin: 0 0 0.25rem 0;
   font-size: 1rem;
   font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
 }
 
 .mobile-contact-info p {
-  margin: 0;
   font-size: 0.875rem;
-  color: var(--mobile-text-secondary);
+  color: #e5e7eb;
+  font-weight: 500;
 }
 
-/* ===== FORMULARIO MÓVIL ===== */
+/* Formulario móvil */
 .mobile-form {
-  background: var(--mobile-surface);
-  border: 1px solid var(--mobile-border);
-  border-radius: var(--mobile-card-radius);
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(17, 24, 39, 0.9) 100%);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 16px;
   padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
+.mobile-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #dc2626, #ef4444, #f97316, #dc2626);
+  background-size: 200% 100%;
+  animation: mobileGradientShift 3s ease infinite;
+}
+
+@keyframes mobileGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header del formulario móvil */
+.mobile-form .mobile-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff, #e5e7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mobile-form .mobile-card-description {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Grupos de formulario móvil */
 .mobile-form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .mobile-form-label {
   display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #e5e7eb;
   margin-bottom: 0.5rem;
-  color: var(--mobile-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
+/* Inputs móviles */
 .mobile-form-input,
 .mobile-form-textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--mobile-border);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--mobile-text);
+  padding: 0.875rem 1rem;
+  background: rgba(31, 41, 55, 0.6);
+  border: 2px solid rgba(75, 85, 99, 0.3);
+  border-radius: 10px;
+  color: #ffffff;
   font-size: 0.875rem;
-  transition: var(--mobile-transition);
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.mobile-form-input::placeholder,
+.mobile-form-textarea::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
 }
 
 .mobile-form-input:focus,
 .mobile-form-textarea:focus {
   outline: none;
-  border-color: var(--mobile-primary);
-  background: rgba(255, 255, 255, 0.1);
+  border-color: #dc2626;
+  background: rgba(31, 41, 55, 0.8);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  transform: translateY(-1px);
 }
 
 .mobile-form-textarea {
@@ -561,9 +667,107 @@ body {
   resize: vertical;
 }
 
+/* Botón de envío móvil */
 .mobile-form-submit {
   width: 100%;
-  margin-top: 1rem;
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+}
+
+.mobile-form-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.mobile-form-submit:hover::before,
+.mobile-form-submit:active::before {
+  left: 100%;
+}
+
+.mobile-form-submit:hover,
+.mobile-form-submit:active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.mobile-form-submit i {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Toast móvil mejorado */
+.mobile-toast {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 0.875rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+  z-index: 10000;
+  max-width: 280px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Utilidades móviles */
+.mobile-mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mobile-mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+/* Animaciones de entrada para móvil */
+.mobile-contact-card,
+.mobile-form {
+  animation: mobileSlideUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.mobile-contact-card:nth-child(1) { animation-delay: 0.1s; }
+.mobile-contact-card:nth-child(2) { animation-delay: 0.2s; }
+.mobile-contact-card:nth-child(3) { animation-delay: 0.3s; }
+.mobile-form { animation-delay: 0.4s; }
+
+@keyframes mobileSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== TECNOLOGÍAS MÓVILES ===== */

@@ -315,23 +315,99 @@ function handleContactSubmit(event) {
   }
 }
 
-function mostrarToast(mensaje) {
-  const toast = document.getElementById('toast');
-  
-  if (toast) {
-    toast.textContent = mensaje;
-    toast.classList.add('show');
+// Función mejorada para enviar formulario
+function enviarFormulario(event) {
+    event.preventDefault();
     
+    // Obtener el formulario que se está enviando
+    const form = event.target;
+    const formId = form.id;
+    
+    // Obtener los valores del formulario
+    const nombre = form.querySelector('input[name="nombre"]').value.trim();
+    const email = form.querySelector('input[name="email"]').value.trim();
+    const mensaje = form.querySelector('textarea[name="mensaje"]').value.trim();
+    
+    // Validación básica
+    if (!nombre || !email || !mensaje) {
+        mostrarToast('Por favor, completa todos los campos', 'error');
+        return false;
+    }
+    
+    // Validación de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        mostrarToast('Por favor, ingresa un email válido', 'error');
+        return false;
+    }
+    
+    // Simular envío (aquí iría la lógica real de envío)
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    
+    // Cambiar el botón a estado de carga
+    submitButton.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Enviando...';
+    submitButton.disabled = true;
+    
+    // Simular delay de envío
     setTimeout(() => {
-      toast.classList.remove('show');
-    }, 3000);
-  }
+        // Restaurar el botón
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+        
+        // Mostrar mensaje de éxito
+        mostrarToast('¡Mensaje enviado! Me pondré en contacto contigo pronto.', 'success');
+        
+        // Limpiar el formulario
+        form.reset();
+        
+        // Enfoque en el primer campo
+        const firstInput = form.querySelector('input');
+        if (firstInput) {
+            firstInput.focus();
+        }
+    }, 2000);
+    
+    return false;
 }
 
-// Función global para el formulario (mantener compatibilidad)
-function enviarFormulario(event) {
-  handleContactSubmit(event);
-  return false;
+// Función mejorada para mostrar toast
+function mostrarToast(mensaje, tipo = 'success') {
+    // Determinar qué toast usar basado en el dispositivo
+    const isMobile = window.innerWidth <= 768;
+    const toastId = isMobile ? 'toast-mobile' : 'toast';
+    const toast = document.getElementById(toastId);
+    
+    if (!toast) return;
+    
+    // Configurar el mensaje y estilo
+    toast.textContent = mensaje;
+    toast.className = isMobile ? 'mobile-toast' : 'toast';
+    
+    // Agregar clase de tipo
+    if (tipo === 'error') {
+        toast.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+        toast.style.boxShadow = '0 8px 20px rgba(239, 68, 68, 0.3)';
+    } else {
+        toast.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        toast.style.boxShadow = '0 8px 20px rgba(16, 185, 129, 0.3)';
+    }
+    
+    // Mostrar el toast
+    if (isMobile) {
+        toast.classList.add('show');
+    } else {
+        toast.style.transform = 'translateX(0)';
+    }
+    
+    // Ocultar después de 4 segundos
+    setTimeout(() => {
+        if (isMobile) {
+            toast.classList.remove('show');
+        } else {
+            toast.style.transform = 'translateX(400px)';
+        }
+    }, 4000);
 }
 
 // ===== OPTIMIZACIONES MÓVILES =====

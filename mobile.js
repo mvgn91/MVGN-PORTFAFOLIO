@@ -241,24 +241,78 @@ function initializeMobileContactForm() {
 function handleMobileFormSubmit(event) {
   event.preventDefault();
   
-  const formData = new FormData(event.target);
-  const data = Object.fromEntries(formData);
+  const form = event.target;
+  const nombre = form.querySelector('input[name="nombre"]').value.trim();
+  const email = form.querySelector('input[name="email"]').value.trim();
+  const mensaje = form.querySelector('textarea[name="mensaje"]').value.trim();
   
   // Validación básica
-  if (!data.nombre || !data.email || !data.mensaje) {
-    showMobileToast('Por favor completa todos los campos', 'error');
+  if (!nombre || !email || !mensaje) {
+    showMobileToast('Por favor, completa todos los campos', 'error');
     return false;
   }
   
-  // Simular envío (aquí puedes integrar con tu backend)
-  showMobileToast('Enviando mensaje...', 'info');
+  // Validación de email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showMobileToast('Por favor, ingresa un email válido', 'error');
+    return false;
+  }
   
+  // Simular envío
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalText = submitButton.innerHTML;
+  
+  // Cambiar el botón a estado de carga
+  submitButton.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Enviando...';
+  submitButton.disabled = true;
+  
+  // Simular delay de envío
   setTimeout(() => {
+    // Restaurar el botón
+    submitButton.innerHTML = originalText;
+    submitButton.disabled = false;
+    
+    // Mostrar mensaje de éxito
     showMobileToast('¡Mensaje enviado! Me pondré en contacto contigo pronto.', 'success');
-    event.target.reset();
-  }, 1500);
+    
+    // Limpiar el formulario
+    form.reset();
+    
+    // Enfoque en el primer campo
+    const firstInput = form.querySelector('input');
+    if (firstInput) {
+      firstInput.focus();
+    }
+  }, 2000);
   
   return false;
+}
+
+function showMobileToast(message, type = 'success') {
+  const toast = document.getElementById('toast-mobile');
+  if (!toast) return;
+  
+  // Configurar el mensaje y estilo
+  toast.textContent = message;
+  toast.className = 'mobile-toast';
+  
+  // Agregar clase de tipo
+  if (type === 'error') {
+    toast.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+    toast.style.boxShadow = '0 8px 20px rgba(239, 68, 68, 0.3)';
+  } else {
+    toast.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+    toast.style.boxShadow = '0 8px 20px rgba(16, 185, 129, 0.3)';
+  }
+  
+  // Mostrar el toast
+  toast.classList.add('show');
+  
+  // Ocultar después de 4 segundos
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4000);
 }
 
 // ===== GESTOS TÁCTILES MÓVILES =====
@@ -298,23 +352,6 @@ function initializeMobileTouchGestures() {
 }
 
 // ===== TOAST MÓVIL =====
-function showMobileToast(message, type = 'success') {
-  const toast = document.getElementById('toast-mobile');
-  
-  // Configurar mensaje y tipo
-  toast.textContent = message;
-  toast.className = `mobile-toast mobile-toast-${type}`;
-  
-  // Mostrar toast
-  toast.classList.remove('mobile-hidden');
-  
-  // Ocultar después de 3 segundos
-  setTimeout(() => {
-    toast.classList.add('mobile-hidden');
-  }, 3000);
-}
-
-// ===== FUNCIÓN DE ENVÍO DE FORMULARIO (compatibilidad) =====
 function enviarFormulario(event) {
   return handleMobileFormSubmit(event);
 }
