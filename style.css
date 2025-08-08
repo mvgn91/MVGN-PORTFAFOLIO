@@ -1150,168 +1150,126 @@ body::before {
   pointer-events: none;
 }
 
-.workflow-timeline {
-  display: flex;
-  flex-direction: row;
-  gap: var(--spacing-md);
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-2xl);
   margin-top: var(--spacing-3xl);
   position: relative;
-  padding: 0 var(--spacing-lg);
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  /* Ocultar scrollbar en todos los navegadores */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.workflow-timeline::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
-
-.workflow-timeline::-webkit-scrollbar-track {
-  display: none;
-}
-
-.workflow-timeline::-webkit-scrollbar-thumb {
-  display: none;
-}
-
-.workflow-timeline::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 60px;
-  right: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-  opacity: 0.2;
-  transform: translateY(-50%);
-  border-radius: 2px;
-}
-
-.workflow-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-md);
-  position: relative;
-  padding: var(--spacing-md);
-  min-width: 200px;
-  max-width: 220px;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-}
-
-.workflow-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2;
-  box-shadow: var(--shadow-lg);
-  border: 3px solid var(--color-background);
-  transition: all var(--transition-normal);
-}
-
-.workflow-icon:hover {
-  transform: scale(1.1);
-  box-shadow: var(--shadow-2xl);
-}
-
-.workflow-icon i {
-  font-size: 1.5rem;
-  color: var(--color-text-light);
-}
-
-.workflow-content {
+.workflow-card {
   background: var(--color-surface);
-  padding: var(--spacing-md);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
-  width: 100%;
-  position: relative;
+  overflow: hidden;
   transition: all var(--transition-normal);
-  text-align: center;
+  position: relative;
 }
 
-.workflow-content::before {
+.workflow-card::before {
   content: '';
   position: absolute;
-  bottom: -12px;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 12px solid var(--color-surface);
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  opacity: 0;
+  transition: opacity var(--transition-normal);
 }
 
-.workflow-content:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+.workflow-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
   border-color: var(--color-primary);
 }
 
-.workflow-content h3 {
+.workflow-card:hover::before {
+  opacity: 1;
+}
+
+.workflow-card-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--spacing-xl) auto var(--spacing-lg);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+}
+
+.workflow-card:hover .workflow-card-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-2xl);
+}
+
+.workflow-card-icon i {
+  font-size: 2rem;
+  color: var(--color-text-light);
+}
+
+.workflow-card-content {
+  padding: 0 var(--spacing-xl) var(--spacing-xl);
+  text-align: center;
+}
+
+.workflow-card-content h3 {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
   position: relative;
 }
 
-.workflow-content h3::before {
+.workflow-card-content h3::after {
   content: '';
   position: absolute;
   bottom: -8px;
   left: 50%;
-  width: 40px;
+  width: 60px;
   height: 3px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   border-radius: 2px;
   transform: translateX(-50%);
 }
 
-.workflow-content p {
+.workflow-card-content p {
   color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin-bottom: var(--spacing-sm);
-  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
 }
 
-.workflow-features {
+.workflow-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-xs);
-  justify-content: center;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  text-align: left;
 }
 
-.workflow-tag {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  color: var(--color-text-light);
-  padding: var(--spacing-xs) var(--spacing-xs);
-  border-radius: var(--radius-md);
-  font-size: 0.75rem;
+.workflow-features-list li {
+  color: var(--color-text);
+  font-size: 0.95rem;
   font-weight: 500;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(220, 38, 38, 0.05);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--color-primary);
   transition: all var(--transition-normal);
-  box-shadow: var(--shadow-sm);
 }
 
-.workflow-tag:hover {
-  background: var(--color-accent);
-  transform: translateY(-1px);
+.workflow-features-list li:hover {
+  background: rgba(220, 38, 38, 0.1);
+  transform: translateX(4px);
 }
 
 /* ===== TECNOLOGÍAS SECTION ===== */
@@ -2636,41 +2594,40 @@ body::before {
   }
   
   /* Optimizar workflow para pantallas pequeñas */
-  .workflow-timeline {
-    gap: var(--spacing-sm);
-    padding: 0 var(--spacing-xs);
+  .workflow-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
   }
   
-  .workflow-step {
-    min-width: 160px;
-    max-width: 180px;
-    padding: var(--spacing-xs);
+  .workflow-card {
+    padding: var(--spacing-lg);
   }
   
-  .workflow-icon {
-    width: 50px;
-    height: 50px;
+  .workflow-card-icon {
+    width: 60px;
+    height: 60px;
+    margin: var(--spacing-lg) auto var(--spacing-md);
   }
   
-  .workflow-icon i {
+  .workflow-card-icon i {
+    font-size: 1.5rem;
+  }
+  
+  .workflow-card-content {
+    padding: 0 var(--spacing-lg) var(--spacing-lg);
+  }
+  
+  .workflow-card-content h3 {
     font-size: 1.25rem;
   }
   
-  .workflow-content {
-    padding: var(--spacing-sm);
+  .workflow-card-content p {
+    font-size: 0.9rem;
   }
   
-  .workflow-content h3 {
+  .workflow-features-list li {
     font-size: 0.85rem;
-  }
-  
-  .workflow-content p {
-    font-size: 0.75rem;
-  }
-  
-  .workflow-tag {
-    font-size: 0.7rem;
-    padding: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
   .container {
     padding: 0 var(--spacing-sm);
@@ -3047,40 +3004,38 @@ body::before {
   }
   
   /* Optimizar workflow para pantallas muy pequeñas */
-  .workflow-timeline {
-    gap: var(--spacing-xs);
-    padding: 0 var(--spacing-xs);
+    .workflow-grid {
+    gap: var(--spacing-md);
   }
   
-  .workflow-step {
-    min-width: 140px;
-    max-width: 160px;
-    padding: var(--spacing-xs);
+  .workflow-card {
+    padding: var(--spacing-md);
   }
   
-  .workflow-icon {
-    width: 45px;
-    height: 45px;
+  .workflow-card-icon {
+    width: 50px;
+    height: 50px;
+    margin: var(--spacing-md) auto var(--spacing-sm);
   }
   
-  .workflow-icon i {
+  .workflow-card-icon i {
+    font-size: 1.25rem;
+  }
+  
+  .workflow-card-content {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+  }
+  
+  .workflow-card-content h3 {
     font-size: 1.1rem;
   }
   
-    .workflow-content {
-    padding: var(--spacing-xs);
-  }
-
-  .workflow-content h3 {
-    font-size: 0.8rem;
-  }
-
-  .workflow-content p {
-    font-size: 0.7rem;
+  .workflow-card-content p {
+    font-size: 0.85rem;
   }
   
-  .workflow-tag {
-    font-size: 0.65rem;
+  .workflow-features-list li {
+    font-size: 0.8rem;
     padding: var(--spacing-xs);
   }
   .hero-name {
