@@ -3,178 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Armando Ibañez - Desarrollador Web & Diseñador Digital. Portafolio profesional con servicios de diseño web, marketing digital y branding.">
-    <meta name="keywords" content="desarrollador web, diseñador digital, marketing digital, branding, portafolio">
-    <meta name="author" content="Armando Ibañez">
-    <meta property="og:title" content="Armando Ibañez - Portafolio Digital">
-    <meta property="og:description" content="Desarrollador Web & Diseñador Digital. Transformando ideas en experiencias digitales únicas.">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <title>Armando Ibañez - Desarrollador Web & Diseñador Digital</title>
-    
-    <!-- Preload critical resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="assets/profile.jpg" as="image">
-    
-    <!-- Mobile optimizations -->
-    <meta name="format-detection" content="telephone=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>MVGN Labs - Desarrollador Full Stack & Consultor Digital</title>
+    <meta name="description" content="Desarrollador Full Stack especializado en soluciones digitales innovadoras. Experiencia en desarrollo web, aplicaciones móviles y consultoría tecnológica.">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/favicon.png">
-    <link rel="shortcut icon" href="assets/favicon.png">
-    <meta name="msapplication-TileImage" content="assets/favicon.png">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Dynamic Background -->
+    <div class="dynamic-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-brand">
-                <span class="nav-title">MVGN Labs</span>
-                <i class="bx bx-bolt nav-icon"></i>
-            </div>
+                         <div class="nav-brand">
+                 <div class="brand-logo">
+                     <div class="logo-icon">
+                         <span class="logo-text">AI</span>
+                         <div class="logo-glow"></div>
+                     </div>
+                 </div>
+                 <div class="brand-text">
+                     <span class="brand-name">Armando Ibañez</span>
+                     <span class="brand-subtitle">Desarrollo Web & Marketing Digital</span>
+                 </div>
+             </div>
             
             <div class="nav-menu" id="navMenu">
-                <a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a>
-                <a href="#sobre-mi" class="nav-link" data-section="sobre-mi">Sobre Mí</a>
-                <a href="#servicios" class="nav-link" data-section="servicios">Servicios</a>
-                <a href="#proyectos" class="nav-link" data-section="proyectos">Proyectos</a>
-                <a href="#contacto" class="nav-link" data-section="contacto">Contacto</a>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">
+                        <i class='bx bx-home-alt'></i>
+                        <span>Inicio</span>
+                    </a>
+                    <a href="#about" class="nav-link">
+                        <i class='bx bx-user'></i>
+                        <span>Sobre Mí</span>
+                    </a>
+                    <a href="#services" class="nav-link">
+                        <i class='bx bx-cog'></i>
+                        <span>Servicios</span>
+                    </a>
+                    <a href="#experience" class="nav-link">
+                        <i class='bx bx-briefcase'></i>
+                        <span>Experiencia</span>
+                    </a>
+                    <a href="#projects" class="nav-link">
+                        <i class='bx bx-code-alt'></i>
+                        <span>Proyectos</span>
+                    </a>
+                    <a href="#contact" class="nav-link">
+                        <i class='bx bx-envelope'></i>
+                        <span>Contacto</span>
+                    </a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                        <i class='bx bx-sun'></i>
+                        <i class='bx bx-moon'></i>
+                    </button>
+                </div>
             </div>
             
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-toggle" id="navToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section id="inicio" class="hero-section">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 class="hero-title">
-                            <span class="hero-greeting">Hola, soy</span>
-                            <span class="hero-name">Armando Ibañez</span>
-                        </h1>
-                        <p class="hero-subtitle">Desarrollador Web & Diseñador Digital</p>
-                        <p class="hero-description">Transformo ideas en experiencias digitales únicas y estrategias de marketing que generan resultados reales.</p>
-                        
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">15+</span>
-                                <span class="stat-label">Proyectos</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">8+</span>
-                                <span class="stat-label">Clientes</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">2+</span>
-                                <span class="stat-label">Años</span>
-                            </div>
-                        </div>
-                        
-                        <div class="hero-actions">
-                            <a href="#contacto" class="btn btn-primary">
-                                <i class='bx bx-message-square'></i>
-                                Iniciar Proyecto
-                            </a>
-                            <a href="#proyectos" class="btn btn-secondary">
-                                <i class='bx bx-briefcase'></i>
-                                Ver Trabajos
-                            </a>
-                        </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class='bx bx-rocket'></i>
+                    <span>🚀 Disponible para proyectos</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="hero-greeting">Hola, soy</span>
+                    <span class="hero-name">Armando Ibañez</span>
+                </h1>
+                
+                <p class="hero-subtitle">Desarrollador Web & Diseñador Digital</p>
+                <p class="hero-description">Transformo ideas en experiencias digitales únicas y estrategias de marketing que generan resultados reales.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Proyectos</span>
                     </div>
-                    
-                    <div class="hero-image">
-                        <div class="profile-container">
-                            <div class="profile-frame">
-                                <img src="assets/profile.jpg" alt="Armando Ibañez" class="profile-image">
-                            </div>
-                        </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Clientes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Años</span>
+                    </div>
+                </div>
+                
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Iniciar Proyecto</span>
+                        <i class='bx bx-arrow-right'></i>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>Ver Proyectos</span>
+                        <i class='bx bx-code-alt'></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="profile-container">
+                    <div class="profile-frame">
+                        <div class="profile-glow"></div>
+                        <img src="assets/profile.jpg" alt="MVGN Profile" class="profile-image">
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Sobre Mí Section -->
-        <section id="sobre-mi" class="about-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Sobre Mí</h2>
-                    <p class="section-subtitle">Técnico y creativo con experiencia en tecnología, ventas y marketing digital</p>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+                            <div class="section-header">
+                    <div class="section-badge">
+                        <i class='bx bx-info-circle'></i>
+                        <span>Sobre Mí</span>
+                    </div>
+                    <h2 class="section-title">Técnico y creativo con experiencia en tecnología, ventas y marketing digital</h2>
+                    <p class="section-subtitle">Un profesional versátil que combina habilidades técnicas con creatividad para ofrecer soluciones integrales</p>
                 </div>
                 
                 <div class="about-content">
-                    <div class="about-info">
+                    <div class="about-main">
                         <div class="about-text">
                             <p>Soy un profesional con experiencia en reparación de computadoras, ventas, diseño de publicidad y marketing digital. Me especializo en transformar ideas en soluciones tecnológicas y estrategias de comunicación que generan resultados reales para mis clientes.</p>
+                            
+                            <div class="about-highlights">
+                                <div class="highlight-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <span>Reparación de computadoras</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <span>Diseño de publicidad</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class='bx bx-check-circle'></i>
+                                    <span>Marketing digital</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="map-rect">
-                            <img 
-                                src="assets/mapa.png" 
-                                alt="Zona de trabajo: Sur de Guadalajara (ZMG)" 
-                                class="map-image"
-                            />
-                        </div>
+                        
                         <div class="about-location">
-                            <h3><i class='bx bx-map'></i> Zona de Trabajo</h3>
-                            <p>Principalmente en la zona sur de la ZMG (Zona Metropolitana de Guadalajara)</p>
-                        </div>
-                    </div>
-                    <div class="about-specialties">
-                        <h3>Especialidades</h3>
-                        <div class="specialties-grid">
-                            <div class="specialty-item">
-                                <i class='bx bx-wrench'></i>
-                                <span>Diagnóstico y reparación de equipo de cómputo</span>
-                            </div>
-                            <div class="specialty-item">
-                                <i class='bx bx-bulb'></i>
-                                <span>Diseño en publicidad</span>
-                            </div>
-                            <div class="specialty-item">
-                                <i class='bx bx-bar-chart-alt-2'></i>
-                                <span>Ventas y marketing</span>
-                            </div>
-                            <div class="specialty-item">
-                                <i class='bx bx-laptop'></i>
-                                <span>Consultoría tecnológica</span>
+                            <div class="location-card">
+                                <div class="location-icon">
+                                    <i class='bx bx-map'></i>
+                                </div>
+                                <div class="location-info">
+                                    <h3>Zona de Trabajo</h3>
+                                    <p>Principalmente en la zona sur de la ZMG (Zona Metropolitana de Guadalajara)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    
                 </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Services Section -->
-        <section id="servicios" class="services-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Servicios</h2>
-                    <p class="section-subtitle">Soluciones digitales que transforman tu negocio</p>
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+                            <div class="section-header">
+                    <div class="section-badge">
+                        <i class='bx bx-cog'></i>
+                        <span>Servicios</span>
+                    </div>
+                    <h2 class="section-title">Soluciones digitales que transforman tu negocio</h2>
+                    <p class="section-subtitle">Servicios integrales para llevar tu presencia digital al siguiente nivel</p>
                 </div>
                 
                 <div class="services-grid">
@@ -226,19 +272,23 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Experience Section -->
-        <section id="experiencia" class="experience-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Experiencia Profesional</h2>
-                    <p class="section-subtitle">Trayectoria y logros relevantes</p>
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+                            <div class="section-header">
+                    <div class="section-badge">
+                        <i class='bx bx-briefcase'></i>
+                        <span>Experiencia</span>
+                    </div>
+                    <h2 class="section-title">Trayectoria y logros relevantes</h2>
+                    <p class="section-subtitle">Mi camino profesional en el mundo de la tecnología y el marketing digital</p>
                 </div>
                 
                 <div class="experience-timeline">
-                    <div class="experience-item smooth-scroll-element">
+                    <div class="experience-item">
                         <div class="experience-marker"></div>
                         <div class="experience-content">
                             <div class="experience-header">
@@ -250,7 +300,7 @@
                         </div>
                     </div>
                     
-                    <div class="experience-item smooth-scroll-element">
+                    <div class="experience-item">
                         <div class="experience-marker"></div>
                         <div class="experience-content">
                             <div class="experience-header">
@@ -262,7 +312,7 @@
                         </div>
                     </div>
                     
-                    <div class="experience-item smooth-scroll-element">
+                    <div class="experience-item">
                         <div class="experience-marker"></div>
                         <div class="experience-content">
                             <div class="experience-header">
@@ -274,15 +324,17 @@
                         </div>
                     </div>
                 </div>
-                
+        </div>
+    </section>
 
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="proyectos" class="projects-section">
-            <div class="container">
-                <div class="section-header">
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+                            <div class="section-header">
+                    <div class="section-badge">
+                        <i class='bx bx-code-alt'></i>
+                        <span>Portfolio</span>
+                    </div>
                     <h2 class="section-title">Proyectos Destacados</h2>
                     <p class="section-subtitle">Trabajos que demuestran mi pasión por la excelencia</p>
                 </div>
@@ -312,7 +364,7 @@
                     
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop&crop=center" alt="Pietrafina MX" loading="lazy">
+                            <img src="assets/captura pietrafina.png" alt="Pietrafina MX" loading="lazy">
                             <div class="project-overlay">
                                 <a href="https://www.pietrafina.mx/" class="project-link" target="_blank" rel="noopener">
                                     <i class='bx bx-link-external'></i>
@@ -355,7 +407,7 @@
                     
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center" alt="CRM Pietrafina" loading="lazy">
+                            <img src="assets/crm captura.png" alt="CRM Pietrafina" loading="lazy">
                             <div class="project-overlay">
                                 <a href="#" class="project-link">
                                     <i class='bx bx-link-external'></i>
@@ -397,299 +449,275 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Technologies Section -->
-        <section class="technologies-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Tecnologías & Herramientas</h2>
-                    <p class="section-subtitle">Stack tecnológico que utilizo para crear soluciones robustas</p>
+    <!-- Technologies Section -->
+    <section id="technologies" class="technologies-section">
+        <div class="container">
+                            <div class="section-header">
+                    <div class="section-badge">
+                        <i class='bx bx-chip'></i>
+                        <span>Habilidades</span>
+                    </div>
+                    <h2 class="section-title">Tecnologías y Herramientas</h2>
+                    <p class="section-subtitle">Conocimientos técnicos y creativos que aplico en cada proyecto</p>
                 </div>
                 
-                <div class="tech-carousel">
-                    <div class="tech-track">
-                        <div class="tech-slide">
-                            <i class='bx bxl-html5'></i>
-                            <span>HTML5</span>
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h3>Desarrollo Web</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">
+                                <i class='bx bxl-html5'></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-css3'></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-javascript'></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-react'></i>
+                                <span>React.js</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-firebase'></i>
+                                <span>Firebase</span>
+                            </div>
                         </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-css3'></i>
-                            <span>CSS3</span>
+                    </div>
+                    
+                    <div class="tech-category">
+                        <h3>Diseño y Publicidad</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">
+                                <i class='bx bxl-adobe'></i>
+                                <span>Adobe Creative Suite</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-photoshop'></i>
+                                <span>Photoshop</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-illustrator'></i>
+                                <span>Illustrator</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-indesign'></i>
+                                <span>InDesign</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-premiere'></i>
+                                <span>Premiere Pro</span>
+                            </div>
                         </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-javascript'></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-react'></i>
-                            <span>React.js</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-firebase'></i>
-                            <span>Firebase</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-git'></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-google'></i>
-                            <span>Google Ads</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-facebook'></i>
-                            <span>Facebook Ads</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-instagram'></i>
-                            <span>Instagram Ads</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-bar-chart-alt-2'></i>
-                            <span>Google Analytics</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-palette'></i>
-                            <span>Canva</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-envelope'></i>
-                            <span>Mailchimp</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-image'></i>
-                            <span>Photoshop</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-book-open'></i>
-                            <span>InDesign</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-pen'></i>
-                            <span>Illustrator</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-desktop'></i>
-                            <span>Figma</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-video'></i>
-                            <span>Premiere Pro</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-wrench'></i>
-                            <span>Reparación PC</span>
-                        </div>
-                        <!-- Duplicar elementos para el loop infinito -->
-                        <div class="tech-slide">
-                            <i class='bx bxl-html5'></i>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-css3'></i>
-                            <span>CSS3</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-javascript'></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-react'></i>
-                            <span>React.js</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-firebase'></i>
-                            <span>Firebase</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-git'></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-google'></i>
-                            <span>Google Ads</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-facebook'></i>
-                            <span>Facebook Ads</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bxl-instagram'></i>
-                            <span>Instagram Ads</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-bar-chart-alt-2'></i>
-                            <span>Google Analytics</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-palette'></i>
-                            <span>Canva</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-envelope'></i>
-                            <span>Mailchimp</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-image'></i>
-                            <span>Photoshop</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-book-open'></i>
-                            <span>InDesign</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-pen'></i>
-                            <span>Illustrator</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-desktop'></i>
-                            <span>Figma</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-video'></i>
-                            <span>Premiere Pro</span>
-                        </div>
-                        <div class="tech-slide">
-                            <i class='bx bx-wrench'></i>
-                            <span>Reparación PC</span>
+                    </div>
+                    
+                    <div class="tech-category">
+                        <h3>Marketing Digital</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">
+                                <i class='bx bxl-youtube'></i>
+                                <span>YouTube</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-facebook'></i>
+                                <span>Facebook</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-instagram'></i>
+                                <span>Instagram</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-whatsapp'></i>
+                                <span>WhatsApp Business</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class='bx bxl-google'></i>
+                                <span>Google Ads</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contacto" class="contact-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">¿Listo para Crear Algo Increíble?</h2>
-                    <p class="section-subtitle">Hablemos sobre tu proyecto y cómo puedo ayudarte a alcanzar tus objetivos</p>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+                            <div class="section-header">
+                    <div class="section-badge">
+                        <i class='bx bx-envelope'></i>
+                        <span>Contacto</span>
+                    </div>
+                    <h2 class="section-title">¿Listo para transformar tu presencia digital?</h2>
+                    <p class="section-subtitle">Conversemos sobre tu proyecto y cómo puedo ayudarte a alcanzar tus objetivos</p>
                 </div>
                 
                 <div class="contact-content">
                     <div class="contact-info">
                         <div class="contact-card">
-                            <h3>Información de Contacto</h3>
-                            <div class="contact-items">
-                                <div class="contact-item">
-                                    <i class='bx bxl-whatsapp'></i>
-                                    <div class="contact-details">
-                                        <span class="contact-label">WhatsApp</span>
-                                        <span class="contact-value">33 2262 1939</span>
-                                    </div>
-                                </div>
-                                <div class="contact-item">
-                                    <i class='bx bx-envelope'></i>
-                                    <div class="contact-details">
-                                        <span class="contact-label">Email</span>
-                                        <span class="contact-value">jazzfatale@gmail.com</span>
-                                    </div>
-                                </div>
-                                <div class="contact-item">
-                                    <i class='bx bx-phone'></i>
-                                    <div class="contact-details">
-                                        <span class="contact-label">Teléfono</span>
-                                        <span class="contact-value">33 2262 1939</span>
-                                    </div>
-                                </div>
+                            <div class="contact-icon">
+                                <i class='bx bx-envelope'></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>armando.ibanez@gmail.com</p>
+                                <span class="contact-label">Respuesta en 24h</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class='bx bx-phone'></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Teléfono</h4>
+                                <p>+52 33 1234 5678</p>
+                                <span class="contact-label">Lun - Vie 9:00 - 18:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class='bx bx-map-pin'></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Ubicación</h4>
+                                <p>Zona Sur de la ZMG, Jalisco</p>
+                                <span class="contact-label">Disponible para proyectos remotos</span>
                             </div>
                         </div>
                         
                         <div class="contact-actions">
-                            <a href="https://wa.me/523322621939?text=Hola%20Armando!%20Vi%20tu%20portafolio%20y%20me%20interesa%20trabajar%20contigo%20en%20un%20proyecto%20web.%20¿Podríamos%20agendar%20una%20llamada?" class="btn btn-primary" target="_blank" rel="noopener">
+                            <a href="https://wa.me/523312345678" class="btn btn-whatsapp" target="_blank">
                                 <i class='bx bxl-whatsapp'></i>
-                                Iniciar Conversación
+                                <span>WhatsApp</span>
                             </a>
-                            <a href="mailto:jazzfatale@gmail.com?subject=Consulta%20de%20Proyecto%20Web%20-%20Portafolio&body=Hola%20Armando,%0A%0AVi%20tu%20portafolio%20y%20me%20interesa%20trabajar%20contigo%20en%20un%20proyecto%20web.%0A%0ADetalles%20del%20proyecto:%0A-%20Tipo%20de%20proyecto:%20[Describir%20brevemente]%0A-%20Presupuesto:%20[Mencionar%20si%20aplica]%0A-%20Timeline:%20[Tiempo%20estimado]%0A%0A¿Podrías%20contactarme%20para%20discutir%20más%20detalles?%0A%0ASaludos,%0A[Tu%20nombre]" class="btn btn-secondary">
-                                <i class='bx bx-envelope'></i>
-                                Enviar Email
+                            <a href="https://t.me/armandoibanez" class="btn btn-telegram" target="_blank">
+                                <i class='bx bxl-telegram'></i>
+                                <span>Telegram</span>
                             </a>
                         </div>
                     </div>
-                    
-                    <div class="contact-form-container">
-                        <form id="contactForm" class="contact-form" autocomplete="off" onsubmit="return enviarFormulario(event)">
-                            <div class="form-group">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" id="nombre" name="nombre" required maxlength="50" placeholder="Tu nombre">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required maxlength="60" placeholder="tu@email.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="mensaje">Mensaje</label>
-                                <textarea id="mensaje" name="mensaje" required maxlength="500" placeholder="Cuéntame sobre tu proyecto..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                <i class='bx bx-send'></i> Enviar Mensaje
-                            </button>
-                        </form>
-                        <div id="toast" class="toast">¡Mensaje enviado! Me pondré en contacto contigo pronto.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    MVGN Labs
-                    <i class="bx bx-bolt footer-icon"></i>
-                </div>
-                <p>Transformando ideas en realidades digitales. Especialistas en diseño web, marketing digital y soluciones tecnológicas que generan resultados reales para empresas y emprendedores.</p>
-                <div class="footer-social">
-                    <a href="https://wa.me/523322621939" class="social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
-                        <i class='bx bxl-whatsapp'></i>
-                    </a>
-                    <a href="mailto:jazzfatale@gmail.com" class="social-link" aria-label="Email">
-                        <i class='bx bx-envelope'></i>
-                    </a>
-                    <a href="tel:+523322621939" class="social-link" aria-label="Teléfono">
-                        <i class='bx bx-phone'></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-links">
-                <div class="footer-section">
-                    <h4>Servicios</h4>
-                    <ul>
-                        <li><a href="#servicios"><i class='bx bx-desktop'></i>Diseño Web</a></li>
-                        <li><a href="#servicios"><i class='bx bx-brush'></i>Branding</a></li>
-                        <li><a href="#servicios"><i class='bx bx-book-open'></i>Catálogos Digitales</a></li>
-                        <li><a href="#servicios"><i class='bx bx-wrench'></i>Reparación PC</a></li>
-                        <li><a href="#servicios"><i class='bx bx-trending-up'></i>Marketing Digital</a></li>
-                    </ul>
-                </div>
                 
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <ul>
-                        <li><a href="https://wa.me/523322621939" target="_blank" rel="noopener"><i class='bx bxl-whatsapp'></i>WhatsApp</a></li>
-                        <li><a href="mailto:jazzfatale@gmail.com"><i class='bx bx-envelope'></i>Email</a></li>
-                        <li><a href="tel:+523322621939"><i class='bx bx-phone'></i>Teléfono</a></li>
-                        <li><a href="#contacto"><i class='bx bx-map'></i>Zona Sur GDL</a></li>
-                        <li><a href="#inicio"><i class='bx bx-home-alt'></i>Inicio</a></li>
-                    </ul>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <span>Enviar Mensaje</span>
+                            <i class='bx bx-send'></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <div class="footer-bottom-content">
-                <p>&copy; 2024 Armando Ibañez - MVGN Labs. Todos los derechos reservados.</p>
-                <div class="footer-bottom-links">
-                    <a href="#servicios">Servicios</a>
-                    <a href="#proyectos">Proyectos</a>
-                    <a href="#contacto">Contacto</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <span>AI</span>
+                        </div>
+                        <div class="footer-brand-text">
+                            <span class="footer-brand-name">Armando Ibañez</span>
+                            <span class="footer-brand-subtitle">Desarrollo Web & Marketing Digital</span>
+                        </div>
+                    </div>
+                    <p>Transformando ideas en experiencias digitales únicas</p>
                 </div>
+                
+                                 <div class="footer-sections">
+                     <div class="footer-section">
+                         <h4>Navegación</h4>
+                         <ul>
+                             <li><a href="#home">Inicio</a></li>
+                             <li><a href="#about">Sobre Mí</a></li>
+                             <li><a href="#services">Servicios</a></li>
+                             <li><a href="#experience">Experiencia</a></li>
+                             <li><a href="#projects">Proyectos</a></li>
+                         </ul>
+                     </div>
+                     
+                     <div class="footer-section">
+                         <h4>Servicios</h4>
+                         <ul>
+                             <li><a href="#services">Diseño Web</a></li>
+                             <li><a href="#services">Branding</a></li>
+                             <li><a href="#services">Catálogos Digitales</a></li>
+                             <li><a href="#services">Marketing Digital</a></li>
+                         </ul>
+                     </div>
+                     
+                     <div class="footer-section">
+                         <h4>Contacto</h4>
+                         <ul>
+                             <li><a href="mailto:armando.ibanez@gmail.com">armando.ibanez@gmail.com</a></li>
+                             <li><a href="tel:+523312345678">+52 33 1234 5678</a></li>
+                             <li><a href="#contact">Formulario de Contacto</a></li>
+                             <li><a href="https://wa.me/523312345678">WhatsApp</a></li>
+                         </ul>
+                     </div>
+                     
+                     <div class="footer-section">
+                         <h4>Redes Sociales</h4>
+                         <ul>
+                             <li><a href="https://www.linkedin.com/in/armando-ibanez">LinkedIn</a></li>
+                             <li><a href="https://github.com/mvgn91">GitHub</a></li>
+                             <li><a href="https://www.youtube.com/@pietrafinamx">YouTube</a></li>
+                             <li><a href="https://www.instagram.com/armando.ibanez">Instagram</a></li>
+                         </ul>
+                     </div>
+                 </div>
             </div>
+            
+                             <div class="footer-bottom">
+                     <div class="footer-social">
+                         <a href="https://www.linkedin.com/in/armando-ibanez" class="social-link" target="_blank">
+                             <i class='bx bxl-linkedin'></i>
+                         </a>
+                         <a href="https://github.com/mvgn91" class="social-link" target="_blank">
+                             <i class='bx bxl-github'></i>
+                         </a>
+                         <a href="https://www.youtube.com/@pietrafinamx" class="social-link" target="_blank">
+                             <i class='bx bxl-youtube'></i>
+                         </a>
+                         <a href="https://www.instagram.com/armando.ibanez" class="social-link" target="_blank">
+                             <i class='bx bxl-instagram'></i>
+                         </a>
+                     </div>
+                     
+                     <div class="footer-copyright">
+                         <p>&copy; 2024 Armando Ibañez. Todos los derechos reservados.</p>
+                     </div>
+                 </div>
         </div>
     </footer>
 
