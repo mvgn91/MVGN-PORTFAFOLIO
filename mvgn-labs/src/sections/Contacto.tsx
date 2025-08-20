@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Mail, 
-  Phone, 
   MapPin, 
   Send,
   CheckCircle,
   AlertCircle,
   ArrowRight,
-  MessageCircle,
-  Star
+  MessageCircle
 } from 'lucide-react';
 
 const Contacto: React.FC = () => {

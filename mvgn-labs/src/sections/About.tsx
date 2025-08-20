@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import StatCounter from '../components/StatCounter';
+
 
 const About: React.FC = () => {
   const skills = [

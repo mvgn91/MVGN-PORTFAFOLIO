@@ -8,11 +8,8 @@ import {
   Code,
   Smartphone,
   Search,
-  Zap,
   ArrowRight,
-  Database,
-  Shield,
-  Cpu
+  Database
 } from 'lucide-react';
 import ServiceCard from '../components/ServiceCard';
 

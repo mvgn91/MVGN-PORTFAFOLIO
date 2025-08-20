@@ -5,7 +5,8 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "build",
+        "buildCommand": "npm run build"
       }
     }
   ],
@@ -23,6 +24,14 @@
       "dest": "/manifest.json"
     },
     {
+      "src": "/logo192.png",
+      "dest": "/logo192.png"
+    },
+    {
+      "src": "/logo512.png",
+      "dest": "/logo512.png"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
@@ -37,5 +46,10 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "app/api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
