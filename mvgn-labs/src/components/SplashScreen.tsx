@@ -96,16 +96,18 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            {/* Logo */}
+            {/* Logo Real */}
             <motion.div
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-8"
             >
-              <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center shadow-2xl">
-                <span className="text-3xl font-fraunces font-bold text-white">M</span>
-              </div>
+              <img 
+                src="/favicon.ico" 
+                alt="MVGN Labs Logo" 
+                className="w-24 h-24 mx-auto"
+              />
             </motion.div>
             
             {/* Título */}
@@ -128,24 +130,66 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             </motion.p>
           </motion.div>
 
-          {/* Terminal de Boot */}
+          {/* Círculo de Carga - Estilo Sistema Operativo */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex justify-center mb-8"
+          >
+            <div className="relative">
+              {/* Círculo de Fondo */}
+              <div className="w-32 h-32 rounded-full border-4 border-white/10 bg-surface/20 backdrop-blur-sm"></div>
+              
+              {/* Círculo de Progreso */}
+              <svg className="absolute inset-0 w-32 h-32 transform -rotate-90">
+                <circle
+                  cx="64"
+                  cy="64"
+                  r="56"
+                  stroke="url(#progressGradient)"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeDasharray={`${2 * Math.PI * 56}`}
+                  strokeDashoffset={`${2 * Math.PI * 56 * (1 - progress / 100)}`}
+                  className="transition-all duration-300 ease-out"
+                />
+                <defs>
+                  <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ef4444" />
+                    <stop offset="100%" stopColor="#dc2626" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              
+              {/* Porcentaje en el Centro */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-2xl font-fraunces font-bold text-white">
+                  {Math.round(progress)}%
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Pasos de Boot - Estilo Sistema Operativo */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
             className="bg-surface/80 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mb-8"
           >
-            {/* Header del Terminal */}
+            {/* Header del Sistema */}
             <div className="flex items-center gap-2 mb-4">
               <div className="flex gap-2">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
-              <span className="text-white/60 text-sm font-poppins ml-2">terminal</span>
+              <span className="text-white/60 text-sm font-poppins ml-2">sistema</span>
             </div>
             
-            {/* Contenido del Terminal */}
+            {/* Pasos de Boot */}
             <div className="space-y-2 font-mono text-sm">
               {bootSteps.slice(0, currentStep + 1).map((step, index) => (
                 <motion.div
@@ -155,7 +199,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   className="flex items-center gap-3"
                 >
-                  <span className="text-primary">$</span>
+                  <span className="text-primary">●</span>
                   <span className="text-white/90">{step}</span>
                   {index === currentStep && (
                     <motion.span
@@ -168,35 +212,6 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                   )}
                 </motion.div>
               ))}
-            </div>
-          </motion.div>
-
-          {/* Barra de Progreso */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="space-y-4"
-          >
-            {/* Barra de Progreso */}
-            <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
-                initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.1 }}
-              />
-            </div>
-            
-            {/* Texto de Progreso */}
-            <div className="text-center">
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-white/60 font-poppins text-sm"
-              >
-                {Math.round(progress)}% completado
-              </motion.span>
             </div>
           </motion.div>
 
