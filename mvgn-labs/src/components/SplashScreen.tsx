@@ -1,45 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code, Cpu, Database, Globe, Terminal, Zap } from 'lucide-react';
 
 interface SplashScreenProps {
   onComplete: () => void;
 }
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [showLogo, setShowLogo] = useState(false);
-  const [showWelcome, setShowWelcome] = useState(false);
-
-  const steps = [
-    { icon: Cpu, text: 'Inicializando sistema...', color: 'from-slate-600 to-slate-500' },
-    { icon: Database, text: 'Cargando base de datos...', color: 'from-slate-600 to-slate-500' },
-    { icon: Code, text: 'Compilando componentes...', color: 'from-slate-600 to-slate-500' },
-    { icon: Globe, text: 'Conectando servicios...', color: 'from-slate-600 to-slate-500' },
-    { icon: Terminal, text: 'Verificando integridad...', color: 'from-slate-600 to-slate-500' },
-    { icon: Zap, text: 'Sistema listo', color: 'from-primary to-primary/80' }
-  ];
+  const [showBrand, setShowBrand] = useState(false);
+  const [showSubtitle, setShowSubtitle] = useState(false);
+  const [showProgress, setShowProgress] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const stepInterval = setInterval(() => {
-      setCurrentStep(prev => {
-        if (prev >= steps.length - 1) {
-          clearInterval(stepInterval);
-          setTimeout(() => {
-            setShowLogo(true);
-            setTimeout(() => {
-              setShowWelcome(true);
-              setTimeout(() => onComplete(), 2000);
-            }, 1000);
-          }, 500);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 1000);
+    // Secuencia de animación elegante
+    const timer1 = setTimeout(() => setShowBrand(true), 300);
+    const timer2 = setTimeout(() => setShowSubtitle(true), 800);
+    const timer3 = setTimeout(() => setShowProgress(true), 1200);
+    
+    // Barra de progreso sutil
+    const progressTimer = setTimeout(() => {
+      const interval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            setTimeout(() => onComplete(), 500);
+            return 100;
+          }
+          return prev + 2;
+        });
+      }, 50);
+    }, 1500);
 
-    return () => clearInterval(stepInterval);
-  }, [onComplete, steps.length]);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(progressTimer);
+    };
+  }, [onComplete]);
 
   return (
     <AnimatePresence>
@@ -47,145 +45,149 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 z-50 flex items-center justify-center overflow-hidden"
+        className="fixed inset-0 bg-black z-50 flex items-center justify-center overflow-hidden"
       >
-        {/* Fondo sutil con patrón geométrico */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px]" />
+        {/* Fondo con gradiente sutil */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
+        
+        {/* Líneas de fondo minimalistas */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-0 w-full h-px bg-white transform -translate-y-1/2" />
+          <div className="absolute top-3/4 left-0 w-full h-px bg-white transform -translate-y-1/2" />
+          <div className="absolute left-1/4 top-0 w-px h-full bg-white transform -translate-x-1/2" />
+          <div className="absolute left-3/4 top-0 w-px h-full bg-white transform -translate-x-1/2" />
         </div>
 
         {/* Contenedor principal centrado */}
-        <div className="relative z-10 flex flex-col items-center justify-center space-y-8 sm:space-y-12 max-w-2xl mx-auto px-6 sm:px-8">
+        <div className="relative z-10 flex flex-col items-center justify-center space-y-16">
           
-          {/* Logo y Título - Aparece después de los pasos */}
+          {/* Logo y marca principal */}
           <AnimatePresence>
-            {showLogo && (
+            {showBrand && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 30 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-center space-y-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 1.2, 
+                  ease: [0.25, 0.46, 0.45, 0.94] 
+                }}
+                className="text-center space-y-8"
               >
                 {/* Logo minimalista */}
                 <motion.div
-                  initial={{ opacity: 0, rotate: -180 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                  className="mb-8"
-                >
-                  <div className="relative">
-                    <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-lg border border-slate-200">
-                      <img 
-                        src="/favicon.ico" 
-                        alt="MVGN Labs Logo" 
-                        className="w-16 h-16 sm:w-20 sm:h-20"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-                
-                {/* Título elegante */}
-                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="relative"
+                >
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto bg-white rounded-3xl flex items-center justify-center shadow-2xl">
+                    <img 
+                      src="/favicon.ico" 
+                      alt="MVGN Labs" 
+                      className="w-20 h-20 sm:w-24 sm:h-24"
+                    />
+                  </div>
+                  
+                  {/* Efecto de brillo sutil */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-3xl"
+                    animate={{ x: ['-100%', '100%'] }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity, 
+                      ease: "linear",
+                      delay: 1
+                    }}
+                  />
+                </motion.div>
+                
+                {/* Título principal */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
                   className="space-y-4"
                 >
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-fraunces font-bold text-slate-800 leading-tight">
-                    MVGN <span className="text-primary">Labs</span>
+                  <h1 className="text-5xl sm:text-6xl md:text-7xl font-fraunces font-light text-white leading-none tracking-tight">
+                    MVGN
                   </h1>
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="text-base sm:text-lg md:text-xl text-slate-600 font-poppins font-medium tracking-wide"
-                  >
-                    PORTFOLIO DIGITAL
-                  </motion.p>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-fraunces font-light text-white/80 leading-none tracking-wider">
+                    LABS
+                  </h2>
                 </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Pasos de inicialización simplificados */}
-          <div className="w-full max-w-lg">
-            <div className="space-y-3">
-              {steps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ 
-                    opacity: index <= currentStep ? 1 : 0.4,
-                    x: index <= currentStep ? 0 : -15
-                  }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className={`flex items-center gap-4 p-4 rounded-lg border transition-all duration-300 ${
-                    index <= currentStep 
-                      ? 'bg-white border-slate-200 shadow-sm' 
-                      : 'bg-slate-50/50 border-slate-100'
-                  }`}
-                >
-                  {/* Icono del paso */}
-                  <div
-                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center transition-all duration-300 ${
-                      index <= currentStep ? 'scale-105 shadow-sm' : 'scale-100'
-                    }`}
-                  >
-                    <step.icon className="w-5 h-5 text-white" />
-                  </div>
-                  
-                  {/* Texto del paso */}
-                  <div className="flex-1">
-                    <p className={`font-medium transition-colors duration-300 text-sm sm:text-base ${
-                      index <= currentStep ? 'text-slate-700' : 'text-slate-500'
-                    }`}>
-                      {step.text}
-                    </p>
-                  </div>
-                  
-                  {/* Indicador de estado */}
-                  <div
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index < currentStep ? 'bg-green-500' : 
-                      index === currentStep ? 'bg-primary' : 'bg-slate-300'
-                    }`}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Mensaje de bienvenida final */}
+          {/* Subtítulo */}
           <AnimatePresence>
-            {showWelcome && (
+            {showSubtitle && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 className="text-center"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 border border-primary/20 rounded-xl mb-4"
-                >
-                  <Zap className="w-5 h-5 text-primary" />
-                  <span className="text-primary font-semibold text-base">SISTEMA OPERATIVO</span>
-                </motion.div>
+                <p className="text-lg sm:text-xl text-white/60 font-poppins font-light tracking-widest uppercase">
+                  Portfolio Digital
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Barra de progreso minimalista */}
+          <AnimatePresence>
+            {showProgress && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="w-64 sm:w-80"
+              >
+                <div className="relative">
+                  {/* Barra de fondo */}
+                  <div className="w-full h-px bg-white/20" />
+                  
+                  {/* Barra de progreso */}
+                  <motion.div
+                    className="absolute top-0 left-0 h-px bg-white origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: progress / 100 }}
+                    transition={{ duration: 0.1, ease: "linear" }}
+                  />
+                  
+                  {/* Indicador de progreso */}
+                  <motion.div
+                    className="absolute top-0 right-0 w-2 h-2 bg-white rounded-full transform -translate-y-1/2"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
+                  />
+                </div>
                 
+                {/* Porcentaje */}
                 <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="text-slate-700 font-poppins text-base font-medium"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="text-center text-sm text-white/40 font-poppins font-light mt-4 tracking-wider"
                 >
-                  Bienvenido al portfolio de MVGN Labs
+                  {progress}%
                 </motion.p>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
+
+        {/* Indicador de estado en la esquina */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2 }}
+          className="absolute bottom-8 right-8 text-white/30 font-poppins text-xs tracking-wider"
+        >
+          READY
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );
