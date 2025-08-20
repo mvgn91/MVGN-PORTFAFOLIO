@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { scrollToSection } from '../lib/utils';
 import BackgroundLines from '../components/BackgroundLines';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Hero: React.FC = () => {
+  const { theme } = useTheme();
+  
   return (
     <section id="inicio" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background dark:bg-background light:bg-light-background">
       {/* Background Animation - Simplificado y responsivo */}
@@ -38,6 +41,11 @@ const Hero: React.FC = () => {
 
       {/* Líneas geométricas de fondo */}
       <BackgroundLines className="opacity-30" />
+
+      {/* Indicador de tema temporal para debug */}
+      <div className="absolute top-20 left-4 z-20 bg-black/50 text-white px-3 py-2 rounded-lg text-sm">
+        Tema actual: {theme}
+      </div>
 
       <div className="container-custom relative z-10">
         <div className="flex items-center justify-center min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh]">

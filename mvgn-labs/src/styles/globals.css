@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Variables CSS personalizadas - Tema Oscuro */
+/* Variables CSS personalizadas - Tema Oscuro (por defecto) */
 :root {
   --primary: #dc2626;
   --accent: #b91c1c;
@@ -32,6 +32,48 @@
   --text-muted: #718096;
   --border-color: rgba(0, 0, 0, 0.1);
   --background: #ffffff;
+}
+
+/* Aplicar colores del tema a elementos base */
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Asegurar que las secciones usen los colores del tema */
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.bg-surface-dark {
+  background-color: var(--surface-dark);
+}
+
+.bg-surface-light {
+  background-color: var(--surface-light);
+}
+
+/* Texto que responda al tema */
+.text-white {
+  color: var(--text-primary);
+}
+
+.text-white\/70 {
+  color: var(--text-secondary);
+}
+
+.text-white\/60 {
+  color: var(--text-muted);
+}
+
+/* Bordes que respondan al tema */
+.border-white\/10 {
+  border-color: var(--border-color);
+}
+
+.border-white\/20 {
+  border-color: var(--border-color);
 }
 
 /* Fondo dinámico global - Tema Oscuro */

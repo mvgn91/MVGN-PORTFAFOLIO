@@ -9,7 +9,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              onClick={onThemeToggle}
+              onClick={toggleTheme}
               className="w-12 h-12 bg-surface/50 border border-white/10 rounded-xl flex items-center justify-center text-white/80 hover:text-white hover:bg-surface/70 transition-all duration-300"
             >
               {theme === 'dark' ? (
