@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Portafolio digital personal de MVGN Labs - Desarrollador Web & Diseñador Digital",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toggle": "^1.0.3",
