@@ -146,32 +146,25 @@ body::before {
   .nav-container,
   .nav-brand,
   .nav-menu,
-  .nav-link,
-  .hero-section,
-  .hero-container,
-  .hero-content,
-  .hero-text,
-  .hero-image,
-  .about-section,
-  .services-section,
-  .projects-section,
-  .contact-section,
-  .footer {
+  .nav-link {
     display: none !important;
   }
   
   /* Mostrar elementos móviles */
   .mobile-header,
-  .mobile-bottom-nav,
-  .mobile-main,
-  .mobile-hero,
-  .mobile-section,
-  .mobile-footer {
+  .mobile-bottom-nav {
     display: block !important;
   }
   
-  /* Importar estilos móviles */
-  @import url('mobile.css');
+  /* Ajustar padding del body para la bottom nav */
+  body {
+    padding-bottom: 80px;
+  }
+  
+  /* Ajustar secciones para evitar que se oculten detrás de la bottom nav */
+  section:last-of-type {
+    margin-bottom: 80px;
+  }
 }
 
 /* ===== NAVEGACIÓN ===== */
@@ -185,6 +178,104 @@ body::before {
   border-bottom: 1px solid var(--color-border);
   z-index: 1000;
   transition: all var(--transition-normal);
+}
+
+/* ===== HEADER MÓVIL ===== */
+.mobile-header {
+  display: none; /* Oculto por defecto, visible solo en móviles */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.mobile-brand-icon {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.mobile-menu-toggle {
+  display: none; /* No necesitamos el toggle del menú */
+}
+
+/* ===== BOTTOM NAVIGATION BAR ===== */
+.mobile-bottom-nav {
+  display: none; /* Oculto por defecto, visible solo en móviles */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--color-border);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 0.6rem 0.3rem;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-normal);
+  position: relative;
+  min-height: 60px;
+}
+
+.mobile-nav-item i {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  transition: all var(--transition-normal);
+}
+
+.mobile-nav-item span {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.mobile-nav-item:hover {
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.mobile-nav-item.active {
+  color: var(--color-primary);
+}
+
+.mobile-nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
 }
 
 .nav-container {
@@ -4402,5 +4493,137 @@ body::before {
   
   .contact-info-icon i {
     font-size: 1.5rem;
+  }
+}
+
+/* ===== OPTIMIZACIONES FINALES PARA ANDROID ===== */
+/* Mejoras de rendimiento para dispositivos Android */
+@media (max-width: 768px) {
+  /* Optimizar scroll en Android */
+  html {
+    scroll-behavior: auto;
+  }
+  
+  /* Mejorar rendimiento de animaciones */
+  .floating-shapes .shape,
+  .gradient-orbs .orb {
+    will-change: transform;
+  }
+  
+  /* Optimizar transiciones para dispositivos de gama baja */
+  .service-card,
+  .project-card,
+  .contact-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Reducir complejidad de sombras en móviles */
+  .hero-section,
+  .about-section,
+  .services-section,
+  .experience-section,
+  .projects-section,
+  .technologies-section,
+  .contact-section {
+    box-shadow: none;
+  }
+}
+
+/* Optimizaciones específicas para Android Chrome */
+@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 768px) {
+  /* Mejorar rendimiento de backdrop-filter */
+  .mobile-bottom-nav,
+  .mobile-header {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Optimizar animaciones para pantallas de alta densidad */
+  .floating-shapes .shape {
+    animation-duration: 6s;
+  }
+}
+
+/* Optimizaciones para dispositivos con pantalla táctil */
+@media (pointer: coarse) {
+  /* Aumentar área de toque para botones */
+  .btn,
+  .nav-cta,
+  .theme-toggle {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Mejorar feedback táctil */
+  .mobile-nav-item:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Optimizar enlaces para touch */
+  .nav-link,
+  .social-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Ajustes para dispositivos con notch o pantalla completa */
+@media screen and (max-height: 600px) and (max-width: 768px) {
+  .mobile-bottom-nav {
+    padding: 0.4rem 0;
+  }
+  
+  .mobile-nav-item {
+    min-height: 55px;
+    padding: 0.4rem 0.2rem;
+  }
+  
+  .mobile-nav-item i {
+    font-size: 1.125rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .mobile-nav-item span {
+    font-size: 0.65rem;
+  }
+  
+  body {
+    padding-bottom: 70px;
+  }
+  
+  section:last-of-type {
+    margin-bottom: 70px;
+  }
+}
+
+/* Optimizaciones para orientación landscape en móviles */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .mobile-bottom-nav {
+    padding: 0.3rem 0;
+  }
+  
+  .mobile-nav-item {
+    min-height: 50px;
+    padding: 0.3rem 0.15rem;
+  }
+  
+  .mobile-nav-item i {
+    font-size: 1rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  .mobile-nav-item span {
+    font-size: 0.6rem;
+  }
+  
+  body {
+    padding-bottom: 65px;
+  }
+  
+  section:last-of-type {
+    margin-bottom: 65px;
   }
 }
