@@ -42,7 +42,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="App bg-background text-white min-h-screen">
+    <div className="App bg-background dark:bg-background light:bg-light-background text-white dark:text-white light:text-light-text min-h-screen transition-colors duration-300">
       <Navbar />
       
       <main className="relative">
@@ -87,7 +87,7 @@ const App: React.FC = () => {
       </AnimatePresence>
 
       {/* Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-surface z-50">
+      <div className="fixed top-0 left-0 w-full h-1 bg-surface dark:bg-surface light:bg-light-surface z-50 transition-colors duration-300">
         <motion.div
           className="h-full bg-gradient-to-r from-primary to-accent"
           initial={{ width: '0%' }}

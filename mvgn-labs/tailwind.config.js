@@ -4,6 +4,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -14,6 +15,15 @@ module.exports = {
         'surface-dark': '#111111',
         'surface-light': '#2a2a2a',
         background: '#1a1a1a',
+        // Colores para tema claro
+        'light-surface': '#ffffff',
+        'light-surface-dark': '#f8f9fa',
+        'light-surface-light': '#e9ecef',
+        'light-background': '#ffffff',
+        'light-text': '#1a1a1a',
+        'light-text-secondary': '#4a5568',
+        'light-text-muted': '#718096',
+        'light-border': 'rgba(0, 0, 0, 0.1)',
       },
       fontFamily: {
         'fraunces': ['Fraunces', 'serif'],
@@ -63,6 +73,27 @@ module.exports = {
       },
       backdropBlur: {
         'custom': '20px',
+      },
+      // Utilidades responsivas personalizadas
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+      },
+      minHeight: {
+        'screen-75': '75vh',
+        'screen-90': '90vh',
+      },
+      zIndex: {
+        '60': '60',
+        '70': '70',
+        '80': '80',
+        '90': '90',
+        '100': '100',
       },
     },
   },
