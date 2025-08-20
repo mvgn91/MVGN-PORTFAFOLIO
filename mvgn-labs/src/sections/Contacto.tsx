@@ -82,7 +82,7 @@ const Contacto: React.FC = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-60 h-60 sm:w-80 sm:h-80 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -104,30 +104,30 @@ const Contacto: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-4 sm:mb-6 leading-tight">
             <span className="text-gradient">Contacto</span>
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto px-2">
             ¿Tienes un proyecto en mente? ¡Hablemos!
           </p>
         </motion.div>
 
         {/* Main Content - Grid simplificado */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
           {/* Contact Methods */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
-            <h3 className="text-2xl font-fraunces font-semibold text-white mb-8">
+            <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white mb-6 sm:mb-8">
               Formas de Contacto
             </h3>
             
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {contactMethods.map((method, index) => (
                 <motion.div
                   key={method.title}
@@ -136,17 +136,17 @@ const Contacto: React.FC = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="group cursor-pointer"
                 >
-                  <div className={`${method.bgColor} ${method.borderColor} border-2 rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl`}>
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-12 h-12 bg-gradient-to-br ${method.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                        <method.icon className="w-6 h-6 text-white" />
+                  <div className={`${method.bgColor} ${method.borderColor} border-2 rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl`}>
+                    <div className="flex items-center space-x-3 sm:space-x-4">
+                      <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${method.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                        <method.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                       </div>
                       
                       <div className="flex-1">
-                        <h4 className="text-lg font-fraunces font-semibold text-white mb-1">
+                        <h4 className="text-base sm:text-lg font-fraunces font-semibold text-white mb-1">
                           {method.title}
                         </h4>
-                        <p className="text-white/60 text-sm mb-2">
+                        <p className="text-white/60 text-xs sm:text-sm mb-2">
                           {method.subtitle}
                         </p>
                         
@@ -155,13 +155,13 @@ const Contacto: React.FC = () => {
                             href={method.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r ${method.color} text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300`}
+                            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r ${method.color} text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300 text-xs sm:text-sm`}
                           >
                             {method.value}
-                            <ArrowRight className="w-4 h-4" />
+                            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                           </a>
                         ) : (
-                          <p className="text-white font-semibold">
+                          <p className="text-white font-semibold text-sm sm:text-base">
                             {method.value}
                           </p>
                         )}
@@ -171,8 +171,6 @@ const Contacto: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-
-
           </motion.div>
 
           {/* Contact Form */}
@@ -180,20 +178,20 @@ const Contacto: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
-            <div className="text-center lg:text-left mb-8">
-              <h3 className="text-2xl font-fraunces font-semibold text-white mb-4">
+            <div className="text-center lg:text-left mb-6 sm:mb-8">
+              <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white mb-3 sm:mb-4">
                 Envíame un Mensaje
               </h3>
-              <p className="text-white/70">
+              <p className="text-white/70 text-sm sm:text-base">
                 Cuéntame sobre tu proyecto y te responderé con una propuesta personalizada
               </p>
             </div>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div>
-                <label htmlFor="name" className="block text-white font-medium mb-2">
+                <label htmlFor="name" className="block text-white font-medium mb-2 text-sm sm:text-base">
                   Nombre Completo
                 </label>
                 <input
@@ -203,13 +201,13 @@ const Contacto: React.FC = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-surface/80 border border-surface-dark/50 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 bg-surface/80 border border-surface-dark/50 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-sm sm:text-base"
                   placeholder="Tu nombre completo"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-white font-medium mb-2">
+                <label htmlFor="email" className="block text-white font-medium mb-2 text-sm sm:text-base">
                   Email
                 </label>
                 <input
@@ -219,13 +217,13 @@ const Contacto: React.FC = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-surface/80 border border-surface-dark/50 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 bg-surface/80 border border-surface-dark/50 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-sm sm:text-base"
                   placeholder="tu@email.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-white font-medium mb-2">
+                <label htmlFor="message" className="block text-white font-medium mb-2 text-sm sm:text-base">
                   Mensaje
                 </label>
                 <textarea
@@ -234,8 +232,8 @@ const Contacto: React.FC = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-surface/80 border border-surface-dark/50 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300 resize-none"
+                  rows={4}
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 bg-surface/80 border border-surface-dark/50 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300 resize-none text-sm sm:text-base"
                   placeholder="Cuéntame sobre tu proyecto..."
                 />
               </div>
@@ -243,16 +241,16 @@ const Contacto: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-primary to-primary-light hover:from-primary-light hover:to-primary text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full inline-flex items-center justify-center gap-2 sm:gap-3 px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-primary to-primary-light hover:from-primary-light hover:to-primary text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm sm:text-base"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     Enviando...
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                     Enviar Mensaje
                   </>
                 )}
@@ -263,9 +261,9 @@ const Contacto: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center justify-center"
+                  className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 text-center justify-center text-sm sm:text-base"
                 >
-                  <CheckCircle className="w-5 h-5" />
+                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span className="font-medium">¡Mensaje enviado exitosamente!</span>
                 </motion.div>
               )}
@@ -274,17 +272,15 @@ const Contacto: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-center justify-center"
+                  className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-center justify-center text-sm sm:text-base"
                 >
-                  <AlertCircle className="w-5 h-5" />
+                  <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span className="font-medium">Error al enviar. Intenta nuevamente.</span>
                 </motion.div>
               )}
             </form>
           </motion.div>
         </div>
-
-
       </div>
     </section>
   );

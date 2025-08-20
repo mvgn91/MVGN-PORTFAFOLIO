@@ -102,7 +102,7 @@ const Servicios: React.FC = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-40 -left-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl"
+          className="absolute top-40 -left-40 w-60 h-60 sm:w-80 sm:h-80 bg-accent/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -124,22 +124,22 @@ const Servicios: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6"
+            className="inline-flex items-center gap-2 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 border border-primary/20 rounded-full mb-4 sm:mb-6"
           >
-            <Zap className="w-5 h-5 text-primary" />
-            <span className="text-primary font-medium text-sm">Servicios Profesionales</span>
+            <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+            <span className="text-primary font-medium text-xs sm:text-sm">Servicios Profesionales</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-6 sm:mb-8 leading-tight">
             Mis <span className="text-gradient">Servicios</span>
           </h2>
-          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed px-2">
             Soluciones integrales que combinan creatividad, tecnología y resultados medibles para impulsar tu negocio
           </p>
         </motion.div>
@@ -149,9 +149,9 @@ const Servicios: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-20"
+          className="mb-16 sm:mb-20"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -161,36 +161,36 @@ const Servicios: React.FC = () => {
                 className="group cursor-pointer"
                 onClick={() => setActiveService(index)}
               >
-                <div className={`${service.bgColor} ${service.borderColor} border-2 rounded-3xl p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+                <div className={`${service.bgColor} ${service.borderColor} border-2 rounded-3xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                   activeService === index ? 'ring-2 ring-primary/50 shadow-xl' : ''
                 }`}>
                   {/* Header del Servicio */}
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                      <service.icon className="w-8 h-8 text-white" />
+                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                      <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-fraunces font-semibold text-white mb-1">
+                      <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white mb-1">
                         {service.title}
                       </h3>
-                      <p className="text-primary/80 font-medium">
+                      <p className="text-primary/80 font-medium text-sm sm:text-base">
                         {service.subtitle}
                       </p>
                     </div>
                   </div>
                   
                   {/* Descripción */}
-                  <p className="text-white/80 leading-relaxed mb-6">
+                  <p className="text-white/80 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
                     {service.description}
                   </p>
                   
                   {/* Características */}
-                  <div className="mb-6">
-                    <h4 className="text-white font-semibold mb-3">Características:</h4>
-                    <div className="grid grid-cols-2 gap-2">
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Características:</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
                       {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-sm text-white/70">
-                          <div className="w-2 h-2 bg-primary rounded-full"></div>
+                        <div key={idx} className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/70">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full"></div>
                           <span>{feature}</span>
                         </div>
                       ))}
@@ -198,12 +198,12 @@ const Servicios: React.FC = () => {
                   </div>
                   
                   {/* Beneficios */}
-                  <div className="mb-6">
-                    <h4 className="text-white font-semibold mb-3">Beneficios:</h4>
-                    <div className="space-y-2">
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Beneficios:</h4>
+                    <div className="space-y-1.5 sm:space-y-2">
                       {service.benefits.map((benefit, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-sm text-white/70">
-                          <div className="w-2 h-2 bg-accent rounded-full"></div>
+                        <div key={idx} className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/70">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent rounded-full"></div>
                           <span>{benefit}</span>
                         </div>
                       ))}
@@ -220,19 +220,19 @@ const Servicios: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-20"
+          className="mb-16 sm:mb-20"
         >
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-fraunces font-semibold text-white mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-white mb-4 sm:mb-6">
               Stack Tecnológico
             </h3>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+            <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto px-2">
               Tecnologías y herramientas que utilizo para crear soluciones excepcionales
             </p>
           </div>
           
           {/* Grid de Tecnologías */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
             {technologyGroups.map((group, index) => (
               <motion.div
                 key={group.title}
@@ -242,16 +242,16 @@ const Servicios: React.FC = () => {
                 className="group cursor-pointer"
                 onClick={() => setSelectedTech(group.title)}
               >
-                <div className={`bg-gradient-to-br from-surface/60 to-surface-dark/60 backdrop-blur-sm border-2 rounded-2xl p-6 h-full transition-all duration-300 hover:scale-105 ${
+                <div className={`bg-gradient-to-br from-surface/60 to-surface-dark/60 backdrop-blur-sm border-2 rounded-2xl p-4 sm:p-6 h-full transition-all duration-300 hover:scale-105 ${
                   selectedTech === group.title 
                     ? 'border-primary/50 bg-primary/10' 
                     : 'border-white/10 hover:border-primary/30'
                 }`}>
-                  <div className={`w-16 h-16 bg-gradient-to-br ${group.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
-                    <group.icon className="w-8 h-8 text-white" />
+                  <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${group.color} rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform`}>
+                    <group.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <h4 className="text-white font-semibold text-center mb-2">{group.title}</h4>
-                  <p className="text-white/60 text-sm text-center mb-3">{group.description}</p>
+                  <h4 className="text-white font-semibold text-center mb-2 text-sm sm:text-base">{group.title}</h4>
+                  <p className="text-white/60 text-xs sm:text-sm text-center mb-2 sm:mb-3">{group.description}</p>
                   <div className="text-center">
                     <span className="text-xs text-white/60">
                       {group.technologies.length} tecnologías
@@ -268,18 +268,18 @@ const Servicios: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-surface/80 to-surface-dark/80 backdrop-blur-md border border-white/20 rounded-3xl p-8 max-w-4xl mx-auto"
+              className="bg-gradient-to-br from-surface/80 to-surface-dark/80 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto"
             >
-              <div className="text-center mb-8">
-                <h4 className="text-2xl font-fraunces font-semibold text-white mb-2">
+              <div className="text-center mb-6 sm:mb-8">
+                <h4 className="text-xl sm:text-2xl font-fraunces font-semibold text-white mb-2">
                   {selectedTech}
                 </h4>
-                <p className="text-white/70">
+                <p className="text-white/70 text-sm sm:text-base">
                   {technologyGroups.find(group => group.title === selectedTech)?.description}
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {technologyGroups
                   .find(group => group.title === selectedTech)
                   ?.technologies.map((tech, index) => (
@@ -288,17 +288,17 @@ const Servicios: React.FC = () => {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl p-4 hover:bg-primary/20 transition-all duration-300"
+                      className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl p-3 sm:p-4 hover:bg-primary/20 transition-all duration-300"
                     >
-                      <div className="flex items-center gap-3">
-                        <div className="w-3 h-3 bg-primary rounded-full"></div>
-                        <span className="text-white font-medium">{tech}</span>
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-primary rounded-full"></div>
+                        <span className="text-white font-medium text-sm sm:text-base">{tech}</span>
                       </div>
                     </motion.div>
                   ))}
               </div>
               
-              <div className="text-center mt-8">
+              <div className="text-center mt-6 sm:mt-8">
                 <button
                   onClick={() => setSelectedTech(null)}
                   className="text-white/60 hover:text-white transition-colors text-sm"
@@ -317,14 +317,14 @@ const Servicios: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20 rounded-3xl p-12 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Zap className="w-8 h-8 text-primary" />
-              <h3 className="text-3xl font-fraunces font-semibold text-white">
+          <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20 rounded-3xl p-8 sm:p-10 md:p-12 max-w-4xl mx-auto">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+              <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-white">
                 ¿Tienes un proyecto específico en mente?
               </h3>
             </div>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
               Permíteme crear una solución personalizada que se adapte perfectamente a tus necesidades y objetivos de negocio
             </p>
             <div className="flex justify-center">
@@ -333,10 +333,10 @@ const Servicios: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn-primary group flex items-center justify-center text-lg px-8 py-4"
+                className="btn-primary group flex items-center justify-center text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
               >
                 Solicitar Cotización
-                <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>

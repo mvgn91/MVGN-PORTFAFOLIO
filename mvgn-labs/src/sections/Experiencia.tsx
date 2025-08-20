@@ -107,7 +107,7 @@ const Experiencia: React.FC = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 -left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
+          className="absolute top-20 -left-20 w-60 h-60 sm:w-80 sm:h-80 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -119,7 +119,7 @@ const Experiencia: React.FC = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 -right-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl"
+          className="absolute bottom-20 -right-20 w-60 h-60 sm:w-80 sm:h-80 bg-accent/5 rounded-full blur-3xl"
           animate={{
             scale: [1.1, 1, 1.1],
             opacity: [0.5, 0.3, 0.5],
@@ -142,12 +142,12 @@ const Experiencia: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-4 sm:mb-6 leading-tight">
             Experiencia <span className="text-gradient">Profesional</span>
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto px-2">
             Un recorrido de crecimiento y aprendizaje en tecnología, ventas y marketing digital
           </p>
         </motion.div>
@@ -157,7 +157,7 @@ const Experiencia: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-16 sm:mb-20"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -167,14 +167,14 @@ const Experiencia: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center group"
             >
-              <div className="bg-surface/50 hover:bg-surface/80 rounded-2xl p-6 border border-surface-dark/30 transition-all duration-300 hover:scale-105">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <stat.icon className={`w-8 h-8 ${stat.color}`} />
+              <div className="bg-surface/50 hover:bg-surface/80 rounded-2xl p-4 sm:p-6 border border-surface-dark/30 transition-all duration-300 hover:scale-105">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-primary/20 transition-colors">
+                  <stat.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${stat.color}`} />
                 </div>
-                <div className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-2">
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-white/60">
+                <div className="text-xs sm:text-sm text-white/60">
                   {stat.label}
                 </div>
               </div>
@@ -187,14 +187,14 @@ const Experiencia: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {experiences.map((exp, index) => (
               <motion.button
                 key={exp.title}
                 onClick={() => setActiveExperience(index)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base ${
                   activeExperience === index
                     ? 'bg-primary text-white shadow-lg'
                     : 'bg-surface-dark/50 text-white/70 hover:bg-surface-dark/80 hover:text-white'
@@ -214,46 +214,46 @@ const Experiencia: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <div className="bg-gradient-to-br from-surface/50 to-surface-dark/50 backdrop-blur-sm border border-surface-dark/30 rounded-3xl p-10 shadow-2xl">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="bg-gradient-to-br from-surface/50 to-surface-dark/50 backdrop-blur-sm border border-surface-dark/30 rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
               {/* Left Column - Main Info */}
-              <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-2 space-y-4 sm:space-y-6">
                 {/* Header */}
-                <div className="flex items-start justify-between">
-                  <div>
-                                         <div className="flex items-center gap-3 mb-3">
-                       <div className={`w-16 h-16 bg-gradient-to-br ${experiences[activeExperience].color} rounded-2xl flex items-center justify-center`}>
-                         {React.createElement(experiences[activeExperience].icon, { className: "w-8 h-8 text-white" })}
-                       </div>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-0">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-3">
+                      <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${experiences[activeExperience].color} rounded-2xl flex items-center justify-center`}>
+                        {React.createElement(experiences[activeExperience].icon, { className: "w-6 h-6 sm:w-8 sm:h-8 text-white" })}
+                      </div>
                       <div>
-                        <h3 className="text-2xl font-fraunces font-semibold text-white leading-tight">
+                        <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white leading-tight">
                           {experiences[activeExperience].title}
                         </h3>
                         <div className="flex items-center gap-2 mt-1">
-                          <Building2 className="w-4 h-4 text-primary" />
-                          <span className="text-white/70 font-medium">
+                          <Building2 className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                          <span className="text-white/70 font-medium text-sm sm:text-base">
                             {experiences[activeExperience].company}
                           </span>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="flex flex-wrap items-center gap-4 text-white/60 text-sm">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-white/60 text-xs sm:text-sm">
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-accent" />
+                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-accent" />
                         <span>{experiences[activeExperience].period}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-secondary" />
+                        <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" />
                         <span>{experiences[activeExperience].location}</span>
                       </div>
                     </div>
                   </div>
                   
                   {/* Status Badge */}
-                  <div className={`px-4 py-2 rounded-full text-xs font-medium ${
+                  <div className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-medium ${
                     experiences[activeExperience].status === 'Activo'
                       ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                       : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
@@ -263,23 +263,23 @@ const Experiencia: React.FC = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-white/80 leading-relaxed text-lg">
+                <p className="text-white/80 leading-relaxed text-base sm:text-lg">
                   {experiences[activeExperience].description}
                 </p>
 
                 {/* Skills */}
                 <div>
-                  <h4 className="text-lg font-fraunces font-semibold text-white mb-3">
+                  <h4 className="text-base sm:text-lg font-fraunces font-semibold text-white mb-2 sm:mb-3">
                     Habilidades Clave
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {experiences[activeExperience].skills.map((skill, idx) => (
                       <motion.span
                         key={skill}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: idx * 0.1 }}
-                        className="px-3 py-2 bg-primary/10 text-primary border border-primary/20 rounded-xl text-sm font-medium"
+                        className="px-2 py-1 sm:px-3 sm:py-2 bg-primary/10 text-primary border border-primary/20 rounded-xl text-xs sm:text-sm font-medium"
                       >
                         {skill}
                       </motion.span>
@@ -289,23 +289,23 @@ const Experiencia: React.FC = () => {
               </div>
 
               {/* Right Column - Achievements */}
-              <div className="space-y-6">
-                <div className="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-6">
-                  <h4 className="text-lg font-fraunces font-semibold text-white mb-4 flex items-center gap-2">
-                    <Award className="w-5 h-5 text-accent" />
+              <div className="space-y-4 sm:space-y-6">
+                <div className="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-4 sm:p-6">
+                  <h4 className="text-base sm:text-lg font-fraunces font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
+                    <Award className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                     Logros Principales
                   </h4>
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     {experiences[activeExperience].achievements.map((achievement, idx) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: idx * 0.1 }}
-                        className="flex items-start gap-3 text-white/80"
+                        className="flex items-start gap-2 sm:gap-3 text-white/80"
                       >
-                        <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-sm leading-relaxed">{achievement}</span>
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm leading-relaxed">{achievement}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -322,11 +322,11 @@ const Experiencia: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-10 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-fraunces font-semibold text-white mb-4">
+          <div className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-6 sm:p-8 md:p-10 max-w-3xl mx-auto">
+            <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white mb-3 sm:mb-4">
               ¿Necesitas asesoría tecnológica o diseño?
             </h3>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">
+            <p className="text-white/80 mb-4 sm:mb-6 max-w-xl mx-auto text-sm sm:text-base">
               Como freelancer activo, ofrezco servicios personalizados de consultoría tecnológica, 
               reparación de equipos, desarrollo web y diseño digital.
             </p>
@@ -339,7 +339,7 @@ const Experiencia: React.FC = () => {
                 className="btn-primary group flex items-center justify-center"
               >
                 Iniciar Colaboración
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>

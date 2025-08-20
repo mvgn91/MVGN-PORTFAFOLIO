@@ -5,303 +5,157 @@ interface BackgroundLinesProps {
   className?: string;
 }
 
-const BackgroundLines: React.FC<BackgroundLinesProps> = ({ className = "" }) => {
+const BackgroundLines: React.FC<BackgroundLinesProps> = ({ className = '' }) => {
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>
-      <svg className="w-full h-full">
-        {/* Definiciones de gradientes */}
-        <defs>
-          <linearGradient id="radarCircleGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(239, 68, 68, 0.3)" />
-            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
-          </linearGradient>
-          <linearGradient id="radarCircleGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.3)" />
-            <stop offset="100%" stopColor="rgba(168, 85, 247, 0.1)" />
-          </linearGradient>
-          <linearGradient id="radarCircleGradient3" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(168, 85, 247, 0.3)" />
-            <stop offset="100%" stopColor="rgba(239, 68, 68, 0.1)" />
-          </linearGradient>
-          
-          <linearGradient id="radarLineGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(239, 68, 68, 0.4)" />
-            <stop offset="100%" stopColor="rgba(239, 68, 68, 0.1)" />
-          </linearGradient>
-          <linearGradient id="radarLineGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.4)" />
-            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
-          </linearGradient>
-          <linearGradient id="radarLineGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(168, 85, 247, 0.4)" />
-            <stop offset="100%" stopColor="rgba(168, 85, 247, 0.1)" />
-          </linearGradient>
-          <linearGradient id="radarLineGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(239, 68, 68, 0.4)" />
-            <stop offset="100%" stopColor="rgba(239, 68, 68, 0.1)" />
-          </linearGradient>
-          
-          <linearGradient id="radarDiagonalGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.3)" />
-            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
-          </linearGradient>
-          <linearGradient id="radarDiagonalGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(168, 85, 247, 0.3)" />
-            <stop offset="100%" stopColor="rgba(168, 85, 247, 0.1)" />
-          </linearGradient>
-          <linearGradient id="radarDiagonalGradient3" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(239, 68, 68, 0.3)" />
-            <stop offset="100%" stopColor="rgba(239, 68, 68, 0.1)" />
-          </linearGradient>
-          <linearGradient id="radarDiagonalGradient4" x1="100%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.3)" />
-            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
-          </linearGradient>
-        </defs>
+    <div className={`absolute inset-0 pointer-events-none ${className}`}>
+      {/* Líneas horizontales */}
+      <div className="absolute inset-0">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`h-${i}`}
+            className="absolute w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"
+            style={{
+              top: `${(i + 1) * 12.5}%`,
+            }}
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{
+              duration: 1.5,
+              delay: i * 0.1,
+              ease: "easeOut"
+            }}
+          />
+        ))}
+      </div>
 
-        {/* Círculos concéntricos tipo radar */}
-        <motion.circle
-          cx="50%"
-          cy="50%"
-          r="0"
-          fill="none"
-          stroke="url(#radarCircleGradient1)"
-          strokeWidth="2"
-          strokeDasharray="20,10"
-          initial={{ r: 0, opacity: 0 }}
-          animate={{
-            r: [0, 150, 0],
-            opacity: [0, 0.4, 0],
-            strokeWidth: [2, 3, 2]
+      {/* Líneas verticales */}
+      <div className="absolute inset-0">
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={`v-${i}`}
+            className="absolute h-full w-px bg-gradient-to-b from-transparent via-white/5 to-transparent"
+            style={{
+              left: `${(i + 1) * 8.33}%`,
+            }}
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            transition={{
+              duration: 1.5,
+              delay: i * 0.08,
+              ease: "easeOut"
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Líneas diagonales */}
+      <div className="absolute inset-0">
+        {/* Diagonal principal */}
+        <motion.div
+          className="absolute w-[200%] h-px bg-gradient-to-r from-transparent via-white/3 to-transparent transform -rotate-45 origin-center"
+          style={{
+            top: '50%',
+            left: '-50%',
           }}
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
           transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
+            duration: 2,
+            delay: 0.5,
+            ease: "easeOut"
           }}
         />
         
-        <motion.circle
-          cx="50%"
-          cy="50%"
-          r="0"
-          fill="none"
-          stroke="url(#radarCircleGradient2)"
-          strokeWidth="1.5"
-          strokeDasharray="15,8"
-          initial={{ r: 0, opacity: 0 }}
-          animate={{
-            r: [0, 250, 0],
-            opacity: [0, 0.3, 0],
-            strokeWidth: [1.5, 2.5, 1.5]
+        {/* Diagonal secundaria */}
+        <motion.div
+          className="absolute w-[200%] h-px bg-gradient-to-r from-transparent via-white/3 to-transparent transform rotate-45 origin-center"
+          style={{
+            top: '50%',
+            left: '-50%',
           }}
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
           transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
+            duration: 2,
+            delay: 0.7,
+            ease: "easeOut"
+          }}
+        />
+      </div>
+
+      {/* Puntos de intersección */}
+      <div className="absolute inset-0">
+        {[...Array(6)].map((_, i) => (
+          [...Array(8)].map((_, j) => (
+            <motion.div
+              key={`point-${i}-${j}`}
+              className="absolute w-1 h-1 bg-white/10 rounded-full"
+              style={{
+                left: `${(i + 1) * 16.67}%`,
+                top: `${(j + 1) * 12.5}%`,
+              }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: (i + j) * 0.05,
+                ease: "easeOut"
+              }}
+            />
+          ))
+        ))}
+      </div>
+
+      {/* Líneas de borde */}
+      <div className="absolute inset-0">
+        {/* Borde superior */}
+        <motion.div
+          className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{
+            duration: 1,
+            delay: 0.3,
+            ease: "easeOut"
           }}
         />
         
-        <motion.circle
-          cx="50%"
-          cy="50%"
-          r="0"
-          fill="none"
-          stroke="url(#radarCircleGradient3)"
-          strokeWidth="1"
-          strokeDasharray="25,15"
-          initial={{ r: 0, opacity: 0 }}
-          animate={{
-            r: [0, 350, 0],
-            opacity: [0, 0.2, 0],
-            strokeWidth: [1, 2, 1]
-          }}
+        {/* Borde inferior */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
           transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 4
+            duration: 1,
+            delay: 0.4,
+            ease: "easeOut"
           }}
         />
         
-        {/* Líneas verticales y horizontales */}
-        <motion.line
-          x1="50%"
-          y1="50%"
-          x2="50%"
-          y2="0%"
-          stroke="url(#radarLineGradient1)"
-          strokeWidth="1.5"
-          strokeDasharray="8,4"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            opacity: [0, 0.5, 0],
-            strokeWidth: [1.5, 2.5, 1.5]
-          }}
+        {/* Borde izquierdo */}
+        <motion.div
+          className="absolute top-0 bottom-0 left-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"
+          initial={{ opacity: 0, scaleY: 0 }}
+          animate={{ opacity: 1, scaleY: 1 }}
           transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
+            duration: 1,
+            delay: 0.5,
+            ease: "easeOut"
           }}
         />
         
-        <motion.line
-          x1="50%"
-          y1="50%"
-          x2="50%"
-          y2="100%"
-          stroke="url(#radarLineGradient2)"
-          strokeWidth="1.5"
-          strokeDasharray="8,4"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            opacity: [0, 0.5, 0],
-            strokeWidth: [1.5, 2.5, 1.5]
-          }}
+        {/* Borde derecho */}
+        <motion.div
+          className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"
+          initial={{ opacity: 0, scaleY: 0 }}
+          animate={{ opacity: 1, scaleY: 1 }}
           transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
+            duration: 1,
+            delay: 0.6,
+            ease: "easeOut"
           }}
         />
-        
-        <motion.line
-          x1="50%"
-          y1="50%"
-          x2="0%"
-          y2="50%"
-          stroke="url(#radarLineGradient3)"
-          strokeWidth="1.5"
-          strokeDasharray="8,4"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            opacity: [0, 0.5, 0],
-            strokeWidth: [1.5, 2.5, 1.5]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-        
-        <motion.line
-          x1="50%"
-          y1="50%"
-          x2="100%"
-          y2="50%"
-          stroke="url(#radarLineGradient4)"
-          strokeWidth="1.5"
-          strokeDasharray="8,4"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            opacity: [0, 0.5, 0],
-            strokeWidth: [1.5, 2.5, 1.5]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3
-          }}
-        />
-        
-        {/* Líneas diagonales */}
-        <motion.line
-          x1="50%"
-          y1="50%"
-          x2="0%"
-          y2="0%"
-          stroke="url(#radarDiagonalGradient1)"
-          strokeWidth="1"
-          strokeDasharray="6,3"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            opacity: [0, 0.4, 0],
-            strokeWidth: [1, 2, 1]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5
-          }}
-        />
-        
-        <motion.line
-          x1="50%"
-          y1="50%"
-          x2="100%"
-          y2="0%"
-          stroke="url(#radarDiagonalGradient2)"
-          strokeWidth="1"
-          strokeDasharray="6,3"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            opacity: [0, 0.4, 0],
-            strokeWidth: [1, 2, 1]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1.5
-          }}
-        />
-        
-        <motion.line
-          x1="50%"
-          y1="50%"
-          x2="0%"
-          y2="100%"
-          stroke="url(#radarDiagonalGradient3)"
-          strokeWidth="1"
-          strokeDasharray="6,3"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            opacity: [0, 0.4, 0],
-            strokeWidth: [1, 2, 1]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2.5
-          }}
-        />
-        
-        <motion.line
-          x1="50%"
-          y1="50%"
-          x2="100%"
-          y2="100%"
-          stroke="url(#radarDiagonalGradient4)"
-          strokeWidth="1"
-          strokeDasharray="6,3"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            opacity: [0, 0.4, 0],
-            strokeWidth: [1, 2, 1]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3.5
-          }}
-        />
-      </svg>
+      </div>
     </div>
   );
 };
