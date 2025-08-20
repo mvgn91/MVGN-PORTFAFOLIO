@@ -2,21 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import BackgroundLines from '../components/BackgroundLines';
 
-
 const About: React.FC = () => {
-  const skills = [
-    { name: 'React.js', category: 'Frontend' },
-    { name: 'JavaScript', category: 'Frontend' },
-    { name: 'HTML5/CSS3', category: 'Frontend' },
-    { name: 'Firebase', category: 'Backend' },
-    { name: 'Diseño UX/UI', category: 'Diseño' },
-    { name: 'SEO', category: 'Marketing' },
-    { name: 'Marketing Digital', category: 'Marketing' },
-    { name: 'Adobe Creative Suite', category: 'Diseño' }
-  ];
-
-  const skillCategories = ['Frontend', 'Backend', 'Diseño', 'Marketing'];
-
   return (
     <section id="sobre-mi" className="section-padding bg-surface relative overflow-hidden">
       {/* Background Elements - Sutil */}
@@ -115,46 +101,6 @@ const About: React.FC = () => {
                 remotas seguras e instalación de software, siempre con enfoque en optimización y soporte confiable 
                 para garantizar el máximo rendimiento de los sistemas.
               </p>
-            </div>
-
-            {/* Skills Section - Rediseñado */}
-            <div className="space-y-4 sm:space-y-6">
-              <h3 className="text-lg sm:text-xl font-fraunces font-semibold text-white">
-                Habilidades Principales
-              </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {skillCategories.map((category) => (
-                  <motion.div
-                    key={category}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: skillCategories.indexOf(category) * 0.1 }}
-                    className="group"
-                  >
-                    <div className="bg-gradient-to-r from-surface/50 to-surface-dark/50 border border-white/10 rounded-xl p-3 sm:p-4 hover:border-primary/30 transition-all duration-300">
-                      <h4 className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wide mb-2 sm:mb-3">
-                        {category}
-                      </h4>
-                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                        {skills
-                          .filter(skill => skill.category === category)
-                          .map((skill, index) => (
-                            <motion.span
-                              key={skill.name}
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              whileInView={{ opacity: 1, scale: 1 }}
-                              transition={{ duration: 0.3, delay: index * 0.05 }}
-                              className="px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded-lg text-xs font-medium hover:bg-primary/20 transition-colors"
-                            >
-                              {skill.name}
-                            </motion.span>
-                          ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
             </div>
           </motion.div>
         </div>
