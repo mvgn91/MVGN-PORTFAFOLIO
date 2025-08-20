@@ -169,7 +169,7 @@ const Proyectos: React.FC = () => {
                 const element = document.getElementById('contacto');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="btn-primary group"
+              className="btn-primary group flex items-center justify-center"
             >
               Conversemos sobre tu Proyecto
             </button>

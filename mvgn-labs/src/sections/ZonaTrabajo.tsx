@@ -181,7 +181,7 @@ const ZonaTrabajo: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn-primary group"
+                className="btn-primary group flex items-center justify-center"
               >
                 Consultar Cobertura
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

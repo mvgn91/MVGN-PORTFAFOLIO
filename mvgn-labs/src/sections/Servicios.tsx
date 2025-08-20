@@ -257,7 +257,7 @@ const Servicios: React.FC = () => {
                 const element = document.getElementById('contacto');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="btn-primary group"
+              className="btn-primary group flex items-center justify-center"
             >
               Solicitar Cotización
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

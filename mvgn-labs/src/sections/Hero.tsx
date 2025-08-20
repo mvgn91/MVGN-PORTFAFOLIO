@@ -85,14 +85,14 @@ const Hero: React.FC = () => {
             >
               <button
                 onClick={() => scrollToSection('contacto')}
-                className="btn-primary group"
+                className="btn-primary group flex items-center justify-center"
               >
                 Contáctame
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={() => scrollToSection('proyectos')}
-                className="btn-secondary group"
+                className="btn-secondary group flex items-center justify-center"
               >
                 Ver Proyectos
                 <ChevronDown className="w-5 h-5 ml-2 group-hover:translate-y-1 transition-transform" />
@@ -115,7 +115,7 @@ const Hero: React.FC = () => {
           className="flex flex-col items-center text-white/60 cursor-pointer group"
           onClick={() => scrollToSection('sobre-mi')}
         >
-          <span className="text-sm mb-2 group-hover:text-primary transition-colors">Descubre más</span>
+          <span className="text-lg md:text-xl font-medium mb-3 group-hover:text-primary transition-colors">Descubre más</span>
           <ChevronDown className="w-5 h-5 group-hover:text-primary transition-colors" />
         </motion.div>
       </motion.div>

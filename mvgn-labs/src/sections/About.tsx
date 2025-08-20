@@ -206,7 +206,7 @@ const About: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn-primary group"
+                className="btn-primary group flex items-center justify-center"
               >
                 Iniciar Proyecto
                 <motion.span
