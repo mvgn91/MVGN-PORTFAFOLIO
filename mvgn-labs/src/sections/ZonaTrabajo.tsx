@@ -176,16 +176,18 @@ const ZonaTrabajo: React.FC = () => {
                 No te preocupes, también ofrezco servicios remotos para todo México. 
                 ¡La distancia no es un problema!
               </p>
-              <button
-                onClick={() => {
-                  const element = document.getElementById('contacto');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="btn-primary group flex items-center justify-center"
-              >
-                Consultar Cobertura
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <div className="flex justify-center">
+                <button
+                  onClick={() => {
+                    const element = document.getElementById('contacto');
+                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="btn-primary group flex items-center justify-center"
+                >
+                  Consultar Cobertura
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
           </motion.div>
         </div>

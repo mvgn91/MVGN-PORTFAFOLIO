@@ -326,16 +326,18 @@ const Experiencia: React.FC = () => {
               Como freelancer activo, ofrezco servicios personalizados de consultoría tecnológica, 
               reparación de equipos, desarrollo web y diseño digital.
             </p>
-            <button
-              onClick={() => {
-                const element = document.getElementById('contacto');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="btn-primary group flex items-center justify-center"
-            >
-              Iniciar Colaboración
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={() => {
+                  const element = document.getElementById('contacto');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn-primary group flex items-center justify-center"
+              >
+                Iniciar Colaboración
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -55,7 +55,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     const glitchInterval = setInterval(() => {
       setShowGlitch(true);
       setTimeout(() => setShowGlitch(false), 150);
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(glitchInterval);
   }, []);
@@ -77,144 +77,203 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black z-50 flex items-center justify-center overflow-hidden"
+        className="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-black z-50 flex items-center justify-center overflow-hidden"
       >
-        {/* Background Grid Pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 grid-pattern"></div>
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, rgba(239, 68, 68, 0.1) 0%, transparent 50%)`
+            }}
+          />
         </div>
 
-        {/* Scanline Effect */}
+        {/* Elegant Scanline Effect */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-scanline"></div>
+          <motion.div 
+            className="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+            animate={{ y: ['0vh', '100vh'] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          />
         </div>
 
         {/* Main Content */}
-        <div className="relative z-10 w-full max-w-4xl mx-4">
-          {/* Header */}
+        <div className="relative z-10 w-full max-w-3xl mx-4">
+          {/* Header - Minimalist */}
           <motion.div
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-8"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-center mb-12"
           >
             <motion.div
               animate={{ 
                 scale: showGlitch ? [1, 1.02, 1] : 1,
                 filter: showGlitch ? 'hue-rotate(90deg)' : 'hue-rotate(0deg)'
               }}
-              transition={{ duration: 0.15 }}
-              className="inline-block"
+              transition={{ duration: 0.2 }}
+              className="inline-block mb-6"
             >
-              <Terminal className="w-16 h-16 text-primary mx-auto mb-4" />
+              <Terminal className="w-12 h-12 text-primary/80" />
             </motion.div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white font-mono tracking-wider mb-2">
-              <span className="text-primary">MVGN</span>
-              <span className="text-white">_LABS</span>
-            </h1>
-            <p className="text-green-400 font-mono text-sm tracking-wider">
-              SYSTEM BOOT SEQUENCE INITIALIZED
-            </p>
+            
+            <motion.h1 
+              className="text-5xl md:text-7xl font-light text-white font-mono tracking-widest mb-3"
+              animate={{ letterSpacing: showGlitch ? '0.5em' : '0.1em' }}
+              transition={{ duration: 0.2 }}
+            >
+              <span className="text-primary/90">MVGN</span>
+              <span className="text-white/90">_LABS</span>
+            </motion.h1>
+            
+            <motion.p 
+              className="text-primary/60 font-mono text-xs tracking-widest uppercase"
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              System Boot Sequence
+            </motion.p>
           </motion.div>
 
-          {/* Terminal Output */}
+          {/* Terminal Output - Cleaner */}
           <motion.div
-            initial={{ x: -100, opacity: 0 }}
+            initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="bg-black/80 border border-green-500/50 rounded-lg p-6 mb-8 font-mono text-sm"
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 mb-8 font-mono text-sm"
           >
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-2.5 h-2.5 bg-red-400/60 rounded-full"></div>
+              <div className="w-2.5 h-2.5 bg-yellow-400/60 rounded-full"></div>
+              <div className="w-2.5 h-2.5 bg-green-400/60 rounded-full"></div>
             </div>
-            <div className="text-green-400 h-48 overflow-y-auto">
-              <pre className="whitespace-pre-wrap">{terminalText}</pre>
-              <span className="animate-pulse">█</span>
+            <div className="text-green-400/80 h-32 overflow-y-auto">
+              <pre className="whitespace-pre-wrap text-xs leading-relaxed">{terminalText}</pre>
+              <motion.span 
+                className="text-primary"
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+              >
+                █
+              </motion.span>
             </div>
           </motion.div>
 
-          {/* Current Step Display */}
+          {/* Current Step - Elegant */}
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
             className="text-center mb-8"
           >
             {bootSequence[currentStep] && (() => {
               const CurrentIcon = bootSequence[currentStep].icon;
               return (
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <CurrentIcon className={`w-6 h-6 ${bootSequence[currentStep].color}`} />
-                  <span className={`font-mono text-lg ${bootSequence[currentStep].color}`}>
+                <motion.div 
+                  className="flex items-center justify-center gap-3 mb-4"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <CurrentIcon className={`w-5 h-5 ${bootSequence[currentStep].color}`} />
+                  <span className={`font-mono text-sm ${bootSequence[currentStep].color} tracking-wide`}>
                     {bootSequence[currentStep].text}
                   </span>
-                </div>
+                </motion.div>
               );
             })()}
           </motion.div>
 
-          {/* Progress Bar */}
+          {/* Progress Bar - Minimalist */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: progress / 100 }}
-            transition={{ duration: 0.3 }}
-            className="w-full bg-gray-800 rounded-full h-3 mb-4 overflow-hidden"
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="w-full bg-white/5 rounded-full h-1.5 mb-6 overflow-hidden backdrop-blur-sm"
           >
-            <div className="h-full bg-gradient-to-r from-primary via-accent to-primary rounded-full relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+            <div className="h-full bg-gradient-to-r from-primary/60 via-primary to-primary/60 rounded-full relative">
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                animate={{ x: ['-100%', '100%'] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              />
             </div>
           </motion.div>
 
-          {/* Progress Text */}
+          {/* Progress Text - Clean */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 1, delay: 0.9 }}
             className="text-center"
           >
-            <p className="text-white/70 font-mono text-sm mb-2">
-              PROGRESO DEL SISTEMA: {progress}%
+            <p className="text-white/50 font-mono text-xs mb-2 tracking-wide">
+              PROGRESO: {progress}%
             </p>
-            <p className="text-green-400 font-mono text-xs tracking-wider">
+            <motion.p 
+              className="text-primary/70 font-mono text-xs tracking-widest uppercase"
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
               {progress < 100 ? 'INICIALIZANDO...' : 'SISTEMA LISTO'}
-            </p>
+            </motion.p>
           </motion.div>
-
-          {/* Matrix Rain Effect */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ 
-                  y: ['100vh', '-100vh'],
-                  opacity: [0, 1, 0]
-                }}
-                transition={{
-                  duration: Math.random() * 3 + 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2,
-                  ease: "linear"
-                }}
-                className="absolute text-green-400/30 font-mono text-xs"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 2}s`
-                }}
-              >
-                {String.fromCharCode(0x30A0 + Math.random() * 96)}
-              </motion.div>
-            ))}
-          </div>
         </div>
 
-        {/* Corner Decorations */}
-        <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-primary"></div>
-        <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-primary"></div>
-        <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-primary"></div>
-        <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-primary"></div>
+        {/* Subtle Matrix Rain - Minimalist */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ 
+                y: ['100vh', '-100vh'],
+                opacity: [0, 0.3, 0]
+              }}
+              transition={{
+                duration: Math.random() * 4 + 3,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: "linear"
+              }}
+              className="absolute text-primary/20 font-mono text-xs"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`
+              }}
+            >
+              {String.fromCharCode(0x30A0 + Math.random() * 96)}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Corner Decorations - Subtle */}
+        <motion.div 
+          className="absolute top-6 left-6 w-6 h-6 border-l border-t border-primary/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        />
+        <motion.div 
+          className="absolute top-6 right-6 w-6 h-6 border-r border-t border-primary/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.7 }}
+        />
+        <motion.div 
+          className="absolute bottom-6 left-6 w-6 h-6 border-l border-b border-primary/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.9 }}
+        />
+        <motion.div 
+          className="absolute bottom-6 right-6 w-6 h-6 border-r border-b border-primary/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 1.1 }}
+        />
       </motion.div>
     </AnimatePresence>
   );
