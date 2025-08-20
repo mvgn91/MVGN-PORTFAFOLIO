@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 -left-20 w-40 h-40 sm:w-60 sm:h-60 bg-accent/5 rounded-full blur-3xl"
+          className="absolute bottom-20 -left-20 w-40 h-40 sm:w-60 sm:h-60 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1.1, 1, 1.1],
             opacity: [0.3, 0.2, 0.3],
@@ -51,14 +51,9 @@ const Footer: React.FC = () => {
             className="text-center space-y-4 mb-8"
           >
             <div className="flex items-center justify-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">M</span>
-              </div>
-              <div>
-                <h3 className="text-2xl font-fraunces font-bold text-white">
-                  Mvgn Labs
-                </h3>
-              </div>
+              <h3 className="text-2xl font-fraunces font-bold text-white">
+                Mvgn Labs
+              </h3>
             </div>
             
             <p className="text-white/70 text-sm leading-relaxed max-w-md mx-auto">
@@ -90,7 +85,7 @@ const Footer: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={scrollToTop}
-              className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center text-white hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+              className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
             >
               <ArrowUp className="w-5 h-5" />
             </motion.button>
