@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { scrollToSection } from '../lib/utils';
+import BackgroundLines from '../components/BackgroundLines';
 
 const Hero: React.FC = () => {
   return (
@@ -34,6 +35,9 @@ const Hero: React.FC = () => {
           }}
         />
       </div>
+
+      {/* Líneas geométricas de fondo */}
+      <BackgroundLines className="opacity-30" />
 
       <div className="container-custom relative z-10">
         <div className="flex items-center justify-center min-h-[80vh]">

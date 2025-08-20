@@ -9,6 +9,7 @@ import {
   ArrowRight,
   MessageCircle
 } from 'lucide-react';
+import BackgroundLines from '../components/BackgroundLines';
 
 const Contacto: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -93,6 +94,9 @@ const Contacto: React.FC = () => {
           }}
         />
       </div>
+
+      {/* Líneas geométricas de fondo */}
+      <BackgroundLines className="opacity-20" />
 
       <div className="container-custom relative z-10">
         {/* Header */}

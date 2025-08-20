@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
+import BackgroundLines from '../components/BackgroundLines';
 
 const Proyectos: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('todos');
@@ -80,6 +81,9 @@ const Proyectos: React.FC = () => {
           }}
         />
       </div>
+
+      {/* Líneas geométricas de fondo */}
+      <BackgroundLines className="opacity-20" />
 
       <div className="container-custom relative z-10">
         <motion.div

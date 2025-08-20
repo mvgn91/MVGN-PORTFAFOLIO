@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Wifi, Globe, ArrowRight } from 'lucide-react';
+import BackgroundLines from '../components/BackgroundLines';
 
 const ZonaTrabajo: React.FC = () => {
   return (
@@ -20,6 +21,9 @@ const ZonaTrabajo: React.FC = () => {
           }}
         />
       </div>
+
+      {/* Líneas geométricas de fondo */}
+      <BackgroundLines className="opacity-20" />
 
       <div className="container-custom relative z-10">
         {/* Header Section - Minimalista */}

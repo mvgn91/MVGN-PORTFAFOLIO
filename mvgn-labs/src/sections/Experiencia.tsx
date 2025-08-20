@@ -12,6 +12,7 @@ import {
   Award,
   Zap
 } from 'lucide-react';
+import BackgroundLines from '../components/BackgroundLines';
 
 const Experiencia: React.FC = () => {
   const [activeExperience, setActiveExperience] = useState(0);
@@ -131,6 +132,9 @@ const Experiencia: React.FC = () => {
           }}
         />
       </div>
+
+      {/* Líneas geométricas de fondo */}
+      <BackgroundLines className="opacity-25" />
 
       <div className="container-custom relative z-10">
         {/* Header */}

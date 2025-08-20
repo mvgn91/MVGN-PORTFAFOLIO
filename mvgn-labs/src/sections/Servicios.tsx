@@ -12,6 +12,7 @@ import {
   Database
 } from 'lucide-react';
 import ServiceCard from '../components/ServiceCard';
+import BackgroundLines from '../components/BackgroundLines';
 
 const Servicios: React.FC = () => {
   const [selectedTech, setSelectedTech] = React.useState<string | null>(null);
@@ -102,6 +103,9 @@ const Servicios: React.FC = () => {
           }}
         />
       </div>
+
+      {/* Líneas geométricas de fondo */}
+      <BackgroundLines className="opacity-20" />
 
       <div className="container-custom relative z-10">
         <motion.div
