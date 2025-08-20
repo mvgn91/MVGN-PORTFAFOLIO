@@ -167,7 +167,7 @@ const Experiencia: React.FC = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
                   <stat.icon className={`w-8 h-8 ${stat.color}`} />
                 </div>
-                <div className="text-3xl font-fraunces font-bold text-white mb-2">
+                <div className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm text-white/60">

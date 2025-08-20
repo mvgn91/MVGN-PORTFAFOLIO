@@ -6,21 +6,21 @@ interface SplashScreenProps {
   onComplete: () => void;
 }
 
+const bootSequence = [
+  { text: 'INICIANDO SISTEMA MVGN_LABS v2.0.24...', icon: Cpu, color: 'text-blue-400' },
+  { text: 'VERIFICANDO INTEGRIDAD DEL SISTEMA...', icon: Shield, color: 'text-green-400' },
+  { text: 'CARGANDO MÓDULOS DE DESARROLLO...', icon: Code, color: 'text-purple-400' },
+  { text: 'INICIALIZANDO BASE DE DATOS...', icon: Database, color: 'text-yellow-400' },
+  { text: 'ESTABLECIENDO CONEXIONES REMOTAS...', icon: Globe, color: 'text-cyan-400' },
+  { text: 'ACTIVANDO PROTOCOLOS DE SEGURIDAD...', icon: Lock, color: 'text-red-400' },
+  { text: 'SISTEMA LISTO - BIENVENIDO AL PORTFOLIO', icon: Zap, color: 'text-primary' }
+];
+
 const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
   const [terminalText, setTerminalText] = useState('');
   const [showGlitch, setShowGlitch] = useState(false);
-
-  const bootSequence = [
-    { text: 'INICIANDO SISTEMA MVGN_LABS v2.0.24...', icon: Cpu, color: 'text-blue-400' },
-    { text: 'VERIFICANDO INTEGRIDAD DEL SISTEMA...', icon: Shield, color: 'text-green-400' },
-    { text: 'CARGANDO MÓDULOS DE DESARROLLO...', icon: Code, color: 'text-purple-400' },
-    { text: 'INICIALIZANDO BASE DE DATOS...', icon: Database, color: 'text-yellow-400' },
-    { text: 'ESTABLECIENDO CONEXIONES REMOTAS...', icon: Globe, color: 'text-cyan-400' },
-    { text: 'ACTIVANDO PROTOCOLOS DE SEGURIDAD...', icon: Lock, color: 'text-red-400' },
-    { text: 'SISTEMA LISTO - BIENVENIDO AL PORTFOLIO', icon: Zap, color: 'text-primary' }
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -252,16 +252,18 @@ const Servicios: React.FC = () => {
             <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
               Permíteme crear una solución personalizada que se adapte perfectamente a tus necesidades
             </p>
-            <button
-              onClick={() => {
-                const element = document.getElementById('contacto');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="btn-primary group flex items-center justify-center"
-            >
-              Solicitar Cotización
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={() => {
+                  const element = document.getElementById('contacto');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn-primary group flex items-center justify-center"
+              >
+                Solicitar Cotización
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>
