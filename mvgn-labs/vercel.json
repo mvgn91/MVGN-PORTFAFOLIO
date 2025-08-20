@@ -6,6 +6,7 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build",
+        "installCommand": "npm ci",
         "buildCommand": "npm run build"
       }
     }
@@ -46,10 +47,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "app/api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
