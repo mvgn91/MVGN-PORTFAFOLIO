@@ -10,18 +10,14 @@ import Experiencia from './sections/Experiencia';
 import Proyectos from './sections/Proyectos';
 import ZonaTrabajo from './sections/ZonaTrabajo';
 import Contacto from './sections/Contacto';
+import SplashScreen from './components/SplashScreen';
 import './styles/globals.css';
 
 const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
     // Scroll to top button visibility
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
@@ -29,41 +25,20 @@ const App: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => {
-      clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <div className="flex items-center space-x-3 mb-4">
-            <img
-              src="/assets/favicon.png"
-              alt="MVGN Labs"
-              className="w-12 h-12"
-            />
-            <span className="text-3xl font-fraunces font-bold text-white">
-              MVGN Labs
-            </span>
-          </div>
-          <div className="flex items-center justify-center space-x-2">
-            <Loader2 className="w-6 h-6 text-primary animate-spin" />
-            <span className="text-white/80">Cargando portafolio...</span>
-          </div>
-        </motion.div>
-      </div>
-    );
+  if (showSplash) {
+    return <SplashScreen onComplete={handleSplashComplete} />;
   }
 
   return (

@@ -151,7 +151,7 @@ const Contacto: React.FC = () => {
                             href={method.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r ${method.color} text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300`}
+                            className={`inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r ${method.color} text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300`}
                           >
                             {method.value}
                             <ArrowRight className="w-4 h-4" />
