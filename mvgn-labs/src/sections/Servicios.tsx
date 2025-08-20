@@ -12,7 +12,7 @@ import {
   Database,
   Zap
 } from 'lucide-react';
-import ServiceCard from '../components/ServiceCard';
+
 import BackgroundLines from '../components/BackgroundLines';
 
 const Servicios: React.FC = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Eye, Calendar, Star, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, Eye, Star, ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 interface ProjectCardProps {
