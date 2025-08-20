@@ -10,10 +10,7 @@ import {
   Search,
   ArrowRight,
   Database,
-  Zap,
-  Shield,
-  Users,
-  TrendingUp
+  Zap
 } from 'lucide-react';
 import ServiceCard from '../components/ServiceCard';
 import BackgroundLines from '../components/BackgroundLines';
@@ -100,13 +97,6 @@ const Servicios: React.FC = () => {
     }
   ];
 
-  const stats = [
-    { label: 'Proyectos Completados', value: '50+', icon: Zap, color: 'text-primary' },
-    { label: 'Clientes Satisfechos', value: '30+', icon: Users, color: 'text-accent' },
-    { label: 'Años de Experiencia', value: '4+', icon: TrendingUp, color: 'text-green-400' },
-    { label: 'Tecnologías Dominadas', value: '15+', icon: Shield, color: 'text-blue-400' }
-  ];
-
   return (
     <section id="servicios" className="section-padding bg-background relative overflow-hidden">
       {/* Background Elements */}
@@ -154,41 +144,11 @@ const Servicios: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center group"
-            >
-              <div className="bg-surface/50 hover:bg-surface/80 rounded-2xl p-6 border border-surface-dark/30 transition-all duration-300 hover:scale-105">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <stat.icon className={`w-8 h-8 ${stat.color}`} />
-                </div>
-                <div className="text-3xl md:text-4xl font-fraunces font-bold text-white mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-white/60">
-                  {stat.label}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Servicios Principales - Grid Mejorado */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-20"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -248,14 +208,6 @@ const Servicios: React.FC = () => {
                         </div>
                       ))}
                     </div>
-                  </div>
-                  
-                  {/* CTA */}
-                  <div className="text-center">
-                    <button className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-light text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                      Saber Más
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
                   </div>
                 </div>
               </motion.div>

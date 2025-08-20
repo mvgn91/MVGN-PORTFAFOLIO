@@ -45,7 +45,7 @@ const Proyectos: React.FC = () => {
     {
       title: 'Catálogo Online - JULDRA UNIFORMES',
       description: 'Catálogo digital interactivo para JULDRA UNIFORMES. Diseño profesional con navegación intuitiva, galería de productos y sistema de contacto integrado.',
-      image: '/assets/crm captura.png', // Usando placeholder por ahora
+      image: '/assets/captura pietrafina.png', // Usando imagen de referencia por ahora
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Diseño Responsivo', 'UX/UI'],
       url: 'https://mvgn91.github.io/JULDRA-CATALOGO-VIRTUAL/',
       featured: false,
@@ -147,6 +147,8 @@ const Proyectos: React.FC = () => {
                   image={project.image}
                   technologies={project.technologies}
                   url={project.url}
+                  featured={project.featured}
+                  category={project.category}
                 />
               </motion.div>
             ))}

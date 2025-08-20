@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Eye, Calendar, Star, ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 interface ProjectCardProps {
@@ -10,6 +10,8 @@ interface ProjectCardProps {
   technologies: string[];
   url?: string;
   githubUrl?: string;
+  featured?: boolean;
+  category?: string;
   className?: string;
 }
 
@@ -20,76 +22,218 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   technologies,
   url,
   githubUrl,
+  featured = false,
+  category = 'web',
   className
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const getCategoryColor = (cat: string) => {
+    switch (cat) {
+      case 'web': return 'from-blue-500 to-cyan-500';
+      case 'app': return 'from-green-500 to-emerald-500';
+      case 'marketing': return 'from-purple-500 to-pink-500';
+      default: return 'from-primary to-accent';
+    }
+  };
+
+  const getCategoryIcon = (cat: string) => {
+    switch (cat) {
+      case 'web': return '🌐';
+      case 'app': return '📱';
+      case 'marketing': return '📢';
+      default: return '⚡';
+    }
+  };
+
   return (
     <motion.div
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      whileHover={{ y: -8 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
       className={cn(
-        "card overflow-hidden transition-all duration-300",
-        "hover:border-primary/30 hover:shadow-xl",
+        "group relative overflow-hidden rounded-3xl transition-all duration-500",
+        "bg-gradient-to-br from-surface/60 to-surface-dark/60 backdrop-blur-sm",
+        "border border-white/10 hover:border-primary/30",
+        "hover:shadow-2xl hover:shadow-primary/20",
         className
       )}
     >
-      {/* Project Image */}
-      <div className="relative overflow-hidden">
-        <img
+      {/* Featured Badge */}
+      {featured && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="absolute top-4 right-4 z-20"
+        >
+          <div className="flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-semibold rounded-full shadow-lg">
+            <Star className="w-3 h-3 fill-current" />
+            Destacado
+          </div>
+        </motion.div>
+      )}
+
+      {/* Category Badge */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2 }}
+        className="absolute top-4 left-4 z-20"
+      >
+        <div className={`flex items-center gap-2 px-3 py-1 bg-gradient-to-r ${getCategoryColor(category)} text-white text-xs font-semibold rounded-full shadow-lg`}>
+          <span>{getCategoryIcon(category)}</span>
+          {category === 'web' ? 'Web' : category === 'app' ? 'App' : category === 'marketing' ? 'Marketing' : 'Otro'}
+        </div>
+      </motion.div>
+
+      {/* Project Image Container */}
+      <div className="relative overflow-hidden h-64">
+        <motion.img
           src={image}
           alt={title}
-          className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+          className="w-full h-full object-cover"
+          animate={{
+            scale: isHovered ? 1.1 : 1,
+          }}
+          transition={{ duration: 0.5 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        
+        {/* Overlay Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        
+        {/* Hover Overlay */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent flex items-center justify-center"
+        >
+          <div className="flex gap-3">
+            {url && (
+              <motion.a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
+              >
+                <Eye className="w-5 h-5" />
+              </motion.a>
+            )}
+            {githubUrl && (
+              <motion.a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
+              >
+                <Github className="w-5 h-5" />
+              </motion.a>
+            )}
+          </div>
+        </motion.div>
       </div>
 
       {/* Project Content */}
       <div className="p-6">
-        <h3 className="text-xl font-fraunces font-semibold text-white mb-3">
-          {title}
-        </h3>
-        
-        <p className="text-white/70 mb-4 leading-relaxed">
-          {description}
-        </p>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {technologies.map((tech, index) => (
-            <span
-              key={index}
-              className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
-            >
-              {tech}
-            </span>
-          ))}
+        {/* Title and Description */}
+        <div className="mb-6">
+          <motion.h3 
+            className="text-2xl font-fraunces font-semibold text-white mb-3 group-hover:text-primary transition-colors duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            {title}
+          </motion.h3>
+          
+          <motion.p 
+            className="text-white/70 leading-relaxed text-sm"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            {description}
+          </motion.p>
         </div>
 
+        {/* Technologies */}
+        <motion.div 
+          className="flex flex-wrap gap-2 mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          {technologies.slice(0, 4).map((tech, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 + index * 0.1 }}
+              className="px-3 py-1.5 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
+            >
+              {tech}
+            </motion.span>
+          ))}
+          {technologies.length > 4 && (
+            <span className="px-3 py-1.5 bg-white/10 text-white/60 text-xs font-medium rounded-full border border-white/20">
+              +{technologies.length - 4}
+            </span>
+          )}
+        </motion.div>
+
         {/* Action Buttons */}
-        <div className="flex gap-3 justify-center">
+        <motion.div 
+          className="flex gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
           {url && (
-            <a
+            <motion.a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-light text-white rounded-lg transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary to-primary-light text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300 group-hover:shadow-primary/25"
             >
               <ExternalLink className="w-4 h-4" />
               Ver Proyecto
-            </a>
+            </motion.a>
           )}
           
           {githubUrl && (
-            <a
+            <motion.a
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-surface hover:bg-surface-dark text-white rounded-lg border border-surface-dark/30 transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center justify-center gap-2 px-4 py-3 bg-surface hover:bg-surface-dark text-white font-medium rounded-xl border border-surface-dark/30 transition-all duration-300 hover:border-primary/30"
             >
               <Github className="w-4 h-4" />
               Código
-            </a>
+            </motion.a>
           )}
-        </div>
+        </motion.div>
+
+        {/* Hover Arrow Indicator */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ 
+            opacity: isHovered ? 1 : 0,
+            x: isHovered ? 0 : -10
+          }}
+          className="absolute bottom-4 right-4 text-primary"
+        >
+          <ArrowRight className="w-5 h-5" />
+        </motion.div>
       </div>
     </motion.div>
   );
