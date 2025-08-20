@@ -142,14 +142,17 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-center mb-8"
           >
-            {bootSequence[currentStep] && (
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <bootSequence[currentStep].icon className={`w-6 h-6 ${bootSequence[currentStep].color}`} />
-                <span className={`font-mono text-lg ${bootSequence[currentStep].color}`}>
-                  {bootSequence[currentStep].text}
-                </span>
-              </div>
-            )}
+            {bootSequence[currentStep] && (() => {
+              const CurrentIcon = bootSequence[currentStep].icon;
+              return (
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <CurrentIcon className={`w-6 h-6 ${bootSequence[currentStep].color}`} />
+                  <span className={`font-mono text-lg ${bootSequence[currentStep].color}`}>
+                    {bootSequence[currentStep].text}
+                  </span>
+                </div>
+              );
+            })()}
           </motion.div>
 
           {/* Progress Bar */}
