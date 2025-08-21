@@ -3,13 +3,10 @@ import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { scrollToSection } from '../lib/utils';
 import BackgroundLines from '../components/BackgroundLines';
-import { useTheme } from '../contexts/ThemeContext';
 
 const Hero: React.FC = () => {
-  const { theme } = useTheme();
-  
   return (
-    <section id="inicio" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background dark:bg-background light:bg-light-background">
+    <section id="inicio" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* Background Animation - Simplificado y responsivo */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -42,11 +39,6 @@ const Hero: React.FC = () => {
       {/* Líneas geométricas de fondo */}
       <BackgroundLines className="opacity-30" />
 
-      {/* Indicador de tema temporal para debug */}
-      <div className="absolute top-20 left-4 z-20 bg-black/50 text-white px-3 py-2 rounded-lg text-sm">
-        Tema actual: {theme}
-      </div>
-
       <div className="container-custom relative z-10">
         <div className="flex items-center justify-center min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh]">
           {/* Content - Centrado y enfocado, completamente responsivo */}
@@ -66,7 +58,7 @@ const Hero: React.FC = () => {
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-primary font-bold tracking-wide font-fraunces">
                 ¡Hola! Soy
               </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-fraunces font-bold text-white dark:text-white light:text-light-text leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-fraunces font-bold text-white leading-tight">
                 Armando{' '}
                 <span className="text-gradient">Ibañez</span>
               </h1>
@@ -79,11 +71,11 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-3 sm:space-y-4 md:space-y-6"
             >
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-inter font-medium text-white/90 dark:text-white/90 light:text-light-text-secondary leading-relaxed">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-inter font-medium text-white/90 leading-relaxed">
                 Desarrollador Web &{' '}
                 <span className="text-primary">Diseñador Digital</span>
               </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/70 dark:text-white/70 light:text-light-text-muted max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
                 Transformando ideas en soluciones tecnológicas que generan resultados reales
               </p>
             </motion.div>
@@ -121,7 +113,7 @@ const Hero: React.FC = () => {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="inline-flex flex-col items-center text-white/40 dark:text-white/40 light:text-light-text-muted"
+                className="inline-flex flex-col items-center text-white/40"
               >
                 <span className="text-xs sm:text-sm font-poppins mb-2">Desliza para explorar</span>
                 <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />

@@ -203,7 +203,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-3 bg-gradient-to-r from-primary to-primary-light text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300 group-hover:shadow-primary/25 text-xs sm:text-sm"
+              className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-3 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300 group-hover:shadow-primary/25 text-xs sm:text-sm"
             >
               <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Ver Proyecto</span>

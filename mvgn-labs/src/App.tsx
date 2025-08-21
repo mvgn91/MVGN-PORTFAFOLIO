@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ThemeProvider, useTheme } from './contexts/ThemeContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/Navbar';
 import SplashScreen from './components/SplashScreen';
 import Hero from './sections/Hero';
@@ -15,16 +14,13 @@ import BackgroundLines from './components/BackgroundLines';
 
 const AppContent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const { theme, toggleTheme } = useTheme();
 
   const handleSplashComplete = () => {
     setIsLoading(false);
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${
-      theme === 'dark' ? 'bg-surface text-white' : 'bg-white text-gray-900'
-    }`}>
+    <div className="min-h-screen bg-surface text-white transition-colors duration-500">
       {isLoading ? (
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
@@ -33,7 +29,7 @@ const AppContent: React.FC = () => {
           <BackgroundLines className="fixed inset-0 pointer-events-none opacity-20" />
           
           {/* Navbar */}
-          <Navbar onThemeToggle={toggleTheme} />
+          <Navbar />
           
           {/* Main Content */}
           <main className="relative">

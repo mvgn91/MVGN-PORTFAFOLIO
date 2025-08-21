@@ -18,7 +18,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   description, 
   features = [],
   className,
-  color = "from-primary to-primary-light"
+  color = "from-primary to-accent"
 }) => {
   return (
     <motion.div

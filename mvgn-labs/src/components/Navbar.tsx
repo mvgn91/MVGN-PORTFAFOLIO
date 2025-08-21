@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Home, User, Briefcase, FolderOpen, Clock, MapPin, Mail } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { motion } from 'framer-motion';
+import { Home, User, Briefcase, FolderOpen, Clock, MapPin, Mail } from 'lucide-react';
 
 interface NavbarProps {
-  onThemeToggle: () => void;
+  onThemeToggle?: () => void; // Hacer opcional ya que no lo usaremos
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,19 +77,8 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
               ))}
             </div>
 
-            {/* Theme Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="w-12 h-12 bg-surface/50 border border-white/10 rounded-xl flex items-center justify-center text-white/80 hover:text-white hover:bg-surface/70 transition-all duration-300"
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-6 h-6" />
-              ) : (
-                <Moon className="w-6 h-6" />
-              )}
-            </motion.button>
+            {/* Espacio reservado para mantener el layout balanceado */}
+            <div className="w-12 h-12" />
           </div>
         </div>
       </motion.nav>

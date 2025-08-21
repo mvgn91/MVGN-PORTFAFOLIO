@@ -1,11 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 
-type Theme = 'light' | 'dark';
+type Theme = 'dark';
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
-  setTheme: (theme: Theme) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -23,60 +21,27 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>('dark');
-
   useEffect(() => {
-    // Obtener tema del localStorage o preferencia del sistema
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    const initialTheme = savedTheme || systemTheme;
-    
-    setThemeState(initialTheme);
-    applyTheme(initialTheme);
-  }, []);
-
-  const applyTheme = (newTheme: Theme) => {
+    // Aplicar solo el tema oscuro
     const root = document.documentElement;
     const body = document.body;
     
-    // Remover todas las clases de tema
-    root.classList.remove('dark', 'light');
-    body.classList.remove('dark', 'light');
+    // Remover cualquier clase de tema anterior
+    root.classList.remove('light');
+    body.classList.remove('light');
     
-    // Aplicar la nueva clase de tema
-    if (newTheme === 'light') {
-      root.classList.add('light');
-      body.classList.add('light');
-      console.log('Tema claro aplicado');
-    } else {
-      root.classList.add('dark');
-      body.classList.add('dark');
-      console.log('Tema oscuro aplicado');
-    }
+    // Aplicar solo el tema oscuro
+    root.classList.add('dark');
+    body.classList.add('dark');
     
     // Guardar en localStorage
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem('theme', 'dark');
     
-    // Debug: verificar que las clases se aplicaron
-    console.log('Clases en html:', root.classList.toString());
-    console.log('Clases en body:', body.classList.toString());
-  };
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    console.log('Cambiando tema a:', newTheme);
-    setThemeState(newTheme);
-    applyTheme(newTheme);
-  };
-
-  const setTheme = (newTheme: Theme) => {
-    console.log('Estableciendo tema a:', newTheme);
-    setThemeState(newTheme);
-    applyTheme(newTheme);
-  };
+    console.log('Tema oscuro aplicado permanentemente');
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ theme: 'dark' }}>
       {children}
     </ThemeContext.Provider>
   );

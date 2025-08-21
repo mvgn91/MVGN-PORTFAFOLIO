@@ -15,15 +15,6 @@ module.exports = {
         'surface-dark': '#111111',
         'surface-light': '#2a2a2a',
         background: '#1a1a1a',
-        // Colores para tema claro
-        'light-surface': '#ffffff',
-        'light-surface-dark': '#f8f9fa',
-        'light-surface-light': '#e9ecef',
-        'light-background': '#ffffff',
-        'light-text': '#1a1a1a',
-        'light-text-secondary': '#4a5568',
-        'light-text-muted': '#718096',
-        'light-border': 'rgba(0, 0, 0, 0.1)',
       },
       fontFamily: {
         'fraunces': ['Fraunces', 'serif'],
@@ -39,54 +30,24 @@ module.exports = {
       },
       keyframes: {
         float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        'slide-in-left': {
-          '0%': { transform: 'translateX(-100%)', opacity: '0' },
-          '100%': { transform: 'translateX(0)', opacity: '1' },
-        },
-        'slide-in-right': {
-          '0%': { transform: 'translateX(100%)', opacity: '0' },
-          '100%': { transform: 'translateX(0)', opacity: '1' },
-        },
-        'slide-in-top': {
-          '0%': { transform: 'translateY(-100%)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        'slide-in-bottom': {
-          '0%': { transform: 'translateY(100%)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        'fade-in': {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        'scale-in': {
-          '0%': { transform: 'scale(0)', opacity: '0' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-        'rotate-in': {
-          '0%': { transform: 'rotate(-200deg) scale(0)', opacity: '0' },
-          '100%': { transform: 'rotate(0deg) scale(1)', opacity: '1' },
+          '0%, 100%': {
+            transform: 'translateY(0px)',
+          },
+          '50%': {
+            transform: 'translateY(-20px)',
+          },
         },
       },
-      backdropBlur: {
-        'custom': '20px',
-      },
-      // Utilidades responsivas personalizadas
       spacing: {
         '18': '4.5rem',
         '88': '22rem',
         '128': '32rem',
       },
-      maxWidth: {
-        '8xl': '88rem',
-        '9xl': '96rem',
+      borderRadius: {
+        '4xl': '2rem',
       },
-      minHeight: {
-        'screen-75': '75vh',
-        'screen-90': '90vh',
+      backdropBlur: {
+        xs: '2px',
       },
       zIndex: {
         '60': '60',
@@ -95,8 +56,34 @@ module.exports = {
         '90': '90',
         '100': '100',
       },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      },
+      screens: {
+        'xs': '475px',
+        '3xl': '1600px',
+        '4xl': '1920px',
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '6rem',
+        },
+        screens: {
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1280px',
+          '2xl': '1536px',
+        },
+      },
     },
   },
   plugins: [],
-}
+};
 
