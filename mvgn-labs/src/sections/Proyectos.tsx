@@ -85,7 +85,7 @@ const Proyectos: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* Grid de Proyectos - 2 columnas en desktop, 1 en móvil */}
+        {/* Grid de Proyectos - Optimizado para mejor tamaño de tarjetas */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ const Proyectos: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto"
             >
               {filteredProjects.map((project, index) => (
                 <motion.div
@@ -107,8 +107,11 @@ const Proyectos: React.FC = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="flex justify-center"
                 >
-                  <ProjectCard project={project} />
+                  <div className="w-full max-w-md">
+                    <ProjectCard project={project} />
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

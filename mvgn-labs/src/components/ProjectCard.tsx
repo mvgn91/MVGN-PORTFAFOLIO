@@ -53,8 +53,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       className="group h-full"
     >
       <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-primary/30 hover:shadow-xl">
-        {/* Image Container */}
-        <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
+        {/* Image Container - Tamaño optimizado */}
+        <div className="relative h-40 sm:h-48 md:h-52 overflow-hidden">
           <img
             src={project.image}
             alt={project.title}
@@ -108,41 +108,41 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         </div>
 
-        {/* Content */}
-        <div className="p-4 sm:p-6 space-y-4">
+        {/* Content - Espaciado optimizado */}
+        <div className="p-4 sm:p-5 space-y-3 sm:space-y-4">
           {/* Header */}
           <div className="space-y-2">
             <h3 className="text-lg sm:text-xl font-fraunces font-semibold text-text-primary group-hover:text-primary transition-colors line-clamp-2">
               {project.title}
             </h3>
-            <p className="text-text-tertiary text-sm leading-relaxed line-clamp-3">
+            <p className="text-text-tertiary text-sm leading-relaxed line-clamp-2">
               {project.description}
             </p>
           </div>
 
-          {/* Features */}
+          {/* Features - Reducido para mejor balance */}
           <div className="space-y-2">
             <h4 className="text-text-primary font-medium text-sm">Características:</h4>
             <div className="space-y-1">
-              {project.features.slice(0, 3).map((feature, index) => (
+              {project.features.slice(0, 2).map((feature, index) => (
                 <div key={index} className="flex items-center gap-2 text-xs text-text-tertiary">
                   <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></div>
                   <span className="line-clamp-1">{feature}</span>
                 </div>
               ))}
-              {project.features.length > 3 && (
+              {project.features.length > 2 && (
                 <div className="text-xs text-text-muted">
-                  +{project.features.length - 3} más...
+                  +{project.features.length - 2} más...
                 </div>
               )}
             </div>
           </div>
 
-          {/* Technologies */}
+          {/* Technologies - Reducido para mejor balance */}
           <div className="space-y-2">
             <h4 className="text-text-primary font-medium text-sm">Tecnologías:</h4>
             <div className="flex flex-wrap gap-2">
-              {project.technologies.slice(0, 4).map((tech, index) => (
+              {project.technologies.slice(0, 3).map((tech, index) => (
                 <span
                   key={index}
                   className="px-2 py-1 bg-primary/10 border border-primary/20 rounded-lg text-xs text-primary font-medium"
@@ -150,9 +150,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                   {tech}
                 </span>
               ))}
-              {project.technologies.length > 4 && (
+              {project.technologies.length > 3 && (
                 <span className="px-2 py-1 bg-surface-accent/50 border border-border-secondary rounded-lg text-xs text-text-muted">
-                  +{project.technologies.length - 4}
+                  +{project.technologies.length - 3}
                 </span>
               )}
             </div>
