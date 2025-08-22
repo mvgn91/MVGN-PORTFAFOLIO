@@ -135,121 +135,94 @@ const Hero: React.FC = () => {
 
       {/* VERSIÓN DESKTOP */}
       <div className="hidden md:block w-full">
-        <div className="container mx-auto px-8 max-w-6xl">
-          <div className="flex items-center justify-center min-h-screen">
+        <div className="container mx-auto px-8 max-w-4xl">
+          <div className="flex flex-col items-center justify-center min-h-screen text-center space-y-12">
             
-            {/* Layout Desktop - Dos columnas */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              
-              {/* Columna Izquierda - Contenido */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="space-y-8 text-left"
-              >
-                {/* Greeting */}
-                <div className="space-y-4">
-                  <p className="text-2xl text-primary font-semibold tracking-wide">
-                    ¡Hola! Soy
-                  </p>
-                  <h1 className="text-6xl lg:text-7xl font-fraunces font-bold text-text-primary leading-tight">
-                    Armando{' '}
-                    <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
-                      Ibañez
-                    </span>
-                  </h1>
-                </div>
-
-                {/* Brand */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="inline-block"
-                >
-                  <span className="inline-flex items-center px-6 py-3 bg-surface-secondary/50 backdrop-blur-sm rounded-full border border-border-primary text-text-secondary text-lg font-medium">
-                    <span className="w-3 h-3 bg-primary rounded-full mr-3 animate-pulse"></span>
-                    MVGN Labs
-                  </span>
-                </motion.div>
-
-                {/* Profession */}
-                <div className="space-y-6">
-                  <h2 className="text-2xl lg:text-3xl font-poppins font-medium text-text-secondary leading-relaxed max-w-2xl">
-                    Desarrollador Web y{' '}
-                    <span className="text-primary font-semibold">Técnico en Computación</span>
-                  </h2>
-                  <p className="text-lg lg:text-xl text-text-tertiary max-w-2xl leading-relaxed">
-                    Transformando ideas en soluciones tecnológicas que generan resultados reales para mis clientes
-                  </p>
-                </div>
-
-                {/* CTA Buttons - Desktop */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  className="flex gap-4 pt-6"
-                >
-                  <button
-                    onClick={() => scrollToSection('contacto')}
-                    className="bg-gradient-to-r from-primary to-primary-light text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 min-h-[52px]"
-                  >
-                    <Mail size={22} />
-                    <span>Contáctame</span>
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('proyectos')}
-                    className="bg-transparent border-2 border-border-primary text-text-primary px-10 py-4 rounded-xl font-semibold text-lg hover:bg-surface-secondary/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 min-h-[52px]"
-                  >
-                    <span>Ver Proyectos</span>
-                    <ChevronDown size={22} />
-                  </button>
-                </motion.div>
-              </motion.div>
-
-              {/* Columna Derecha - Imagen de Perfil */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex justify-center lg:justify-end"
-              >
-                <div className="relative">
-                  <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-3xl overflow-hidden border-4 border-primary/20 shadow-2xl">
-                    <img
-                      src="/assets/profile.jpg"
-                      alt="Armando Ibañez - MVGN Labs"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Badge de estado */}
-                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary rounded-full border-4 border-bg-primary flex items-center justify-center shadow-lg">
-                    <div className="w-4 h-4 bg-white rounded-full animate-pulse"></div>
-                  </div>
-                  <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-primary-light rounded-full border-4 border-bg-primary"></div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Scroll Indicator - Solo en desktop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
+            {/* Content Desktop */}
             <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-text-tertiary hover:text-text-secondary cursor-pointer transition-colors w-14 h-14 flex items-center justify-center rounded-full hover:bg-surface-secondary/50"
-              onClick={() => scrollToSection('sobre-mi')}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-8"
             >
-              <ChevronDown size={28} />
+              {/* Greeting */}
+              <div className="space-y-4">
+                <p className="text-2xl text-primary font-semibold tracking-wide">
+                  ¡Hola! Soy
+                </p>
+                <h1 className="text-6xl lg:text-7xl font-fraunces font-bold text-text-primary leading-tight">
+                  Armando{' '}
+                  <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+                    Ibañez
+                  </span>
+                </h1>
+              </div>
+
+              {/* Brand */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="inline-block"
+              >
+                <span className="inline-flex items-center px-6 py-3 bg-surface-secondary/50 backdrop-blur-sm rounded-full border border-border-primary text-text-secondary text-lg font-medium">
+                  <span className="w-3 h-3 bg-primary rounded-full mr-3 animate-pulse"></span>
+                  MVGN Labs
+                </span>
+              </motion.div>
+
+              {/* Profession */}
+              <div className="space-y-6">
+                <h2 className="text-2xl lg:text-3xl font-poppins font-medium text-text-secondary leading-relaxed max-w-3xl mx-auto">
+                  Desarrollador Web y{' '}
+                  <span className="text-primary font-semibold">Técnico en Computación</span>
+                </h2>
+                <p className="text-lg lg:text-xl text-text-tertiary max-w-3xl mx-auto leading-relaxed">
+                  Transformando ideas en soluciones tecnológicas que generan resultados reales para mis clientes
+                </p>
+              </div>
+
+              {/* CTA Buttons - Desktop */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="flex gap-4 justify-center pt-6"
+              >
+                <button
+                  onClick={() => scrollToSection('contacto')}
+                  className="bg-gradient-to-r from-primary to-primary-light text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 min-h-[52px]"
+                >
+                  <Mail size={22} />
+                  <span>Contáctame</span>
+                </button>
+                <button
+                  onClick={() => scrollToSection('proyectos')}
+                  className="bg-transparent border-2 border-border-primary text-text-primary px-10 py-4 rounded-xl font-semibold text-lg hover:bg-surface-secondary/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 min-h-[52px]"
+                >
+                  <span>Ver Proyectos</span>
+                  <ChevronDown size={22} />
+                </button>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            {/* Scroll Indicator - Solo en desktop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            >
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="text-text-tertiary hover:text-text-secondary cursor-pointer transition-colors w-14 h-14 flex items-center justify-center rounded-full hover:bg-surface-secondary/50"
+                onClick={() => scrollToSection('sobre-mi')}
+              >
+                <ChevronDown size={28} />
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
