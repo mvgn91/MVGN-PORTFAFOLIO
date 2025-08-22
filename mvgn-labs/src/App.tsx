@@ -25,46 +25,46 @@ const AppContent: React.FC = () => {
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
         <>
-          {/* Background Lines */}
+          {/* Background Lines - Fijo para consistencia visual */}
           <BackgroundLines className="fixed inset-0 pointer-events-none opacity-20" />
           
           {/* Navbar */}
           <Navbar />
           
-          {/* Main Content */}
+          {/* Main Content - Estructura jerárquica optimizada */}
           <main className="relative">
-            {/* Hero Section */}
-            <section id="inicio">
+            {/* SECCIÓN PRINCIPAL: Hero */}
+            <section id="inicio" className="min-h-screen">
               <Hero />
             </section>
             
-            {/* About Section */}
-            <section id="sobre-mi">
+            {/* SECCIÓN DE PRESENTACIÓN */}
+            <section id="sobre-mi" className="py-20 lg:py-32">
               <About />
             </section>
             
-            {/* Services Section */}
-            <section id="servicios">
+            {/* SECCIÓN DE SERVICIOS */}
+            <section id="servicios" className="py-20 lg:py-32 bg-surface-light/30">
               <Servicios />
             </section>
             
-            {/* Projects Section */}
-            <section id="proyectos">
+            {/* SECCIÓN DE PROYECTOS */}
+            <section id="proyectos" className="py-20 lg:py-32">
               <Proyectos />
             </section>
             
-            {/* Experience Section */}
-            <section id="experiencia">
+            {/* SECCIÓN DE EXPERIENCIA */}
+            <section id="experiencia" className="py-20 lg:py-32 bg-surface-light/30">
               <Experiencia />
             </section>
             
-            {/* Work Zone Section */}
-            <section id="zona-trabajo">
+            {/* SECCIÓN DE ZONA DE TRABAJO */}
+            <section id="zona-trabajo" className="py-20 lg:py-32">
               <ZonaTrabajo />
             </section>
             
-            {/* Contact Section */}
-            <section id="contacto">
+            {/* SECCIÓN DE CONTACTO */}
+            <section id="contacto" className="py-20 lg:py-32 bg-surface-light/30">
               <Contacto />
             </section>
           </main>

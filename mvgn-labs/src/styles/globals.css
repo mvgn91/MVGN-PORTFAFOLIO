@@ -4,64 +4,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Variables CSS personalizadas - Solo Tema Oscuro */
+/* Variables CSS personalizadas - Tema Oscuro Optimizado */
 :root {
   --primary: #dc2626;
-  --accent: #b91c1c;
+  --accent: #f59e0b;
   --secondary: #6b7280;
   --surface: #1a1a1a;
   --surface-dark: #111111;
   --surface-light: #2a2a2a;
   --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --text-muted: rgba(255, 255, 255, 0.4);
-  --border-color: rgba(255, 255, 255, 0.1);
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --border-color: rgba(255, 255, 255, 0.15);
   --background: #1a1a1a;
 }
 
-/* Aplicar colores del tema a elementos base */
+/* Reset y base optimizados */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+}
+
 body {
   background-color: var(--background);
   color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
-/* Asegurar que las secciones usen los colores del tema */
-.bg-surface {
-  background-color: var(--surface);
+/* Tipografía jerárquica */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.bg-surface-dark {
-  background-color: var(--surface-dark);
+/* Contenedores responsivos */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.bg-surface-light {
-  background-color: var(--surface-light);
+@media (min-width: 640px) {
+  .container {
+    padding: 0 2rem;
+  }
 }
 
-/* Texto que responda al tema */
-.text-white {
-  color: var(--text-primary);
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 4rem;
+  }
 }
 
-.text-white\/70 {
-  color: var(--text-secondary);
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 5rem;
+  }
 }
 
-.text-white\/60 {
-  color: var(--text-muted);
+/* Secciones con espaciado consistente */
+section {
+  position: relative;
+  overflow: hidden;
 }
 
-/* Bordes que respondan al tema */
-.border-white\/10 {
-  border-color: var(--border-color);
-}
-
-.border-white\/20 {
-  border-color: var(--border-color);
-}
-
-/* Fondo dinámico global - Solo Tema Oscuro */
+/* Fondo dinámico global optimizado */
 body::before {
   content: '';
   position: fixed;
@@ -70,77 +86,77 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(185, 28, 28, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(107, 114, 128, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(107, 114, 128, 0.03) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
 
-/* Aplicar tema oscuro por defecto */
-html {
-  background-color: var(--background);
+/* Botones optimizados */
+.btn-primary {
+  @apply bg-gradient-to-r from-primary to-accent text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 transform hover:-translate-y-1;
 }
 
-html.dark {
-  background-color: var(--background);
+.btn-secondary {
+  @apply bg-transparent text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-white/10 transform hover:-translate-y-1;
 }
 
-/* Clases utilitarias para el tema oscuro */
-.bg-background {
-  background-color: var(--background);
-}
-
-.bg-surface {
-  background-color: var(--surface);
-}
-
-.bg-surface-dark {
-  background-color: var(--surface-dark);
-}
-
-.bg-surface-light {
-  background-color: var(--surface-light);
-}
-
-.text-white {
-  color: var(--text-primary);
-}
-
-.text-white\/70 {
-  color: var(--text-secondary);
-}
-
-.text-white\/40 {
-  color: var(--text-muted);
-}
-
-.border-white\/10 {
-  border-color: var(--border-color);
-}
-
-.border-white\/20 {
-  border-color: var(--border-color);
-}
-
-/* Efectos de cristal para tema oscuro */
+/* Efectos de cristal optimizados */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Transiciones suaves */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+/* Cards optimizadas */
+.card {
+  @apply bg-surface-light/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-surface-light/70 hover:border-white/20 hover:shadow-xl;
 }
 
-/* Scrollbar personalizada para tema oscuro */
+/* Gradientes de texto */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animaciones optimizadas */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -156,4 +172,78 @@ html.dark {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+}
+
+/* Utilidades de espaciado responsivo */
+.section-padding {
+  @apply py-16 sm:py-20 lg:py-32;
+}
+
+.section-padding-sm {
+  @apply py-12 sm:py-16 lg:py-24;
+}
+
+/* Utilidades de grid responsivo */
+.grid-responsive {
+  @apply grid gap-6 sm:gap-8 lg:gap-10;
+}
+
+.grid-responsive-2 {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-10;
+}
+
+.grid-responsive-3 {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10;
+}
+
+.grid-responsive-4 {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10;
+}
+
+/* Utilidades de texto responsivo */
+.text-responsive-xl {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+}
+
+.text-responsive-lg {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+}
+
+.text-responsive-md {
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+}
+
+.text-responsive-sm {
+  @apply text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl;
+}
+
+/* Utilidades de contenedor responsivo */
+.container-responsive {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12;
+}
+
+/* Utilidades de flex responsivo */
+.flex-responsive {
+  @apply flex flex-col sm:flex-row;
+}
+
+.flex-responsive-center {
+  @apply flex flex-col sm:flex-row items-center justify-center;
+}
+
+.flex-responsive-between {
+  @apply flex flex-col sm:flex-row items-center justify-between;
+}
+
+/* Utilidades de gap responsivo */
+.gap-responsive {
+  @apply gap-4 sm:gap-6 lg:gap-8;
+}
+
+.gap-responsive-sm {
+  @apply gap-3 sm:gap-4 lg:gap-6;
+}
+
+.gap-responsive-lg {
+  @apply gap-6 sm:gap-8 lg:gap-12;
 }
