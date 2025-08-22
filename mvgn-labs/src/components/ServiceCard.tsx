@@ -25,24 +25,24 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
-        "card p-6 h-full transition-all duration-300",
+        "card p-4 sm:p-6 h-full transition-all duration-300",
         "hover:border-primary/30 hover:shadow-xl",
         className
       )}
     >
-      <div className="flex flex-col items-center text-center space-y-6">
+      <div className="flex flex-col items-center text-center space-y-4 sm:space-y-6">
         {/* Icon with custom color */}
-        <div className={`w-20 h-20 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center shadow-lg`}>
-          <Icon className="w-10 h-10 text-white" />
+        <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center shadow-lg`}>
+          <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
         </div>
         
         {/* Title */}
-        <h3 className="text-2xl font-fraunces font-semibold text-white leading-tight">
+        <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white leading-tight line-clamp-2">
           {title}
         </h3>
         
         {/* Description */}
-        <p className="text-white/70 leading-relaxed text-base">
+        <p className="text-white/70 leading-relaxed text-sm sm:text-base line-clamp-3">
           {description}
         </p>
 
@@ -59,10 +59,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="flex items-center gap-3 text-white/80 text-sm"
+                  className="flex items-center gap-3 text-white/80 text-xs sm:text-sm"
                 >
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>{feature}</span>
+                  <span className="line-clamp-2">{feature}</span>
                 </motion.div>
               ))}
             </div>

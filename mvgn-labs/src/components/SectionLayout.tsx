@@ -34,11 +34,11 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
   const getPaddingClasses = () => {
     switch (padding) {
       case 'small':
-        return 'py-12';
+        return 'py-12 sm:py-16 md:py-20 lg:py-24';
       case 'large':
-        return 'py-28';
+        return 'py-20 sm:py-24 md:py-28 lg:py-32';
       default:
-        return 'py-20';
+        return 'py-16 sm:py-20 md:py-24 lg:py-28';
     }
   };
 
@@ -85,9 +85,9 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-6 sm:mb-8 leading-tight px-4">
             {title}
           </h2>
           
@@ -96,7 +96,7 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4"
+              className="text-lg sm:text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4"
             >
               {subtitle}
             </motion.p>

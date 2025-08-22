@@ -40,32 +40,32 @@ const AppContent: React.FC = () => {
             </section>
             
             {/* SECCIÓN DE PRESENTACIÓN */}
-            <section id="sobre-mi" className="py-20 lg:py-32">
+            <section id="sobre-mi" className="py-16 sm:py-20 lg:py-32">
               <About />
             </section>
             
             {/* SECCIÓN DE SERVICIOS */}
-            <section id="servicios" className="py-20 lg:py-32 bg-surface-light/30">
+            <section id="servicios" className="py-16 sm:py-20 lg:py-32 bg-surface-light/30">
               <Servicios />
             </section>
             
             {/* SECCIÓN DE PROYECTOS */}
-            <section id="proyectos" className="py-20 lg:py-32">
+            <section id="proyectos" className="py-16 sm:py-20 lg:py-32">
               <Proyectos />
             </section>
             
             {/* SECCIÓN DE EXPERIENCIA */}
-            <section id="experiencia" className="py-20 lg:py-32 bg-surface-light/30">
+            <section id="experiencia" className="py-16 sm:py-20 lg:py-32 bg-surface-light/30">
               <Experiencia />
             </section>
             
             {/* SECCIÓN DE ZONA DE TRABAJO */}
-            <section id="zona-trabajo" className="py-20 lg:py-32">
+            <section id="zona-trabajo" className="py-16 sm:py-20 lg:py-32">
               <ZonaTrabajo />
             </section>
             
             {/* SECCIÓN DE CONTACTO */}
-            <section id="contacto" className="py-20 lg:py-32 bg-surface-light/30">
+            <section id="contacto" className="py-16 sm:py-20 lg:py-32 bg-surface-light/30">
               <Contacto />
             </section>
           </main>

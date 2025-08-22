@@ -47,14 +47,14 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center space-y-12"
+              className="text-center space-y-8 sm:space-y-12 px-4"
             >
               {/* Título MVGN Labs */}
               <motion.h1
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
-                className="text-5xl sm:text-6xl md:text-7xl font-fraunces font-light text-white leading-none tracking-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-fraunces font-light text-white leading-none tracking-tight"
               >
                 MVGN LABS
               </motion.h1>
@@ -66,7 +66,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="relative"
               >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto">
                   {/* Círculo de fondo */}
                   <div className="w-full h-full border-2 border-white/20 rounded-full" />
                   

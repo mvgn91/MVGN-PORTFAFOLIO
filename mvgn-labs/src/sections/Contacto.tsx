@@ -93,7 +93,7 @@ const Contacto: React.FC = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute bottom-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
+          className="absolute bottom-40 -left-40 w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -115,12 +115,12 @@ const Contacto: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-6 sm:mb-8 leading-tight px-4">
             Hablemos de tu <span className="text-gradient">Proyecto</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4">
             Estoy aquí para ayudarte a transformar tus ideas en realidad. 
             Contáctame y conversemos sobre cómo puedo impulsar tu negocio
           </p>
@@ -131,9 +131,9 @@ const Contacto: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-20"
+          className="mb-16 sm:mb-20"
         >
-          <div className="grid-system grid-3">
+          <div className="grid-system grid-1 sm:grid-2 lg:grid-3 gap-6 sm:gap-8">
             {contactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
@@ -147,18 +147,18 @@ const Contacto: React.FC = () => {
                   }
                 }}
               >
-                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-3xl p-8 h-full transition-all duration-300 hover:scale-105 hover:border-primary/30">
-                  <div className={`w-20 h-20 bg-gradient-to-br ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform`}>
-                    <method.icon className="icon-2xl text-white" />
+                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-3xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:border-primary/30">
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform`}>
+                    <method.icon className="icon-xl sm:icon-2xl text-white" />
                   </div>
-                  <h3 className="text-text-primary font-semibold text-center mb-2 text-lg">
+                  <h3 className="text-text-primary font-semibold text-center mb-2 text-base sm:text-lg">
                     {method.title}
                   </h3>
                   <div className="text-center space-y-2">
-                    <p className="text-primary font-medium text-base">
+                    <p className="text-primary font-medium text-sm sm:text-base">
                       {method.value}
                     </p>
-                    <p className="text-text-tertiary text-sm">
+                    <p className="text-text-tertiary text-xs sm:text-sm">
                       {method.description}
                     </p>
                   </div>
@@ -173,16 +173,16 @@ const Contacto: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-20"
+          className="mb-16 sm:mb-20"
         >
-          <div className="grid-system grid-2 gap-12">
+          <div className="grid-system grid-1 lg:grid-2 gap-8 sm:gap-12">
             {/* Formulario */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div>
-                <h3 className="text-3xl font-fraunces font-semibold text-text-primary mb-6">
+                <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary mb-4 sm:mb-6">
                   Envíame un Mensaje
                 </h3>
-                <p className="text-text-secondary leading-relaxed">
+                <p className="text-text-secondary leading-relaxed text-sm sm:text-base">
                   Cuéntame sobre tu proyecto y te responderé con una propuesta personalizada 
                   que se adapte a tus necesidades y objetivos
                 </p>
@@ -192,21 +192,21 @@ const Contacto: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-8 text-center"
+                  className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6 sm:p-8 text-center"
                 >
-                  <CheckCircle className="icon-2xl text-green-500 mx-auto mb-4" />
-                  <h4 className="text-text-primary font-semibold text-xl mb-2">
+                  <CheckCircle className="icon-xl sm:icon-2xl text-green-500 mx-auto mb-4" />
+                  <h4 className="text-text-primary font-semibold text-lg sm:text-xl mb-2">
                     ¡Mensaje Enviado!
                   </h4>
-                  <p className="text-text-secondary">
+                  <p className="text-text-secondary text-sm sm:text-base">
                     Gracias por contactarme. Te responderé en las próximas 24 horas.
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-text-primary font-medium mb-2 text-sm">
+                      <label htmlFor="name" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
                         Nombre Completo *
                       </label>
                       <input
@@ -216,12 +216,12 @@ const Contacto: React.FC = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm sm:text-base"
                         placeholder="Tu nombre completo"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-text-primary font-medium mb-2 text-sm">
+                      <label htmlFor="email" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
                         Email *
                       </label>
                       <input
@@ -231,7 +231,7 @@ const Contacto: React.FC = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm sm:text-base"
                         placeholder="tu@email.com"
                       />
                     </div>
@@ -239,7 +239,7 @@ const Contacto: React.FC = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="phone" className="block text-text-primary font-medium mb-2 text-sm">
+                      <label htmlFor="phone" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
                         Teléfono
                       </label>
                       <input
@@ -248,12 +248,12 @@ const Contacto: React.FC = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm sm:text-base"
                         placeholder="+52 33 1234 5678"
                       />
                     </div>
                     <div>
-                      <label htmlFor="service" className="block text-text-primary font-medium mb-2 text-sm">
+                      <label htmlFor="service" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
                         Servicio de Interés *
                       </label>
                       <select
@@ -262,7 +262,7 @@ const Contacto: React.FC = () => {
                         value={formData.service}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm sm:text-base"
                       >
                         <option value="">Selecciona un servicio</option>
                         {services.map((service) => (
@@ -275,7 +275,7 @@ const Contacto: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-text-primary font-medium mb-2 text-sm">
+                    <label htmlFor="message" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
                       Mensaje *
                     </label>
                     <textarea
@@ -285,7 +285,7 @@ const Contacto: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 resize-none"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 resize-none text-sm sm:text-base"
                       placeholder="Cuéntame sobre tu proyecto, objetivos y cualquier detalle importante..."
                     />
                   </div>
@@ -293,16 +293,18 @@ const Contacto: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn btn-primary btn-xl group w-full"
+                    className="btn btn-primary btn-lg sm:btn-xl group w-full"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                        Enviando Mensaje...
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        <span className="hidden sm:inline">Enviando Mensaje...</span>
+                        <span className="sm:hidden">Enviando...</span>
                       </>
                     ) : (
                       <>
-                        Enviar Mensaje
+                        <span className="hidden sm:inline">Enviar Mensaje</span>
+                        <span className="sm:hidden">Enviar</span>
                         <Send className="icon group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
@@ -312,19 +314,19 @@ const Contacto: React.FC = () => {
             </div>
 
             {/* Información Adicional */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div>
-                <h3 className="text-3xl font-fraunces font-semibold text-text-primary mb-6">
+                <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary mb-4 sm:mb-6">
                   ¿Por qué elegirme?
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="text-text-primary font-semibold text-base mb-1">
+                      <h4 className="text-text-primary font-semibold text-sm sm:text-base mb-1">
                         Respuesta Rápida
                       </h4>
-                      <p className="text-text-tertiary text-sm">
+                      <p className="text-text-tertiary text-xs sm:text-sm">
                         Te respondo en menos de 24 horas con una propuesta personalizada
                       </p>
                     </div>
@@ -332,10 +334,10 @@ const Contacto: React.FC = () => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="text-text-primary font-semibold text-base mb-1">
+                      <h4 className="text-text-primary font-semibold text-sm sm:text-base mb-1">
                         Comunicación Clara
                       </h4>
-                      <p className="text-text-tertiary text-sm">
+                      <p className="text-text-tertiary text-xs sm:text-sm">
                         Mantengo una comunicación constante durante todo el proyecto
                       </p>
                     </div>
@@ -343,10 +345,10 @@ const Contacto: React.FC = () => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="text-text-primary font-semibold text-base mb-1">
+                      <h4 className="text-text-primary font-semibold text-sm sm:text-base mb-1">
                         Resultados Garantizados
                       </h4>
-                      <p className="text-text-tertiary text-sm">
+                      <p className="text-text-tertiary text-xs sm:text-sm">
                         Me comprometo a entregar resultados que superen tus expectativas
                       </p>
                     </div>
@@ -354,24 +356,24 @@ const Contacto: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-6">
-                <div className="flex items-center gap-3 mb-4">
+              <div className="bg-gradient-to-br from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-4 sm:p-6">
+                <div className="flex items-center gap-3 mb-3 sm:mb-4">
                   <Clock className="icon-lg text-primary" />
-                  <h4 className="text-text-primary font-semibold text-lg">
+                  <h4 className="text-text-primary font-semibold text-base sm:text-lg">
                     Tiempo de Respuesta
                   </h4>
                 </div>
-                <p className="text-text-secondary text-sm leading-relaxed">
+                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
                   Normalmente respondo en <span className="text-primary font-semibold">menos de 24 horas</span>. 
                   Para proyectos urgentes, puedo priorizar tu solicitud.
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border-primary rounded-2xl p-6">
-                <h4 className="text-text-primary font-semibold text-lg mb-4">
+              <div className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border-primary rounded-2xl p-4 sm:p-6">
+                <h4 className="text-text-primary font-semibold text-base sm:text-lg mb-3 sm:mb-4">
                   Horarios de Atención
                 </h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-xs sm:text-sm">
                   <div className="flex justify-between">
                     <span className="text-text-secondary">Lunes - Viernes:</span>
                     <span className="text-text-primary font-medium">9:00 AM - 6:00 PM</span>
@@ -397,28 +399,29 @@ const Contacto: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-3xl p-12 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center">
-                <ArrowRight className="icon-xl text-white" />
+          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center">
+                <ArrowRight className="icon-lg sm:icon-xl text-white" />
               </div>
-              <h3 className="text-3xl font-fraunces font-semibold text-text-primary">
+              <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary text-center">
                 ¿Listo para comenzar?
               </h3>
             </div>
-            <p className="text-text-secondary text-lg mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+            <p className="text-text-secondary text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
               No esperes más para transformar tu idea en realidad. 
               Contáctame ahora y tomemos un café virtual para discutir tu proyecto
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <button
                 onClick={() => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-xl group"
+                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto"
               >
-                Iniciar Conversación
+                <span className="hidden sm:inline">Iniciar Conversación</span>
+                <span className="sm:hidden">Conversar</span>
                 <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
               </button>
               <button
@@ -426,9 +429,10 @@ const Contacto: React.FC = () => {
                   const element = document.getElementById('servicios');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-secondary btn-xl group"
+                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto"
               >
-                Ver Servicios
+                <span className="hidden sm:inline">Ver Servicios</span>
+                <span className="sm:hidden">Servicios</span>
                 <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
