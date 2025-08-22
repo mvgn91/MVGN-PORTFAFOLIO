@@ -28,6 +28,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "vercel-build": "npm run build",
+    "build:production": "./build-production.sh",
+    "build:vercel": "./vercel-build.sh",
     "preview": "npm run build && serve -s build"
   },
   "eslintConfig": {

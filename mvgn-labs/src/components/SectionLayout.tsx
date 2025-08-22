@@ -7,8 +7,10 @@ interface SectionLayoutProps {
   subtitle?: string;
   children: React.ReactNode;
   className?: string;
-  background?: 'default' | 'light' | 'dark';
-  padding?: 'small' | 'medium' | 'large';
+  background?: 'default' | 'light' | 'dark' | 'none';
+  padding?: 'small' | 'medium' | 'large' | 'hero';
+  container?: boolean;
+  fullHeight?: boolean;
 }
 
 const SectionLayout: React.FC<SectionLayoutProps> = ({
@@ -18,31 +20,39 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
   children,
   className = '',
   background = 'default',
-  padding = 'medium'
+  padding = 'medium',
+  container = true,
+  fullHeight = false
 }) => {
   const backgroundClasses = {
     default: 'bg-surface',
     light: 'bg-surface-light/30',
-    dark: 'bg-surface-dark'
+    dark: 'bg-surface-dark',
+    none: ''
   };
 
   const paddingClasses = {
     small: 'py-12 sm:py-16 lg:py-20',
     medium: 'py-16 sm:py-20 lg:py-32',
-    large: 'py-20 sm:py-24 lg:py-40'
+    large: 'py-20 sm:py-24 lg:py-40',
+    hero: 'min-h-screen flex items-center'
   };
+
+  const heightClass = fullHeight ? 'min-h-screen' : '';
 
   return (
     <section
       id={id}
-      className={`relative overflow-hidden ${backgroundClasses[background]} ${paddingClasses[padding]} ${className}`}
+      className={`relative overflow-hidden ${backgroundClasses[background]} ${paddingClasses[padding]} ${heightClass} ${className}`}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
-      </div>
+      {/* Background Pattern - Solo para secciones con background */}
+      {background !== 'none' && (
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
+        </div>
+      )}
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className={`${container ? 'container mx-auto px-4 sm:px-6 lg:px-8' : ''} relative z-10`}>
         {/* Section Header */}
         {(title || subtitle) && (
           <motion.div
