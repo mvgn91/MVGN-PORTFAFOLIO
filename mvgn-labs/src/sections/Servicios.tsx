@@ -11,7 +11,20 @@ import {
   ArrowRight,
   Database,
   Zap,
-  X
+  X,
+  // Iconos para tecnologías
+  FileCode,
+  Monitor,
+  Smartphone as MobileIcon,
+  Zap as PerformanceIcon,
+  BarChart3,
+  Target,
+  Eye,
+  TrendingUp,
+  Wifi,
+  Layers,
+  Cpu,
+  Smartphone as PhoneIcon
 } from 'lucide-react';
 
 import BackgroundLines from '../components/BackgroundLines';
@@ -66,28 +79,48 @@ const Servicios: React.FC = () => {
     {
       title: 'Frontend Development',
       icon: Code,
-      technologies: ['JavaScript', 'HTML5/CSS3', 'Responsive Design', 'UX/UI'],
+      technologies: [
+        { name: 'JavaScript', icon: FileCode, color: 'from-yellow-400 to-orange-500' },
+        { name: 'HTML5/CSS3', icon: FileCode, color: 'from-orange-500 to-red-500' },
+        { name: 'Responsive Design', icon: Monitor, color: 'from-blue-500 to-cyan-500' },
+        { name: 'UX/UI', icon: Eye, color: 'from-purple-500 to-pink-500' }
+      ],
       color: 'from-blue-500 to-cyan-500',
       description: 'Interfaces modernas y responsivas'
     },
     {
       title: 'Backend & Database',
       icon: Database,
-      technologies: ['Firebase', 'WhatsApp API', 'REST APIs', 'Real-time Data'],
+      technologies: [
+        { name: 'Firebase', icon: Zap, color: 'from-orange-500 to-yellow-500' },
+        { name: 'WhatsApp API', icon: PhoneIcon, color: 'from-green-500 to-emerald-500' },
+        { name: 'REST APIs', icon: Wifi, color: 'from-blue-500 to-indigo-500' },
+        { name: 'Real-time Data', icon: Database, color: 'from-purple-500 to-pink-500' }
+      ],
       color: 'from-green-500 to-emerald-500',
       description: 'Arquitectura robusta y escalable'
     },
     {
       title: 'Mobile & Responsive',
       icon: Smartphone,
-      technologies: ['Mobile First', 'Cross-platform', 'Touch Optimized', 'Performance'],
+      technologies: [
+        { name: 'Mobile First', icon: MobileIcon, color: 'from-blue-500 to-cyan-500' },
+        { name: 'Cross-platform', icon: Globe, color: 'from-green-500 to-emerald-500' },
+        { name: 'Touch Optimized', icon: Smartphone, color: 'from-purple-500 to-pink-500' },
+        { name: 'Performance', icon: PerformanceIcon, color: 'from-yellow-500 to-orange-500' }
+      ],
       color: 'from-purple-500 to-pink-500',
       description: 'Experiencia perfecta en todos los dispositivos'
     },
     {
       title: 'Performance & SEO',
       icon: Search,
-      technologies: ['SEO Optimization', 'Analytics', 'Performance Monitoring', 'Core Web Vitals'],
+      technologies: [
+        { name: 'SEO Optimization', icon: Target, color: 'from-green-500 to-emerald-500' },
+        { name: 'Analytics', icon: BarChart3, color: 'from-blue-500 to-indigo-500' },
+        { name: 'Performance Monitoring', icon: TrendingUp, color: 'from-purple-500 to-pink-500' },
+        { name: 'Core Web Vitals', icon: Zap, color: 'from-yellow-500 to-orange-500' }
+      ],
       color: 'from-red-500 to-pink-500',
       description: 'Optimización integral para resultados'
     }
@@ -248,10 +281,10 @@ const Servicios: React.FC = () => {
                   stiffness: 300,
                   damping: 30
                 }}
-                className="fixed inset-0 z-50 overflow-hidden"
+                className="fixed inset-0 z-50 overflow-hidden pointer-events-none"
               >
                 {/* Header flotante */}
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary/20 to-primary-light/20 backdrop-blur-sm border-b border-border-primary/30 p-4 sm:p-6 z-10">
+                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary/20 to-primary-light/20 backdrop-blur-sm border-b border-border-primary/30 p-4 sm:p-6 z-10 pointer-events-auto">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className={`w-12 h-12 bg-gradient-to-br ${
@@ -288,7 +321,7 @@ const Servicios: React.FC = () => {
                       .find(group => group.title === selectedTech)
                       ?.technologies.map((tech, index) => (
                         <motion.div
-                          key={tech}
+                          key={tech.name}
                           initial={{ opacity: 0, scale: 0.5, rotate: -5 }}
                           animate={{ opacity: 1, scale: 1, rotate: 0 }}
                           transition={{ 
@@ -298,12 +331,14 @@ const Servicios: React.FC = () => {
                             stiffness: 200,
                             damping: 20
                           }}
-                          className="group flex items-center justify-center"
+                          className="group flex items-center justify-center pointer-events-auto"
                         >
                           <div className="bg-gradient-to-br from-primary/20 to-primary-light/20 backdrop-blur-sm border border-primary/30 rounded-2xl p-4 sm:p-6 hover:bg-primary/30 hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:shadow-xl max-w-xs w-full text-center">
                             <div className="flex flex-col items-center gap-3">
-                              <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0 group-hover:scale-125 transition-transform"></div>
-                              <span className="text-text-primary font-semibold text-base sm:text-lg leading-tight">{tech}</span>
+                              <div className={`w-12 h-12 bg-gradient-to-br ${tech.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                                {React.createElement(tech.icon, { className: "icon text-white" })}
+                              </div>
+                              <span className="text-text-primary font-semibold text-base sm:text-lg leading-tight">{tech.name}</span>
                             </div>
                           </div>
                         </motion.div>
@@ -315,7 +350,7 @@ const Servicios: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
-                    className="absolute bottom-6 left-6 right-6"
+                    className="absolute bottom-6 left-6 right-6 pointer-events-auto"
                   >
                     <div className="bg-gradient-to-r from-primary/10 to-primary-light/10 backdrop-blur-sm border border-primary/20 rounded-2xl p-4 sm:p-6 text-center">
                       <h5 className="text-lg font-fraunces font-semibold text-text-primary mb-2">
