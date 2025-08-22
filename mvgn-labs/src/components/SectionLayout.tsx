@@ -34,11 +34,11 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
   const getPaddingClasses = () => {
     switch (padding) {
       case 'small':
-        return 'py-12 sm:py-16 md:py-20 lg:py-24';
+        return 'py-8 sm:py-12 md:py-16 lg:py-20';
       case 'large':
-        return 'py-20 sm:py-24 md:py-28 lg:py-32';
-      default:
         return 'py-16 sm:py-20 md:py-24 lg:py-28';
+      default:
+        return 'py-8 sm:py-12 md:py-16 lg:py-20';
     }
   };
 
@@ -85,7 +85,7 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24"
+          className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-6 sm:mb-8 leading-tight px-4">
             {title}

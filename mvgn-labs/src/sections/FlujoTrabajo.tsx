@@ -138,7 +138,7 @@ const FlujoTrabajo: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 sm:mb-20"
+          className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-6 sm:mb-8 leading-tight px-4">
             Mi <span className="text-gradient">Flujo de Trabajo</span>
@@ -154,7 +154,7 @@ const FlujoTrabajo: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-16 sm:mb-20"
+          className="mb-12 sm:mb-16"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {workflowSteps.map((step, index) => (
@@ -204,9 +204,9 @@ const FlujoTrabajo: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-16 sm:mb-20"
+          className="mb-12 sm:mb-16"
         >
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary mb-4">
               ¿Por qué este flujo funciona?
             </h3>
