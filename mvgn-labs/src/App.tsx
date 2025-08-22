@@ -11,6 +11,7 @@ import ZonaTrabajo from './sections/ZonaTrabajo';
 import Contacto from './sections/Contacto';
 import Footer from './components/Footer';
 import BackgroundLines from './components/BackgroundLines';
+import ScrollToTop from './components/ScrollToTop';
 
 const AppContent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -71,6 +72,9 @@ const AppContent: React.FC = () => {
           
           {/* Footer */}
           <Footer />
+          
+          {/* Scroll to Top Button */}
+          <ScrollToTop />
         </>
       )}
     </div>

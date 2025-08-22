@@ -33,6 +33,10 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       {/* Navbar Principal - Desktop */}
@@ -48,15 +52,20 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
       >
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+            {/* Logo MVGN Labs */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 cursor-pointer"
+              onClick={scrollToTop}
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-base">M</span>
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
+                <img 
+                  src="/assets/favicon.png" 
+                  alt="MVGN Labs Logo" 
+                  className="w-8 h-8 object-contain"
+                />
               </div>
-              <span className="text-white font-fraunces font-bold text-xl">
+              <span className="text-white font-fraunces font-bold text-2xl">
                 Mvgn Labs
               </span>
             </motion.div>
@@ -68,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
                   key={item.href}
                   whileHover={{ y: -2 }}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium text-base px-3 py-2 rounded-lg hover:bg-white/10"
+                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium text-base px-4 py-2 rounded-lg hover:bg-white/10 hover:shadow-lg"
                 >
                   {item.label}
                 </motion.button>

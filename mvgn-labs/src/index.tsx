@@ -1,13 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './styles/globals.css'
-import { ThemeProvider } from './contexts/ThemeContext'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './styles/globals.css';
+import App from './App';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+// Bootstrap JavaScript
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+
+root.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
-)
+    <App />
+  </React.StrictMode>
+);
