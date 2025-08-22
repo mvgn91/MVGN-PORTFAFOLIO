@@ -1,20 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ChevronDown, ArrowRight, Download, Mail } from 'lucide-react';
 import { scrollToSection } from '../lib/utils';
-import BackgroundLines from '../components/BackgroundLines';
 
 const Hero: React.FC = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-bg-primary">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-bg-primary px-4">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradiente de fondo sutil */}
         <div className="absolute inset-0 bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-tertiary" />
         
-        {/* Elementos decorativos */}
+        {/* Elementos decorativos - Optimizados para móvil */}
         <motion.div
-          className="absolute top-20 -right-20 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-primary/5 rounded-full blur-3xl"
+          className="absolute top-16 -right-16 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-primary/5 rounded-full blur-2xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -26,7 +25,7 @@ const Hero: React.FC = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 -left-20 w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 bg-primary-light/5 rounded-full blur-3xl"
+          className="absolute bottom-16 -left-16 w-28 h-28 sm:w-40 sm:h-40 md:w-56 md:h-56 bg-primary-light/5 rounded-full blur-2xl"
           animate={{
             scale: [1.1, 1, 1.1],
             opacity: [0.5, 0.3, 0.5],
@@ -40,93 +39,135 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Líneas geométricas de fondo */}
-      <BackgroundLines className="opacity-20" />
+      <div className="container relative z-10 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center justify-center min-h-screen text-center space-y-8 md:space-y-12">
+          
+          {/* Profile Image - Móvil First */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, type: "spring" }}
+            className="relative"
+          >
+            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
+              <img
+                src="/assets/profile.jpg"
+                alt="Armando Ibañez - MVGN Labs"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Badge de estado */}
+            <div className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-full border-2 border-bg-primary flex items-center justify-center">
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full animate-pulse"></div>
+            </div>
+          </motion.div>
 
-      <div className="container relative z-10">
-        <div className="flex items-center justify-center min-h-screen">
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl sm:max-w-5xl md:max-w-6xl mx-auto space-y-6 sm:space-y-8 px-4"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6 md:space-y-8"
           >
             {/* Greeting */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-4 sm:space-y-6"
-            >
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary font-semibold tracking-wide">
+            <div className="space-y-3 md:space-y-4">
+              <p className="text-lg sm:text-xl md:text-2xl text-primary font-semibold tracking-wide">
                 ¡Hola! Soy
               </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-fraunces font-bold text-text-primary leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-fraunces font-bold text-text-primary leading-tight">
                 Armando{' '}
-                <span className="text-gradient">Ibañez</span>
+                <span className="text-gradient bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+                  Ibañez
+                </span>
               </h1>
-            </motion.div>
+            </div>
 
-            {/* Profession */}
+            {/* Brand */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-4 sm:space-y-6"
+              className="inline-block"
             >
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-poppins font-medium text-text-secondary leading-relaxed">
+              <span className="inline-flex items-center px-4 py-2 bg-surface-secondary/50 backdrop-blur-sm rounded-full border border-border-primary text-text-secondary text-sm sm:text-base font-medium">
+                <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+                MVGN Labs
+              </span>
+            </motion.div>
+
+            {/* Profession */}
+            <div className="space-y-4 md:space-y-6">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-poppins font-medium text-text-secondary leading-relaxed max-w-2xl mx-auto">
                 Desarrollador Web y{' '}
                 <span className="text-primary font-semibold">Técnico en Computación</span>
               </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-text-tertiary max-w-3xl sm:max-w-4xl mx-auto leading-relaxed px-4">
-                Transformando ideas en soluciones tecnológicas que generan resultados reales
+              <p className="text-base sm:text-lg md:text-xl text-text-tertiary max-w-2xl mx-auto leading-relaxed px-2">
+                Transformando ideas en soluciones tecnológicas que generan resultados reales para mis clientes
               </p>
-            </motion.div>
+            </div>
 
-            {/* CTA Buttons */}
+            {/* Stats - Solo en móvil */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-6"
+              className="flex justify-center space-x-6 md:hidden"
+            >
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">15+</div>
+                <div className="text-xs text-text-tertiary">Proyectos</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">8+</div>
+                <div className="text-xs text-text-tertiary">Clientes</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">2+</div>
+                <div className="text-xs text-text-tertiary">Años</div>
+              </div>
+            </motion.div>
+
+            {/* CTA Buttons - Optimizados para móvil */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4"
             >
               <button
                 onClick={() => scrollToSection('contacto')}
-                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px] sm:min-h-[48px]"
+                className="w-full sm:w-auto bg-gradient-to-r from-primary to-primary-light text-white px-8 py-4 rounded-xl font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 min-h-[48px]"
               >
-                <span className="hidden sm:inline">Contáctame</span>
-                <span className="sm:hidden">Contacto</span>
-                <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
+                <Mail size={20} />
+                <span>Contáctame</span>
               </button>
               <button
                 onClick={() => scrollToSection('proyectos')}
-                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px] sm:min-h-[48px]"
+                className="w-full sm:w-auto bg-transparent border-2 border-border-primary text-text-primary px-8 py-4 rounded-xl font-semibold text-base hover:bg-surface-secondary/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 min-h-[48px]"
               >
-                <span className="hidden sm:inline">Ver Proyectos</span>
-                <span className="sm:hidden">Proyectos</span>
-                <ChevronDown className="icon group-hover:translate-y-1 transition-transform" />
+                <span>Ver Proyectos</span>
+                <ChevronDown size={20} />
               </button>
             </motion.div>
           </motion.div>
-        </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2"
-        >
+          {/* Scroll Indicator - Solo en desktop */}
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-text-tertiary hover:text-text-secondary cursor-pointer transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-            onClick={() => scrollToSection('sobre-mi')}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block"
           >
-            <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" />
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-text-tertiary hover:text-text-secondary cursor-pointer transition-colors w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-secondary/50"
+              onClick={() => scrollToSection('sobre-mi')}
+            >
+              <ChevronDown size={24} />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

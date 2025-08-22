@@ -10,7 +10,6 @@ import {
   Clock,
   ExternalLink
 } from 'lucide-react';
-import BackgroundLines from '../components/BackgroundLines';
 
 const Contacto: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -113,29 +112,31 @@ const Contacto: React.FC = () => {
     }
   ];
 
-  const socialLinks = [
+  const quickActions = [
     {
       name: 'WhatsApp',
       url: 'https://wa.me/523322621939',
       icon: MessageSquare,
       color: 'from-green-500 to-emerald-500',
-      description: 'Chat directo'
+      description: 'Chat directo',
+      isPrimary: true
     },
     {
       name: 'Email',
       url: 'mailto:jazzfatale@gmail.com',
       icon: Mail,
       color: 'from-blue-500 to-cyan-500',
-      description: 'Correo electrónico'
+      description: 'Correo electrónico',
+      isPrimary: false
     }
   ];
 
   return (
-    <section className="section relative overflow-hidden">
+    <section className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute bottom-40 -left-40 w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 bg-primary/5 rounded-full blur-3xl"
+          className="absolute bottom-40 -left-40 w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 bg-primary/5 rounded-full blur-2xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -148,34 +149,86 @@ const Contacto: React.FC = () => {
         />
       </div>
 
-      {/* Líneas geométricas de fondo */}
-      <BackgroundLines className="opacity-20" />
-
-      <div className="container relative z-10">
+      <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 sm:mb-20"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-6 sm:mb-8 leading-tight px-4">
-            Hablemos de tu <span className="text-gradient">Proyecto</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-fraunces font-bold text-text-primary mb-6 leading-tight">
+            Hablemos de tu <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Proyecto</span>
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
             Estoy aquí para ayudarte a transformar tus ideas en realidad. 
             Contáctame y conversemos sobre cómo puedo impulsar tu negocio
           </p>
         </motion.div>
 
-        {/* Métodos de Contacto */}
+        {/* Quick Actions - Móvil First */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-16 sm:mb-20"
+          className="mb-8 md:mb-12"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {quickActions.map((action, index) => (
+              <motion.a
+                key={action.name}
+                href={action.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`group flex items-center gap-4 p-4 md:p-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-xl min-h-[60px] ${
+                  action.isPrimary 
+                    ? 'bg-gradient-to-r from-primary to-primary-light text-white' 
+                    : 'bg-gradient-to-br from-surface-primary to-surface-secondary border border-border-primary hover:border-primary/30'
+                }`}
+              >
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform ${
+                  action.isPrimary 
+                    ? 'bg-white/20' 
+                    : `bg-gradient-to-br ${action.color}`
+                }`}>
+                  <action.icon className={`w-6 h-6 ${
+                    action.isPrimary ? 'text-white' : 'text-white'
+                  }`} />
+                </div>
+                <div className="flex-1">
+                  <div className={`font-semibold text-base md:text-lg ${
+                    action.isPrimary ? 'text-white' : 'text-text-primary'
+                  }`}>
+                    {action.name}
+                  </div>
+                  <div className={`text-sm ${
+                    action.isPrimary ? 'text-white/80' : 'text-text-tertiary'
+                  }`}>
+                    {action.description}
+                  </div>
+                </div>
+                <ExternalLink className={`w-5 h-5 ${
+                  action.isPrimary ? 'text-white/80' : 'text-text-tertiary'
+                } group-hover:scale-110 transition-transform`} />
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Métodos de Contacto - Simplificados para móvil */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mb-12 md:mb-16"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {contactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
@@ -189,18 +242,18 @@ const Contacto: React.FC = () => {
                   }
                 }}
               >
-                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-2xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:border-primary/30 hover:shadow-xl">
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform`}>
-                    <method.icon className="icon-xl sm:icon-2xl text-white" />
+                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-2xl p-4 md:p-6 h-full transition-all duration-300 hover:scale-105 hover:border-primary/30 hover:shadow-xl">
+                  <div className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                    <method.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
                   </div>
-                  <h3 className="text-text-primary font-semibold text-center mb-2 text-base sm:text-lg">
+                  <h3 className="text-text-primary font-semibold text-center mb-2 text-base md:text-lg">
                     {method.title}
                   </h3>
                   <div className="text-center space-y-2">
-                    <p className="text-primary font-medium text-sm sm:text-base">
+                    <p className="text-primary font-medium text-sm md:text-base">
                       {method.value}
                     </p>
-                    <p className="text-text-tertiary text-xs sm:text-sm">
+                    <p className="text-text-tertiary text-xs md:text-sm">
                       {method.description}
                     </p>
                   </div>
@@ -210,142 +263,152 @@ const Contacto: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Formulario y Información */}
+        {/* Formulario - Móvil First */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-16 sm:mb-20"
+          className="mb-12 md:mb-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            {/* Formulario */}
-            <div className="space-y-6 sm:space-y-8">
-              <div>
-                <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary mb-4 sm:mb-6">
-                  Envíame un Mensaje
-                </h3>
-                <p className="text-text-secondary leading-relaxed text-sm sm:text-base">
-                  Cuéntame sobre tu proyecto y te responderé con una propuesta personalizada 
-                  que se adapte a tus necesidades y objetivos
-                </p>
-              </div>
-
-              {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6 sm:p-8 text-center"
-                >
-                  <CheckCircle className="icon-xl sm:icon-2xl text-green-500 mx-auto mb-4" />
-                  <h4 className="text-text-primary font-semibold text-lg sm:text-xl mb-2">
-                    ¡Mensaje Enviado!
-                  </h4>
-                  <p className="text-text-secondary text-sm sm:text-base">
-                    Gracias por contactarme. Te responderé en las próximas 24 horas.
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
-                      Nombre Completo *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 text-sm sm:text-base min-h-[44px] ${
-                        errors.name ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
-                      }`}
-                      placeholder="Tu nombre completo"
-                    />
-                    {errors.name && (
-                      <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 text-sm sm:text-base min-h-[44px] ${
-                        errors.email ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
-                      }`}
-                      placeholder="tu@email.com"
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
-                      Mensaje *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={5}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 resize-none text-sm sm:text-base min-h-[44px] ${
-                        errors.message ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
-                      }`}
-                      placeholder="Cuéntame sobre tu proyecto, objetivos y cualquier detalle importante..."
-                    />
-                    {errors.message && (
-                      <p className="text-red-500 text-xs mt-1">{errors.message}</p>
-                    )}
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="btn btn-primary btn-lg sm:btn-xl group w-full min-h-[44px]"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                        <span className="hidden sm:inline">Enviando Mensaje...</span>
-                        <span className="sm:hidden">Enviando...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="hidden sm:inline">Enviar Mensaje</span>
-                        <span className="sm:hidden">Enviar</span>
-                        <Send className="icon group-hover:translate-x-1 transition-transform" />
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
+          <div className="max-w-2xl mx-auto">
+            {/* Form Header */}
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-fraunces font-semibold text-text-primary mb-4">
+                Envíame un Mensaje
+              </h3>
+              <p className="text-text-secondary leading-relaxed text-base md:text-lg">
+                Cuéntame sobre tu proyecto y te responderé con una propuesta personalizada 
+                que se adapte a tus necesidades y objetivos
+              </p>
             </div>
 
-            {/* Información Adicional */}
-            <div className="space-y-6 sm:space-y-8">
-              <div>
-                <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary mb-4 sm:mb-6">
+            {/* Success Message */}
+            {isSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6 md:p-8 text-center"
+              >
+                <CheckCircle className="w-12 h-12 md:w-16 md:h-16 text-green-500 mx-auto mb-4" />
+                <h4 className="text-text-primary font-semibold text-lg md:text-xl mb-2">
+                  ¡Mensaje Enviado!
+                </h4>
+                <p className="text-text-secondary text-base">
+                  Gracias por contactarme. Te responderé en las próximas 24 horas.
+                </p>
+              </motion.div>
+            ) : (
+              /* Contact Form */
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-text-primary font-medium mb-2 text-sm">
+                    Nombre Completo *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className={`w-full px-4 py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 text-base min-h-[48px] ${
+                      errors.name ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
+                    }`}
+                    placeholder="Tu nombre completo"
+                  />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-text-primary font-medium mb-2 text-sm">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className={`w-full px-4 py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 text-base min-h-[48px] ${
+                      errors.email ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
+                    }`}
+                    placeholder="tu@email.com"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-text-primary font-medium mb-2 text-sm">
+                    Mensaje *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={5}
+                    className={`w-full px-4 py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 resize-none text-base min-h-[48px] ${
+                      errors.message ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
+                    }`}
+                    placeholder="Cuéntame sobre tu proyecto, objetivos y cualquier detalle importante..."
+                  />
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-primary to-primary-light text-white px-6 py-3 rounded-xl font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <span>Enviando Mensaje...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Enviar Mensaje</span>
+                      <Send className="w-5 h-5" />
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Información Adicional - Solo en desktop */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="hidden lg:block"
+        >
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Why Choose Me */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-fraunces font-semibold text-text-primary mb-6">
                   ¿Por qué elegirme?
                 </h3>
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="text-text-primary font-semibold text-sm sm:text-base mb-1">
+                      <h4 className="text-text-primary font-semibold text-base mb-1">
                         Respuesta Rápida
                       </h4>
-                      <p className="text-text-tertiary text-xs sm:text-sm">
+                      <p className="text-text-tertiary text-sm">
                         Te respondo en menos de 24 horas con una propuesta personalizada
                       </p>
                     </div>
@@ -353,10 +416,10 @@ const Contacto: React.FC = () => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="text-text-primary font-semibold text-sm sm:text-base mb-1">
+                      <h4 className="text-text-primary font-semibold text-base mb-1">
                         Comunicación Clara
                       </h4>
-                      <p className="text-text-tertiary text-xs sm:text-sm">
+                      <p className="text-text-tertiary text-sm">
                         Mantengo una comunicación constante durante todo el proyecto
                       </p>
                     </div>
@@ -364,10 +427,10 @@ const Contacto: React.FC = () => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="text-text-primary font-semibold text-sm sm:text-base mb-1">
+                      <h4 className="text-text-primary font-semibold text-base mb-1">
                         Resultados Garantizados
                       </h4>
-                      <p className="text-text-tertiary text-xs sm:text-sm">
+                      <p className="text-text-tertiary text-sm">
                         Me comprometo a entregar resultados que superen tus expectativas
                       </p>
                     </div>
@@ -375,48 +438,20 @@ const Contacto: React.FC = () => {
                 </div>
               </div>
 
-              {/* Links de Contacto Directo */}
-              <div className="space-y-4">
-                <h4 className="text-text-primary font-semibold text-lg">Contacto Directo</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {socialLinks.map((link, index) => {
-                    const IconComponent = link.icon;
-                    return (
-                      <motion.a
-                        key={link.name}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="group flex items-center gap-3 p-4 bg-gradient-to-br from-surface-primary to-surface-secondary border border-border-primary rounded-2xl hover:border-primary/50 hover:shadow-xl transition-all duration-300 min-h-[44px]"
-                      >
-                        <div className={`w-10 h-10 bg-gradient-to-br ${link.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                          <IconComponent className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <div className="text-text-primary font-semibold text-sm">{link.name}</div>
-                          <div className="text-text-tertiary text-xs">{link.description}</div>
-                        </div>
-                        <ExternalLink className="w-4 h-4 text-text-tertiary group-hover:text-primary transition-colors ml-auto" />
-                      </motion.a>
-                    );
-                  })}
+              {/* Response Time Info */}
+              <div className="space-y-6">
+                <div className="bg-gradient-to-br from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Clock className="w-6 h-6 text-primary" />
+                    <h4 className="text-text-primary font-semibold text-lg">
+                      Tiempo de Respuesta
+                    </h4>
+                  </div>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    Normalmente respondo en <span className="text-primary font-semibold">menos de 24 horas</span>. 
+                    Para proyectos urgentes, puedo priorizar tu solicitud.
+                  </p>
                 </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-4 sm:p-6">
-                <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                  <Clock className="icon-lg text-primary" />
-                  <h4 className="text-text-primary font-semibold text-base sm:text-lg">
-                    Tiempo de Respuesta
-                  </h4>
-                </div>
-                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                  Normalmente respondo en <span className="text-primary font-semibold">menos de 24 horas</span>. 
-                  Para proyectos urgentes, puedo priorizar tu solicitud.
-                </p>
               </div>
             </div>
           </div>
