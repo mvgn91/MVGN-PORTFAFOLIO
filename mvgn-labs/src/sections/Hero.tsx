@@ -75,9 +75,9 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-poppins font-medium text-text-secondary leading-relaxed">
-                Desarrollador Web &{' '}
-                <span className="text-primary font-semibold">Diseñador Digital</span>
+              <h2 className="text-xl md:text-3xl lg:text-4xl font-poppins font-medium text-text-secondary leading-relaxed">
+                Desarrollador Web y{' '}
+                <span className="text-primary font-semibold">Técnico en Computación</span>
               </h2>
               <p className="text-lg md:text-xl lg:text-2xl text-text-tertiary max-w-4xl mx-auto leading-relaxed px-4">
                 Transformando ideas en soluciones tecnológicas que generan resultados reales
