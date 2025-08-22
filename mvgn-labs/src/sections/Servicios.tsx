@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Globe, 
   Palette, 
@@ -10,7 +10,8 @@ import {
   Search,
   ArrowRight,
   Database,
-  Zap
+  Zap,
+  X
 } from 'lucide-react';
 
 import BackgroundLines from '../components/BackgroundLines';
@@ -100,10 +101,10 @@ const Servicios: React.FC = () => {
           className="absolute top-40 -left-40 w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.2, 0.3, 0.2],
           }}
           transition={{
-            duration: 7,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -119,22 +120,22 @@ const Servicios: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 sm:mb-20"
+          className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-6 sm:mb-8 leading-tight px-4">
             Mis <span className="text-gradient">Servicios</span>
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4">
-            Soluciones integrales que combinan creatividad, tecnología y resultados medibles para impulsar tu negocio
+            Soluciones tecnológicas integrales que transforman tu negocio digital
           </p>
         </motion.div>
 
-        {/* Servicios Principales - Grid uniforme */}
+        {/* Grid de Servicios */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-16 sm:mb-20"
+          className="mb-12 sm:mb-16"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {services.map((service, index) => (
@@ -143,40 +144,30 @@ const Servicios: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group cursor-pointer"
+                className="group"
               >
-                <div className={`${service.bgColor} ${service.borderColor} border-2 rounded-2xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-primary/50`}>
-                  {/* Header del Servicio */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-                    <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                      <service.icon className="icon-lg sm:icon-xl text-white" />
-                    </div>
-                    <div className="text-center sm:text-left">
-                      <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary mb-1">
-                        {service.title}
-                      </h3>
-                      <p className="text-primary/80 font-medium text-sm sm:text-base">
-                        {service.subtitle}
-                      </p>
-                    </div>
+                <div className={`bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-2xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl ${service.bgColor} ${service.borderColor}`}>
+                  <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                    <service.icon className="icon-xl text-white" />
                   </div>
                   
-                  {/* Descripción */}
-                  <p className="text-text-secondary leading-relaxed mb-6 text-sm sm:text-base">
+                  <h3 className="text-xl font-fraunces font-semibold text-text-primary mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-text-secondary text-sm mb-4 leading-relaxed">
+                    {service.subtitle}
+                  </p>
+                  <p className="text-text-tertiary text-sm leading-relaxed mb-6">
                     {service.description}
                   </p>
                   
-                  {/* Características */}
-                  <div className="mb-6">
-                    <h4 className="text-text-primary font-semibold mb-3 text-sm sm:text-base">Características:</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-text-tertiary">
-                          <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                          <span className="line-clamp-1">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-sm text-text-secondary">
+                        <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></div>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </motion.div>
@@ -184,24 +175,24 @@ const Servicios: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Tech Stack Showcase */}
+        {/* Stack Tecnológico */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-16 sm:mb-20"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-12 sm:mb-16"
         >
-          <div className="text-center mb-12 sm:mb-16">
-            <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary mb-4 sm:mb-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary mb-4">
               Stack Tecnológico
             </h3>
-            <p className="text-text-tertiary text-base sm:text-lg max-w-2xl mx-auto px-4">
-              Tecnologías y herramientas que utilizo para crear soluciones excepcionales
+            <p className="text-text-secondary text-lg max-w-2xl mx-auto px-4">
+              Selecciona una categoría para explorar las tecnologías y habilidades específicas
             </p>
           </div>
           
           {/* Grid de Tecnologías - Uniforme */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {technologyGroups.map((group, index) => (
               <motion.div
                 key={group.title}
@@ -230,54 +221,105 @@ const Servicios: React.FC = () => {
               </motion.div>
             ))}
           </div>
-          
-          {/* Panel de Tecnologías Detalladas */}
-          {selectedTech && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-md border border-border-primary rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto"
-            >
-              <div className="text-center mb-6 sm:mb-8">
-                <h4 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary mb-2">
-                  {selectedTech}
-                </h4>
-                <p className="text-text-tertiary text-sm sm:text-base">
-                  {technologyGroups.find(group => group.title === selectedTech)?.description}
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {technologyGroups
-                  .find(group => group.title === selectedTech)
-                  ?.technologies.map((tech, index) => (
-                    <motion.div
-                      key={tech}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="bg-gradient-to-r from-primary/10 to-primary-light/10 border border-primary/20 rounded-xl p-3 sm:p-4 hover:bg-primary/20 transition-all duration-300"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-primary rounded-full flex-shrink-0"></div>
-                        <span className="text-text-primary font-medium text-sm sm:text-base">{tech}</span>
-                      </div>
-                    </motion.div>
-                  ))}
-              </div>
-              
-              <div className="text-center mt-6 sm:mt-8">
-                <button
-                  onClick={() => setSelectedTech(null)}
-                  className="text-text-tertiary hover:text-text-secondary transition-colors text-sm"
-                >
-                  ← Volver a categorías
-                </button>
-              </div>
-            </motion.div>
-          )}
         </motion.div>
+
+        {/* Overlay de Tecnologías Detalladas - Estilo Samsung Apps */}
+        <AnimatePresence>
+          {selectedTech && (
+            <>
+              {/* Fondo difuminado */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-black/60 backdrop-blur-md z-40"
+                onClick={() => setSelectedTech(null)}
+              />
+              
+              {/* Panel de tecnologías al frente */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 50 }}
+                transition={{ 
+                  duration: 0.4,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30
+                }}
+                className="fixed inset-4 sm:inset-8 md:inset-16 lg:inset-24 xl:inset-32 z-50 overflow-hidden"
+              >
+                <div className="relative w-full h-full bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-xl border border-border-primary rounded-3xl shadow-2xl overflow-hidden">
+                  {/* Header del panel */}
+                  <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary/20 to-primary-light/20 backdrop-blur-sm border-b border-border-primary/30 p-4 sm:p-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className={`w-12 h-12 bg-gradient-to-br ${
+                          technologyGroups.find(group => group.title === selectedTech)?.color
+                        } rounded-2xl flex items-center justify-center`}>
+                          {React.createElement(
+                            technologyGroups.find(group => group.title === selectedTech)?.icon || Code,
+                            { className: "icon-lg text-white" }
+                          )}
+                        </div>
+                        <div>
+                          <h4 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary">
+                            {selectedTech}
+                          </h4>
+                          <p className="text-text-secondary text-sm">
+                            {technologyGroups.find(group => group.title === selectedTech)?.description}
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setSelectedTech(null)}
+                        className="w-10 h-10 bg-surface-secondary/50 hover:bg-surface-secondary border border-border-primary rounded-xl flex items-center justify-center text-text-tertiary hover:text-text-primary transition-all duration-300 hover:scale-110"
+                      >
+                        <X className="icon" />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Contenido del panel */}
+                  <div className="pt-24 sm:pt-28 p-4 sm:p-6 h-full overflow-y-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                      {technologyGroups
+                        .find(group => group.title === selectedTech)
+                        ?.technologies.map((tech, index) => (
+                          <motion.div
+                            key={tech}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className="group"
+                          >
+                            <div className="bg-gradient-to-r from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-4 sm:p-6 hover:bg-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                              <div className="flex items-center gap-4">
+                                <div className="w-3 h-3 bg-primary rounded-full flex-shrink-0 group-hover:scale-125 transition-transform"></div>
+                                <span className="text-text-primary font-medium text-base sm:text-lg">{tech}</span>
+                              </div>
+                            </div>
+                          </motion.div>
+                        ))}
+                    </div>
+                    
+                    {/* Información adicional */}
+                    <div className="mt-8 sm:mt-12 p-6 bg-gradient-to-r from-primary/5 to-primary-light/5 border border-primary/20 rounded-2xl">
+                      <h5 className="text-lg font-fraunces font-semibold text-text-primary mb-3">
+                        Experiencia en {selectedTech}
+                      </h5>
+                      <p className="text-text-secondary text-sm leading-relaxed">
+                        He aplicado estas tecnologías en proyectos reales, asegurando la más alta calidad y rendimiento. 
+                        Cada herramienta es seleccionada cuidadosamente para maximizar la eficiencia y resultados.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
 
         {/* Call to Action */}
         <motion.div
