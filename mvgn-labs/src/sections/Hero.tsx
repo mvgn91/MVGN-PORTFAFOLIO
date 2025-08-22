@@ -42,14 +42,14 @@ const Hero: React.FC = () => {
       <div className="container relative z-10 max-w-4xl mx-auto">
         <div className="flex flex-col items-center justify-center min-h-screen text-center space-y-8 md:space-y-12">
           
-          {/* Profile Image - Móvil First */}
+          {/* Profile Image - Solo en desktop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: "spring" }}
-            className="relative"
+            className="relative hidden md:block"
           >
-            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
               <img
                 src="/assets/profile.jpg"
                 alt="Armando Ibañez - MVGN Labs"
@@ -57,8 +57,8 @@ const Hero: React.FC = () => {
               />
             </div>
             {/* Badge de estado */}
-            <div className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-full border-2 border-bg-primary flex items-center justify-center">
-              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full animate-pulse"></div>
+            <div className="absolute -bottom-2 -right-2 w-6 h-6 md:w-8 md:h-8 bg-primary rounded-full border-2 border-bg-primary flex items-center justify-center">
+              <div className="w-2 h-2 md:w-3 md:h-3 bg-white rounded-full animate-pulse"></div>
             </div>
           </motion.div>
 
