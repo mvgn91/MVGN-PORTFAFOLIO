@@ -233,7 +233,15 @@ const Servicios: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group cursor-pointer"
-                onClick={() => setSelectedTech(group.title)}
+                onClick={() => {
+                  // Si ya hay una categoría seleccionada y es diferente, cambiar directamente
+                  if (selectedTech && selectedTech !== group.title) {
+                    setSelectedTech(group.title);
+                  } else {
+                    // Si no hay categoría seleccionada o es la misma, alternar
+                    setSelectedTech(selectedTech === group.title ? null : group.title);
+                  }
+                }}
               >
                 <div className={`bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border-2 rounded-2xl p-4 sm:p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                   selectedTech === group.title 
