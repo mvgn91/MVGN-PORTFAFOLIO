@@ -1,113 +1,98 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Calendar, 
   MapPin, 
-  Building2, 
-  Target, 
-  Code2, 
-  ArrowRight,
-  Star,
-  TrendingUp,
+  ArrowRight, 
+  CheckCircle,
+  Briefcase,
   Award,
-  Zap
+  Users,
+  TrendingUp
 } from 'lucide-react';
 import BackgroundLines from '../components/BackgroundLines';
 
 const Experiencia: React.FC = () => {
   const [activeExperience, setActiveExperience] = useState(0);
 
-  const experiences = [
+  const stats = [
     {
-      title: 'Freelancer - Consultor Tecnológico y Diseñador',
-      company: 'MVGN Labs',
-      period: 'Feb 2024 - Actual',
-      location: 'Guadalajara, Jalisco',
-      description: 'Servicios independientes de asesoría tecnológica, reparación de computadoras, desarrollo web y diseño digital. Trabajo con múltiples clientes ofreciendo soluciones personalizadas en tecnología y comunicación.',
-      achievements: [
-        'Desarrollo de sitios web corporativos y catálogos digitales',
-        'Asesorías para uso óptimo de computadoras y tecnología',
-        'Servicios de reparación y optimización de equipos',
-        'Diseño de identidad visual y material publicitario',
-        'Soporte técnico remoto y presencial'
-      ],
-      skills: ['React.js', 'Diseño Web', 'Reparación PC', 'Consultoría Tech', 'Adobe Creative', 'Soporte Remoto'],
-      icon: Zap,
-      color: 'from-purple-500 to-blue-500',
-      bgColor: 'bg-purple-500/10',
-      borderColor: 'border-purple-500/20',
-      status: 'Activo'
+      icon: Briefcase,
+      number: '5+',
+      label: 'Años de Experiencia',
+      description: 'En desarrollo web y diseño digital'
     },
     {
-      title: 'Consultor de Tecnologías y Marketing',
-      company: 'Pietrafina',
-      period: 'Feb 2024 - Actual',
-      location: 'Guadalajara, Jalisco',
-      description: 'Coordinación, desarrollo y gestión de contenido y publicidad para página web y redes sociales. Asesoría en uso de tecnologías, servicios de reparación y actualización de equipos electrónicos.',
-      achievements: [
-        'Desarrollo y mantenimiento del sitio web corporativo',
-        'Gestión de contenido y publicidad digital',
-        'Asesoría tecnológica integral para la empresa',
-        'Producción de contenido para YouTube "Sabor y Salud"'
-      ],
-      skills: ['React.js', 'Marketing Digital', 'SEO', 'Diseño Web', 'Producción de Video'],
-      icon: Target,
-      color: 'from-red-500 to-pink-500',
-      bgColor: 'bg-red-500/10',
-      borderColor: 'border-red-500/20',
-      status: 'Activo'
+      icon: Users,
+      number: '25+',
+      label: 'Clientes Satisfechos',
+      description: 'Proyectos exitosos entregados'
     },
     {
-      title: 'Técnico Reparador Express y Ventas',
-      company: 'CompuCenter7',
-      period: '2022 - 2024',
-      location: 'Guadalajara, Jalisco',
-      description: 'Diagnóstico y reparación de computadoras, venta de consumibles y accesorios, diseño de publicidad y atención a clientes.',
-      achievements: [
-        'Diagnóstico y reparación de equipos informáticos',
-        'Ventas y atención al cliente',
-        'Diseño de material publicitario'
-      ],
-      skills: ['Reparación PC', 'Ventas', 'Diseño Gráfico', 'Atención al Cliente'],
-      icon: Code2,
-      color: 'from-orange-500 to-yellow-500',
-      bgColor: 'bg-orange-500/10',
-      borderColor: 'border-orange-500/20',
-      status: 'Completado'
+      icon: Award,
+      number: '100%',
+      label: 'Proyectos Completados',
+      description: 'Cumplimiento de objetivos'
     },
     {
-      title: 'Auxiliar Administrativo y Rastreo GPS',
-      company: 'Empresa de Importación',
-      period: '2020 - 2022',
-      location: 'Guadalajara, Jalisco',
-      description: 'Revisión y clasificación de documentos, seguimiento de rutas, capacitación en tecnología para operadores de transporte.',
-      achievements: [
-        'Gestión administrativa y documental',
-        'Seguimiento de operaciones logísticas',
-        'Capacitación tecnológica'
-      ],
-      skills: ['Administración', 'Logística', 'Capacitación', 'GPS'],
-      icon: Building2,
-      color: 'from-blue-500 to-cyan-500',
-      bgColor: 'bg-blue-500/10',
-      borderColor: 'border-blue-500/20',
-      status: 'Completado'
+      icon: TrendingUp,
+      number: '3x',
+      label: 'Crecimiento Promedio',
+      description: 'En conversiones de clientes'
     }
   ];
 
-  const stats = [
-    { label: 'Años de Experiencia', value: '4+', icon: Calendar, color: 'text-primary' },
-    { label: 'Proyectos Freelance', value: '20+', icon: Star, color: 'text-primary-light' },
-    { label: 'Clientes Activos', value: '12+', icon: TrendingUp, color: 'text-green-400' },
-    { label: 'Servicios Ofrecidos', value: '8+', icon: Zap, color: 'text-blue-400' }
+  const experiences = [
+    {
+      title: 'Desarrollador Web Senior',
+      company: 'Freelance',
+      period: '2022 - Presente',
+      location: 'Guadalajara, México',
+      description: 'Desarrollo de soluciones web completas para empresas de diversos sectores, desde sitios corporativos hasta aplicaciones complejas.',
+      achievements: [
+        'Implementación de CRM personalizado para PietraFina con Firebase',
+        'Diseño y desarrollo de sitios web corporativos responsivos',
+        'Optimización SEO que aumentó el tráfico orgánico en un 200%',
+        'Integración de APIs de terceros y sistemas de pago'
+      ],
+      technologies: ['React.js', 'Firebase', 'Node.js', 'Tailwind CSS', 'SEO']
+    },
+    {
+      title: 'Diseñador Digital',
+      company: 'Agencia Creativa',
+      period: '2020 - 2022',
+      location: 'Guadalajara, México',
+      description: 'Creación de identidades visuales y materiales de marketing para empresas locales y nacionales.',
+      achievements: [
+        'Diseño de identidades de marca para 15+ empresas',
+        'Creación de catálogos digitales interactivos',
+        'Desarrollo de estrategias de branding',
+        'Diseño de materiales promocionales y publicitarios'
+      ],
+      technologies: ['Adobe Creative Suite', 'Branding', 'Diseño Editorial', 'Marketing Digital']
+    },
+    {
+      title: 'Técnico en Sistemas',
+      company: 'Empresa de Tecnología',
+      period: '2018 - 2020',
+      location: 'Guadalajara, México',
+      description: 'Soporte técnico y mantenimiento de sistemas informáticos para empresas del sector tecnológico.',
+      achievements: [
+        'Mantenimiento de 50+ equipos informáticos',
+        'Instalación y configuración de redes',
+        'Soporte remoto y presencial',
+        'Optimización de sistemas operativos'
+      ],
+      technologies: ['Windows', 'Linux', 'Redes', 'Hardware', 'Software']
+    }
   ];
 
   return (
-    <section id="experiencia" className="relative overflow-hidden">
+    <section className="section relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 -left-20 w-60 h-60 sm:w-80 sm:h-80 bg-primary/5 rounded-full blur-3xl"
+          className="absolute top-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -118,23 +103,10 @@ const Experiencia: React.FC = () => {
             ease: "easeInOut"
           }}
         />
-        <motion.div
-          className="absolute bottom-20 -right-20 w-60 h-60 sm:w-80 sm:h-80 bg-primary-light/5 rounded-full blur-3xl"
-          animate={{
-            scale: [1.1, 1, 1.1],
-            opacity: [0.5, 0.3, 0.5],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
       </div>
 
       {/* Líneas geométricas de fondo */}
-      <BackgroundLines className="opacity-25" />
+      <BackgroundLines className="opacity-20" />
 
       <div className="container relative z-10">
         {/* Header */}
@@ -144,157 +116,145 @@ const Experiencia: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-6 leading-tight">
-            Experiencia <span className="text-gradient">Profesional</span>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-8"
+          >
+            <CheckCircle className="icon text-primary" />
+            <span className="text-primary font-medium text-sm">Trayectoria Profesional</span>
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-8 leading-tight">
+            Mi <span className="text-gradient">Experiencia</span>
           </h2>
-          <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto px-2">
-            Un recorrido de crecimiento y aprendizaje en tecnología, ventas y marketing digital
+          <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4">
+            Una trayectoria profesional marcada por la innovación, la calidad y el compromiso 
+            con los resultados de mis clientes
           </p>
         </motion.div>
 
-        {/* Stats Section */}
+        {/* Estadísticas */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="section-grid section-grid-3 mb-20"
+          className="mb-20"
         >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center group"
-            >
-              <div className="bg-surface/50 hover:bg-surface/80 rounded-2xl p-6 border border-surface-dark/30 transition-all duration-300 hover:scale-105">
-                <div className="w-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <stat.icon className={`icon-lg ${stat.color}`} />
-                </div>
-                <div className="text-5xl font-fraunces font-bold text-white mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-white/60">
-                  {stat.label}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Experience Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-16"
-        >
-          <div className="flex flex-wrap justify-center gap-4">
-            {experiences.map((exp, index) => (
-              <motion.button
-                key={exp.title}
-                onClick={() => setActiveExperience(index)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 text-base ${
-                  activeExperience === index
-                    ? 'bg-primary text-white shadow-lg'
-                    : 'bg-surface-dark/50 text-white/70 hover:bg-surface-dark/80 hover:text-white'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+          <div className="grid-system grid-4">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center group"
               >
-                {exp.company}
-              </motion.button>
+                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-3xl p-8 h-full transition-all duration-300 hover:scale-105 hover:border-primary/30">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                    <stat.icon className="icon-2xl text-white" />
+                  </div>
+                  <div className="text-4xl font-fraunces font-bold text-primary mb-2">
+                    {stat.number}
+                  </div>
+                  <h3 className="text-text-primary font-semibold mb-2 text-lg">
+                    {stat.label}
+                  </h3>
+                  <p className="text-text-tertiary text-sm leading-relaxed">
+                    {stat.description}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Active Experience Display */}
+        {/* Experiencia Laboral */}
         <motion.div
-          key={activeExperience}
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-20"
         >
-          <div className="bg-gradient-to-br from-surface/50 to-surface-dark/50 backdrop-blur-sm border border-surface-dark/30 rounded-3xl p-10 shadow-2xl">
-            <div className="section-grid section-grid-2 gap-8">
-              {/* Left Column - Main Info */}
-              <div className="space-y-md">
-                {/* Header */}
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-0">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className={`w-16 bg-gradient-to-br ${experiences[activeExperience].color} rounded-2xl flex items-center justify-center`}>
-                        {React.createElement(experiences[activeExperience].icon, { className: "icon-lg text-white" })}
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-fraunces font-semibold text-white leading-tight">
-                          {experiences[activeExperience].title}
-                        </h3>
-                        <div className="flex items-center gap-2 mt-1">
-                          <Building2 className="icon-sm text-primary" />
-                          <span className="text-white/70 font-medium text-base">
-                            {experiences[activeExperience].company}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex flex-wrap items-center gap-4 text-white/60 text-sm">
-                      <div className="flex items-center gap-2">
+          <div className="text-center mb-16">
+            <h3 className="text-3xl font-fraunces font-semibold text-text-primary mb-6">
+              Experiencia Laboral
+            </h3>
+            <p className="text-text-tertiary text-lg max-w-2xl mx-auto px-4">
+              Mi trayectoria profesional en el mundo de la tecnología y el diseño digital
+            </p>
+          </div>
+
+          {/* Navegación de Experiencias */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {experiences.map((exp, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveExperience(index)}
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  activeExperience === index
+                    ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                    : 'bg-surface-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary border border-border-primary'
+                }`}
+              >
+                {exp.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Experiencia Activa */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeExperience}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-md border border-border-primary rounded-3xl p-8 max-w-5xl mx-auto"
+            >
+              <div className="grid-system grid-2 gap-8">
+                {/* Información Principal */}
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <h4 className="text-2xl font-fraunces font-semibold text-text-primary">
+                      {experiences[activeExperience].title}
+                    </h4>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-text-secondary">
                         <Calendar className="icon-sm text-primary-light" />
-                        <span>{experiences[activeExperience].period}</span>
+                        <span className="text-sm">{experiences[activeExperience].period}</span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 text-text-secondary">
                         <MapPin className="icon-sm text-secondary" />
-                        <span>{experiences[activeExperience].location}</span>
+                        <span className="text-sm">{experiences[activeExperience].location}</span>
                       </div>
                     </div>
                   </div>
                   
-                  {/* Status Badge */}
-                  <div className={`px-4 py-2 rounded-full text-sm font-medium ${
-                    experiences[activeExperience].status === 'Activo'
-                      ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                      : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                  }`}>
-                    {experiences[activeExperience].status}
+                  <p className="text-text-secondary leading-relaxed">
+                    {experiences[activeExperience].description}
+                  </p>
+                  
+                  {/* Tecnologías */}
+                  <div>
+                    <h5 className="text-text-primary font-semibold mb-3 text-base">Tecnologías:</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {experiences[activeExperience].technologies.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-primary/10 border border-primary/20 rounded-lg text-sm text-primary font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Description */}
-                <p className="text-white/80 leading-relaxed text-lg">
-                  {experiences[activeExperience].description}
-                </p>
-
-                {/* Skills */}
-                <div>
-                  <h4 className="text-lg font-fraunces font-semibold text-white mb-3">
-                    Habilidades Clave
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {experiences[activeExperience].skills.map((skill, idx) => (
-                      <motion.span
-                        key={skill}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: idx * 0.1 }}
-                        className="px-3 py-2 bg-primary/10 text-primary border border-primary/20 rounded-xl text-sm font-medium"
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column - Achievements */}
-              <div className="space-y-md">
-                <div className="bg-gradient-to-br from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-6">
-                  <h4 className="text-lg font-fraunces font-semibold text-white mb-4 flex items-center gap-2">
-                    <Award className="icon text-primary-light" />
-                    Logros Principales
-                  </h4>
+                {/* Logros */}
+                <div className="space-y-6">
+                  <h5 className="text-text-primary font-semibold text-lg">Logros Principales:</h5>
                   <div className="space-y-3">
                     {experiences[activeExperience].achievements.map((achievement, idx) => (
                       <motion.div
@@ -302,17 +262,19 @@ const Experiencia: React.FC = () => {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: idx * 0.1 }}
-                        className="flex items-start gap-3 text-white/80"
+                        className="flex items-start gap-3"
                       >
-                        <div className="w-2 h-2 bg-primary-light rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-sm leading-relaxed">{achievement}</span>
+                        <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-text-secondary text-sm leading-relaxed">
+                          {achievement}
+                        </span>
                       </motion.div>
                     ))}
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
 
         {/* Call to Action */}
@@ -322,13 +284,18 @@ const Experiencia: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-10 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-fraunces font-semibold text-white mb-4">
-              ¿Necesitas asesoría tecnológica o diseño?
-            </h3>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto text-base">
-              Como freelancer activo, ofrezco servicios personalizados de consultoría tecnológica, 
-              reparación de equipos, desarrollo web y diseño digital.
+          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-3xl p-12 max-w-4xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center">
+                <TrendingUp className="icon-xl text-white" />
+              </div>
+              <h3 className="text-3xl font-fraunces font-semibold text-text-primary">
+                ¿Listo para impulsar tu proyecto?
+              </h3>
+            </div>
+            <p className="text-text-secondary text-lg mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+              Con mi experiencia y pasión por la excelencia, puedo ayudarte a alcanzar 
+              tus objetivos y superar tus expectativas
             </p>
             <div className="flex justify-center">
               <button
@@ -336,9 +303,9 @@ const Experiencia: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary group"
+                className="btn btn-primary btn-xl group"
               >
-                Iniciar Colaboración
+                Iniciar Proyecto
                 <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

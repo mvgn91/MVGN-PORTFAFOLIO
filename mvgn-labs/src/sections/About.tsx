@@ -11,10 +11,10 @@ const About: React.FC = () => {
       background="default"
       padding="medium"
     >
-      {/* Background Elements - Sutil */}
+      {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 -right-20 w-40 h-40 sm:w-60 sm:h-60 bg-primary/5 rounded-full blur-3xl"
+          className="absolute top-20 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.2, 0.3, 0.2],
@@ -28,7 +28,7 @@ const About: React.FC = () => {
       </div>
 
       {/* Main Content Grid */}
-      <div className="section-grid section-grid-2 items-start">
+      <div className="grid-system grid-2 items-start">
         {/* Left Column - Profile Image */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -43,8 +43,8 @@ const About: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Marco principal con glassmorphism simple */}
-              <div className="relative w-full h-full bg-gradient-to-br from-surface/90 to-surface-dark/90 backdrop-blur-md rounded-3xl p-3 sm:p-4 border border-white/20 shadow-2xl">
+              {/* Marco principal */}
+              <div className="relative w-full h-full bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-md rounded-3xl p-3 sm:p-4 border border-border-primary shadow-2xl">
                 <div className="w-full h-full rounded-2xl overflow-hidden">
                   <img
                     src="/assets/profile.jpg"
@@ -54,11 +54,11 @@ const About: React.FC = () => {
                 </div>
               </div>
               
-              {/* Marco simple con solo bordes sutiles */}
+              {/* Marco decorativo */}
               <div className="absolute inset-0 rounded-3xl">
                 <div className="absolute inset-0 rounded-3xl border border-primary/30" />
-                <div className="absolute inset-2 rounded-3xl border border-accent/20" />
-                <div className="absolute inset-4 rounded-3xl border border-secondary/20" />
+                <div className="absolute inset-2 rounded-3xl border border-border-secondary/20" />
+                <div className="absolute inset-4 rounded-3xl border border-border-primary/20" />
               </div>
             </motion.div>
           </div>
@@ -70,35 +70,35 @@ const About: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-lg"
+          className="space-y-8"
         >
           {/* Description */}
-          <div className="space-y-md">
-            <p className="text-base sm:text-lg text-white/90 leading-relaxed">
+          <div className="space-y-6">
+            <p className="text-lg text-text-secondary leading-relaxed">
               Soy un profesional <span className="text-primary font-semibold">técnico y creativo</span> con experiencia 
               en tecnología, ventas y marketing digital. Mi pasión es transformar ideas en soluciones tecnológicas 
               que generan resultados reales para mis clientes.
             </p>
             
-            <p className="text-white/80 leading-relaxed text-sm sm:text-base">
+            <p className="text-text-tertiary leading-relaxed">
               Con una base sólida en desarrollo web y diseño digital, he desarrollado proyectos que van desde 
               sitios web corporativos hasta aplicaciones funcionales. Mi enfoque combina la innovación tecnológica 
               con la comprensión profunda de las necesidades del negocio.
             </p>
             
-            <p className="text-white/70 text-sm sm:text-base">
+            <p className="text-text-tertiary">
               <span className="text-primary font-medium">Servicios adicionales:</span> También realizo conexiones 
               de fibra óptica, instalación de cámaras de seguridad y mantenimiento de equipos informáticos.
             </p>
           </div>
 
           {/* Skills Grid */}
-          <div className="space-y-md">
-            <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white">
+          <div className="space-y-6">
+            <h3 className="text-2xl font-fraunces font-semibold text-text-primary">
               Habilidades Principales
             </h3>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {[
                 'Desarrollo Web',
                 'Diseño Digital',
@@ -113,9 +113,9 @@ const About: React.FC = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-surface-light/50 backdrop-blur-sm border border-white/10 rounded-xl px-3 py-2 text-center hover-lift"
+                  className="bg-surface-secondary/50 backdrop-blur-sm border border-border-primary rounded-xl px-4 py-3 text-center hover-lift"
                 >
-                  <span className="text-sm sm:text-base text-white/80 font-medium">
+                  <span className="text-sm text-text-secondary font-medium">
                     {skill}
                   </span>
                 </motion.div>
@@ -129,7 +129,7 @@ const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="pt-md"
+            className="pt-6"
           >
             <button
               onClick={() => {
@@ -138,7 +138,7 @@ const About: React.FC = () => {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="btn btn-primary group"
+              className="btn btn-primary btn-lg group"
             >
               Contáctame
               <svg className="icon group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
