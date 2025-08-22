@@ -286,15 +286,15 @@ const Servicios: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
               <Zap className="icon-lg sm:icon-xl text-primary" />
-              <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary text-center">
-                ¿Tienes un proyecto específico en mente?
+              <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary text-center">
+                ¿Tienes un proyecto en mente?
               </h3>
             </div>
-            <p className="text-text-secondary text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-              Permíteme crear una solución personalizada que se adapte perfectamente a tus necesidades y objetivos de negocio
+            <p className="text-text-secondary text-sm sm:text-base mb-4 max-w-2xl mx-auto leading-relaxed px-4">
+              Permíteme crear una solución personalizada que se adapte a tus necesidades
             </p>
             <div className="flex justify-center">
               <button
@@ -302,10 +302,9 @@ const Servicios: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px]"
+                className="btn btn-primary btn-lg group min-h-[44px]"
               >
-                <span className="hidden sm:inline">Solicitar Cotización</span>
-                <span className="sm:hidden">Cotización</span>
+                Conversar sobre tu proyecto
                 <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

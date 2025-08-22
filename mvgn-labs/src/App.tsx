@@ -7,7 +7,7 @@ import About from './sections/About';
 import Servicios from './sections/Servicios';
 import Proyectos from './sections/Proyectos';
 import Experiencia from './sections/Experiencia';
-import ZonaTrabajo from './sections/ZonaTrabajo';
+import FlujoTrabajo from './sections/FlujoTrabajo';
 import Contacto from './sections/Contacto';
 import Footer from './components/Footer';
 import BackgroundLines from './components/BackgroundLines';
@@ -26,7 +26,7 @@ const AppContent: React.FC = () => {
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
         <>
-          {/* Background Lines - Fijo para consistencia visual */}
+          {/* Background Elements - Fijo para consistencia visual */}
           <BackgroundLines className="fixed inset-0 pointer-events-none opacity-20" />
           
           {/* Navbar */}
@@ -59,9 +59,9 @@ const AppContent: React.FC = () => {
               <Experiencia />
             </section>
             
-            {/* SECCIÓN DE ZONA DE TRABAJO */}
-            <section id="zona-trabajo" className="py-16 sm:py-20 lg:py-24">
-              <ZonaTrabajo />
+            {/* SECCIÓN DE FLUJO DE TRABAJO */}
+            <section id="flujo-trabajo" className="py-16 sm:py-20 lg:py-24">
+              <FlujoTrabajo />
             </section>
             
             {/* SECCIÓN DE CONTACTO */}

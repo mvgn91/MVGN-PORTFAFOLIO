@@ -282,18 +282,18 @@ const Experiencia: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center">
-                <TrendingUp className="icon-xl text-white" />
+          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center">
+                <TrendingUp className="icon-lg sm:icon-xl text-white" />
               </div>
-              <h3 className="text-3xl font-fraunces font-semibold text-text-primary">
+              <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary">
                 ¿Listo para impulsar tu proyecto?
               </h3>
             </div>
-            <p className="text-text-secondary text-lg mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+            <p className="text-text-secondary text-sm sm:text-base mb-4 max-w-2xl mx-auto leading-relaxed px-4">
               Con mi experiencia y pasión por la excelencia, puedo ayudarte a alcanzar 
-              tus objetivos y superar tus expectativas
+              tus objetivos
             </p>
             <div className="flex justify-center">
               <button
@@ -301,9 +301,9 @@ const Experiencia: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-xl group min-h-[44px]"
+                className="btn btn-primary btn-lg group min-h-[44px]"
               >
-                Iniciar Proyecto
+                Iniciar conversación
                 <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

@@ -8,7 +8,6 @@ import {
   CheckCircle,
   MessageSquare,
   Clock,
-  ArrowRight,
   ExternalLink
 } from 'lucide-react';
 import BackgroundLines from '../components/BackgroundLines';
@@ -419,53 +418,6 @@ const Contacto: React.FC = () => {
                   Para proyectos urgentes, puedo priorizar tu solicitud.
                 </p>
               </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center">
-                <ArrowRight className="icon-lg sm:icon-xl text-white" />
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-fraunces font-semibold text-text-primary text-center">
-                ¿Listo para comenzar?
-              </h3>
-            </div>
-            <p className="text-text-secondary text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-              No esperes más para transformar tu idea en realidad. 
-              Contáctame ahora y tomemos un café virtual para discutir tu proyecto
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <button
-                onClick={() => {
-                  const element = document.getElementById('contacto');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px]"
-              >
-                <span className="hidden sm:inline">Iniciar Conversación</span>
-                <span className="sm:hidden">Conversar</span>
-                <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button
-                onClick={() => {
-                  const element = document.getElementById('servicios');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px]"
-              >
-                <span className="hidden sm:inline">Ver Servicios</span>
-                <span className="sm:hidden">Servicios</span>
-                <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
-              </button>
             </div>
           </div>
         </motion.div>

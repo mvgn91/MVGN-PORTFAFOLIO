@@ -104,11 +104,11 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <h4 className="text-text-primary font-semibold text-base">Enlaces Rápidos</h4>
               <div className="space-y-2">
-                {['Inicio', 'Sobre Mí', 'Servicios', 'Proyectos', 'Contacto'].map((link) => (
+                {['Inicio', 'Sobre Mí', 'Servicios', 'Proyectos', 'Flujo de Trabajo', 'Contacto'].map((link) => (
                   <button
                     key={link}
                     onClick={() => {
-                      const element = document.getElementById(link.toLowerCase().replace(' ', '-'));
+                      const element = document.getElementById(link.toLowerCase().replace(' ', '-').replace('flujo-de-trabajo', 'flujo-trabajo'));
                       if (element) element.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="block text-text-tertiary hover:text-primary transition-colors text-sm"
