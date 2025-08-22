@@ -11,8 +11,6 @@ import ZonaTrabajo from './sections/ZonaTrabajo';
 import Contacto from './sections/Contacto';
 import Footer from './components/Footer';
 import BackgroundLines from './components/BackgroundLines';
-import SectionLayout from './components/SectionLayout';
-import { SECTION_CONFIG, HERO_CONFIG } from './lib/constants';
 
 const AppContent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,43 +31,42 @@ const AppContent: React.FC = () => {
           {/* Navbar */}
           <Navbar />
           
-          {/* Main Content - Estructura jerárquica optimizada con SectionLayout */}
+          {/* Main Content - Estructura jerárquica optimizada */}
           <main className="relative">
-            
             {/* SECCIÓN PRINCIPAL: Hero */}
-            <SectionLayout {...HERO_CONFIG}>
+            <section id="inicio" className="min-h-screen">
               <Hero />
-            </SectionLayout>
+            </section>
             
             {/* SECCIÓN DE PRESENTACIÓN */}
-            <SectionLayout {...SECTION_CONFIG.about}>
+            <section id="sobre-mi" className="py-20 lg:py-32">
               <About />
-            </SectionLayout>
+            </section>
             
             {/* SECCIÓN DE SERVICIOS */}
-            <SectionLayout {...SECTION_CONFIG.servicios}>
+            <section id="servicios" className="py-20 lg:py-32 bg-surface-light/30">
               <Servicios />
-            </SectionLayout>
+            </section>
             
             {/* SECCIÓN DE PROYECTOS */}
-            <SectionLayout {...SECTION_CONFIG.proyectos}>
+            <section id="proyectos" className="py-20 lg:py-32">
               <Proyectos />
-            </SectionLayout>
+            </section>
             
             {/* SECCIÓN DE EXPERIENCIA */}
-            <SectionLayout {...SECTION_CONFIG.experiencia}>
+            <section id="experiencia" className="py-20 lg:py-32 bg-surface-light/30">
               <Experiencia />
-            </SectionLayout>
+            </section>
             
             {/* SECCIÓN DE ZONA DE TRABAJO */}
-            <SectionLayout {...SECTION_CONFIG.zonaTrabajo}>
+            <section id="zona-trabajo" className="py-20 lg:py-32">
               <ZonaTrabajo />
-            </SectionLayout>
+            </section>
             
             {/* SECCIÓN DE CONTACTO */}
-            <SectionLayout {...SECTION_CONFIG.contacto}>
+            <section id="contacto" className="py-20 lg:py-32 bg-surface-light/30">
               <Contacto />
-            </SectionLayout>
+            </section>
           </main>
           
           {/* Footer */}

@@ -6,7 +6,7 @@ import BackgroundLines from '../components/BackgroundLines';
 
 const Hero: React.FC = () => {
   return (
-    <>
+    <section id="inicio" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* Background Animation - Optimizado para rendimiento */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
               </button>
               <button
                 onClick={() => scrollToSection('proyectos')}
-                className="group flex items-center justify-center w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-xl border-2 border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm"
+                className="btn-secondary group flex items-center justify-center w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-xl border-2 border-white/20 hover:border-white/40 transition-all duration-300"
               >
                 Ver Proyectos
                 <ChevronDown className="w-5 h-5 ml-3 group-hover:translate-y-1 transition-transform" />
@@ -107,27 +107,24 @@ const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Solo en desktop */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:block"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+            className="text-white/60 hover:text-white/80 cursor-pointer"
+            onClick={() => scrollToSection('sobre-mi')}
           >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-white/50 rounded-full mt-2"
-            />
+            <ChevronDown className="w-8 h-8" />
           </motion.div>
         </motion.div>
       </div>
-    </>
+    </section>
   );
 };
 

@@ -1,9 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionLayout from '../components/SectionLayout';
 
 const About: React.FC = () => {
   return (
-    <>
+    <SectionLayout
+      id="sobre-mi"
+      title="Sobre Mí"
+      subtitle="Un profesional técnico y creativo apasionado por transformar ideas en soluciones tecnológicas"
+      background="default"
+      padding="medium"
+    >
       {/* Background Elements - Sutil */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -91,52 +98,57 @@ const About: React.FC = () => {
               Habilidades Principales
             </h3>
             
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              {/* Technical Skills */}
-              <div className="space-y-3">
-                <h4 className="text-lg font-semibold text-primary">Técnicas</h4>
-                <ul className="space-y-2 text-sm sm:text-base text-white/80">
-                  <li>• Desarrollo Web Frontend</li>
-                  <li>• Diseño UI/UX</li>
-                  <li>• Marketing Digital</li>
-                  <li>• SEO y Analytics</li>
-                </ul>
-              </div>
-              
-              {/* Business Skills */}
-              <div className="space-y-3">
-                <h4 className="text-lg font-semibold text-accent">Negocio</h4>
-                <ul className="space-y-2 text-sm sm:text-base text-white/80">
-                  <li>• Ventas y Consultoría</li>
-                  <li>• Estrategia Digital</li>
-                  <li>• Gestión de Proyectos</li>
-                  <li>• Atención al Cliente</li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+              {[
+                'Desarrollo Web',
+                'Diseño Digital',
+                'Marketing Digital',
+                'Ventas B2B',
+                'Instalación Fibra',
+                'Mantenimiento IT'
+              ].map((skill, index) => (
+                <motion.div
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-surface-light/50 backdrop-blur-sm border border-white/10 rounded-xl px-3 py-2 text-center"
+                >
+                  <span className="text-sm sm:text-base text-white/80 font-medium">
+                    {skill}
+                  </span>
+                </motion.div>
+              ))}
             </div>
           </div>
 
-          {/* Call to Action */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="pt-4"
           >
-            <a
-              href="#contacto"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 transform hover:-translate-y-1"
+            <button
+              onClick={() => {
+                const element = document.querySelector('#contacto');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="btn-primary group flex items-center justify-center w-full sm:w-auto"
             >
               Contáctame
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </button>
           </motion.div>
         </motion.div>
       </div>
-    </>
+    </SectionLayout>
   );
 };
 
