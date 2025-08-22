@@ -125,14 +125,14 @@ const Experiencia: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Estadísticas */}
+        {/* Estadísticas - Grid de 2 o 4 columnas en desktop, stack vertical en móvil */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-20"
         >
-          <div className="grid-system grid-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -141,14 +141,14 @@ const Experiencia: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center group"
               >
-                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-3xl p-8 h-full transition-all duration-300 hover:scale-105 hover:border-primary/30">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                    <stat.icon className="icon-2xl text-white" />
+                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-2xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-primary/30">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
+                    <stat.icon className="icon-xl sm:icon-2xl text-white" />
                   </div>
-                  <div className="text-4xl font-fraunces font-bold text-primary mb-2">
+                  <div className="text-3xl sm:text-4xl font-fraunces font-bold text-primary mb-2">
                     {stat.number}
                   </div>
-                  <h3 className="text-text-primary font-semibold mb-2 text-lg">
+                  <h3 className="text-text-primary font-semibold mb-2 text-base sm:text-lg">
                     {stat.label}
                   </h3>
                   <p className="text-text-tertiary text-sm leading-relaxed">
@@ -182,7 +182,7 @@ const Experiencia: React.FC = () => {
               <button
                 key={index}
                 onClick={() => setActiveExperience(index)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 min-h-[44px] ${
                   activeExperience === index
                     ? 'bg-primary text-white shadow-lg shadow-primary/25'
                     : 'bg-surface-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary border border-border-primary'
@@ -204,14 +204,14 @@ const Experiencia: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-md border border-border-primary rounded-3xl p-8 max-w-5xl mx-auto"
+              className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-md border border-border-primary rounded-3xl p-6 sm:p-8 max-w-5xl mx-auto"
             >
-              <div className="grid-system grid-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                 {/* Información Principal */}
                 <div className="space-y-6">
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-2xl font-fraunces font-semibold text-text-primary mb-2">
+                      <h4 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary mb-2">
                         {experiences[activeExperience].title}
                       </h4>
                       <p className="text-lg text-primary font-medium">
@@ -282,7 +282,7 @@ const Experiencia: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-3xl p-12 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center">
                 <TrendingUp className="icon-xl text-white" />
@@ -301,7 +301,7 @@ const Experiencia: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-xl group"
+                className="btn btn-primary btn-xl group min-h-[44px]"
               >
                 Iniciar Proyecto
                 <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />

@@ -73,7 +73,7 @@ const Proyectos: React.FC = () => {
             <button
               key={filter.id}
               onClick={() => handleFilter(filter.id)}
-              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base min-h-[44px] ${
                 activeFilter === filter.id
                   ? 'bg-primary text-white shadow-lg shadow-primary/25'
                   : 'bg-surface-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary border border-border-primary'
@@ -85,7 +85,7 @@ const Proyectos: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* Grid de Proyectos */}
+        {/* Grid de Proyectos - 2 columnas en desktop, 1 en móvil */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ const Proyectos: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="grid-system grid-1 sm:grid-2 lg:grid-3 gap-6 sm:gap-8"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"
             >
               {filteredProjects.map((project, index) => (
                 <motion.div
@@ -141,7 +141,7 @@ const Proyectos: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto"
+                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px]"
               >
                 <span className="hidden sm:inline">Solicitar Proyecto</span>
                 <span className="sm:hidden">Solicitar</span>
@@ -152,7 +152,7 @@ const Proyectos: React.FC = () => {
                   const element = document.getElementById('servicios');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto"
+                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px]"
               >
                 <span className="hidden sm:inline">Ver Servicios</span>
                 <span className="sm:hidden">Servicios</span>

@@ -12,7 +12,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
         transition={{ duration: 0.8 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 hidden lg:block ${
           isScrolled 
-            ? 'bg-surface/95 backdrop-blur-md border-b border-white/10 shadow-lg' 
+            ? 'bg-surface/80 backdrop-blur-md border-b border-white/10 shadow-xl' 
             : 'bg-transparent'
         }`}
       >
@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
               className="flex items-center gap-3 cursor-pointer"
               onClick={scrollToTop}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shadow-lg">
                 <img 
                   src="/assets/favicon.png" 
                   alt="MVGN Labs Logo" 
@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
                   key={item.href}
                   whileHover={{ y: -2 }}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-white/80 hover:text-white transition-colors duration-300 font-medium text-base px-4 py-2 rounded-lg hover:bg-white/10 hover:shadow-lg"
+                  className="text-white/90 hover:text-white transition-all duration-300 font-medium text-base px-4 py-2 rounded-lg hover:bg-white/10 hover:shadow-lg"
                 >
                   {item.label}
                 </motion.button>
@@ -103,7 +103,11 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="fixed top-0 left-0 right-0 z-50 lg:hidden bg-surface/95 backdrop-blur-md border-b border-white/10 shadow-lg"
+        className={`fixed top-0 left-0 right-0 z-50 lg:hidden transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-surface/90 backdrop-blur-md border-b border-white/10 shadow-xl' 
+            : 'bg-surface/95 backdrop-blur-md border-b border-white/10'
+        }`}
       >
         <div className="flex items-center justify-between px-4 py-3">
           {/* Logo MVGN Labs - Mobile */}
@@ -112,7 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
             className="flex items-center gap-2 cursor-pointer"
             onClick={scrollToTop}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shadow-lg">
               <img 
                 src="/assets/favicon.png" 
                 alt="MVGN Labs Logo" 
@@ -180,7 +184,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
                       onClick={() => handleNavClick(item.href)}
                       className="w-full flex items-center gap-4 px-4 py-4 rounded-xl text-left hover:bg-white/10 transition-all duration-300 group"
                     >
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary-light/30 transition-all duration-300">
                         <IconComponent className="w-6 h-6 text-primary group-hover:text-primary-light transition-colors duration-300" />
                       </div>
                       <div>

@@ -17,7 +17,6 @@ import BackgroundLines from '../components/BackgroundLines';
 
 const Servicios: React.FC = () => {
   const [selectedTech, setSelectedTech] = React.useState<string | null>(null);
-  const [activeService, setActiveService] = React.useState(0);
   
   const services = [
     {
@@ -26,7 +25,6 @@ const Servicios: React.FC = () => {
       subtitle: 'Sitios Web Modernos',
       description: 'Creo sitios web profesionales, responsivos y optimizados para SEO que convierten visitantes en clientes.',
       features: ['Diseño Responsivo', 'SEO Optimizado', 'HTML5/CSS3', 'JavaScript'],
-      benefits: ['Mejora la imagen de marca', 'Aumenta las conversiones', 'Optimizado para móviles'],
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-500/10',
       borderColor: 'border-blue-500/20'
@@ -37,7 +35,6 @@ const Servicios: React.FC = () => {
       subtitle: 'Identidad Visual',
       description: 'Desarrollo identidades visuales completas que diferencian tu marca y generan confianza en tu audiencia.',
       features: ['Logo Design', 'Identidad Visual', 'Brand Guidelines', 'Posicionamiento'],
-      benefits: ['Diferenciación competitiva', 'Reconocimiento de marca', 'Consistencia visual'],
       color: 'from-purple-500 to-pink-500',
       bgColor: 'bg-purple-500/10',
       borderColor: 'border-purple-500/20'
@@ -48,7 +45,6 @@ const Servicios: React.FC = () => {
       subtitle: 'PDFs Interactivos',
       description: 'Diseño catálogos profesionales e interactivos que presentan tus productos de manera atractiva y funcional.',
       features: ['InDesign', 'Photoshop', 'Illustrator', 'PDF Interactivo'],
-      benefits: ['Presentación profesional', 'Fácil distribución', 'Experiencia interactiva'],
       color: 'from-red-500 to-pink-500',
       bgColor: 'bg-red-500/10',
       borderColor: 'border-red-500/20'
@@ -59,7 +55,6 @@ const Servicios: React.FC = () => {
       subtitle: 'Soporte IT Integral',
       description: 'Ofrezco servicios técnicos completos para mantener tu tecnología funcionando de manera óptima.',
       features: ['Reparación PC', 'Conexiones Remotas', 'Instalación Software', 'Optimización'],
-      benefits: ['Tecnología optimizada', 'Menos tiempo de inactividad', 'Soporte experto'],
       color: 'from-green-500 to-emerald-500',
       bgColor: 'bg-green-500/10',
       borderColor: 'border-green-500/20'
@@ -134,14 +129,14 @@ const Servicios: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Servicios Principales */}
+        {/* Servicios Principales - Grid uniforme */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-16 sm:mb-20"
         >
-          <div className="grid-system grid-1 lg:grid-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -149,11 +144,8 @@ const Servicios: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group cursor-pointer"
-                onClick={() => setActiveService(index)}
               >
-                <div className={`${service.bgColor} ${service.borderColor} border-2 rounded-3xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
-                  activeService === index ? 'ring-2 ring-primary/50 shadow-xl' : ''
-                }`}>
+                <div className={`${service.bgColor} ${service.borderColor} border-2 rounded-2xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-primary/50`}>
                   {/* Header del Servicio */}
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
                     <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
@@ -186,19 +178,6 @@ const Servicios: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  
-                  {/* Beneficios */}
-                  <div className="mb-6">
-                    <h4 className="text-text-primary font-semibold mb-3 text-sm sm:text-base">Beneficios:</h4>
-                    <div className="space-y-2">
-                      {service.benefits.map((benefit, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-text-tertiary">
-                          <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                          <span className="line-clamp-2">{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -221,8 +200,8 @@ const Servicios: React.FC = () => {
             </p>
           </div>
           
-          {/* Grid de Tecnologías */}
-          <div className="grid-system grid-2 lg:grid-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
+          {/* Grid de Tecnologías - Uniforme */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
             {technologyGroups.map((group, index) => (
               <motion.div
                 key={group.title}
@@ -232,7 +211,7 @@ const Servicios: React.FC = () => {
                 className="group cursor-pointer"
                 onClick={() => setSelectedTech(group.title)}
               >
-                <div className={`bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border-2 rounded-2xl p-4 sm:p-6 h-full transition-all duration-300 hover:scale-105 ${
+                <div className={`bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border-2 rounded-2xl p-4 sm:p-6 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                   selectedTech === group.title 
                     ? 'border-primary/50 bg-primary/10' 
                     : 'border-border-primary hover:border-primary/30'
@@ -269,7 +248,7 @@ const Servicios: React.FC = () => {
                 </p>
               </div>
               
-              <div className="grid-system grid-1 sm:grid-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {technologyGroups
                   .find(group => group.title === selectedTech)
                   ?.technologies.map((tech, index) => (
@@ -323,7 +302,7 @@ const Servicios: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto"
+                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px]"
               >
                 <span className="hidden sm:inline">Solicitar Cotización</span>
                 <span className="sm:hidden">Cotización</span>

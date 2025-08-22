@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUp, Zap, Music } from 'lucide-react';
+import { ArrowUp, Zap, Music, Mail, Phone } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-bg-primary via-surface-secondary to-bg-secondary relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-bg-primary via-surface-secondary to-bg-secondary relative overflow-hidden border-t border-border-primary/20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-light/20" />
@@ -73,13 +73,86 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="py-6">
-          {/* Single Row Footer */}
+        <div className="py-8 sm:py-12">
+          {/* Footer Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-between gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"
+          >
+            {/* Brand Section */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shadow-lg">
+                  <img 
+                    src="/assets/favicon.png" 
+                    alt="MVGN Labs Logo" 
+                    className="w-6 h-6 object-contain"
+                  />
+                </div>
+                <span className="text-white font-fraunces font-bold text-xl">
+                  Mvgn Labs
+                </span>
+              </div>
+              <p className="text-text-tertiary text-sm leading-relaxed">
+                Transformando ideas en soluciones tecnológicas que generan resultados reales.
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div className="space-y-4">
+              <h4 className="text-text-primary font-semibold text-base">Enlaces Rápidos</h4>
+              <div className="space-y-2">
+                {['Inicio', 'Sobre Mí', 'Servicios', 'Proyectos', 'Contacto'].map((link) => (
+                  <button
+                    key={link}
+                    onClick={() => {
+                      const element = document.getElementById(link.toLowerCase().replace(' ', '-'));
+                      if (element) element.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="block text-text-tertiary hover:text-primary transition-colors text-sm"
+                  >
+                    {link}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Services */}
+            <div className="space-y-4">
+              <h4 className="text-text-primary font-semibold text-base">Servicios</h4>
+              <div className="space-y-2">
+                {['Diseño Web', 'Branding', 'Catálogos Digitales', 'Soporte IT'].map((service) => (
+                  <span key={service} className="block text-text-tertiary text-sm">
+                    {service}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-4">
+              <h4 className="text-text-primary font-semibold text-base">Contacto</h4>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-text-tertiary text-sm">
+                  <Mail className="w-4 h-4 text-primary" />
+                  <span>jazzfatale@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-2 text-text-tertiary text-sm">
+                  <Phone className="w-4 h-4 text-primary" />
+                  <span>33 2262 1939</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Bottom Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border-primary/20"
           >
             {/* Made With Section */}
             <motion.div
@@ -139,7 +212,7 @@ const Footer: React.FC = () => {
 
             {/* Copyright */}
             <div className="text-center sm:text-left order-3 sm:order-none">
-              <p className="text-text-tertiary text-sm sm:text-base">
+              <p className="text-text-tertiary text-xs sm:text-sm">
                 © {currentYear} <span className="text-primary font-medium">Mvgn Labs</span>. Todos los derechos reservados.
               </p>
             </div>

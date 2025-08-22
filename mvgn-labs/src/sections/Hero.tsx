@@ -59,10 +59,10 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-4 sm:space-y-6"
             >
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary font-semibold tracking-wide">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary font-semibold tracking-wide">
                 ¡Hola! Soy
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-fraunces font-bold text-text-primary leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-fraunces font-bold text-text-primary leading-tight">
                 Armando{' '}
                 <span className="text-gradient">Ibañez</span>
               </h1>
@@ -75,11 +75,11 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-4 sm:space-y-6"
             >
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-poppins font-medium text-text-secondary leading-relaxed">
+              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-poppins font-medium text-text-secondary leading-relaxed">
                 Desarrollador Web y{' '}
                 <span className="text-primary font-semibold">Técnico en Computación</span>
               </h2>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-text-tertiary max-w-3xl sm:max-w-4xl mx-auto leading-relaxed px-4">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-text-tertiary max-w-3xl sm:max-w-4xl mx-auto leading-relaxed px-4">
                 Transformando ideas en soluciones tecnológicas que generan resultados reales
               </p>
             </motion.div>
@@ -89,11 +89,11 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-6 sm:pt-8"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-6"
             >
               <button
                 onClick={() => scrollToSection('contacto')}
-                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto"
+                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px] sm:min-h-[48px]"
               >
                 <span className="hidden sm:inline">Contáctame</span>
                 <span className="sm:hidden">Contacto</span>
@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
               </button>
               <button
                 onClick={() => scrollToSection('proyectos')}
-                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto"
+                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px] sm:min-h-[48px]"
               >
                 <span className="hidden sm:inline">Ver Proyectos</span>
                 <span className="sm:hidden">Proyectos</span>
@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-text-tertiary hover:text-text-secondary cursor-pointer transition-colors"
+            className="text-text-tertiary hover:text-text-secondary cursor-pointer transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             onClick={() => scrollToSection('sobre-mi')}
           >
             <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" />

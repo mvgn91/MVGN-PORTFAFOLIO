@@ -8,7 +8,8 @@ import {
   CheckCircle,
   MessageSquare,
   Clock,
-  ArrowRight
+  ArrowRight,
+  ExternalLink
 } from 'lucide-react';
 import BackgroundLines from '../components/BackgroundLines';
 
@@ -16,22 +17,56 @@ const Contacto: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    service: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const validateForm = () => {
+    const newErrors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = 'El nombre es requerido';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'El email es requerido';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'El email no es válido';
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = 'El mensaje es requerido';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Simulación de envío
@@ -46,10 +81,9 @@ const Contacto: React.FC = () => {
       setFormData({
         name: '',
         email: '',
-        phone: '',
-        service: '',
         message: ''
       });
+      setErrors({});
     }, 3000);
   };
 
@@ -80,12 +114,21 @@ const Contacto: React.FC = () => {
     }
   ];
 
-  const services = [
-    'Diseño Web',
-    'Branding',
-    'Catálogos Digitales',
-    'Soporte IT',
-    'Otro'
+  const socialLinks = [
+    {
+      name: 'WhatsApp',
+      url: 'https://wa.me/523322621939',
+      icon: MessageSquare,
+      color: 'from-green-500 to-emerald-500',
+      description: 'Chat directo'
+    },
+    {
+      name: 'Email',
+      url: 'mailto:jazzfatale@gmail.com',
+      icon: Mail,
+      color: 'from-blue-500 to-cyan-500',
+      description: 'Correo electrónico'
+    }
   ];
 
   return (
@@ -133,7 +176,7 @@ const Contacto: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-16 sm:mb-20"
         >
-          <div className="grid-system grid-1 sm:grid-2 lg:grid-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {contactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
@@ -147,7 +190,7 @@ const Contacto: React.FC = () => {
                   }
                 }}
               >
-                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-3xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:border-primary/30">
+                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-2xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:border-primary/30 hover:shadow-xl">
                   <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform`}>
                     <method.icon className="icon-xl sm:icon-2xl text-white" />
                   </div>
@@ -175,7 +218,7 @@ const Contacto: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-16 sm:mb-20"
         >
-          <div className="grid-system grid-1 lg:grid-2 gap-8 sm:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Formulario */}
             <div className="space-y-6 sm:space-y-8">
               <div>
@@ -204,74 +247,46 @@ const Contacto: React.FC = () => {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
-                        Nombre Completo *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm sm:text-base"
-                        placeholder="Tu nombre completo"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm sm:text-base"
-                        placeholder="tu@email.com"
-                      />
-                    </div>
+                  <div>
+                    <label htmlFor="name" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
+                      Nombre Completo *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 text-sm sm:text-base min-h-[44px] ${
+                        errors.name ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
+                      }`}
+                      placeholder="Tu nombre completo"
+                    />
+                    {errors.name && (
+                      <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                    )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="phone" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
-                        Teléfono
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm sm:text-base"
-                        placeholder="+52 33 1234 5678"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="service" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
-                        Servicio de Interés *
-                      </label>
-                      <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 text-sm sm:text-base"
-                      >
-                        <option value="">Selecciona un servicio</option>
-                        {services.map((service) => (
-                          <option key={service} value={service}>
-                            {service}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                  <div>
+                    <label htmlFor="email" className="block text-text-primary font-medium mb-2 text-xs sm:text-sm">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 text-sm sm:text-base min-h-[44px] ${
+                        errors.email ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
+                      }`}
+                      placeholder="tu@email.com"
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
@@ -285,15 +300,20 @@ const Contacto: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border border-border-primary rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 resize-none text-sm sm:text-base"
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-surface-secondary border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 resize-none text-sm sm:text-base min-h-[44px] ${
+                        errors.message ? 'border-red-500 focus:border-red-500' : 'border-border-primary focus:border-primary'
+                      }`}
                       placeholder="Cuéntame sobre tu proyecto, objetivos y cualquier detalle importante..."
                     />
+                    {errors.message && (
+                      <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+                    )}
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn btn-primary btn-lg sm:btn-xl group w-full"
+                    className="btn btn-primary btn-lg sm:btn-xl group w-full min-h-[44px]"
                   >
                     {isSubmitting ? (
                       <>
@@ -356,6 +376,37 @@ const Contacto: React.FC = () => {
                 </div>
               </div>
 
+              {/* Links de Contacto Directo */}
+              <div className="space-y-4">
+                <h4 className="text-text-primary font-semibold text-lg">Contacto Directo</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {socialLinks.map((link, index) => {
+                    const IconComponent = link.icon;
+                    return (
+                      <motion.a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="group flex items-center gap-3 p-4 bg-gradient-to-br from-surface-primary to-surface-secondary border border-border-primary rounded-2xl hover:border-primary/50 hover:shadow-xl transition-all duration-300 min-h-[44px]"
+                      >
+                        <div className={`w-10 h-10 bg-gradient-to-br ${link.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                          <IconComponent className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <div className="text-text-primary font-semibold text-sm">{link.name}</div>
+                          <div className="text-text-tertiary text-xs">{link.description}</div>
+                        </div>
+                        <ExternalLink className="w-4 h-4 text-text-tertiary group-hover:text-primary transition-colors ml-auto" />
+                      </motion.a>
+                    );
+                  })}
+                </div>
+              </div>
+
               <div className="bg-gradient-to-br from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-4 sm:p-6">
                 <div className="flex items-center gap-3 mb-3 sm:mb-4">
                   <Clock className="icon-lg text-primary" />
@@ -367,26 +418,6 @@ const Contacto: React.FC = () => {
                   Normalmente respondo en <span className="text-primary font-semibold">menos de 24 horas</span>. 
                   Para proyectos urgentes, puedo priorizar tu solicitud.
                 </p>
-              </div>
-
-              <div className="bg-gradient-to-br from-surface-primary to-surface-secondary border border-border-primary rounded-2xl p-4 sm:p-6">
-                <h4 className="text-text-primary font-semibold text-base sm:text-lg mb-3 sm:mb-4">
-                  Horarios de Atención
-                </h4>
-                <div className="space-y-2 text-xs sm:text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-text-secondary">Lunes - Viernes:</span>
-                    <span className="text-text-primary font-medium">9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-text-secondary">Sábados:</span>
-                    <span className="text-text-primary font-medium">10:00 AM - 2:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-text-secondary">Domingos:</span>
-                    <span className="text-text-primary font-medium">Cerrado</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -418,7 +449,7 @@ const Contacto: React.FC = () => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto"
+                className="btn btn-primary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px]"
               >
                 <span className="hidden sm:inline">Iniciar Conversación</span>
                 <span className="sm:hidden">Conversar</span>
@@ -429,7 +460,7 @@ const Contacto: React.FC = () => {
                   const element = document.getElementById('servicios');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto"
+                className="btn btn-secondary btn-lg sm:btn-xl group w-full sm:w-auto min-h-[44px]"
               >
                 <span className="hidden sm:inline">Ver Servicios</span>
                 <span className="sm:hidden">Servicios</span>

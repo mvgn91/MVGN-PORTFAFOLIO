@@ -52,7 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       transition={{ duration: 0.3 }}
       className="group h-full"
     >
-      <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-3xl overflow-hidden h-full transition-all duration-300 hover:border-primary/30 hover:shadow-xl">
+      <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-primary/30 hover:shadow-xl">
         {/* Image Container */}
         <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
           <img
@@ -70,7 +70,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-primary btn-sm group/btn flex-1 sm:flex-none justify-center"
+                    className="btn btn-primary btn-sm group/btn flex-1 sm:flex-none justify-center min-h-[44px]"
                   >
                     <ExternalLink className="icon-sm group-hover/btn:scale-110 transition-transform" />
                     <span className="hidden sm:inline">Ver Demo</span>
@@ -82,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-secondary btn-sm group/btn flex-1 sm:flex-none justify-center"
+                    className="btn btn-secondary btn-sm group/btn flex-1 sm:flex-none justify-center min-h-[44px]"
                   >
                     <Github className="icon-sm group-hover/btn:scale-110 transition-transform" />
                     <span className="hidden sm:inline">Código</span>
@@ -109,7 +109,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+        <div className="p-4 sm:p-6 space-y-4">
           {/* Header */}
           <div className="space-y-2">
             <h3 className="text-lg sm:text-xl font-fraunces font-semibold text-text-primary group-hover:text-primary transition-colors line-clamp-2">
@@ -160,7 +160,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
           {/* Action Button */}
           <div className="pt-2">
-            <button className="w-full btn btn-primary group/btn text-sm sm:text-base">
+            <button className="w-full btn btn-primary group/btn text-sm sm:text-base min-h-[44px]">
               <span className="hidden sm:inline">Ver Detalles</span>
               <span className="sm:hidden">Detalles</span>
               <ArrowRight className="icon-sm group-hover/btn:translate-x-1 transition-transform" />
