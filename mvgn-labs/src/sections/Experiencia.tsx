@@ -188,7 +188,10 @@ const Experiencia: React.FC = () => {
                     : 'bg-surface-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary border border-border-primary'
                 }`}
               >
-                {exp.title}
+                <div className="text-center">
+                  <div className="font-semibold">{exp.title}</div>
+                  <div className="text-xs opacity-75">{exp.company}</div>
+                </div>
               </button>
             ))}
           </div>
@@ -207,16 +210,21 @@ const Experiencia: React.FC = () => {
                 {/* Información Principal */}
                 <div className="space-y-6">
                   <div className="space-y-4">
-                    <h4 className="text-2xl font-fraunces font-semibold text-text-primary">
-                      {experiences[activeExperience].title}
-                    </h4>
+                    <div>
+                      <h4 className="text-2xl font-fraunces font-semibold text-text-primary mb-2">
+                        {experiences[activeExperience].title}
+                      </h4>
+                      <p className="text-lg text-primary font-medium">
+                        {experiences[activeExperience].company}
+                      </p>
+                    </div>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-text-secondary">
                         <Calendar className="icon-sm text-primary-light" />
                         <span className="text-sm">{experiences[activeExperience].period}</span>
                       </div>
                       <div className="flex items-center gap-2 text-text-secondary">
-                        <MapPin className="icon-sm text-secondary" />
+                        <MapPin className="icon-sm text-primary-light" />
                         <span className="text-sm">{experiences[activeExperience].location}</span>
                       </div>
                     </div>
