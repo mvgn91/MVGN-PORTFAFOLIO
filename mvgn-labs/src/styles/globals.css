@@ -1,5 +1,4 @@
-/* Bootstrap CSS */
-@import 'bootstrap/dist/css/bootstrap.min.css';
+/* Estilos globales personalizados */
 
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
@@ -49,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-/* Contenedores responsivos mejorados con Bootstrap */
+/* Contenedores responsivos personalizados */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -97,7 +96,7 @@ body::before {
   z-index: -1;
 }
 
-/* Botones optimizados con Bootstrap */
+/* Botones personalizados */
 .btn-primary {
   @apply bg-gradient-to-r from-primary to-accent text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 transform hover:-translate-y-1;
 }
@@ -106,7 +105,7 @@ body::before {
   @apply bg-transparent border-2 border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:border-white/40 hover:bg-white/10;
 }
 
-/* Utilidades de Bootstrap personalizadas */
+/* Utilidades personalizadas */
 .bg-glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
