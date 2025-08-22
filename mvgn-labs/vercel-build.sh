@@ -1,20 +1,25 @@
 #!/bin/bash
 
-# Script de build para Vercel
 echo "🚀 Iniciando build para Vercel..."
+
+# Variables de entorno para Vercel
+export NODE_ENV=production
+export CI=true
+export GENERATE_SOURCEMAP=false
 
 # Instalar dependencias
 echo "📦 Instalando dependencias..."
-npm install
+npm ci --only=production
 
-# Verificar que react-scripts esté disponible
-if ! command -v npx react-scripts &> /dev/null; then
-    echo "❌ react-scripts no encontrado, instalando..."
-    npm install react-scripts@5.0.1
-fi
-
-# Ejecutar build
-echo "🔨 Ejecutando build..."
+# Build de producción
+echo "🔨 Generando build..."
 npm run build
 
-echo "✅ Build completado exitosamente!"
+# Verificar build
+if [ ! -d "build" ]; then
+    echo "❌ Error: Build no generado"
+    exit 1
+fi
+
+echo "✅ Build completado exitosamente en build/"
+ls -la build/
