@@ -248,73 +248,85 @@ const Servicios: React.FC = () => {
                   stiffness: 300,
                   damping: 30
                 }}
-                className="fixed inset-4 sm:inset-8 md:inset-16 lg:inset-24 xl:inset-32 z-50 overflow-hidden"
+                className="fixed inset-0 z-50 overflow-hidden"
               >
-                <div className="relative w-full h-full bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-xl border border-border-primary rounded-3xl shadow-2xl overflow-hidden">
-                  {/* Header del panel */}
-                  <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary/20 to-primary-light/20 backdrop-blur-sm border-b border-border-primary/30 p-4 sm:p-6">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 bg-gradient-to-br ${
-                          technologyGroups.find(group => group.title === selectedTech)?.color
-                        } rounded-2xl flex items-center justify-center`}>
-                          {React.createElement(
-                            technologyGroups.find(group => group.title === selectedTech)?.icon || Code,
-                            { className: "icon-lg text-white" }
-                          )}
-                        </div>
-                        <div>
-                          <h4 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary">
-                            {selectedTech}
-                          </h4>
-                          <p className="text-text-secondary text-sm">
-                            {technologyGroups.find(group => group.title === selectedTech)?.description}
-                          </p>
-                        </div>
+                {/* Header flotante */}
+                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary/20 to-primary-light/20 backdrop-blur-sm border-b border-border-primary/30 p-4 sm:p-6 z-10">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 bg-gradient-to-br ${
+                        technologyGroups.find(group => group.title === selectedTech)?.color
+                      } rounded-2xl flex items-center justify-center`}>
+                        {React.createElement(
+                          technologyGroups.find(group => group.title === selectedTech)?.icon || Code,
+                          { className: "icon-lg text-white" }
+                        )}
                       </div>
-                      <button
-                        onClick={() => setSelectedTech(null)}
-                        className="w-10 h-10 bg-surface-secondary/50 hover:bg-surface-secondary border border-border-primary rounded-xl flex items-center justify-center text-text-tertiary hover:text-text-primary transition-all duration-300 hover:scale-110"
-                      >
-                        <X className="icon" />
-                      </button>
+                      <div>
+                        <h4 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary">
+                          {selectedTech}
+                        </h4>
+                        <p className="text-text-secondary text-sm">
+                          {technologyGroups.find(group => group.title === selectedTech)?.description}
+                        </p>
+                      </div>
                     </div>
+                    <button
+                      onClick={() => setSelectedTech(null)}
+                      className="w-10 h-10 bg-surface-secondary/50 hover:bg-surface-secondary border border-border-primary rounded-xl flex items-center justify-center text-text-tertiary hover:text-text-primary transition-all duration-300 hover:scale-110"
+                    >
+                      <X className="icon" />
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Contenido de tecnologías distribuido en el fondo */}
+                <div className="pt-24 sm:pt-28 p-4 sm:p-6 h-full">
+                  {/* Grid de tecnologías distribuido por toda la pantalla */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 h-full">
+                    {technologyGroups
+                      .find(group => group.title === selectedTech)
+                      ?.technologies.map((tech, index) => (
+                        <motion.div
+                          key={tech}
+                          initial={{ opacity: 0, scale: 0.5, rotate: -5 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          transition={{ 
+                            duration: 0.5, 
+                            delay: index * 0.1,
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 20
+                          }}
+                          className="group flex items-center justify-center"
+                        >
+                          <div className="bg-gradient-to-br from-primary/20 to-primary-light/20 backdrop-blur-sm border border-primary/30 rounded-2xl p-4 sm:p-6 hover:bg-primary/30 hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:shadow-xl max-w-xs w-full text-center">
+                            <div className="flex flex-col items-center gap-3">
+                              <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0 group-hover:scale-125 transition-transform"></div>
+                              <span className="text-text-primary font-semibold text-base sm:text-lg leading-tight">{tech}</span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
                   </div>
                   
-                  {/* Contenido del panel */}
-                  <div className="pt-24 sm:pt-28 p-4 sm:p-6 h-full overflow-y-auto">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                      {technologyGroups
-                        .find(group => group.title === selectedTech)
-                        ?.technologies.map((tech, index) => (
-                          <motion.div
-                            key={tech}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="group"
-                          >
-                            <div className="bg-gradient-to-r from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-4 sm:p-6 hover:bg-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                              <div className="flex items-center gap-4">
-                                <div className="w-3 h-3 bg-primary rounded-full flex-shrink-0 group-hover:scale-125 transition-transform"></div>
-                                <span className="text-text-primary font-medium text-base sm:text-lg">{tech}</span>
-                              </div>
-                            </div>
-                          </motion.div>
-                        ))}
-                    </div>
-                    
-                    {/* Información adicional */}
-                    <div className="mt-8 sm:mt-12 p-6 bg-gradient-to-r from-primary/5 to-primary-light/5 border border-primary/20 rounded-2xl">
-                      <h5 className="text-lg font-fraunces font-semibold text-text-primary mb-3">
+                  {/* Información adicional flotante en la parte inferior */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                    className="absolute bottom-6 left-6 right-6"
+                  >
+                    <div className="bg-gradient-to-r from-primary/10 to-primary-light/10 backdrop-blur-sm border border-primary/20 rounded-2xl p-4 sm:p-6 text-center">
+                      <h5 className="text-lg font-fraunces font-semibold text-text-primary mb-2">
                         Experiencia en {selectedTech}
                       </h5>
-                      <p className="text-text-secondary text-sm leading-relaxed">
+                      <p className="text-text-secondary text-sm leading-relaxed max-w-2xl mx-auto">
                         He aplicado estas tecnologías en proyectos reales, asegurando la más alta calidad y rendimiento. 
                         Cada herramienta es seleccionada cuidadosamente para maximizar la eficiencia y resultados.
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </>
