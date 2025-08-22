@@ -117,16 +117,6 @@ const Contacto: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-8"
-          >
-            <MessageSquare className="icon text-primary" />
-            <span className="text-primary font-medium text-sm">Ponte en Contacto</span>
-          </motion.div>
-          
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-8 leading-tight">
             Hablemos de tu <span className="text-gradient">Proyecto</span>
           </h2>

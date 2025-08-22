@@ -34,11 +34,11 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
   const getPaddingClasses = () => {
     switch (padding) {
       case 'small':
-        return 'py-16';
+        return 'py-12';
       case 'large':
-        return 'py-32';
+        return 'py-28';
       default:
-        return 'py-24';
+        return 'py-20';
     }
   };
 
@@ -85,18 +85,8 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-8"
-          >
-            <div className="w-2 h-2 bg-primary rounded-full"></div>
-            <span className="text-primary font-medium text-sm">Sección</span>
-          </motion.div>
-          
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-8 leading-tight">
             {title}
           </h2>
@@ -105,7 +95,7 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4"
             >
               {subtitle}
@@ -117,7 +107,7 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           {children}
         </motion.div>
