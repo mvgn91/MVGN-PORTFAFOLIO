@@ -66,13 +66,11 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
               className="flex items-center gap-3 cursor-pointer"
               onClick={scrollToTop}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shadow-lg">
-                <img 
-                  src="/assets/favicon.png" 
-                  alt="MVGN Labs Logo" 
-                  className="w-8 h-8 object-contain"
-                />
-              </div>
+              <img 
+                src="/assets/favicon.png" 
+                alt="MVGN Labs Logo" 
+                className="w-10 h-10 object-contain"
+              />
               <span className="text-white font-fraunces font-bold text-2xl">
                 Mvgn Labs
               </span>
@@ -116,13 +114,11 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeToggle }) => {
             className="flex items-center gap-2 cursor-pointer"
             onClick={scrollToTop}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shadow-lg">
-              <img 
-                src="/assets/favicon.png" 
-                alt="MVGN Labs Logo" 
-                className="w-6 h-6 object-contain"
-              />
-            </div>
+            <img 
+              src="/assets/favicon.png" 
+              alt="MVGN Labs Logo" 
+              className="w-8 h-8 object-contain"
+            />
             <span className="text-white font-fraunces font-bold text-lg">
               Mvgn Labs
             </span>
