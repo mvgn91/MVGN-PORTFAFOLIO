@@ -18,72 +18,72 @@ const Experiencia: React.FC = () => {
   const stats = [
     {
       icon: Briefcase,
-      number: '5+',
+      number: '2+',
       label: 'Años de Experiencia',
       description: 'En desarrollo web y diseño digital'
     },
     {
       icon: Users,
-      number: '25+',
+      number: '8+',
       label: 'Clientes Satisfechos',
       description: 'Proyectos exitosos entregados'
     },
     {
       icon: Award,
-      number: '100%',
+      number: '15+',
       label: 'Proyectos Completados',
       description: 'Cumplimiento de objetivos'
     },
     {
       icon: TrendingUp,
-      number: '3x',
-      label: 'Crecimiento Promedio',
-      description: 'En conversiones de clientes'
+      number: '100%',
+      label: 'Tasa de Éxito',
+      description: 'Proyectos entregados a tiempo'
     }
   ];
 
   const experiences = [
     {
-      title: 'Desarrollador Web Senior',
-      company: 'Freelance',
-      period: '2022 - Presente',
+      title: 'Consultor de Tecnologías y Marketing',
+      company: 'Pietrafina',
+      period: 'Feb 2024 - Actual',
       location: 'Guadalajara, México',
-      description: 'Desarrollo de soluciones web completas para empresas de diversos sectores, desde sitios corporativos hasta aplicaciones complejas.',
+      description: 'Coordinación, desarrollo y gestión de contenido y publicidad para página web y redes sociales. Asesoría en uso de tecnologías, servicios de reparación y actualización de equipos electrónicos.',
       achievements: [
-        'Implementación de CRM personalizado para PietraFina con Firebase',
-        'Diseño y desarrollo de sitios web corporativos responsivos',
-        'Optimización SEO que aumentó el tráfico orgánico en un 200%',
-        'Integración de APIs de terceros y sistemas de pago'
+        'Desarrollo de proyectos freelance como catálogos digitales y sitios web',
+        'Gestión de contenido web y publicidad en redes sociales',
+        'Asesoría tecnológica y servicios de reparación',
+        'Coordinación de estrategias de marketing digital'
       ],
-      technologies: ['React.js', 'Firebase', 'Node.js', 'Tailwind CSS', 'SEO']
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Marketing Digital', 'SEO']
     },
     {
-      title: 'Diseñador Digital',
-      company: 'Agencia Creativa',
+      title: 'Técnico Reparador Express y Ventas',
+      company: 'CompuCenter7',
+      period: '2022 - 2024',
+      location: 'Guadalajara, México',
+      description: 'Diagnóstico y reparación de computadoras, venta de consumibles y accesorios, diseño de publicidad y atención a clientes.',
+      achievements: [
+        'Diagnóstico y reparación de equipos informáticos',
+        'Venta de consumibles y accesorios',
+        'Diseño de publicidad para la empresa',
+        'Atención directa al cliente'
+      ],
+      technologies: ['Reparación PC', 'Hardware', 'Software', 'Ventas', 'Diseño']
+    },
+    {
+      title: 'Auxiliar Administrativo y Rastreo GPS',
+      company: 'Empresa de Importación',
       period: '2020 - 2022',
       location: 'Guadalajara, México',
-      description: 'Creación de identidades visuales y materiales de marketing para empresas locales y nacionales.',
+      description: 'Revisión y clasificación de documentos, seguimiento de rutas, capacitación en tecnología para operadores de transporte.',
       achievements: [
-        'Diseño de identidades de marca para 15+ empresas',
-        'Creación de catálogos digitales interactivos',
-        'Desarrollo de estrategias de branding',
-        'Diseño de materiales promocionales y publicitarios'
+        'Revisión y clasificación de documentos',
+        'Seguimiento de rutas GPS',
+        'Capacitación tecnológica para operadores',
+        'Gestión administrativa'
       ],
-      technologies: ['Adobe Creative Suite', 'Branding', 'Diseño Editorial', 'Marketing Digital']
-    },
-    {
-      title: 'Técnico en Sistemas',
-      company: 'Empresa de Tecnología',
-      period: '2018 - 2020',
-      location: 'Guadalajara, México',
-      description: 'Soporte técnico y mantenimiento de sistemas informáticos para empresas del sector tecnológico.',
-      achievements: [
-        'Mantenimiento de 50+ equipos informáticos',
-        'Instalación y configuración de redes',
-        'Soporte remoto y presencial',
-        'Optimización de sistemas operativos'
-      ],
-      technologies: ['Windows', 'Linux', 'Redes', 'Hardware', 'Software']
+      technologies: ['GPS', 'Administración', 'Capacitación', 'Logística']
     }
   ];
 

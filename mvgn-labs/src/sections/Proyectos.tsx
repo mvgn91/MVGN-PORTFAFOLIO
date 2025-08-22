@@ -10,9 +10,9 @@ const Proyectos: React.FC = () => {
 
   const filters = [
     { id: 'todos', label: 'Todos', count: projects.length },
-    { id: 'web', label: 'Web', count: projects.filter(p => p.category === 'web').length },
-    { id: 'branding', label: 'Branding', count: projects.filter(p => p.category === 'branding').length },
-    { id: 'catalogo', label: 'Catálogos', count: projects.filter(p => p.category === 'catalogo').length }
+    { id: 'web', label: 'Sitios Web', count: projects.filter(p => p.category === 'web').length },
+    { id: 'catalogo', label: 'Catálogos', count: projects.filter(p => p.category === 'catalogo').length },
+    { id: 'multimedia', label: 'Multimedia', count: projects.filter(p => p.category === 'multimedia').length }
   ];
 
   const handleFilter = (filterId: string) => {
@@ -168,49 +168,61 @@ const Proyectos: React.FC = () => {
 const projects = [
   {
     id: 1,
-    title: 'CRM PietraFina',
+    title: 'Notaría 80 GDL',
     category: 'web',
-    description: 'Sistema de gestión de clientes completo con dashboard, gestión de prospectos, seguimiento de ventas y reportes analíticos.',
-    image: '/assets/crm captura.png',
-    technologies: ['React.js', 'Firebase', 'Tailwind CSS', 'Framer Motion'],
-    features: ['Dashboard interactivo', 'Gestión de prospectos', 'Seguimiento de ventas', 'Reportes analíticos'],
-    link: '#',
+    description: 'Diseño y desarrollo completo del sitio web corporativo para Notaría 80 de Guadalajara con implementación de diseño moderno enfocado en confianza y profesionalismo.',
+    image: '/assets/captura notaria80.png',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Diseño Responsivo'],
+    features: ['Diseño corporativo', 'Información de servicios', 'Diseño responsivo', 'Enfoque en confianza'],
+    link: 'https://www.notaria80gdl.mx/',
     github: '#',
     year: '2024'
   },
   {
     id: 2,
-    title: 'Notaria 80',
+    title: 'Pietrafina MX',
     category: 'web',
-    description: 'Sitio web corporativo para notaría con diseño elegante, información de servicios y formularios de contacto integrados.',
-    image: '/assets/captura notaria80.png',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
-    features: ['Diseño corporativo', 'Información de servicios', 'Formularios de contacto', 'Diseño responsivo'],
-    link: '#',
+    description: 'Diseño, desarrollo y mantenimiento continuo del sitio web corporativo con implementación de funcionalidades avanzadas y optimización SEO.',
+    image: '/assets/captura pietrafina.png',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'SEO'],
+    features: ['Sitio corporativo', 'Funcionalidades avanzadas', 'Optimización SEO', 'Mantenimiento continuo'],
+    link: 'https://www.pietrafina.mx/',
     github: '#',
     year: '2024'
   },
   {
     id: 3,
-    title: 'PietraFina Branding',
-    category: 'branding',
-    description: 'Identidad visual completa incluyendo logo, paleta de colores, tipografías y aplicaciones en diferentes medios.',
-    image: '/assets/captura pietrafina.png',
-    technologies: ['Adobe Illustrator', 'Adobe Photoshop', 'Brand Guidelines', 'Color Theory'],
-    features: ['Logo principal', 'Paleta de colores', 'Tipografías', 'Aplicaciones'],
+    title: 'CRM de Prospección - Pietrafina',
+    category: 'web',
+    description: 'Sistema de gestión de clientes desarrollado para Pietrafina MX con funcionalidades para seguimiento de prospectos, gestión de ventas e integración con WhatsApp.',
+    image: '/assets/crm captura.png',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Firebase', 'WhatsApp API'],
+    features: ['Gestión de prospectos', 'Seguimiento de ventas', 'Integración WhatsApp', 'Dashboard funcional'],
     link: '#',
     github: '#',
     year: '2024'
   },
   {
     id: 4,
-    title: 'Catálogo Digital',
+    title: 'Sabor y Salud YouTube',
+    category: 'multimedia',
+    description: 'Editor y productor del programa de YouTube "Sabor y Salud", auspiciado por Pietrafina MX. Producción de contenido digital, edición de video y estrategia de marketing.',
+    image: '/assets/miniatura youtube.png',
+    technologies: ['YouTube', 'Edición de Video', 'Marketing Digital', 'Producción'],
+    features: ['Producción de contenido', 'Edición de video', 'Estrategia marketing', 'Canal corporativo'],
+    link: 'https://www.youtube.com/@pietrafinamx',
+    github: '#',
+    year: '2024'
+  },
+  {
+    id: 5,
+    title: 'Catálogo Online - JULDRA UNIFORMES',
     category: 'catalogo',
-    description: 'Catálogo interactivo en PDF con navegación intuitiva, imágenes de alta calidad y información detallada de productos.',
+    description: 'Catálogo digital interactivo para JULDRA UNIFORMES con diseño profesional, navegación intuitiva, galería de productos y sistema de contacto integrado.',
     image: '/assets/mapa.png',
-    technologies: ['Adobe InDesign', 'Adobe Photoshop', 'PDF Interactivo', 'Diseño Editorial'],
-    features: ['Navegación intuitiva', 'Imágenes HD', 'Información detallada', 'Formato profesional'],
-    link: '#',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Diseño Responsivo', 'UX/UI'],
+    features: ['Navegación intuitiva', 'Galería de productos', 'Sistema de contacto', 'Diseño responsivo'],
+    link: 'https://mvgn91.github.io/JULDRA-CATALOGO-VIRTUAL/',
     github: '#',
     year: '2024'
   }

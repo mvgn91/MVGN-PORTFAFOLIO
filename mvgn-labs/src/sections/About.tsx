@@ -104,8 +104,8 @@ const About: React.FC = () => {
                 'Diseño Digital',
                 'Marketing Digital',
                 'Ventas B2B',
-                'Instalación Fibra',
-                'Mantenimiento IT'
+                'Reparación PC',
+                'Instalación Fibra'
               ].map((skill, index) => (
                 <motion.div
                   key={skill}

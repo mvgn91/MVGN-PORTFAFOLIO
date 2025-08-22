@@ -3,118 +3,118 @@ import { motion, AnimatePresence } from 'framer-motion';
 import BackgroundLines from '../components/BackgroundLines';
 
 const ZonaTrabajo: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('desarrollo');
+  const [activeTab, setActiveTab] = useState('zona');
 
   const tabs = [
-    { id: 'desarrollo', label: 'Desarrollo Web', icon: '💻' },
-    { id: 'diseno', label: 'Diseño UX/UI', icon: '🎨' },
-    { id: 'marketing', label: 'Marketing Digital', icon: '📱' },
-    { id: 'soporte', label: 'Soporte Técnico', icon: '🔧' }
+    { id: 'zona', label: 'Zona de Trabajo', icon: '📍' },
+    { id: 'servicios', label: 'Servicios Locales', icon: '🏢' },
+    { id: 'disponibilidad', label: 'Disponibilidad', icon: '⏰' },
+    { id: 'contacto', label: 'Contacto Directo', icon: '📞' }
   ];
 
   const workProcesses = {
-    desarrollo: [
+    zona: [
       {
         step: '01',
-        title: 'Análisis y Planificación',
-        description: 'Evaluamos tus necesidades y creamos una estrategia técnica detallada',
-        details: ['Reunión de descubrimiento', 'Análisis de requisitos', 'Arquitectura técnica', 'Cronograma del proyecto']
+        title: 'Zona Metropolitana de Guadalajara',
+        description: 'Especialmente en el sur de la ZMG, donde tengo mayor presencia y conocimiento del mercado local',
+        details: ['Sur de Guadalajara', 'Zona Metropolitana', 'Presencia local', 'Conocimiento del mercado']
       },
       {
         step: '02',
-        title: 'Diseño y Prototipado',
-        description: 'Creamos wireframes y prototipos interactivos para validar la experiencia',
-        details: ['Wireframes de baja fidelidad', 'Prototipos interactivos', 'Validación de UX', 'Iteraciones de diseño']
+        title: 'Servicios Presenciales',
+        description: 'Para instalaciones, reparaciones y consultoría técnica que requieren presencia física',
+        details: ['Instalación de fibra óptica', 'Reparación de equipos', 'Configuración de cámaras', 'Consultoría técnica']
       },
       {
         step: '03',
-        title: 'Desarrollo y Implementación',
-        description: 'Construimos tu solución usando las mejores prácticas y tecnologías modernas',
-        details: ['Desarrollo frontend', 'Integración backend', 'Testing y QA', 'Optimización de rendimiento']
+        title: 'Servicios Remotos',
+        description: 'Desarrollo web, diseño y soporte técnico que se pueden realizar desde cualquier ubicación',
+        details: ['Desarrollo de sitios web', 'Diseño de catálogos', 'Soporte técnico remoto', 'Consultoría online']
       },
       {
         step: '04',
-        title: 'Lanzamiento y Soporte',
-        description: 'Desplegamos tu proyecto y proporcionamos soporte continuo',
-        details: ['Despliegue en producción', 'Configuración de hosting', 'Capacitación del equipo', 'Soporte post-lanzamiento']
+        title: 'Flexibilidad de Horarios',
+        description: 'Adaptación a las necesidades de cada cliente y proyecto',
+        details: ['Horarios flexibles', 'Atención personalizada', 'Respuesta rápida', 'Soporte continuo']
       }
     ],
-    diseno: [
+    servicios: [
       {
         step: '01',
-        title: 'Investigación de Usuarios',
-        description: 'Analizamos a tu audiencia objetivo para crear experiencias centradas en el usuario',
-        details: ['Personas y user journey', 'Análisis de competencia', 'Investigación de mercado', 'Entrevistas con usuarios']
+        title: 'Desarrollo Web Local',
+        description: 'Sitios web para empresas de la zona con enfoque en el mercado local',
+        details: ['Sitios corporativos', 'Landing pages', 'E-commerce básico', 'SEO local']
       },
       {
         step: '02',
-        title: 'Arquitectura de Información',
-        description: 'Organizamos la estructura y navegación de tu plataforma digital',
-        details: ['Mapa del sitio', 'Flujos de usuario', 'Taxonomía de contenido', 'Estructura de navegación']
+        title: 'Soporte Técnico',
+        description: 'Servicios de reparación y mantenimiento para empresas y particulares',
+        details: ['Reparación de PC', 'Instalación de software', 'Configuración de redes', 'Mantenimiento preventivo']
       },
       {
         step: '03',
-        title: 'Diseño Visual y Prototipado',
-        description: 'Creamos la identidad visual y prototipos interactivos',
-        details: ['Sistema de diseño', 'Paleta de colores', 'Tipografía', 'Prototipos de alta fidelidad']
+        title: 'Instalaciones Especializadas',
+        description: 'Servicios de instalación para infraestructura tecnológica',
+        details: ['Conexiones de fibra óptica', 'Cámaras de seguridad', 'Sistemas de red', 'Equipos informáticos']
       },
       {
         step: '04',
-        title: 'Testing y Refinamiento',
-        description: 'Validamos el diseño con usuarios reales y refinamos la experiencia',
-        details: ['Testing de usabilidad', 'Análisis de métricas', 'Iteraciones de diseño', 'Documentación final']
+        title: 'Consultoría Digital',
+        description: 'Asesoría en tecnología y marketing digital para negocios locales',
+        details: ['Estrategia digital', 'Presencia online', 'Marketing local', 'Optimización de procesos']
       }
     ],
-    marketing: [
+    disponibilidad: [
       {
         step: '01',
-        title: 'Análisis de Mercado',
-        description: 'Investigamos tu industria y competencia para identificar oportunidades',
-        details: ['Análisis de competencia', 'Investigación de mercado', 'Análisis de audiencia', 'Identificación de oportunidades']
+        title: 'Horarios de Atención',
+        description: 'Disponibilidad flexible para adaptarme a las necesidades de cada cliente',
+        details: ['Lunes a Viernes', '9:00 AM - 6:00 PM', 'Sábados por cita', 'Emergencias 24/7']
       },
       {
         step: '02',
-        title: 'Estrategia de Marketing',
-        description: 'Desarrollamos un plan integral para alcanzar tus objetivos de negocio',
-        details: ['Definición de objetivos', 'Estrategia de canales', 'Plan de contenido', 'Cronograma de campañas']
+        title: 'Respuesta Rápida',
+        description: 'Compromiso de responder consultas en las primeras 24 horas',
+        details: ['Respuesta en 24h', 'Consulta gratuita', 'Presupuesto rápido', 'Inicio inmediato']
       },
       {
         step: '03',
-        title: 'Implementación y Ejecución',
-        description: 'Ejecutamos las campañas y estrategias definidas',
-        details: ['Creación de contenido', 'Gestión de redes sociales', 'Campañas publicitarias', 'Email marketing']
-      },
-      {
-        step: '04',
-        title: 'Análisis y Optimización',
-        description: 'Monitoreamos resultados y optimizamos continuamente las estrategias',
-        details: ['Análisis de métricas', 'Reportes de rendimiento', 'A/B testing', 'Optimización continua']
-      }
-    ],
-    soporte: [
-      {
-        step: '01',
-        title: 'Diagnóstico Inicial',
-        description: 'Evaluamos el estado actual de tus sistemas y identificamos problemas',
-        details: ['Análisis de sistemas', 'Identificación de problemas', 'Evaluación de rendimiento', 'Recomendaciones iniciales']
-      },
-      {
-        step: '02',
-        title: 'Implementación de Soluciones',
-        description: 'Aplicamos las soluciones técnicas necesarias para resolver los problemas',
-        details: ['Instalación de software', 'Configuración de sistemas', 'Optimización de rendimiento', 'Resolución de problemas']
-      },
-      {
-        step: '03',
-        title: 'Capacitación del Equipo',
-        description: 'Entrenamos a tu equipo en el uso y mantenimiento de los sistemas',
-        details: ['Sesiones de capacitación', 'Documentación técnica', 'Procedimientos de mantenimiento', 'Soporte inicial']
-      },
-      {
-        step: '04',
         title: 'Soporte Continuo',
-        description: 'Proporcionamos soporte técnico continuo y mantenimiento preventivo',
-        details: ['Monitoreo de sistemas', 'Mantenimiento preventivo', 'Soporte técnico', 'Actualizaciones de seguridad']
+        description: 'Acompañamiento durante todo el proceso del proyecto',
+        details: ['Seguimiento continuo', 'Actualizaciones regulares', 'Soporte post-entrega', 'Mantenimiento']
+      },
+      {
+        step: '04',
+        title: 'Flexibilidad Total',
+        description: 'Adaptación a horarios y necesidades específicas del cliente',
+        details: ['Horarios flexibles', 'Visitas a domicilio', 'Capacitación del equipo', 'Soporte remoto']
+      }
+    ],
+    contacto: [
+      {
+        step: '01',
+        title: 'Contacto Directo',
+        description: 'Comunicación directa y personalizada para cada proyecto',
+        details: ['WhatsApp: 33 2262 1939', 'Email: jazzfatale@gmail.com', 'Respuesta inmediata', 'Consulta gratuita']
+      },
+      {
+        step: '02',
+        title: 'Visita de Evaluación',
+        description: 'Visita gratuita para evaluar necesidades y presupuesto',
+        details: ['Evaluación gratuita', 'Presupuesto detallado', 'Plan de trabajo', 'Cronograma']
+      },
+      {
+        step: '03',
+        title: 'Seguimiento Personalizado',
+        description: 'Acompañamiento personal durante todo el proyecto',
+        details: ['Comunicación constante', 'Actualizaciones regulares', 'Ajustes en tiempo real', 'Satisfacción garantizada']
+      },
+      {
+        step: '04',
+        title: 'Post-Venta',
+        description: 'Soporte continuo después de la entrega del proyecto',
+        details: ['Mantenimiento', 'Actualizaciones', 'Soporte técnico', 'Consultoría continua']
       }
     ]
   };
@@ -162,7 +162,7 @@ const ZonaTrabajo: React.FC = () => {
             Mi <span className="text-gradient">Zona de Trabajo</span>
           </h2>
           <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed px-2">
-            Descubre cómo trabajo y los procesos que sigo para entregar resultados excepcionales
+            Especializado en el sur de la Zona Metropolitana de Guadalajara, ofrezco servicios presenciales y remotos con la flexibilidad que tu proyecto necesita
           </p>
         </motion.div>
 

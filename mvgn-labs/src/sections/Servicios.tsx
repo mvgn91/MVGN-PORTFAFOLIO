@@ -25,7 +25,7 @@ const Servicios: React.FC = () => {
       title: 'Diseño Web',
       subtitle: 'Sitios Web Modernos',
       description: 'Creo sitios web profesionales, responsivos y optimizados para SEO que convierten visitantes en clientes.',
-      features: ['Diseño Responsivo', 'SEO Optimizado', 'React.js', 'Firebase Integration'],
+      features: ['Diseño Responsivo', 'SEO Optimizado', 'HTML5/CSS3', 'JavaScript'],
       benefits: ['Mejora la imagen de marca', 'Aumenta las conversiones', 'Optimizado para móviles'],
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-500/10',
@@ -70,28 +70,28 @@ const Servicios: React.FC = () => {
     {
       title: 'Frontend Development',
       icon: Code,
-      technologies: ['React.js', 'JavaScript', 'HTML5/CSS3', 'Tailwind CSS'],
+      technologies: ['JavaScript', 'HTML5/CSS3', 'Responsive Design', 'UX/UI'],
       color: 'from-blue-500 to-cyan-500',
       description: 'Interfaces modernas y responsivas'
     },
     {
       title: 'Backend & Database',
       icon: Database,
-      technologies: ['Firebase', 'Node.js', 'REST APIs', 'Real-time Data'],
+      technologies: ['Firebase', 'WhatsApp API', 'REST APIs', 'Real-time Data'],
       color: 'from-green-500 to-emerald-500',
       description: 'Arquitectura robusta y escalable'
     },
     {
       title: 'Mobile & Responsive',
       icon: Smartphone,
-      technologies: ['Mobile First', 'Progressive Web Apps', 'Cross-platform', 'Touch Optimized'],
+      technologies: ['Mobile First', 'Cross-platform', 'Touch Optimized', 'Performance'],
       color: 'from-purple-500 to-pink-500',
       description: 'Experiencia perfecta en todos los dispositivos'
     },
     {
       title: 'Performance & SEO',
       icon: Search,
-      technologies: ['Core Web Vitals', 'SEO Optimization', 'Analytics', 'Performance Monitoring'],
+      technologies: ['SEO Optimization', 'Analytics', 'Performance Monitoring', 'Core Web Vitals'],
       color: 'from-red-500 to-pink-500',
       description: 'Optimización integral para resultados'
     }

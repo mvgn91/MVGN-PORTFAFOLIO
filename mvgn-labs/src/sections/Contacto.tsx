@@ -57,24 +57,24 @@ const Contacto: React.FC = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'armando@mvgnlabs.com',
+      value: 'jazzfatale@gmail.com',
       description: 'Respuesta en 24 horas',
-      action: 'mailto:armando@mvgnlabs.com',
+      action: 'mailto:jazzfatale@gmail.com',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: Phone,
       title: 'Teléfono',
-      value: '+52 33 1234 5678',
+      value: '33 2262 1939',
       description: 'Lun-Vie 9:00 - 18:00',
-      action: 'tel:+523312345678',
+      action: 'tel:+523322621939',
       color: 'from-green-500 to-emerald-500'
     },
     {
       icon: MapPin,
       title: 'Ubicación',
-      value: 'Guadalajara, México',
-      description: 'Zona Metropolitana',
+      value: 'Sur de la ZMG',
+      description: 'Zona Metropolitana de Guadalajara',
       action: '#',
       color: 'from-purple-500 to-pink-500'
     }
