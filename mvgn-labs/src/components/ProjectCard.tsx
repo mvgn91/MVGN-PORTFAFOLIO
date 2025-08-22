@@ -33,7 +33,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       case 'web': return 'from-blue-500 to-cyan-500';
       case 'app': return 'from-green-500 to-emerald-500';
       case 'marketing': return 'from-purple-500 to-pink-500';
-      default: return 'from-primary to-accent';
+      default: return 'from-primary to-primary-light';
     }
   };
 
@@ -67,10 +67,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20"
+          className="absolute top-4 right-4 z-20"
         >
-          <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-semibold rounded-full shadow-lg">
-            <Star className="w-3 h-3 sm:w-3 sm:h-3 fill-current" />
+          <div className="flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-semibold rounded-full shadow-lg">
+            <Star className="icon-sm fill-current" />
             <span className="hidden sm:inline">Destacado</span>
           </div>
         </motion.div>
@@ -81,9 +81,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.2 }}
-        className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20"
+        className="absolute top-4 left-4 z-20"
       >
-        <div className={`flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-gradient-to-r ${getCategoryColor(category)} text-white text-xs font-semibold rounded-full shadow-lg`}>
+        <div className={`flex items-center gap-2 px-3 py-1 bg-gradient-to-r ${getCategoryColor(category)} text-white text-xs font-semibold rounded-full shadow-lg`}>
           <span>{getCategoryIcon(category)}</span>
           <span className="hidden sm:inline">
             {category === 'web' ? 'Web' : category === 'app' ? 'App' : category === 'marketing' ? 'Marketing' : 'Otro'}
@@ -92,7 +92,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </motion.div>
 
       {/* Project Image Container */}
-      <div className="relative overflow-hidden h-48 sm:h-56 md:h-64">
+      <div className="relative overflow-hidden h-64">
         <motion.img
           src={image}
           alt={title}
@@ -112,7 +112,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           animate={{ opacity: isHovered ? 1 : 0 }}
           className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent flex items-center justify-center"
         >
-          <div className="flex gap-2 sm:gap-3">
+          <div className="flex gap-3">
             {url && (
               <motion.a
                 href={url}
@@ -120,9 +120,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
               >
-                <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Eye className="icon" />
               </motion.a>
             )}
             {githubUrl && (
@@ -132,9 +132,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
               >
-                <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Github className="icon" />
               </motion.a>
             )}
           </div>
@@ -142,11 +142,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       {/* Project Content */}
-      <div className="p-4 sm:p-6">
+      <div className="p-6">
         {/* Title and Description */}
-        <div className="mb-4 sm:mb-6">
+        <div className="mb-6">
           <motion.h3 
-            className="text-xl sm:text-2xl font-fraunces font-semibold text-white mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300"
+            className="text-2xl font-fraunces font-semibold text-white mb-3 group-hover:text-primary transition-colors duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -155,7 +155,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </motion.h3>
           
           <motion.p 
-            className="text-white/70 leading-relaxed text-xs sm:text-sm"
+            className="text-white/70 leading-relaxed text-sm"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -166,7 +166,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         {/* Technologies */}
         <motion.div 
-          className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6"
+          className="flex flex-wrap gap-2 mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -177,13 +177,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 + index * 0.1 }}
-              className="px-2 py-1 sm:px-3 sm:py-1.5 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
+              className="px-3 py-1.5 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
             >
               {tech}
             </motion.span>
           ))}
           {technologies.length > 4 && (
-            <span className="px-2 py-1 sm:px-3 sm:py-1.5 bg-white/10 text-white/60 text-xs font-medium rounded-full border border-white/20">
+            <span className="px-3 py-1.5 bg-white/10 text-white/60 text-xs font-medium rounded-full border border-white/20">
               +{technologies.length - 4}
             </span>
           )}
@@ -191,7 +191,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         {/* Action Buttons */}
         <motion.div 
-          className="flex gap-2 sm:gap-3"
+          className="flex gap-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -203,9 +203,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-3 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300 group-hover:shadow-primary/25 text-xs sm:text-sm"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary to-primary-light text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300 group-hover:shadow-primary/25 text-sm"
             >
-              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+              <ExternalLink className="icon-sm" />
               <span className="hidden sm:inline">Ver Proyecto</span>
               <span className="sm:hidden">Ver</span>
             </motion.a>
@@ -218,9 +218,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-3 bg-surface hover:bg-surface-dark text-white font-medium rounded-xl border border-surface-dark/30 transition-all duration-300 hover:border-primary/30 text-xs sm:text-sm"
+              className="flex items-center justify-center gap-2 px-4 py-3 bg-surface hover:bg-surface-dark text-white font-medium rounded-xl border border-surface-dark/30 transition-all duration-300 hover:border-primary/30 text-sm"
             >
-              <Github className="w-3 h-3 sm:w-4 sm:h-4" />
+              <Github className="icon-sm" />
               <span className="hidden sm:inline">Código</span>
               <span className="sm:hidden">Code</span>
             </motion.a>
@@ -234,9 +234,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             opacity: isHovered ? 1 : 0,
             x: isHovered ? 0 : -10
           }}
-          className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-primary"
+          className="absolute bottom-4 right-4 text-primary"
         >
-          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+          <ArrowRight className="icon" />
         </motion.div>
       </div>
     </motion.div>

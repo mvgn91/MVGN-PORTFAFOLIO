@@ -28,7 +28,7 @@ const About: React.FC = () => {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-start">
+      <div className="section-grid section-grid-2 items-start">
         {/* Left Column - Profile Image */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -70,10 +70,10 @@ const About: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-6 sm:space-y-8"
+          className="space-y-lg"
         >
           {/* Description */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-md">
             <p className="text-base sm:text-lg text-white/90 leading-relaxed">
               Soy un profesional <span className="text-primary font-semibold">técnico y creativo</span> con experiencia 
               en tecnología, ventas y marketing digital. Mi pasión es transformar ideas en soluciones tecnológicas 
@@ -87,13 +87,13 @@ const About: React.FC = () => {
             </p>
             
             <p className="text-white/70 text-sm sm:text-base">
-              <span className="text-accent font-medium">Servicios adicionales:</span> También realizo conexiones 
+              <span className="text-primary font-medium">Servicios adicionales:</span> También realizo conexiones 
               de fibra óptica, instalación de cámaras de seguridad y mantenimiento de equipos informáticos.
             </p>
           </div>
 
           {/* Skills Grid */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-md">
             <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white">
               Habilidades Principales
             </h3>
@@ -113,7 +113,7 @@ const About: React.FC = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-surface-light/50 backdrop-blur-sm border border-white/10 rounded-xl px-3 py-2 text-center"
+                  className="bg-surface-light/50 backdrop-blur-sm border border-white/10 rounded-xl px-3 py-2 text-center hover-lift"
                 >
                   <span className="text-sm sm:text-base text-white/80 font-medium">
                     {skill}
@@ -129,7 +129,7 @@ const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="pt-4"
+            className="pt-md"
           >
             <button
               onClick={() => {
@@ -138,10 +138,10 @@ const About: React.FC = () => {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="btn-primary group flex items-center justify-center w-full sm:w-auto"
+              className="btn btn-primary group"
             >
               Contáctame
-              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="icon group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </button>

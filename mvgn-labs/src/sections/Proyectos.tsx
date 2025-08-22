@@ -65,7 +65,7 @@ const Proyectos: React.FC = () => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section id="proyectos" className="section-padding bg-surface relative overflow-hidden">
+    <section id="proyectos" className="relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -85,14 +85,14 @@ const Proyectos: React.FC = () => {
       {/* Líneas geométricas de fondo */}
       <BackgroundLines className="opacity-20" />
 
-      <div className="container-custom relative z-10">
+      <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-4 sm:mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-6 leading-tight">
             Proyectos <span className="text-gradient">Destacados</span>
           </h2>
           <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto px-2">
@@ -105,14 +105,14 @@ const Proyectos: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8 sm:mb-12"
+          className="mb-12"
         >
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             {filters.map((filter) => (
               <motion.button
                 key={filter.key}
                 onClick={() => setActiveFilter(filter.key)}
-                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base ${
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 text-base ${
                   activeFilter === filter.key
                     ? 'bg-primary text-white shadow-lg'
                     : 'bg-surface-dark/50 text-white/70 hover:bg-surface-dark/80 hover:text-white'
@@ -131,9 +131,9 @@ const Proyectos: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-12 sm:mb-16"
+          className="mb-16"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="section-grid section-grid-3">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -162,11 +162,11 @@ const Proyectos: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-6 sm:p-8 md:p-10 max-w-3xl mx-auto">
-            <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-white mb-3 sm:mb-4">
+          <div className="bg-gradient-to-r from-primary/10 to-primary-light/10 border border-primary/20 rounded-2xl p-10 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-fraunces font-semibold text-white mb-4">
               ¿Te gustó mi trabajo?
             </h3>
-            <p className="text-white/80 mb-4 sm:mb-6 max-w-xl mx-auto text-sm sm:text-base">
+            <p className="text-white/80 mb-6 max-w-xl mx-auto text-base">
               Cada proyecto es una oportunidad para crear algo único y funcional. 
               ¿Tienes una idea que te gustaría que desarrolle?
             </p>
@@ -175,7 +175,7 @@ const Proyectos: React.FC = () => {
                 const element = document.getElementById('contacto');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="btn-primary group flex items-center justify-center"
+              className="btn btn-primary group"
             >
               Conversemos sobre tu Proyecto
             </button>

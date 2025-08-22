@@ -32,9 +32,9 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
   };
 
   const paddingClasses = {
-    small: 'py-12 sm:py-16 lg:py-20',
-    medium: 'py-16 sm:py-20 lg:py-32',
-    large: 'py-20 sm:py-24 lg:py-40',
+    small: 'py-16',
+    medium: 'py-20',
+    large: 'py-32',
     hero: 'min-h-screen flex items-center'
   };
 
@@ -48,11 +48,11 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
       {/* Background Pattern - Solo para secciones con background */}
       {background !== 'none' && (
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary-light/20" />
         </div>
       )}
 
-      <div className={`${container ? 'container mx-auto px-4 sm:px-6 lg:px-8' : ''} relative z-10`}>
+      <div className={`${container ? 'container' : ''} relative z-10`}>
         {/* Section Header */}
         {(title || subtitle) && (
           <motion.div
@@ -60,10 +60,10 @@ const SectionLayout: React.FC<SectionLayoutProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16 sm:mb-20 lg:mb-24"
+            className="text-center mb-20"
           >
             {title && (
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-4 sm:mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-white mb-6">
                 {title}
               </h2>
             )}
