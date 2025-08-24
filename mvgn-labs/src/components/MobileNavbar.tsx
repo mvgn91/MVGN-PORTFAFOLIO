@@ -28,15 +28,15 @@ const MobileNavbar: React.FC = () => {
 
   return (
     <>
-      {/* Top Mobile Navigation */}
+      {/* Top Mobile Navigation - 60px alto, logo 36px */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="fixed top-0 left-0 right-0 z-50 lg:hidden bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-lg"
+        className="header-mobile fixed top-0 left-0 right-0 z-50 lg:hidden bg-[var(--bg-primary)]/95 backdrop-blur-xl border-b border-[var(--border-primary)] shadow-lg"
       >
-        <div className="flex items-center justify-between px-4 py-3">
-          {/* Logo MVGN Labs */}
+        <div className="flex items-center justify-between h-full px-6">
+          {/* Logo MVGN Labs - 36px × 36px */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-2 cursor-pointer"
@@ -45,9 +45,9 @@ const MobileNavbar: React.FC = () => {
             <img 
               src="/assets/favicon.png" 
               alt="MVGN Labs Logo" 
-              className="w-8 h-8 object-contain"
+              className="w-9 h-9 object-contain" // 36px × 36px
             />
-            <span className="text-gray-900 font-fraunces font-bold text-lg">
+            <span className="text-[var(--text-primary)] font-fraunces font-bold text-lg">
               Mvgn Labs
             </span>
           </motion.div>
@@ -57,7 +57,7 @@ const MobileNavbar: React.FC = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="w-10 h-10 bg-gray-100/80 backdrop-blur-sm border border-gray-200/50 rounded-xl flex items-center justify-center text-gray-700 hover:bg-gray-200/80 transition-all duration-300"
+            className="w-10 h-10 glass border border-[var(--border-primary)] rounded-xl flex items-center justify-center text-[var(--text-primary)] hover:bg-[var(--bg-surface-hover)] transition-all duration-300"
             aria-label="Abrir menú de navegación"
           >
             <AnimatePresence mode="wait">
@@ -86,47 +86,84 @@ const MobileNavbar: React.FC = () => {
           </motion.button>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu Overlay - Full Screen */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: '100vh' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="bg-white/98 backdrop-blur-xl border-t border-gray-200/50 overflow-hidden"
+              className="fixed inset-0 top-[60px] bg-[var(--bg-primary)]/98 backdrop-blur-xl z-40 overflow-hidden"
             >
-              <div className="px-4 py-6 space-y-4">
-                {navItems.map((item, index) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <motion.button
-                      key={item.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      onClick={() => handleNavClick(item.href)}
-                      className="w-full flex items-center gap-4 px-4 py-4 rounded-xl text-left hover:bg-gray-100/80 transition-all duration-300 group"
-                    >
-                      <div className="w-12 h-12 bg-gradient-to-br from-red-100 to-red-200 rounded-xl flex items-center justify-center group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
-                        <IconComponent className="w-6 h-6 text-red-600 group-hover:text-red-700 transition-colors duration-300" />
-                      </div>
-                      <div>
-                        <span className="text-gray-900 font-semibold text-lg group-hover:text-red-600 transition-colors duration-300">
+              <div className="h-full flex flex-col justify-center px-6 py-12">
+                {/* Navigation Items */}
+                <div className="space-y-8 mb-16">
+                  {navItems.map((item, index) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <motion.button
+                        key={item.href}
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        onClick={() => handleNavClick(item.href)}
+                        className="w-full flex items-center gap-4 text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-all duration-300 group"
+                      >
+                        <div className="w-12 h-12 glass rounded-2xl flex items-center justify-center group-hover:bg-[var(--accent-primary)] group-hover:text-[var(--text-primary)] transition-all duration-300">
+                          <IconComponent className="w-6 h-6" />
+                        </div>
+                        <span className="font-fraunces font-semibold text-2xl group-hover:translate-x-2 transition-transform duration-300">
                           {item.label}
                         </span>
-                      </div>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+
+                {/* Contact Info */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  className="space-y-6 text-center"
+                >
+                  <div className="glass p-6 rounded-2xl">
+                    <h4 className="font-fraunces font-semibold text-[var(--text-primary)] mb-4 text-lg">
+                      ¿Listo para tu proyecto?
+                    </h4>
+                    <p className="text-[var(--text-tertiary)] text-sm mb-4">
+                      Conversemos sobre cómo puedo ayudarte
+                    </p>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => handleNavClick('#contacto')}
+                      className="cta-mobile w-full"
+                    >
+                      Iniciar Conversación
                     </motion.button>
-                  );
-                })}
+                  </div>
+
+                  {/* Contact Details */}
+                  <div className="space-y-3 text-[var(--text-tertiary)] text-sm">
+                    <div className="flex items-center justify-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      <span>jazzfatale@gmail.com</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <span>📱 33 2262 1939</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <span>📍 Sur de la ZMG, Guadalajara</span>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.nav>
-
-      {/* Spacer para móvil */}
-      <div className="lg:hidden h-20" />
     </>
   );
 };

@@ -38,60 +38,58 @@ const Navbar: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`header-desktop transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-lg' 
+          ? 'bg-[var(--bg-primary)]/95 backdrop-blur-xl border-b border-[var(--border-primary)] shadow-lg' 
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo MVGN Labs */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-3 cursor-pointer"
-            onClick={scrollToTop}
-          >
-            <img 
-              src="/assets/favicon.png" 
-              alt="MVGN Labs Logo" 
-              className="w-10 h-10 object-contain"
-            />
-            <span className={`font-fraunces font-bold text-2xl transition-colors duration-500 ${
-              isScrolled ? 'text-gray-900' : 'text-white'
-            }`}>
-              Mvgn Labs
-            </span>
-          </motion.div>
+      <div className="flex items-center justify-between h-full">
+        {/* Logo MVGN Labs - 48px × 48px */}
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={scrollToTop}
+        >
+          <img 
+            src="/assets/favicon.png" 
+            alt="MVGN Labs Logo" 
+            className="w-12 h-12 object-contain" // 48px × 48px
+          />
+          <span className={`font-fraunces font-bold text-2xl transition-colors duration-500 ${
+            isScrolled ? 'text-[var(--text-primary)]' : 'text-[var(--text-primary)]'
+          }`}>
+            Mvgn Labs
+          </span>
+        </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.href}
-                whileHover={{ y: -2 }}
-                onClick={() => handleNavClick(item.href)}
-                className={`transition-all duration-300 font-medium text-base px-4 py-2 rounded-xl hover:bg-gray-100/80 hover:shadow-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-gray-900' 
-                    : 'text-white/90 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                {item.label}
-              </motion.button>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => handleNavClick('#contacto')}
-            className="hidden lg:block bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            Ver Proyectos
-          </motion.button>
+        {/* Desktop Navigation - Fraunces 18px, espaciado 32px */}
+        <div className="hidden lg:flex items-center gap-8">
+          {navItems.map((item) => (
+            <motion.button
+              key={item.href}
+              whileHover={{ y: -2 }}
+              onClick={() => handleNavClick(item.href)}
+              className={`transition-all duration-300 font-fraunces font-medium text-lg px-4 py-2 rounded-xl hover:bg-[var(--bg-surface-hover)] hover:shadow-md ${
+                isScrolled 
+                  ? 'text-[var(--text-primary)] hover:text-[var(--text-primary)]' 
+                  : 'text-[var(--text-primary)]/90 hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)]/10'
+              }`}
+            >
+              {item.label}
+            </motion.button>
+          ))}
         </div>
+
+        {/* CTA Button - 180px × 60px */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => handleNavClick('#contacto')}
+          className="hidden lg:block cta-desktop"
+        >
+          Ver Proyectos
+        </motion.button>
       </div>
     </motion.nav>
   );

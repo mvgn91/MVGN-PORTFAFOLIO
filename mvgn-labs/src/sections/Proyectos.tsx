@@ -1,6 +1,59 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ExternalLink, Github, Star, Calendar, Globe } from 'lucide-react';
+import { ArrowRight, ExternalLink, Star } from 'lucide-react';
+
+// Datos de proyectos basados en info.md
+const projects = [
+  {
+    id: 1,
+    title: 'Notaría 80 GDL',
+    description: 'Diseño y desarrollo completo del sitio web corporativo para Notaría 80 de Guadalajara',
+    image: '/assets/captura notaria80.png',
+    url: 'https://www.notaria80gdl.mx/',
+    category: 'web',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Diseño Responsivo'],
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'Pietrafina MX',
+    description: 'Diseño, desarrollo y mantenimiento continuo del sitio web corporativo',
+    image: '/assets/captura pietrafina.png',
+    url: 'https://www.pietrafina.mx/',
+    category: 'web',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'SEO'],
+    featured: true
+  },
+  {
+    id: 3,
+    title: 'Sabor y Salud YouTube',
+    description: 'Editor y productor del programa de YouTube "Sabor y Salud", auspiciado por Pietrafina MX',
+    image: '/assets/miniatura youtube.png',
+    url: 'https://www.youtube.com/@pietrafinamx',
+    category: 'multimedia',
+    technologies: ['YouTube', 'Edición de Video', 'Marketing Digital', 'Producción'],
+    featured: true
+  },
+  {
+    id: 4,
+    title: 'CRM de Prospección - Pietrafina',
+    description: 'Sistema de gestión de clientes desarrollado para Pietrafina MX',
+    image: '/assets/crm captura.png',
+    category: 'web',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Firebase', 'WhatsApp API'],
+    featured: false
+  },
+  {
+    id: 5,
+    title: 'Catálogo Online - JULDRA UNIFORMES',
+    description: 'Catálogo digital interactivo para JULDRA UNIFORMES',
+    image: '/assets/captura notaria80.png', // Placeholder
+    url: 'https://mvgn91.github.io/JULDRA-CATALOGO-VIRTUAL/',
+    category: 'catalogo',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Diseño Responsivo', 'UX/UI'],
+    featured: false
+  }
+];
 
 const Proyectos: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('todos');
@@ -23,14 +76,14 @@ const Proyectos: React.FC = () => {
   };
 
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden bg-white">
+    <section className="section-padding bg-[var(--bg-primary)]">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute bottom-40 -right-40 w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 bg-red-100/30 rounded-full blur-3xl"
+          className="absolute bottom-40 -right-40 w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 bg-[var(--accent-primary)]/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.1, 0.2, 0.1],
           }}
           transition={{
             duration: 8,
@@ -40,31 +93,31 @@ const Proyectos: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+      <div className="grid-12">
+        {/* Header - Ocupa 12 columnas */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 lg:mb-20"
+          className="col-span-12 text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-gray-900 mb-6 leading-tight">
-            Proyectos <span className="bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">Destacados</span>
+          <h2 className="text-5xl font-fraunces font-bold text-[var(--text-primary)] mb-6 leading-tight">
+            Proyectos <span className="bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] bg-clip-text text-transparent">Destacados</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-[var(--text-secondary)] max-w-4xl mx-auto leading-[1.5]">
             Una selección de mis mejores trabajos que demuestran mi capacidad para crear soluciones 
             creativas y funcionales que generan resultados reales
           </p>
         </motion.div>
 
-        {/* Filtros */}
+        {/* Filtros - Ocupa 12 columnas */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="col-span-12 flex flex-wrap justify-center gap-3 mb-16"
         >
           {filters.map((filter) => (
             <motion.button
@@ -72,10 +125,10 @@ const Proyectos: React.FC = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleFilter(filter.id)}
-              className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 text-base min-h-[48px] ${
+              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 text-base min-h-[48px] ${
                 activeFilter === filter.id
-                  ? 'bg-red-600 text-white shadow-lg shadow-red-500/25'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
+                  ? 'bg-[var(--accent-primary)] text-[var(--text-primary)] shadow-lg shadow-[var(--accent-primary)]/25'
+                  : 'glass text-[var(--text-secondary)] hover:bg-[var(--bg-surface-hover)] border border-[var(--border-primary)]'
               }`}
             >
               {filter.label}
@@ -84,13 +137,13 @@ const Proyectos: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* Grid de Proyectos */}
+        {/* Grid de Proyectos - 3 columnas con gap 32px */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-16 lg:mb-20"
+          className="col-span-12 mb-20"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -99,114 +152,83 @@ const Proyectos: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="group"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group bg-[var(--bg-secondary)] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-[var(--border-primary)]"
                 >
-                  <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-gray-200 hover:border-gray-300">
-                    
-                    {/* Project Image */}
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      {/* Overlay con información */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <div className="flex items-center justify-between text-white text-sm">
-                            <span className="flex items-center gap-2">
-                              <Calendar size={16} />
-                              {project.year}
-                            </span>
-                            <span className="flex items-center gap-2">
-                              <Star size={16} className="text-yellow-400" />
-                              Destacado
-                            </span>
-                          </div>
-                        </div>
+                  {/* Imagen del proyecto - 300x200px */}
+                  <div className="relative w-full h-48 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {project.featured && (
+                      <div className="absolute top-3 right-3 bg-[var(--accent-primary)] text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                        <Star size={12} />
+                        Destacado
                       </div>
+                    )}
+                  </div>
+
+                  {/* Contenido del proyecto */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-fraunces font-semibold text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent-primary)] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-[var(--text-tertiary)] text-sm leading-[1.6] mb-4 line-clamp-3">
+                      {project.description}
+                    </p>
+
+                    {/* Tecnologías */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2 py-1 bg-[var(--bg-surface)] text-[var(--text-tertiary)] text-xs rounded-md border border-[var(--border-primary)]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className="px-2 py-1 bg-[var(--bg-surface)] text-[var(--text-tertiary)] text-xs rounded-md border border-[var(--border-primary)]">
+                          +{project.technologies.length - 3}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Project Content */}
-                    <div className="p-6">
-                      {/* Header */}
-                      <div className="mb-4">
-                        <h3 className="text-xl font-fraunces font-semibold text-gray-900 mb-3 line-clamp-2">
-                          {project.title}
-                        </h3>
-                        <p className="text-gray-600 text-base leading-relaxed line-clamp-3">
-                          {project.description}
-                        </p>
-                      </div>
-
-                      {/* Technologies */}
-                      <div className="mb-6">
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.slice(0, 3).map((tech, idx) => (
-                            <span
-                              key={idx}
-                              className="px-3 py-2 bg-red-50 text-red-600 text-sm rounded-xl border border-red-200 font-medium"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                          {project.technologies.length > 3 && (
-                            <span className="px-3 py-2 bg-gray-100 text-gray-600 text-sm rounded-xl font-medium">
-                              +{project.technologies.length - 3}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Actions */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex gap-3">
-                          {project.link && project.link !== '#' && (
-                            <motion.a
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 text-sm rounded-xl hover:bg-red-100 transition-colors duration-300 border border-red-200"
-                            >
-                              <Globe size={16} />
-                              <span>Ver</span>
-                            </motion.a>
-                          )}
-                          {project.github && project.github !== '#' && (
-                            <motion.a
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 text-sm rounded-xl hover:bg-gray-200 transition-colors duration-300 border border-gray-200"
-                            >
-                              <Github size={16} />
-                              <span>Código</span>
-                            </motion.a>
-                          )}
-                        </div>
-                        
-                        {/* Category Badge */}
-                        <span className={`px-4 py-2 rounded-full text-sm font-medium ${
-                          project.category === 'web' ? 'bg-blue-100 text-blue-600 border border-blue-200' :
-                          project.category === 'catalogo' ? 'bg-purple-100 text-purple-600 border border-purple-200' :
-                          'bg-green-100 text-green-600 border border-green-200'
-                        }`}>
-                          {project.category === 'web' ? 'Web' :
-                           project.category === 'catalogo' ? 'Catálogo' : 'Multimedia'}
-                        </span>
-                      </div>
+                    {/* Botones de acción */}
+                    <div className="flex gap-3">
+                      {project.url && (
+                        <motion.a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex-1 bg-[var(--accent-primary)] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[var(--accent-secondary)] transition-colors duration-300 flex items-center justify-center gap-2"
+                        >
+                          <ExternalLink size={16} />
+                          Ver Proyecto
+                        </motion.a>
+                      )}
+                      
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-4 py-2 border border-[var(--border-primary)] text-[var(--text-secondary)] rounded-lg text-sm font-medium hover:bg-[var(--bg-surface)] transition-colors duration-300"
+                      >
+                        Detalles
+                      </motion.button>
                     </div>
                   </div>
                 </motion.div>
@@ -215,110 +237,40 @@ const Proyectos: React.FC = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Call to Action */}
+        {/* CTA Section - Ocupa 12 columnas */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center"
+          className="col-span-12 text-center"
         >
-          <div className="bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 max-w-4xl mx-auto shadow-lg">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <ArrowRight className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-fraunces font-semibold text-gray-900 text-center">
-                ¿Te gustó lo que viste?
-              </h3>
-            </div>
-            <p className="text-gray-600 text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
-              Permíteme crear algo similar para tu proyecto. Cada trabajo es único y se adapta 
-              a las necesidades específicas de cada cliente
+          <div className="glass p-8 rounded-2xl max-w-2xl mx-auto">
+            <h3 className="text-2xl font-fraunces font-semibold text-[var(--text-primary)] mb-4">
+              ¿Tienes un proyecto en mente?
+            </h3>
+            <p className="text-[var(--text-secondary)] mb-6">
+              Conversemos sobre cómo puedo ayudarte a hacer realidad tu visión
             </p>
-            <div className="flex justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const element = document.getElementById('contacto');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 min-h-[56px]"
-              >
-                <span>Conversar sobre mi proyecto</span>
-                <ArrowRight className="w-6 h-6" />
-              </motion.button>
-            </div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const element = document.querySelector('#contacto');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="cta-desktop"
+            >
+              Iniciar Conversación
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </motion.button>
           </div>
         </motion.div>
       </div>
     </section>
   );
 };
-
-// Datos de proyectos
-const projects = [
-  {
-    id: 1,
-    title: 'Notaría 80 GDL',
-    category: 'web',
-    description: 'Diseño y desarrollo completo del sitio web corporativo para Notaría 80 de Guadalajara con implementación de diseño moderno enfocado en confianza y profesionalismo.',
-    image: '/assets/captura notaria80.png',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Diseño Responsivo'],
-    features: ['Diseño corporativo', 'Información de servicios', 'Diseño responsivo', 'Enfoque en confianza'],
-    link: 'https://www.notaria80gdl.mx/',
-    github: '#',
-    year: '2024'
-  },
-  {
-    id: 2,
-    title: 'Pietrafina MX',
-    category: 'web',
-    description: 'Diseño, desarrollo y mantenimiento continuo del sitio web corporativo con implementación de funcionalidades avanzadas y optimización SEO.',
-    image: '/assets/captura pietrafina.png',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'SEO'],
-    features: ['Sitio corporativo', 'Funcionalidades avanzadas', 'Optimización SEO', 'Mantenimiento continuo'],
-    link: 'https://www.pietrafina.mx/',
-    github: '#',
-    year: '2024'
-  },
-  {
-    id: 3,
-    title: 'CRM de Prospección - Pietrafina',
-    category: 'web',
-    description: 'Sistema de gestión de clientes desarrollado para Pietrafina MX con funcionalidades para seguimiento de prospectos, gestión de ventas e integración con WhatsApp.',
-    image: '/assets/crm captura.png',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Firebase', 'WhatsApp API'],
-    features: ['Gestión de prospectos', 'Seguimiento de ventas', 'Integración WhatsApp', 'Dashboard funcional'],
-    link: '#',
-    github: '#',
-    year: '2024'
-  },
-  {
-    id: 4,
-    title: 'Sabor y Salud YouTube',
-    category: 'multimedia',
-    description: 'Editor y productor del programa de YouTube "Sabor y Salud", auspiciado por Pietrafina MX. Producción de contenido digital, edición de video y estrategia de marketing.',
-    image: '/assets/miniatura youtube.png',
-    technologies: ['YouTube', 'Edición de Video', 'Marketing Digital', 'Producción'],
-    features: ['Producción de contenido', 'Edición de video', 'Estrategia marketing', 'Canal corporativo'],
-    link: 'https://www.youtube.com/@pietrafinamx',
-    github: '#',
-    year: '2024'
-  },
-  {
-    id: 5,
-    title: 'Catálogo Online - JULDRA UNIFORMES',
-    category: 'catalogo',
-    description: 'Catálogo digital interactivo para JULDRA UNIFORMES con diseño profesional, navegación intuitiva, galería de productos y sistema de contacto integrado.',
-    image: '/assets/mapa.png',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Diseño Responsivo', 'UX/UI'],
-    features: ['Navegación intuitiva', 'Galería de productos', 'Sistema de contacto', 'Diseño responsivo'],
-    link: 'https://mvgn91.github.io/JULDRA-CATALOGO-VIRTUAL/',
-    github: '#',
-    year: '2024'
-  }
-];
 
 export default Proyectos;
