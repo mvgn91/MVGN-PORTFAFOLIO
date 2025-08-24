@@ -13,7 +13,7 @@ const BackgroundLines: React.FC<BackgroundLinesProps> = ({ className = '' }) => 
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={`h-${i}`}
-            className="absolute w-full h-px bg-gradient-to-r from-transparent via-gray-100/40 to-transparent"
+            className="absolute w-full h-px bg-gradient-to-r from-transparent via-[var(--border-primary)]/30 to-transparent"
             style={{
               top: `${(i + 1) * 25}%`,
             }}
@@ -33,7 +33,7 @@ const BackgroundLines: React.FC<BackgroundLinesProps> = ({ className = '' }) => 
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={`v-${i}`}
-            className="absolute h-full w-px bg-gradient-to-b from-transparent via-gray-100/40 to-transparent"
+            className="absolute h-full w-px bg-gradient-to-b from-transparent via-[var(--border-primary)]/30 to-transparent"
             style={{
               left: `${(i + 1) * 16.67}%`,
             }}
@@ -54,7 +54,7 @@ const BackgroundLines: React.FC<BackgroundLinesProps> = ({ className = '' }) => 
           [...Array(4)].map((_, j) => (
             <motion.div
               key={`point-${i}-${j}`}
-              className="absolute w-0.5 h-0.5 bg-gray-200/50 rounded-full"
+              className="absolute w-0.5 h-0.5 bg-[var(--border-secondary)]/50 rounded-full"
               style={{
                 left: `${(i + 1) * 33.33}%`,
                 top: `${(j + 1) * 25}%`,

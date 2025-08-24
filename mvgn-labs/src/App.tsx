@@ -34,7 +34,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 transition-colors duration-500">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-500">
       {isLoading ? (
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
@@ -48,37 +48,37 @@ const AppContent: React.FC = () => {
           {/* Main Content - Estructura optimizada */}
           <main className="relative">
             {/* SECCIÓN PRINCIPAL: Hero - Full screen */}
-            <section id="inicio" className="min-h-screen flex items-center">
+            <section id="inicio" className="min-h-screen flex items-center bg-[var(--bg-primary)]">
               <Hero />
             </section>
             
             {/* SECCIÓN DE PRESENTACIÓN */}
-            <section id="sobre-mi" className="py-20 lg:py-32 bg-white">
+            <section id="sobre-mi" className="section-padding bg-[var(--bg-secondary)]">
               <About />
             </section>
             
             {/* SECCIÓN DE SERVICIOS */}
-            <section id="servicios" className="py-20 lg:py-32 bg-gray-50">
+            <section id="servicios" className="section-padding bg-[var(--bg-primary)]">
               <Servicios />
             </section>
             
             {/* SECCIÓN DE PROYECTOS */}
-            <section id="proyectos" className="py-20 lg:py-32 bg-white">
+            <section id="proyectos" className="section-padding bg-[var(--bg-secondary)]">
               <Proyectos />
             </section>
             
             {/* SECCIÓN DE EXPERIENCIA */}
-            <section id="experiencia" className="py-20 lg:py-32 bg-gray-50">
+            <section id="experiencia" className="section-padding bg-[var(--bg-primary)]">
               <Experiencia />
             </section>
             
             {/* SECCIÓN DE FLUJO DE TRABAJO - Solo en desktop */}
-            <section id="flujo-trabajo" className="hidden lg:block py-20 lg:py-32 bg-white">
+            <section id="flujo-trabajo" className="hidden lg:block section-padding bg-[var(--bg-secondary)]">
               <FlujoTrabajo />
             </section>
             
             {/* SECCIÓN DE CONTACTO */}
-            <section id="contacto" className="py-20 lg:py-32 bg-gray-50">
+            <section id="contacto" className="section-padding bg-[var(--bg-primary)]">
               <Contacto />
             </section>
           </main>
