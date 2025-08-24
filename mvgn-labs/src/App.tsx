@@ -20,7 +20,7 @@ const AppContent: React.FC = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1024);
     };
 
     checkMobile();
@@ -34,56 +34,56 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-bg-primary text-white transition-colors duration-500">
+    <div className="min-h-screen bg-white text-gray-900 transition-colors duration-500">
       {isLoading ? (
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
         <>
           {/* Background Elements - Fijo para consistencia visual */}
-          <BackgroundLines className="fixed inset-0 pointer-events-none opacity-20" />
+          <BackgroundLines className="fixed inset-0 pointer-events-none opacity-10" />
           
           {/* Navbar - Solo visible en desktop */}
           {!isMobile && <Navbar />}
           
-          {/* Main Content - Estructura optimizada para móvil */}
-          <main className="relative pb-20 md:pb-0">
-            {/* SECCIÓN PRINCIPAL: Hero - Full screen en móvil */}
+          {/* Main Content - Estructura optimizada */}
+          <main className="relative">
+            {/* SECCIÓN PRINCIPAL: Hero - Full screen */}
             <section id="inicio" className="min-h-screen flex items-center">
               <Hero />
             </section>
             
-            {/* SECCIÓN DE PRESENTACIÓN - Simplificada en móvil */}
-            <section id="sobre-mi" className="py-8 md:py-16 lg:py-20">
+            {/* SECCIÓN DE PRESENTACIÓN */}
+            <section id="sobre-mi" className="py-20 lg:py-32 bg-white">
               <About />
             </section>
             
-            {/* SECCIÓN DE SERVICIOS - Grid adaptativo */}
-            <section id="servicios" className="py-8 md:py-16 lg:py-20 bg-surface-secondary/30">
+            {/* SECCIÓN DE SERVICIOS */}
+            <section id="servicios" className="py-20 lg:py-32 bg-gray-50">
               <Servicios />
             </section>
             
-            {/* SECCIÓN DE PROYECTOS - Prioritaria, siempre visible */}
-            <section id="proyectos" className="py-8 md:py-16 lg:py-20">
+            {/* SECCIÓN DE PROYECTOS */}
+            <section id="proyectos" className="py-20 lg:py-32 bg-white">
               <Proyectos />
             </section>
             
-            {/* SECCIÓN DE EXPERIENCIA - Condicional en móvil */}
-            <section id="experiencia" className="py-8 md:py-16 lg:py-20 bg-surface-secondary/30">
+            {/* SECCIÓN DE EXPERIENCIA */}
+            <section id="experiencia" className="py-20 lg:py-32 bg-gray-50">
               <Experiencia />
             </section>
             
-            {/* SECCIÓN DE FLUJO DE TRABAJO - Ocultada en móvil */}
-            <section id="flujo-trabajo" className="hidden md:block py-8 md:py-16 lg:py-20">
+            {/* SECCIÓN DE FLUJO DE TRABAJO - Solo en desktop */}
+            <section id="flujo-trabajo" className="hidden lg:block py-20 lg:py-32 bg-white">
               <FlujoTrabajo />
             </section>
             
-            {/* SECCIÓN DE CONTACTO - Simplificada en móvil */}
-            <section id="contacto" className="py-8 md:py-16 lg:py-20 bg-surface-secondary/30">
+            {/* SECCIÓN DE CONTACTO */}
+            <section id="contacto" className="py-20 lg:py-32 bg-gray-50">
               <Contacto />
             </section>
           </main>
           
-          {/* Footer - Simplificado en móvil */}
+          {/* Footer */}
           <Footer />
           
           {/* Scroll to Top Button - Solo en desktop */}
