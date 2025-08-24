@@ -40,7 +40,7 @@ const AppContent: React.FC = () => {
       ) : (
         <>
           {/* Background Elements - Fijo para consistencia visual */}
-          <BackgroundLines className="fixed inset-0 pointer-events-none opacity-10" />
+          <BackgroundLines className="fixed inset-0 pointer-events-none opacity-5" />
           
           {/* Navbar - Solo visible en desktop */}
           {!isMobile && <Navbar />}

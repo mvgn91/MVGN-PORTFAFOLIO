@@ -10,7 +10,6 @@ import {
   Users,
   TrendingUp
 } from 'lucide-react';
-import BackgroundLines from '../components/BackgroundLines';
 
 const Experiencia: React.FC = () => {
   const [activeExperience, setActiveExperience] = useState(0);
@@ -88,11 +87,11 @@ const Experiencia: React.FC = () => {
   ];
 
   return (
-    <section className="section relative overflow-hidden">
+    <section className="relative py-20 lg:py-32 overflow-hidden bg-gray-50">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
+          className="absolute top-40 -left-40 w-80 h-80 bg-red-100/30 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -105,10 +104,7 @@ const Experiencia: React.FC = () => {
         />
       </div>
 
-      {/* Líneas geométricas de fondo */}
-      <BackgroundLines className="opacity-20" />
-
-      <div className="container relative z-10">
+      <div className="max-w-7xl relative z-10 mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -116,23 +112,23 @@ const Experiencia: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-text-primary mb-8 leading-tight">
-            Mi <span className="text-gradient">Experiencia</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fraunces font-bold text-gray-900 mb-8 leading-tight">
+            Mi <span className="bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">Experiencia</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
             Una trayectoria profesional marcada por la innovación, la calidad y el compromiso 
             con los resultados de mis clientes
           </p>
         </motion.div>
 
-        {/* Estadísticas - Grid de 2 o 4 columnas en desktop, stack vertical en móvil */}
+        {/* Estadísticas */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-20"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -141,17 +137,17 @@ const Experiencia: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center group"
               >
-                <div className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-sm border border-border-primary rounded-2xl p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-primary/30">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
-                    <stat.icon className="icon-xl sm:icon-2xl text-white" />
+                <div className="bg-white border border-gray-200 rounded-3xl p-6 lg:p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-gray-200 hover:border-gray-300">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                    <stat.icon className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
                   </div>
-                  <div className="text-3xl sm:text-4xl font-fraunces font-bold text-primary mb-2">
+                  <div className="text-3xl lg:text-4xl font-fraunces font-bold text-red-600 mb-2">
                     {stat.number}
                   </div>
-                  <h3 className="text-text-primary font-semibold mb-2 text-base sm:text-lg">
+                  <h3 className="text-gray-900 font-semibold mb-2 text-base lg:text-lg">
                     {stat.label}
                   </h3>
-                  <p className="text-text-tertiary text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     {stat.description}
                   </p>
                 </div>
@@ -168,10 +164,10 @@ const Experiencia: React.FC = () => {
           className="mb-20"
         >
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-fraunces font-semibold text-text-primary mb-6">
+            <h3 className="text-3xl font-fraunces font-semibold text-gray-900 mb-6">
               Experiencia Laboral
             </h3>
-            <p className="text-text-tertiary text-lg max-w-2xl mx-auto px-4">
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto px-4">
               Mi trayectoria profesional en el mundo de la tecnología y el diseño digital
             </p>
           </div>
@@ -179,20 +175,22 @@ const Experiencia: React.FC = () => {
           {/* Navegación de Experiencias */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {experiences.map((exp, index) => (
-              <button
+              <motion.button
                 key={index}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveExperience(index)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 min-h-[44px] ${
+                className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 min-h-[48px] ${
                   activeExperience === index
-                    ? 'bg-primary text-white shadow-lg shadow-primary/25'
-                    : 'bg-surface-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary border border-border-primary'
+                    ? 'bg-red-600 text-white shadow-lg shadow-red-500/25'
+                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
                 <div className="text-center">
                   <div className="font-semibold">{exp.title}</div>
                   <div className="text-xs opacity-75">{exp.company}</div>
                 </div>
-              </button>
+              </motion.button>
             ))}
           </div>
 
@@ -204,44 +202,44 @@ const Experiencia: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-surface-primary to-surface-secondary backdrop-blur-md border border-border-primary rounded-3xl p-6 sm:p-8 max-w-5xl mx-auto"
+              className="bg-white border border-gray-200 rounded-3xl p-6 lg:p-8 max-w-6xl mx-auto shadow-lg"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Información Principal */}
                 <div className="space-y-6">
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary mb-2">
+                      <h4 className="text-xl lg:text-2xl font-fraunces font-semibold text-gray-900 mb-2">
                         {experiences[activeExperience].title}
                       </h4>
-                      <p className="text-lg text-primary font-medium">
+                      <p className="text-lg text-red-600 font-medium">
                         {experiences[activeExperience].company}
                       </p>
                     </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-text-secondary">
-                        <Calendar className="icon-sm text-primary-light" />
-                        <span className="text-sm">{experiences[activeExperience].period}</span>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 text-gray-600">
+                        <Calendar className="w-5 h-5 text-red-500" />
+                        <span className="text-base">{experiences[activeExperience].period}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-text-secondary">
-                        <MapPin className="icon-sm text-primary-light" />
-                        <span className="text-sm">{experiences[activeExperience].location}</span>
+                      <div className="flex items-center gap-3 text-gray-600">
+                        <MapPin className="w-5 h-5 text-red-500" />
+                        <span className="text-base">{experiences[activeExperience].location}</span>
                       </div>
                     </div>
                   </div>
                   
-                  <p className="text-text-secondary leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed text-base">
                     {experiences[activeExperience].description}
                   </p>
                   
                   {/* Tecnologías */}
                   <div>
-                    <h5 className="text-text-primary font-semibold mb-3 text-base">Tecnologías:</h5>
+                    <h5 className="text-gray-900 font-semibold mb-3 text-base">Tecnologías:</h5>
                     <div className="flex flex-wrap gap-2">
                       {experiences[activeExperience].technologies.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 bg-primary/10 border border-primary/20 rounded-lg text-sm text-primary font-medium"
+                          className="px-3 py-2 bg-red-50 border border-red-200 rounded-xl text-sm text-red-600 font-medium"
                         >
                           {tech}
                         </span>
@@ -252,8 +250,8 @@ const Experiencia: React.FC = () => {
 
                 {/* Logros */}
                 <div className="space-y-6">
-                  <h5 className="text-text-primary font-semibold text-lg">Logros Principales:</h5>
-                  <div className="space-y-3">
+                  <h5 className="text-gray-900 font-semibold text-lg">Logros Principales:</h5>
+                  <div className="space-y-4">
                     {experiences[activeExperience].achievements.map((achievement, idx) => (
                       <motion.div
                         key={idx}
@@ -262,8 +260,8 @@ const Experiencia: React.FC = () => {
                         transition={{ duration: 0.3, delay: idx * 0.1 }}
                         className="flex items-start gap-3"
                       >
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-text-secondary text-sm leading-relaxed">
+                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-base leading-relaxed">
                           {achievement}
                         </span>
                       </motion.div>
@@ -282,30 +280,32 @@ const Experiencia: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 border border-primary/20 rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center">
-                <TrendingUp className="icon-lg sm:icon-xl text-white" />
+          <div className="bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 max-w-4xl mx-auto shadow-lg">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <TrendingUp className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-fraunces font-semibold text-text-primary">
+              <h3 className="text-2xl lg:text-3xl font-fraunces font-semibold text-gray-900">
                 ¿Listo para impulsar tu proyecto?
               </h3>
             </div>
-            <p className="text-text-secondary text-sm sm:text-base mb-4 max-w-2xl mx-auto leading-relaxed px-4">
+            <p className="text-gray-600 text-lg mb-8 max-w-3xl mx-auto leading-relaxed px-4">
               Con mi experiencia y pasión por la excelencia, puedo ayudarte a alcanzar 
               tus objetivos
             </p>
             <div className="flex justify-center">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   const element = document.getElementById('contacto');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn btn-primary btn-lg group min-h-[44px]"
+                className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 min-h-[56px]"
               >
                 Iniciar conversación
-                <ArrowRight className="icon group-hover:translate-x-1 transition-transform" />
-              </button>
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
             </div>
           </div>
         </motion.div>
