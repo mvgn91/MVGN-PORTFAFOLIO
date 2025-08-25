@@ -51,16 +51,32 @@ class DeviceDetector {
    */
   isTabletDevice() {
     const userAgent = navigator.userAgent.toLowerCase();
-    const tabletKeywords = ['ipad', 'tablet', 'android'];
-    const isTabletKeyword = tabletKeywords.some(keyword => userAgent.includes(keyword));
     
-    // Verificar también por tamaño de pantalla
+    // Detectar iPad específicamente
+    if (userAgent.includes('ipad')) {
+      return true;
+    }
+    
+    // Para Android, ser más específico
+    if (userAgent.includes('android')) {
+      // Solo considerar tablet si tiene características específicas de tablet
+      const isTabletKeyword = userAgent.includes('tablet') || userAgent.includes('mobile');
+      if (isTabletKeyword) {
+        return true;
+      }
+    }
+    
+    // Verificar por tamaño de pantalla solo si es muy específico
     const screenWidth = window.screen.width;
     const screenHeight = window.screen.height;
-    const isTabletSize = (screenWidth >= 768 && screenWidth <= 1024) || 
-                        (screenHeight >= 768 && screenHeight <= 1024);
+    
+    // Solo considerar tablet si está en un rango muy específico
+    // y tiene proporciones típicas de tablet
+    const isTabletSize = (screenWidth >= 768 && screenWidth <= 1024) && 
+                        (screenHeight >= 768 && screenHeight <= 1024) &&
+                        Math.abs(screenWidth - screenHeight) < 200; // Proporciones similares
 
-    return isTabletKeyword || isTabletSize;
+    return isTabletSize;
   }
 
   /**
@@ -70,8 +86,9 @@ class DeviceDetector {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     
-    // Considerar pantalla pequeña si es menor a 768px
-    return viewportWidth < 768 || viewportHeight < 768;
+    // Solo considerar pantalla pequeña si AMBAS dimensiones son pequeñas
+    // Esto evita falsos positivos en laptops con resoluciones como 1366x768
+    return viewportWidth < 768 && viewportHeight < 768;
   }
 
   /**
@@ -102,9 +119,31 @@ class DeviceDetector {
   }
 
   /**
+   * Forzar versión desktop (para debug o preferencia del usuario)
+   */
+  forceDesktop() {
+    localStorage.setItem('mvgn-version-preference', 'desktop');
+    console.log('🖥️ Forzando versión desktop...');
+    // Recargar la página para aplicar el cambio
+    window.location.reload();
+  }
+
+  /**
+   * Forzar versión móvil (para debug o preferencia del usuario)
+   */
+  forceMobile() {
+    localStorage.setItem('mvgn-version-preference', 'mobile');
+    console.log('📱 Forzando versión móvil...');
+    this.redirectToMobile();
+  }
+
+  /**
    * Redirigir a la versión móvil
    */
   redirectToMobile() {
+    // Debug: mostrar información antes de redirigir
+    this.logDetectionInfo();
+    
     const currentPath = window.location.pathname;
     const currentSearch = window.location.search;
     const currentHash = window.location.hash;
@@ -124,6 +163,21 @@ class DeviceDetector {
 
     // Redirigir
     window.location.href = mobileUrl;
+  }
+
+  /**
+   * Log de información de detección para debug
+   */
+  logDetectionInfo() {
+    console.log('🔍 MVGN Device Detector - Debug Info:');
+    console.log('User Agent:', navigator.userAgent);
+    console.log('Screen Size:', `${window.screen.width}x${window.screen.height}`);
+    console.log('Viewport Size:', `${window.innerWidth}x${window.innerHeight}`);
+    console.log('Is Mobile:', this.isMobileDevice());
+    console.log('Is Tablet:', this.isTabletDevice());
+    console.log('Is Small Screen:', this.isSmallScreen());
+    console.log('User Prefers Mobile:', this.userPrefersMobile());
+    console.log('Redirecting to mobile version...');
   }
 
   /**
@@ -297,6 +351,13 @@ const deviceDetector = new DeviceDetector();
 
 // Exponer globalmente para uso en consola
 window.deviceDetector = deviceDetector;
+
+// Funciones de debug disponibles en consola
+console.log('🔧 MVGN Device Detector - Comandos disponibles:');
+console.log('deviceDetector.forceDesktop() - Forzar versión desktop');
+console.log('deviceDetector.forceMobile() - Forzar versión móvil');
+console.log('deviceDetector.logDetectionInfo() - Ver información de detección');
+console.log('localStorage.removeItem("mvgn-version-preference") - Resetear preferencias');
 
 // Exportar para uso en otros módulos
 if (typeof module !== 'undefined' && module.exports) {
