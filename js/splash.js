@@ -34,7 +34,7 @@ class SplashScreen {
   redirectToMainSite() {
     // Detectar si es móvil o desktop
     const isMobile = this.isMobileDevice();
-    const targetUrl = isMobile ? 'mobile.html' : 'index.html';
+    const targetUrl = isMobile ? 'mobile.html' : 'main.html';
     
     // Efecto de fade out simple
     document.body.style.transition = 'opacity 0.5s ease-out';

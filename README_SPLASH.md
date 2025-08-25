@@ -138,13 +138,13 @@ setTimeout(() => {
 ## Uso
 
 ### Implementación Básica
-1. Incluir `splash.html` como página de entrada
+1. El splash ahora es `index.html` (página de entrada principal)
 2. Asegurar que los archivos CSS y JS estén en las rutas correctas
-3. El splash se ejecutará automáticamente
+3. El splash se ejecutará automáticamente al visitar el sitio
 
 ### Integración con Sitio Existente
 - El splash detecta automáticamente el dispositivo
-- Redirige a `mobile.html` o `index.html` según corresponda
+- Redirige a `mobile.html` o `main.html` según corresponda
 - Mantiene la estética y branding del sitio principal
 
 ### Personalización Avanzada

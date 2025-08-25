@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Armando Ibañez - Desarrollador Web & Diseñador Digital en MVGN Labs. Especialista en HTML, CSS, JavaScript, React y Firebase. Portafolio de proyectos web profesionales en Guadalajara.">
+  <meta name="keywords" content="desarrollador web, diseñador digital, HTML, CSS, JavaScript, React, Firebase, Guadalajara, portafolio, MVGN Labs">
+  <meta name="author" content="Armando Ibañez">
+  <meta property="og:title" content="Armando Ibañez - MVGN Labs | Desarrollador Web & Diseñador Digital">
+  <meta property="og:description" content="Portafolio profesional de desarrollo web y diseño digital. Especialista en tecnologías modernas y soluciones creativas.">
+  <meta property="og:image" content="/assets/profile.jpg">
+  <meta property="og:url" content="https://mvgnlabs.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Armando Ibañez - MVGN Labs">
+  <meta name="twitter:description" content="Desarrollador Web & Diseñador Digital profesional">
+  <meta name="twitter:image" content="/assets/profile.jpg">
+  <title>Armando Ibañez - MVGN Labs | Desarrollador Web & Diseñador Digital</title>
+  <link rel="canonical" href="https://mvgnlabs.com">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
+  
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;600&display=style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" as="style">
+  
+  <!-- Critical CSS inline -->
+  <style>
+    /* Dynamic Background */
+    .particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+  </style>
+  
+  <!-- CSS Crítico - Carga inmediata -->
+  <link rel="stylesheet" href="css/critical.css">
+  
+  <!-- Non-critical CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/section-dividers.css">
+  <link rel="stylesheet" href="css/hero-minimal.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Dynamic Background Canvas -->
+  <canvas id="particles-bg" class="particles-canvas"></canvas>
+  
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="header-content">
+      <a href="#hero" class="logo" aria-label="MVGN Labs - Inicio">
+        <img src="assets/favicon.png" alt="MVGN Labs Logo">
+      </a>
+      
+      <nav class="nav-desktop" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#about">Sobre Mí</a></li>
+          <li><a href="#experience">Experiencia</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#tech-stack">Tecnologías</a></li>
+          <li><a href="#projects">Proyectos</a></li>
+          <li><a href="#work-process">Proceso</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+      
+      <button class="mobile-menu-btn" aria-label="Abrir menú móvil" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-content">
+      <button class="mobile-menu-close" aria-label="Cerrar menú móvil">×</button>
+      <nav class="mobile-menu-nav" aria-label="Navegación móvil">
+        <ul>
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#about">Sobre Mí</a></li>
+          <li><a href="#experience">Experiencia</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#tech-stack">Tecnologías</a></li>
+          <li><a href="#projects">Proyectos</a></li>
+          <li><a href="#work-process">Proceso</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main role="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section" aria-label="Presentación principal">
+      <!-- Dynamic Background -->
+      <div class="hero-dynamic-bg">
+        <div class="bg-grid"></div>
+        <div class="bg-particles"></div>
+      </div>
+      
+      <!-- Main Hero Content -->
+      <div class="hero-content">
+        <!-- Left Column - Text Content -->
+        <div class="hero-text-column">
+
+          
+          <h1 class="hero-title">
+            <span class="title-line">Armando</span>
+            <span class="title-line highlight">Ibañez</span>
+          </h1>
+          
+          <p class="hero-subtitle">Desarrollador Web & Diseñador Digital</p>
+          
+          <p class="hero-description">
+            <strong>Freelancer</strong> en diseño, programación y tecnología. 
+            Integro creatividad y técnica para desarrollar soluciones digitales eficientes, estéticas y de alto impacto.
+          </p>
+          
+          <!-- Tech Stack Minimalista -->
+          <div class="hero-tech-stack">
+            <div class="tech-item" data-tech="react">
+              <div class="tech-icon-small">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span>React</span>
+            </div>
+                      <div class="tech-item" data-tech="html">
+            <div class="tech-icon-small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 7V4h16v3"/>
+                <path d="M9 20h6"/>
+                <path d="M12 4v16"/>
+              </svg>
+            </div>
+            <span>HTML</span>
+          </div>
+            <div class="tech-item" data-tech="firebase">
+              <div class="tech-icon-small">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <span>Firebase</span>
+            </div>
+            <div class="tech-item" data-tech="typescript">
+              <div class="tech-icon-small">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+                  <line x1="7" y1="2" x2="7" y2="22"/>
+                  <line x1="17" y1="6" x2="17" y2="18"/>
+                  <path d="M20 8l-2 2 2 2"/>
+                </svg>
+              </div>
+              <span>TypeScript</span>
+            </div>
+          </div>
+          
+          <!-- CTA Buttons -->
+          <div class="hero-actions">
+            <a href="#projects" class="hero-cta primary">
+              <span class="cta-text">Ver Proyectos</span>
+              <div class="cta-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </a>
+            <a href="#contact" class="hero-cta secondary">
+              <span class="cta-text">Contactar</span>
+              <div class="cta-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Right Column - Visual Elements -->
+        <div class="hero-visual-column">
+          <!-- Floating Code Animation -->
+          <div class="hero-code-animation">
+            <div class="code-terminal">
+              <div class="terminal-header">
+                <span class="terminal-title">neural_interface.exe</span>
+                <div class="terminal-controls">
+                  <span class="control-dot"></span>
+                  <span class="control-dot"></span>
+                  <span class="control-dot"></span>
+                </div>
+              </div>
+              <div class="terminal-content">
+                <div class="code-line typing-effect" data-text="> initializing quantum_core...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> loading consciousness_matrix...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> establishing neural_link...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> accessing void_database...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> quantum_entanglement: ACTIVE">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> reality_shift_protocol: ENABLED">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> summoning digital_demons...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> ERROR: consciousness_overflow">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> rebooting quantum_mind...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> entering digital_void...">
+                  <span class="cursor">|</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="hero-scroll-indicator">
+        <span class="scroll-text">Scroll</span>
+        <div class="scroll-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 13l5 5 5-5"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+      <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <h2 class="section-title">Sobre Mí</h2>
+      </div>
+      
+      <div class="about-content" data-animate>
+        <!-- Header principal con imagen y título -->
+        <div class="about-hero">
+          <div class="about-profile-image">
+            <img src="assets/profile.jpg" alt="MVGN Labs - Diseñador Web & Técnico en Computación" class="profile-image">
+            <div class="image-overlay"></div>
+          </div>
+          
+          <div class="about-intro">
+            <h3 class="about-heading">Diseñador Web & Técnico en Computación</h3>
+            <p class="about-description">Soy un técnico y creativo con experiencia en tecnología, ventas y marketing digital. Me especializo en transformar ideas en soluciones tecnológicas y estrategias de comunicación que generan resultados reales para mis clientes.</p>
+            <p class="about-description">Con experiencia en tecnologías como React, Node.js, Firebase y más, me encanta transformar ideas complejas en soluciones elegantes y funcionales. Mi enfoque combina habilidades técnicas sólidas con creatividad estratégica para crear experiencias digitales impactantes.</p>
+          </div>
+        </div>
+
+        <!-- Stats counters en grid -->
+        <div class="about-stats-grid">
+          <div class="stat-item" data-animate>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14,2 14,8 20,8"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Proyectos</div>
+              </div>
+              <div class="stat-progress">
+                <div class="progress-bar" data-percentage="85"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-item" data-animate>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number">8+</div>
+                <div class="stat-label">Clientes</div>
+              </div>
+              <div class="stat-progress">
+                <div class="progress-bar" data-percentage="90"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-item" data-animate>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12,6 12,12 16,14"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number">2+</div>
+                <div class="stat-label">Años</div>
+              </div>
+              <div class="stat-progress">
+                <div class="progress-bar" data-percentage="75"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información de ubicación y cobertura -->
+        <div class="about-location-info" data-animate>
+          <div class="location-card">
+            <div class="location-header">
+              <div class="location-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <h4 class="location-title">Zona de Trabajo</h4>
+            </div>
+            <div class="location-content">
+              <p class="location-description">Operando desde Tlajomulco de Zúñiga, Jalisco, México</p>
+              <div class="location-badges">
+                <span class="location-badge primary">• Disponible para trabajo remoto en todo México</span>
+                <span class="location-badge secondary">• Respuesta rápida en la zona metropolitana</span>
+                <span class="location-badge accent">• Comunicación remota para proyectos nacionales</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-card">
+            <div class="map-header">
+              <h4 class="map-title">Zona de Cobertura</h4>
+              <p class="map-subtitle">Presencial desde Tlajomulco • Remoto en todo México</p>
+            </div>
+            <div class="map-content">
+              <img src="assets/mapa.png" alt="Mapa de Tlajomulco y área metropolitana de Guadalajara, Jalisco" class="location-map">
+              <div class="map-overlay"></div>
+              <div class="map-location-pin">
+                <div class="pin-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div class="pin-label">Tlajomulco</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <h2 class="section-title">Experiencia Profesional</h2>
+        <p class="section-subtitle">Mi trayectoria en tecnología y marketing digital</p>
+      </div>
+      
+      <div class="experience-tabs">
+        <!-- Navegación de pestañas -->
+        <div class="experience-tabs-nav">
+          <button class="experience-tab-btn active" data-tab="pietrafina">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span>Pietrafina</span>
+          </button>
+          
+          <button class="experience-tab-btn" data-tab="compucenter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <span>CompuCenter7</span>
+          </button>
+          
+          <button class="experience-tab-btn" data-tab="importacion">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14,2 14,8 20,8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10,9 9,9 8,9"/>
+            </svg>
+            <span>Importación</span>
+          </button>
+        </div>
+        
+        <!-- Contenido de las pestañas -->
+        <div class="experience-tabs-content">
+          <!-- Pestaña Pietrafina -->
+          <div class="experience-tab-panel active" id="pietrafina">
+            <div class="experience-card" data-animate>
+              <div class="experience-card-header">
+                <div class="experience-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M2 12h20"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  </svg>
+                </div>
+                <div class="experience-meta">
+                  <h3 class="experience-title">Consultor de Tecnologías y Marketing</h3>
+                  <div class="experience-company-info">
+                    <span class="experience-company">Pietrafina</span>
+                    <span class="experience-period">Feb 2024 - Actual</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="experience-card-body">
+                <p class="experience-description">Coordinación, desarrollo y gestión de contenido y publicidad para página web y redes sociales. Asesoría en uso de tecnologías, servicios de reparación y actualización de equipos electrónicos.</p>
+                
+                <div class="experience-highlights">
+                  <h4 class="highlights-title">Logros Principales</h4>
+                  <ul class="experience-achievements">
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Desarrollo de proyectos freelance como catálogos digitales y sitios web</span>
+                    </li>
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Gestión integral de presencia digital</span>
+                    </li>
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Estrategias de marketing digital</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pestaña CompuCenter7 -->
+          <div class="experience-tab-panel" id="compucenter">
+            <div class="experience-card" data-animate>
+              <div class="experience-card-header">
+                <div class="experience-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </div>
+                <div class="experience-meta">
+                  <h3 class="experience-title">Técnico Reparador Express y Ventas</h3>
+                  <div class="experience-company-info">
+                    <span class="experience-company">CompuCenter7</span>
+                    <span class="experience-period">2022 - 2024</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="experience-card-body">
+                <p class="experience-description">Diagnóstico y reparación de computadoras, venta de consumibles y accesorios, diseño de publicidad y atención a clientes.</p>
+                
+                <div class="experience-highlights">
+                  <h4 class="highlights-title">Responsabilidades Clave</h4>
+                  <ul class="experience-achievements">
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Reparación técnica de equipos</span>
+                    </li>
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Ventas y atención al cliente</span>
+                    </li>
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Diseño de material publicitario</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pestaña Importación -->
+          <div class="experience-tab-panel" id="importacion">
+            <div class="experience-card" data-animate>
+              <div class="experience-card-header">
+                <div class="experience-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10,9 9,9 8,9"/>
+                  </svg>
+                </div>
+                <div class="experience-meta">
+                  <h3 class="experience-title">Auxiliar Administrativo y Rastreo GPS</h3>
+                  <div class="experience-company-info">
+                    <span class="experience-company">Empresa de Importación</span>
+                    <span class="experience-period">2020 - 2022</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="experience-card-body">
+                <p class="experience-description">Revisión y clasificación de documentos, seguimiento de rutas, capacitación en tecnología para operadores de transporte.</p>
+                
+                <div class="experience-highlights">
+                  <h4 class="highlights-title">Funciones Principales</h4>
+                  <ul class="experience-achievements">
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Gestión documental</span>
+                    </li>
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Seguimiento logístico</span>
+                    </li>
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20,6 9,17 4,12"/>
+                      </svg>
+                      <span>Capacitación técnica</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Freelance Highlight Section -->
+  <section id="freelance" class="section freelance-section">
+    <div class="container">
+      <div class="freelance-content" data-animate>
+                     <div class="freelance-icon">
+               <svg width="120" height="120" viewBox="0 0 140 140" fill="none" stroke="currentColor" stroke-width="2">
+                <!-- Runa mística y misteriosa -->
+                <!-- Círculo exterior místico -->
+                <circle cx="60" cy="60" r="50" class="rune-outer-circle"/>
+                
+                <!-- Círculo interior con energía -->
+                <circle cx="60" cy="60" r="35" class="rune-inner-circle"/>
+                
+                <!-- Símbolos rúnicos principales -->
+                <!-- Runa central vertical -->
+                <path d="M60 25 L60 95" class="rune-main-vertical"/>
+                
+                <!-- Runa horizontal mística -->
+                <path d="M25 60 L95 60" class="rune-main-horizontal"/>
+                
+                <!-- Runa diagonal izquierda -->
+                <path d="M35 35 L85 85" class="rune-diagonal-left"/>
+                
+                <!-- Runa diagonal derecha -->
+                <path d="M85 35 L35 85" class="rune-diagonal-right"/>
+                
+                <!-- Símbolos rúnicos menores -->
+                <!-- Puntos de poder en las esquinas -->
+                <circle cx="30" cy="30" r="3" class="power-point power-point-1"/>
+                <circle cx="90" cy="30" r="3" class="power-point power-point-2"/>
+                <circle cx="30" cy="90" r="3" class="power-point power-point-3"/>
+                <circle cx="90" cy="90" r="3" class="power-point power-point-4"/>
+                
+                <!-- Símbolos rúnicos en los bordes -->
+                <path d="M60 15 L65 20 L60 25 L55 20 Z" class="rune-symbol rune-symbol-1"/>
+                <path d="M105 60 L100 65 L95 60 L100 55 Z" class="rune-symbol rune-symbol-2"/>
+                <path d="M60 105 L65 100 L60 95 L55 100 Z" class="rune-symbol rune-symbol-3"/>
+                <path d="M15 60 L20 65 L25 60 L20 55 Z" class="rune-symbol rune-symbol-4"/>
+                
+                <!-- Energía mística central -->
+                <circle cx="60" cy="60" r="8" class="mystic-core"/>
+                
+                <!-- Aura mística -->
+                <circle cx="60" cy="60" r="45" class="mystic-aura" stroke-dasharray="10 5"/>
+              </svg>
+        </div>
+        <h2 class="freelance-title">Trabajo Freelance Activo</h2>
+        <p class="freelance-description">Además de mi experiencia corporativa, mantengo una práctica activa como desarrollador freelance, creando soluciones digitales personalizadas para clientes de diversos sectores.</p>
+        
+        <div class="freelance-cta">
+          <a href="#projects" class="freelance-btn">
+            Ver Portafolio de Proyectos
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6,9 12,15 18,9"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+     <!-- Services Section -->
+    <section id="services" class="section services-section" aria-label="Servicios ofrecidos">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <h2 class="section-title">Servicios</h2>
+          <p class="section-subtitle">Soluciones integrales para tu presencia digital</p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card" data-animate>
+            <div class="service-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Diseño Web</h3>
+            <p class="service-description">Sitios web modernos y responsivos con HTML, CSS, JavaScript y React.js. Landing pages, sitios corporativos y aplicaciones web funcionales.</p>
+            <ul class="service-features">
+              <li>Diseño Responsivo</li>
+              <li>SEO Optimizado</li>
+              <li>Firebase Integration</li>
+              <li>React Components</li>
+              <li>Landing Pages</li>
+              <li>Sitios Corporativos</li>
+            </ul>
+          </div>
+          
+          <div class="service-card" data-animate>
+            <div class="service-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                <line x1="15" y1="9" x2="15.01" y2="9"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Branding & Identidad Visual</h3>
+            <p class="service-description">Identidad visual y posicionamiento de marca para diferenciarte de la competencia. Logo design, identidad visual y brand guidelines.</p>
+            <ul class="service-features">
+              <li>Logo Design</li>
+              <li>Identidad Visual</li>
+              <li>Brand Guidelines</li>
+              <li>Posicionamiento de Marca</li>
+              <li>Diferenciación Competitiva</li>
+            </ul>
+          </div>
+          
+          <div class="service-card" data-animate>
+            <div class="service-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14,2 14,8 20,8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10,9 9,9 8,9"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Catálogos Digitales</h3>
+            <p class="service-description">Diseño de catálogos interactivos y PDFs profesionales para presentar tus productos de manera atractiva y funcional.</p>
+            <ul class="service-features">
+              <li>InDesign</li>
+              <li>Photoshop</li>
+              <li>Illustrator</li>
+              <li>PDF Interactivo</li>
+              <li>Diseño Profesional</li>
+              <li>Navegación Intuitiva</li>
+            </ul>
+          </div>
+
+          <div class="service-card" data-animate>
+            <div class="service-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-1.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Marketing Digital</h3>
+            <p class="service-description">Estrategias integrales de marketing digital para aumentar tu presencia online y generar leads cualificados.</p>
+            <ul class="service-features">
+              <li>Google Ads</li>
+              <li>Facebook Ads</li>
+              <li>Instagram Ads</li>
+              <li>Google Analytics</li>
+              <li>Email Marketing</li>
+              <li>Estrategias Digitales</li>
+            </ul>
+          </div>
+
+          <div class="service-card" data-animate>
+            <div class="service-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Soporte Técnico</h3>
+            <p class="service-description">Servicios de reparación y mantenimiento de equipos informáticos, diagnóstico técnico y asesoría tecnológica.</p>
+            <ul class="service-features">
+              <li>Reparación PC</li>
+              <li>Diagnóstico Técnico</li>
+              <li>Mantenimiento</li>
+              <li>Asesoría Tecnológica</li>
+              <li>Actualización de Equipos</li>
+              <li>Venta de Consumibles</li>
+            </ul>
+          </div>
+
+          <div class="service-card" data-animate>
+            <div class="service-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Diseño Multimedia</h3>
+            <p class="service-description">Creación de contenido multimedia profesional incluyendo edición de video, diseño gráfico y producción digital.</p>
+            <ul class="service-features">
+              <li>Edición de Video</li>
+              <li>Diseño Gráfico</li>
+              <li>Producción Digital</li>
+              <li>Canva & Photoshop</li>
+              <li>Figma & Illustrator</li>
+              <li>Premiere Pro</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Tech Stack Section -->
+  <section id="tech-stack" class="section tech-stack-section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <h2 class="section-title">Stack Tecnológico</h2>
+        <p class="section-subtitle">Herramientas y tecnologías que domino para crear soluciones digitales</p>
+      </div>
+      
+      <div class="tech-stack-tabs" data-animate>
+        <!-- Navegación de pestañas -->
+        <div class="tech-tabs-nav">
+          <button class="tech-tab-btn active" data-tab="frontend">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <span>Frontend</span>
+          </button>
+          
+          <button class="tech-tab-btn" data-tab="backend">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+            <span>Backend & BD</span>
+          </button>
+          
+          <button class="tech-tab-btn" data-tab="development">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+            <span>Desarrollo</span>
+          </button>
+          
+          <button class="tech-tab-btn" data-tab="marketing">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <span>Marketing</span>
+          </button>
+          
+          <button class="tech-tab-btn" data-tab="design">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <span>Diseño</span>
+          </button>
+          
+          <button class="tech-tab-btn" data-tab="technical">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <span>Técnico</span>
+          </button>
+          
+          <button class="tech-tab-btn" data-tab="production">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"/>
+              <path d="M21 12c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"/>
+              <path d="M3 12c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2z"/>
+              <path d="M12 3c0 1-1 2-2 2s-2-1-2-2 1-2 2-2 2 1 2 2z"/>
+              <path d="M12 21c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2z"/>
+            </svg>
+            <span>Producción</span>
+          </button>
+        </div>
+        
+        <!-- Contenido de las pestañas -->
+        <div class="tech-tabs-content">
+          <!-- Pestaña Frontend -->
+          <div class="tech-tab-panel active" id="frontend">
+            <div class="tech-grid">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10,9 9,9 8,9"/>
+                  </svg>
+                </div>
+                <span class="tech-name">HTML5</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">CSS3</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4"/>
+                    <path d="M21 12c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"/>
+                    <path d="M3 12c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2z"/>
+                    <path d="M12 3c0 1-1 2-2 2s-2-1-2-2 1-2 2-2 2 1 2 2z"/>
+                    <path d="M12 21c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">JavaScript</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17.66 8L12 2.35 6.34 8C4.78 9.56 4 11.64 4 13.64s.78 4.11 2.34 5.67 3.61 2.35 5.66 2.35 4.1-.79 5.66-2.35S20 15.64 20 13.64 19.22 9.56 17.66 8z"/>
+                    <path d="M12 22c-2.12 0-4.11-.79-5.66-2.35S4 15.64 4 13.64s.78-4.11 2.34-5.67L12 2.35l5.66 5.67C19.22 9.56 20 11.64 20 13.64s-.78 4.11-2.34 5.67S14.12 22 12 22z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">React.js</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Responsive</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">UX/UI</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pestaña Backend & BD -->
+          <div class="tech-tab-panel" id="backend">
+            <div class="tech-grid">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                    <line x1="4" y1="22" x2="4" y2="15"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Firebase</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">WhatsApp API</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Node.js</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                    <polyline points="10,17 15,12 10,7"/>
+                    <line x1="15" y1="12" x2="3" y2="12"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Autenticación</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                    <line x1="4" y1="22" x2="4" y2="15"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Base de Datos</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                  </svg>
+                </div>
+                <span class="tech-name">APIs REST</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pestaña Desarrollo -->
+          <div class="tech-tab-panel" id="development">
+            <div class="tech-grid">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-1.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Git</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Control de Versiones</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Boxicons</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Lucide</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10,9 9,9 8,9"/>
+                  </svg>
+                </div>
+                <span class="tech-name">VS Code</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Deployment</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pestaña Marketing -->
+          <div class="tech-tab-panel" id="marketing">
+            <div class="tech-grid">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Google Ads</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-item">
+                  <div class="tech-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <span class="tech-name">Facebook Ads</span>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Instagram Ads</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Google Analytics</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Mailchimp</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Estrategias</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pestaña Diseño -->
+          <div class="tech-tab-panel" id="design">
+            <div class="tech-grid">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Canva</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Photoshop</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">InDesign</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Illustrator</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Figma</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Premiere Pro</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pestaña Técnico -->
+          <div class="tech-tab-panel" id="technical">
+            <div class="tech-grid">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Reparación PC</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Diagnóstico</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Mantenimiento</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Asesoría</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Actualización</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Hardware</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pestaña Producción -->
+          <div class="tech-tab-panel" id="production">
+            <div class="tech-grid">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <span class="tech-name">YouTube</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Edición de Video</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Producción Digital</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Contenido</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Streaming</span>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <span class="tech-name">Multimedia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section" aria-label="Proyectos destacados">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <h2 class="section-title">Proyectos Destacados</h2>
+          <p class="section-subtitle">Portafolio de trabajos realizados con tecnologías modernas</p>
+        </div>
+        
+        <div class="projects-grid">
+          <article class="project-card" data-animate>
+            <div class="project-image">
+              <img src="assets/captura notaria80.png" alt="Proyecto Notaría 80 GDL - Sitio web corporativo" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div class="project-badge">⭐ Destacado</div>
+              <h3 class="project-title">Notaría 80 GDL</h3>
+              <p class="project-description">Diseño y desarrollo completo del sitio web corporativo para Notaría 80 de Guadalajara con enfoque en la confianza y profesionalismo.</p>
+              <div class="project-tech">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Responsive</span>
+              </div>
+              <a href="https://www.notaria80gdl.mx/" class="project-link" target="_blank" rel="noopener noreferrer">
+                Ver proyecto
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
+          <article class="project-card" data-animate>
+            <div class="project-image">
+              <img src="assets/captura pietrafina.png" alt="Proyecto Pietrafina MX - Sitio web corporativo" loading="lazy">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Pietrafina MX</h3>
+              <p class="project-description">Diseño, desarrollo y mantenimiento continuo del sitio web corporativo con funcionalidades avanzadas y optimización SEO.</p>
+              <div class="project-tech">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">SEO</span>
+              </div>
+              <a href="https://www.pietrafina.mx/" class="project-link" target="_blank" rel="noopener noreferrer">
+                Ver proyecto
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
+          <article class="project-card" data-animate>
+            <div class="project-image">
+              <img src="assets/miniatura youtube.png" alt="Proyecto Sabor y Salud - Canal de YouTube" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div class="project-badge">⭐ Producción Digital</div>
+              <h3 class="project-title">Sabor y Salud YouTube</h3>
+              <p class="project-description">Editor y productor del programa de YouTube "Sabor y Salud", auspiciado por Pietrafina MX. Producción de contenido digital y estrategia de marketing.</p>
+              <div class="project-tech">
+                <span class="tech-tag">YouTube</span>
+                <span class="tech-tag">Edición de Video</span>
+                <span class="tech-tag">Marketing Digital</span>
+                <span class="tech-tag">Producción</span>
+              </div>
+              <a href="https://www.youtube.com/@pietrafinamx" class="project-link" target="_blank" rel="noopener noreferrer">
+                Ver canal
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
+          <article class="project-card" data-animate>
+            <div class="project-image">
+              <img src="assets/crm captura.png" alt="Proyecto CRM de Prospección - Sistema de gestión de clientes" loading="lazy">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">CRM de Prospección</h3>
+              <p class="project-description">Sistema de gestión de clientes desarrollado para Pietrafina MX. Aplicación funcional para seguimiento de prospectos e integración con WhatsApp.</p>
+              <div class="project-tech">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">WhatsApp API</span>
+              </div>
+              <span class="project-link disabled">Proyecto interno</span>
+            </div>
+          </article>
+          
+          <article class="project-card" data-animate>
+            <div class="project-image">
+              <img src="assets/juldra miniatura.png" alt="Proyecto JULDRA UNIFORMES - Catálogo digital interactivo" loading="lazy">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Catálogo Online - JULDRA UNIFORMES</h3>
+              <p class="project-description">Catálogo digital interactivo con diseño profesional, navegación intuitiva, galería de productos y sistema de contacto integrado.</p>
+              <div class="project-tech">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Responsive</span>
+                <span class="tech-tag">UX/UI</span>
+              </div>
+              <a href="https://mvgn91.github.io/JULDRA-CATALOGO-VIRTUAL/" class="project-link" target="_blank" rel="noopener noreferrer">
+                Ver proyecto
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  <!-- Work Process Section -->
+  <section id="work-process" class="section work-process-section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <h2 class="section-title">Proceso de Trabajo</h2>
+        <p class="section-subtitle">Metodología probada para entregar resultados excepcionales</p>
+      </div>
+      
+      <div class="process-carousel">
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <div class="process-step-compact carousel-item">
+              <div class="step-header">
+                <div class="step-icon-compact">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div class="step-number-compact">01</div>
+                <h3 class="step-title-compact">Investigación & Análisis</h3>
+              </div>
+              <p class="step-description-compact">Análisis de mercado, estudio de competencia y definición de objetivos claros.</p>
+              <div class="step-tags">
+                <span class="step-tag">Análisis de competencia</span>
+                <span class="step-tag">Definición de objetivos</span>
+              </div>
+            </div>
+
+            <div class="process-step-compact carousel-item">
+              <div class="step-header">
+                <div class="step-icon-compact">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <div class="step-number-compact">02</div>
+                <h3 class="step-title-compact">Diseño & Estrategia</h3>
+              </div>
+              <p class="step-description-compact">Conceptos creativos, estrategia visual y wireframes para la experiencia del usuario.</p>
+              <div class="step-tags">
+                <span class="step-tag">Wireframes</span>
+                <span class="step-tag">UX/UI Design</span>
+              </div>
+            </div>
+
+            <div class="process-step-compact carousel-item">
+              <div class="step-header">
+                <div class="step-icon-compact">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </div>
+                <div class="step-number-compact">03</div>
+                <h3 class="step-title-compact">Desarrollo & Implementación</h3>
+              </div>
+              <p class="step-description-compact">Desarrollo frontend, integración backend y optimización SEO para máximo rendimiento.</p>
+              <div class="step-tags">
+                <span class="step-tag">Desarrollo frontend</span>
+                <span class="step-tag">Integración backend</span>
+              </div>
+            </div>
+
+            <div class="process-step-compact carousel-item">
+              <div class="step-header">
+                <div class="step-icon-compact">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4"/>
+                    <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+                  </svg>
+                </div>
+                <div class="step-number-compact">04</div>
+                <h3 class="step-title-compact">Pruebas & Optimización</h3>
+              </div>
+              <p class="step-description-compact">Testing responsivo, optimización de velocidad y corrección de bugs para garantizar calidad.</p>
+              <div class="step-tags">
+                <span class="step-tag">Testing responsivo</span>
+                <span class="step-tag">Optimización</span>
+              </div>
+            </div>
+
+            <div class="process-step-compact carousel-item">
+              <div class="step-header">
+                <div class="step-icon-compact">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22,4 12,14.01 9,11.01"/>
+                  </svg>
+                </div>
+                <div class="step-number-compact">05</div>
+                <h3 class="step-title-compact">Lanzamiento & Seguimiento</h3>
+              </div>
+              <p class="step-description-compact">Despliegue seguro, monitoreo continuo y soporte post-lanzamiento para tu tranquilidad.</p>
+              <div class="step-tags">
+                <span class="step-tag">Despliegue seguro</span>
+                <span class="step-tag">Soporte continuo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-prev" aria-label="Anterior">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <div class="carousel-dots"></div>
+          <button class="carousel-btn carousel-next" aria-label="Siguiente">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section" aria-label="Información de contacto">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <h2 class="section-title">Contacto</h2>
+          <p class="section-subtitle">¿Tienes un proyecto en mente? Hablemos</p>
+        </div>
+        
+        <div class="contact-content">
+          <!-- Grid de métodos de contacto -->
+          <div class="contact-methods-grid" data-animate>
+            <div class="contact-method-card">
+              <div class="method-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <div class="method-content">
+                <h4>WhatsApp</h4>
+                <p>Respuesta rápida en tiempo real</p>
+                <a href="https://wa.me/523322621939?text=Hola%2C%20vieron%20mi%20portafolio%20y%20le%20interesa%20trabajar%20conmigo" class="method-link" target="_blank" rel="noopener noreferrer">Iniciar Chat</a>
+              </div>
+            </div>
+            
+            <div class="contact-method-card">
+              <div class="method-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="method-content">
+                <h4>Contactar por Correo</h4>
+                <p>Enviar mensaje directo</p>
+                <a href="mailto:mvgnlabs@proton.me" class="method-link">mvgnlabs@proton.me</a>
+              </div>
+            </div>
+            
+            <div class="contact-method-card">
+              <div class="method-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div class="method-content">
+                <h4>Ubicación</h4>
+                <p>Servicios desde Tlajomulco</p>
+                <span class="method-location">Jalisco, México</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      <!-- Lado izquierdo: Marca y valores -->
+      <div class="footer-brand">
+        <div class="footer-logo">MVGN Labs</div>
+      </div>
+      
+      <!-- Lado derecho: Iconos sociales -->
+      <div class="footer-social">
+        <a href="https://www.facebook.com/share/18xrJGkLiT/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        
+        <a href="https://open.spotify.com/intl-es/artist/3XBR5sxFV0RHd4Ae6Q0caF" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Sección destacada centrada -->
+    <div class="footer-highlight">
+      <p class="footer-made-with">Hecho con ⚡ y 🎵 desde México</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18,15 12,9 6,15"/>
+    </svg>
+  </button>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Armando Ibañez",
+    "jobTitle": "Desarrollador Web & Diseñador Digital",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "MVGN Labs"
+    },
+    "description": "Técnico y creativo con experiencia en tecnología, ventas y marketing digital. Especialista en transformar ideas en soluciones tecnológicas.",
+    "url": "https://mvgnlabs.com",
+    "sameAs": [
+      "https://wa.me/523322621939",
+      "https://www.youtube.com/@pietrafinamx"
+    ],
+    "knowsAbout": [
+      "HTML5", "CSS3", "JavaScript", "React.js", "Firebase", "Diseño Web", "Branding", "Marketing Digital"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Jalisco",
+      "addressCountry": "MX"
+    },
+    "telephone": "+523322621939",
+    "email": "jazzfatale@gmail.com"
+  }
+  </script>
+
+  <!-- JavaScript -->
+  <script src="js/particles.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/section-dividers.js" defer></script>
+  <script src="js/device-detector.js" defer></script>
+</body>
+</html>
+
