@@ -22,18 +22,12 @@
   
   <!-- Preload critical fonts -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&display=swap" as="style">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;600&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;600&display=style">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" as="style">
   
   <!-- Critical CSS inline -->
   <style>
-    /* Critical CSS - Reset y base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    html { scroll-behavior: auto; }
-    
-
-    
     /* Dynamic Background */
     .particles-canvas {
       position: fixed;
@@ -45,666 +39,18 @@
       opacity: 0.3;
       pointer-events: none;
     }
-    
-    body {
-      font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #121212;
-      color: #FFFFFF;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    /* Header crítico */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 80px;
-      background: rgba(18, 18, 18, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-    
-    .header-content {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 48px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      overflow: hidden;
-    }
-    
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .nav-desktop {
-      display: flex;
-      gap: 32px;
-    }
-    
-    .nav-desktop ul {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .nav-desktop li {
-      margin: 0;
-      padding: 0;
-    }
-    
-    .nav-desktop a {
-      font-family: 'Fraunces', serif;
-      font-size: 18px;
-      font-weight: 500;
-      color: #FFFFFF;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-desktop a:hover {
-      color: #FF4C4C;
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      width: 24px;
-      height: 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 0;
-    }
-    
-    .mobile-menu-btn span {
-      width: 100%;
-      height: 2px;
-      background: #FFFFFF;
-      transition: all 0.3s ease;
-    }
-    
-    /* Hero crítico */
-    .hero {
-      height: 100vh;
-      min-height: 700px;
-      padding: 0 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: 
-        linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #0a0a0a 50%, #1a1a1a 75%, #0a0a0a 100%);
-      position: relative;
-      overflow: hidden;
-      animation: heroBackgroundShift 30s ease-in-out infinite;
-    }
-    
-    @keyframes heroBackgroundShift {
-      0%, 100% { 
-        filter: hue-rotate(0deg) saturate(1.05);
-      }
-      25% { 
-        filter: hue-rotate(90deg) saturate(1.1);
-      }
-      50% { 
-        filter: hue-rotate(180deg) saturate(1.08);
-      }
-      75% { 
-        filter: hue-rotate(270deg) saturate(1.06);
-      }
-    }
-    
-    /* Material Design Background Elements */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        /* Círculo superior izquierdo */
-        radial-gradient(circle 200px at 15% 20%, rgba(255, 76, 76, 0.03) 0%, transparent 70%),
-        /* Círculo superior derecho */
-        radial-gradient(circle 150px at 85% 25%, rgba(64, 156, 255, 0.02) 0%, transparent 70%),
-        /* Círculo inferior izquierdo */
-        radial-gradient(circle 180px at 20% 80%, rgba(255, 193, 7, 0.02) 0%, transparent 70%),
-        /* Círculo inferior derecho */
-        radial-gradient(circle 120px at 80% 75%, rgba(156, 39, 176, 0.015) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    /* Material Design Grid Lines */
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        /* Línea horizontal superior */
-        linear-gradient(90deg, transparent 0%, rgba(255, 76, 76, 0.015) 20%, rgba(255, 76, 76, 0.025) 50%, rgba(255, 76, 76, 0.015) 80%, transparent 100%),
-        /* Línea horizontal inferior */
-        linear-gradient(90deg, transparent 0%, rgba(64, 156, 255, 0.01) 20%, rgba(64, 156, 255, 0.02) 50%, rgba(64, 156, 255, 0.01) 80%, transparent 100%),
-        /* Línea vertical izquierda */
-        linear-gradient(180deg, transparent 0%, rgba(255, 193, 7, 0.01) 20%, rgba(255, 193, 7, 0.02) 50%, rgba(255, 193, 7, 0.01) 80%, transparent 100%),
-        /* Línea vertical derecha */
-        linear-gradient(180deg, transparent 0%, rgba(156, 39, 176, 0.01) 20%, rgba(156, 39, 176, 0.015) 50%, rgba(156, 39, 176, 0.01) 80%, transparent 100%);
-      background-size: 100% 1px, 100% 1px, 1px 100%, 1px 100%;
-      background-position: 0 20%, 0 80%, 20% 0, 80% 0;
-      background-repeat: no-repeat;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    /* Material Design Corner Accents */
-    .hero-corner-accent {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    .corner-top-left {
-      top: 40px;
-      left: 40px;
-      border-right: none;
-      border-bottom: none;
-    }
-    
-    .corner-top-right {
-      top: 40px;
-      right: 40px;
-      border-left: none;
-      border-bottom: none;
-    }
-    
-    .corner-bottom-left {
-      bottom: 40px;
-      left: 40px;
-      border-right: none;
-      border-top: none;
-    }
-    
-    .corner-bottom-right {
-      bottom: 40px;
-      right: 40px;
-      border-left: none;
-      border-top: none;
-    }
-    
-
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        /* Línea horizontal superior */
-        linear-gradient(90deg, transparent 0%, rgba(255, 76, 76, 0.03) 20%, rgba(255, 76, 76, 0.06) 50%, rgba(255, 76, 76, 0.03) 80%, transparent 100%),
-        /* Línea horizontal inferior */
-        linear-gradient(90deg, transparent 0%, rgba(64, 156, 255, 0.02) 20%, rgba(64, 156, 255, 0.04) 50%, rgba(64, 156, 255, 0.02) 80%, transparent 100%),
-        /* Línea vertical izquierda */
-        linear-gradient(180deg, transparent 0%, rgba(255, 193, 7, 0.02) 20%, rgba(255, 193, 7, 0.04) 50%, rgba(255, 193, 7, 0.02) 80%, transparent 100%),
-        /* Línea vertical derecha */
-        linear-gradient(180deg, transparent 0%, rgba(156, 39, 176, 0.02) 20%, rgba(156, 39, 176, 0.04) 50%, rgba(156, 39, 176, 0.02) 80%, transparent 100%);
-      background-size: 100% 1px, 100% 1px, 1px 100%, 1px 100%;
-      background-position: 0 20%, 0 80%, 20% 0, 80% 0;
-      background-repeat: no-repeat;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-
-    
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 48px;
-      box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Dynamic Blobs with Glassmorphism - Minimalist */
-    .hero-blobs {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 2;
-    }
-    
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      background: 
-        radial-gradient(circle at 30% 30%, 
-          rgba(255, 76, 76, 0.04) 0%, 
-          rgba(255, 76, 76, 0.015) 40%, 
-          transparent 70%);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      box-shadow: 
-        0 4px 20px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
-      animation: blobFloat 25s ease-in-out infinite, blobColorShift 25s ease-in-out infinite;
-    }
-    
-    .blob-1 {
-      width: 400px;
-      height: 400px;
-      top: 20%;
-      left: 5%;
-      animation-delay: 0s;
-    }
-    
-    .blob-2 {
-      width: 300px;
-      height: 300px;
-      top: 65%;
-      right: 8%;
-      animation-delay: 7s;
-    }
-    
-    .blob-3 {
-      width: 250px;
-      height: 250px;
-      bottom: 15%;
-      left: 25%;
-      animation-delay: 14s;
-    }
-    
-    @keyframes blobFloat {
-      0%, 100% { 
-        transform: translateY(0px) rotate(0deg) scale(1); 
-        opacity: 0.3;
-        filter: blur(0px);
-      }
-      25% { 
-        transform: translateY(-40px) rotate(90deg) scale(1.15); 
-        opacity: 0.4;
-        filter: blur(0.3px);
-      }
-      50% { 
-        transform: translateY(-20px) rotate(180deg) scale(0.9); 
-        opacity: 0.35;
-        filter: blur(0px);
-      }
-      75% { 
-        transform: translateY(-35px) rotate(270deg) scale(1.05); 
-        opacity: 0.38;
-        filter: blur(0.2px);
-      }
-    }
-    
-    @keyframes blobColorShift {
-      0%, 100% { 
-        background: radial-gradient(circle at 30% 30%, 
-          rgba(255, 76, 76, 0.04) 0%, 
-          rgba(255, 76, 76, 0.015) 40%, 
-          transparent 70%);
-      }
-      25% { 
-        background: radial-gradient(circle at 30% 30%, 
-          rgba(64, 156, 255, 0.04) 0%, 
-          rgba(64, 156, 255, 0.015) 40%, 
-          transparent 70%);
-      }
-      50% { 
-        background: radial-gradient(circle at 30% 30%, 
-          rgba(255, 193, 7, 0.04) 0%, 
-          rgba(255, 193, 7, 0.015) 40%, 
-          transparent 70%);
-      }
-      75% { 
-        background: radial-gradient(circle at 30% 30%, 
-          rgba(156, 39, 176, 0.04) 0%, 
-          rgba(156, 39, 176, 0.015) 40%, 
-          transparent 70%);
-      }
-    }
-    
-    /* Floating Elements */
-    .hero-floating-elements {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    .floating-element {
-      position: absolute;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-      animation: float 20s ease-in-out infinite;
-      box-shadow: 
-        0 0 20px rgba(255, 255, 255, 0.05),
-        inset 0 0 15px rgba(255, 255, 255, 0.01);
-      filter: blur(1px);
-    }
-    
-    .element-1 {
-      width: 180px;
-      height: 180px;
-      top: 10%;
-      left: 5%;
-      animation-delay: 0s;
-      background: radial-gradient(circle, rgba(255, 76, 76, 0.12) 0%, rgba(255, 76, 76, 0.04) 70%);
-    }
-    
-    .element-2 {
-      width: 120px;
-      height: 120px;
-      top: 70%;
-      right: 8%;
-      animation-delay: 2s;
-      background: radial-gradient(circle, rgba(64, 156, 255, 0.12) 0%, rgba(64, 156, 255, 0.04) 70%);
-    }
-    
-    .element-3 {
-      width: 100px;
-      height: 100px;
-      bottom: 20%;
-      left: 12%;
-      animation-delay: 4s;
-      background: radial-gradient(circle, rgba(255, 193, 7, 0.12) 0%, rgba(255, 193, 7, 0.04) 70%);
-    }
-    
-    .element-4 {
-      width: 140px;
-      height: 140px;
-      top: 30%;
-      right: 15%;
-      animation-delay: 1s;
-      background: radial-gradient(circle, rgba(156, 39, 176, 0.12) 0%, rgba(156, 39, 176, 0.04) 70%);
-    }
-    
-    .element-5 {
-      width: 80px;
-      height: 80px;
-      top: 85%;
-      left: 55%;
-      animation-delay: 3s;
-      background: radial-gradient(circle, rgba(76, 175, 80, 0.12) 0%, rgba(76, 175, 80, 0.04) 70%);
-    }
-    
-    .element-6 {
-      width: 110px;
-      height: 110px;
-      top: 5%;
-      right: 55%;
-      animation-delay: 5s;
-      background: radial-gradient(circle, rgba(255, 152, 0, 0.12) 0%, rgba(255, 152, 0, 0.04) 70%);
-    }
-    
-    @keyframes float {
-      0%, 100% { 
-        transform: translateY(0px) rotate(0deg) scale(1); 
-        opacity: 0.4;
-        filter: blur(0.5px) brightness(1);
-      }
-      25% { 
-        transform: translateY(-40px) rotate(90deg) scale(1.15); 
-        opacity: 0.5;
-        filter: blur(0.3px) brightness(1.1);
-      }
-      50% { 
-        transform: translateY(-20px) rotate(180deg) scale(0.95); 
-        opacity: 0.35;
-        filter: blur(0.8px) brightness(0.95);
-      }
-      75% { 
-        transform: translateY(-35px) rotate(270deg) scale(1.1); 
-        opacity: 0.45;
-        filter: blur(0.4px) brightness(1.05);
-      }
-    }
-    
-
-    
-    .hero-title {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(48px, 8vw, 72px);
-      line-height: 1.1;
-      color: #FFFFFF;
-      margin-bottom: 24px;
-      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #FF4C4C, transparent);
-      border-radius: 2px;
-      animation: titleUnderline 3s ease-in-out infinite alternate;
-    }
-    
-    @keyframes titleUnderline {
-      0% { width: 60px; opacity: 0.7; transform: scaleX(0.8); }
-      50% { width: 100px; opacity: 1; transform: scaleX(1.2); }
-      100% { width: 80px; opacity: 0.8; transform: scaleX(1); }
-    }
-    
-    .hero-subtitle {
-      font-family: 'Helvetica Neue', sans-serif;
-      font-size: clamp(18px, 3vw, 22px);
-      line-height: 1.6;
-      color: #CCCCCC;
-      max-width: 700px;
-      margin: 0 auto 32px;
-      animation: fadeInUp 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1) both;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    .hero-description {
-      font-family: 'Helvetica Neue', sans-serif;
-      font-size: clamp(16px, 2.5vw, 18px);
-      line-height: 1.6;
-      color: #AAAAAA;
-      max-width: 600px;
-      margin: 0 auto 32px;
-      animation: fadeInUp 1s 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    
-
-    
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: linear-gradient(135deg, #FF4C4C 0%, #FF6666 100%);
-      color: #FFFFFF;
-      padding: 16px 32px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-family: 'Helvetica Neue', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 8px 32px rgba(255, 76, 76, 0.3);
-      position: relative;
-      overflow: hidden;
-      animation: fadeInUp 1s 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
-    }
-    
-    .hero-cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.6s ease;
-    }
-    
-    .hero-cta:hover::before {
-      left: 100%;
-    }
-    
-    .hero-cta:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 16px 48px rgba(255, 76, 76, 0.4);
-    }
-    
-    .btn-icon {
-      transition: transform 0.3s ease;
-    }
-    
-    .hero-cta:hover .btn-icon {
-      transform: translateX(4px);
-    }
-    
-
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Mobile menu overlay */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(18, 18, 18, 0.98);
-      backdrop-filter: blur(20px);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .mobile-menu.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .mobile-menu-content {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 80px 24px 24px;
-    }
-    
-    .mobile-menu-nav {
-      list-style: none;
-      text-align: center;
-    }
-    
-    .mobile-menu-nav li {
-      margin-bottom: 32px;
-    }
-    
-    .mobile-menu-nav a {
-      font-family: 'Fraunces', serif;
-      font-size: 24px;
-      font-weight: 500;
-      color: #FFFFFF;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .mobile-menu-nav a:hover {
-      color: #FF4C4C;
-    }
-    
-    .mobile-menu-close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 32px;
-      height: 32px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #FFFFFF;
-      font-size: 24px;
-    }
-    
-         /* Responsive crítico */
-     @media (max-width: 768px) {
-       .header { height: 60px; }
-       .header-content { padding: 0 24px; }
-       .logo { width: 40px; height: 40px; }
-       .nav-desktop { display: none; }
-       .mobile-menu-btn { display: flex; }
-       .hero { padding: 0 24px; min-height: 600px; height: 90vh; }
-       .hero-title { font-size: clamp(32px, 8vw, 40px); }
-       .hero-subtitle { font-size: 16px; }
-       .hero-description { font-size: 14px; margin-bottom: 24px; }
-       .hero-cta { padding: 14px 28px; font-size: 16px; }
-       .hero-content { padding: 32px 24px; margin: 0 16px; }
-       .blob { display: none; }
-       .hero-corner-accent { display: none; }
-       .floating-element { display: none; }
-     }
   </style>
   
+  <!-- CSS Crítico - Carga inmediata -->
+  <link rel="stylesheet" href="css/critical.css">
+  
   <!-- Non-critical CSS -->
-  <link rel="stylesheet" href="css/main.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/section-dividers.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/main.css"></noscript>
-  <noscript><link rel="stylesheet" href="css/section-dividers.css"></noscript>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/section-dividers.css">
+  <link rel="stylesheet" href="css/hero-minimal.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Dynamic Background Canvas -->
@@ -760,43 +106,152 @@
   <main role="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section" aria-label="Presentación principal">
-      <!-- Floating Elements -->
-      <div class="hero-floating-elements">
-        <div class="floating-element element-1"></div>
-        <div class="floating-element element-2"></div>
-        <div class="floating-element element-3"></div>
-        <div class="floating-element element-4"></div>
-        <div class="floating-element element-5"></div>
-        <div class="floating-element element-6"></div>
+      <!-- Dynamic Background -->
+      <div class="hero-dynamic-bg">
+        <div class="bg-grid"></div>
+        <div class="bg-particles"></div>
       </div>
       
-      <!-- Dynamic Blobs with Glassmorphism -->
-      <div class="hero-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-      </div>
-      
-      <!-- Material Design Corner Accents -->
-      <div class="hero-corner-accent corner-top-left"></div>
-      <div class="hero-corner-accent corner-top-right"></div>
-      <div class="hero-corner-accent corner-bottom-left"></div>
-      <div class="hero-corner-accent corner-bottom-right"></div>
-      
+      <!-- Main Hero Content -->
       <div class="hero-content">
-        <h1 class="hero-title" id="hero-title">Armando Ibañez</h1>
-        <p class="hero-subtitle">Desarrollador Web & Diseñador Digital en MVGN Labs</p>
+        <!-- Left Column - Text Content -->
+        <div class="hero-text-column">
+
+          
+          <h1 class="hero-title">
+            <span class="title-line">Armando</span>
+            <span class="title-line highlight">Ibañez</span>
+          </h1>
+          
+          <p class="hero-subtitle">Desarrollador Web & Diseñador Digital</p>
+          
+          <p class="hero-description">
+            <strong>Freelancer</strong> en diseño, programación y tecnología. 
+            Integro creatividad y técnica para desarrollar soluciones digitales eficientes, estéticas y de alto impacto.
+          </p>
+          
+          <!-- Tech Stack Minimalista -->
+          <div class="hero-tech-stack">
+            <div class="tech-item" data-tech="react">
+              <div class="tech-icon-small">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span>React</span>
+            </div>
+                      <div class="tech-item" data-tech="html">
+            <div class="tech-icon-small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 7V4h16v3"/>
+                <path d="M9 20h6"/>
+                <path d="M12 4v16"/>
+              </svg>
+            </div>
+            <span>HTML</span>
+          </div>
+            <div class="tech-item" data-tech="firebase">
+              <div class="tech-icon-small">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <span>Firebase</span>
+            </div>
+            <div class="tech-item" data-tech="typescript">
+              <div class="tech-icon-small">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+                  <line x1="7" y1="2" x2="7" y2="22"/>
+                  <line x1="17" y1="6" x2="17" y2="18"/>
+                  <path d="M20 8l-2 2 2 2"/>
+                </svg>
+              </div>
+              <span>TypeScript</span>
+            </div>
+          </div>
+          
+          <!-- CTA Buttons -->
+          <div class="hero-actions">
+            <a href="#projects" class="hero-cta primary">
+              <span class="cta-text">Ver Proyectos</span>
+              <div class="cta-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </a>
+            <a href="#contact" class="hero-cta secondary">
+              <span class="cta-text">Contactar</span>
+              <div class="cta-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
         
-        <!-- Descripción profesional -->
-        <p class="hero-description">Especializado en React, Node.js y diseño UX/UI. +3 años creando experiencias digitales excepcionales</p>
-        
-        <!-- Botón CTA simplificado -->
-        <a href="#proyectos" class="hero-cta">
-          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
+        <!-- Right Column - Visual Elements -->
+        <div class="hero-visual-column">
+          <!-- Floating Code Animation -->
+          <div class="hero-code-animation">
+            <div class="code-terminal">
+              <div class="terminal-header">
+                <span class="terminal-title">neural_interface.exe</span>
+                <div class="terminal-controls">
+                  <span class="control-dot"></span>
+                  <span class="control-dot"></span>
+                  <span class="control-dot"></span>
+                </div>
+              </div>
+              <div class="terminal-content">
+                <div class="code-line typing-effect" data-text="> initializing quantum_core...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> loading consciousness_matrix...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> establishing neural_link...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> accessing void_database...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> quantum_entanglement: ACTIVE">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> reality_shift_protocol: ENABLED">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> summoning digital_demons...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> ERROR: consciousness_overflow">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> rebooting quantum_mind...">
+                  <span class="cursor">|</span>
+                </div>
+                <div class="code-line typing-effect" data-text="> entering digital_void...">
+                  <span class="cursor">|</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="hero-scroll-indicator">
+        <span class="scroll-text">Scroll</span>
+        <div class="scroll-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 13l5 5 5-5"/>
           </svg>
-          Conoce mi trabajo
-        </a>
+        </div>
       </div>
     </section>
 
@@ -1892,7 +1347,7 @@
           
           <article class="project-card" data-animate>
             <div class="project-image">
-              <img src="assets/captura notaria80.png" alt="Proyecto JULDRA UNIFORMES - Catálogo digital interactivo" loading="lazy">
+              <img src="assets/juldra miniatura.png" alt="Proyecto JULDRA UNIFORMES - Catálogo digital interactivo" loading="lazy">
             </div>
             <div class="project-content">
               <h3 class="project-title">Catálogo Online - JULDRA UNIFORMES</h3>

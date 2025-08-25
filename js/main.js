@@ -1251,3 +1251,79 @@ document.addEventListener('DOMContentLoaded', function() {
   startAutoPlay();
   console.log('Carousel initialization complete');
 });
+
+// ========================================
+// TERMINAL CRÍPTICA - ANIMACIÓN CONTINUA
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+  const terminal = document.querySelector('.hero-code-animation');
+  if (!terminal) return;
+
+  const codeLines = terminal.querySelectorAll('.code-line');
+  let currentLineIndex = 0;
+  let isTyping = false;
+
+  // Función para mostrar la siguiente línea con efecto de escritura
+  function showNextLine() {
+    if (isTyping) return;
+    
+    const currentLine = codeLines[currentLineIndex];
+    if (!currentLine) return;
+
+    isTyping = true;
+    currentLine.style.opacity = '1';
+    currentLine.style.transform = 'translateX(0)';
+
+    // Simular efecto de escritura
+    const text = currentLine.getAttribute('data-text');
+    const cursor = currentLine.querySelector('.cursor');
+    
+    if (cursor) {
+      cursor.style.opacity = '1';
+    }
+
+    // Avanzar a la siguiente línea después de un delay
+    setTimeout(() => {
+      isTyping = false;
+      currentLineIndex = (currentLineIndex + 1) % codeLines.length;
+      
+      // Reiniciar el ciclo cuando termine
+      if (currentLineIndex === 0) {
+        setTimeout(() => {
+          resetTerminal();
+        }, 2000);
+      } else {
+        showNextLine();
+      }
+    }, 1500);
+  }
+
+  // Función para reiniciar la terminal
+  function resetTerminal() {
+    codeLines.forEach((line, index) => {
+      line.style.opacity = '0';
+      line.style.transform = 'translateX(-20px)';
+    });
+    currentLineIndex = 0;
+    
+    setTimeout(() => {
+      showNextLine();
+    }, 1000);
+  }
+
+  // Iniciar la animación
+  setTimeout(() => {
+    showNextLine();
+  }, 2000);
+
+  // Efectos de glitch aleatorios
+  setInterval(() => {
+    const randomLine = codeLines[Math.floor(Math.random() * codeLines.length)];
+    if (randomLine && Math.random() < 0.3) {
+      randomLine.style.textShadow = '2px 0 #FF4C4C, -2px 0 #00FF41';
+      setTimeout(() => {
+        randomLine.style.textShadow = 'none';
+      }, 100);
+    }
+  }, 3000);
+});
