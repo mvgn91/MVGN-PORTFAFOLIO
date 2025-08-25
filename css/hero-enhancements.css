@@ -1,0 +1,200 @@
+/* ========================================
+   HERO SECTION ENHANCEMENTS
+   Estilos adicionales para las mejoras de la hero section
+   ======================================== */
+
+/* Partículas flotantes adicionales */
+.floating-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  animation: particleFloat 15s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Mejoras para el efecto de escritura */
+.hero-title.typing {
+  overflow: hidden;
+  border-right: 3px solid #FF4C4C;
+  white-space: nowrap;
+  animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #FF4C4C; }
+}
+
+/* Efectos de hover mejorados para badges */
+.tech-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.tech-badge:hover::before {
+  left: 100%;
+}
+
+/* Mejoras para botones con efectos de partículas */
+.hero-cta.primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.hero-cta.primary:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Efectos de credibilidad mejorados */
+.credibility-item {
+  position: relative;
+}
+
+.credibility-item::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FF4C4C, transparent);
+  transition: width 0.6s ease;
+}
+
+.credibility-item:hover::before {
+  width: 100%;
+}
+
+/* Mejoras para redes sociales */
+.hero-social .social-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-social .social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 76, 76, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.hero-social .social-link:hover::before {
+  left: 100%;
+}
+
+/* Efectos de fondo dinámicos */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 70%, rgba(255, 76, 76, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(255, 76, 76, 0.03) 0%, transparent 50%);
+  animation: backgroundShift 25s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes backgroundShift {
+  0% { 
+    background-position: 0% 0%, 100% 100%;
+    opacity: 0.3;
+  }
+  100% { 
+    background-position: 100% 100%, 0% 0%;
+    opacity: 0.6;
+  }
+}
+
+/* Mejoras para dispositivos móviles */
+@media (max-width: 768px) {
+  .floating-particle {
+    display: none; /* Ocultar partículas en móvil para mejor rendimiento */
+  }
+  
+  .hero-title.typing {
+    animation: none; /* Desactivar efecto de escritura en móvil */
+    border-right: none;
+    white-space: normal;
+  }
+  
+  .tech-badge::before {
+    display: none; /* Simplificar efectos en móvil */
+  }
+  
+  .hero-cta.primary::after {
+    display: none;
+  }
+}
+
+/* Optimizaciones para preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .floating-particle,
+  .floating-element,
+  .tech-badge,
+  .credibility-item,
+  .hero-social .social-link {
+    animation: none !important;
+  }
+  
+  .hero::after {
+    animation: none !important;
+  }
+  
+  .hero-cta:hover,
+  .tech-badge:hover,
+  .hero-social .social-link:hover {
+    transform: none !important;
+  }
+}

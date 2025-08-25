@@ -1,0 +1,233 @@
+/* ========================================
+   DIVISORES VISUALES ENTRE SECCIONES
+   Efectos estáticos para continuidad visual
+   ======================================== */
+
+/* Configuración base para transiciones estáticas */
+html {
+  scroll-behavior: auto;
+}
+
+/* Divisores visuales entre secciones - Rediseñados */
+.section-divider {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.section-divider.final-divider {
+  height: 60px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(18, 18, 18, 0.2) 100%
+  );
+}
+
+/* Línea sutil del divisor */
+.divider-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    transparent 100%
+  );
+  flex: 1;
+  max-width: 200px;
+  opacity: 0.6;
+}
+
+/* Acento central minimalista */
+.divider-accent {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 76, 76, 0.4);
+  border-radius: 50%;
+  margin: 0 24px;
+  position: relative;
+}
+
+.divider-accent.large {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 76, 76, 0.6);
+}
+
+/* Efectos de hover para secciones */
+.section {
+  position: relative;
+  transition: transform 0.3s ease-out, opacity 0.4s ease-out;
+  will-change: transform, opacity;
+}
+
+.section.section-hover {
+  transform: translateY(-1px);
+}
+
+.section.section-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 76, 76, 0.2) 50%,
+    transparent 100%
+  );
+  opacity: 1;
+}
+
+/* Efecto de profundidad para elementos internos */
+.section-header,
+.service-card,
+.project-card,
+.tech-category-compact {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  will-change: transform, opacity;
+}
+
+/* Animación de entrada sutil para elementos */
+.section-header[data-animate],
+.service-card[data-animate],
+.project-card[data-animate],
+.tech-category-compact[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estado activo para elementos animados */
+.section-header[data-animate].animate-in,
+.service-card[data-animate].animate-in,
+.project-card[data-animate].animate-in,
+.tech-category-compact[data-animate].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efecto de transición suave para navegación */
+.nav-desktop a,
+.mobile-menu-nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-desktop a::after,
+.mobile-menu-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-primary, #FF4C4C);
+  transition: width 0.3s ease;
+}
+
+.nav-desktop a:hover::after,
+.mobile-menu-nav a:hover::after,
+.nav-desktop a.active::after,
+.mobile-menu-nav a.active::after {
+  width: 100%;
+}
+
+/* Efecto de hover para botones internos */
+.hero-cta,
+.project-link,
+.service-card a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+.hero-cta:hover,
+.project-link:hover,
+.service-card a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 76, 76, 0.3);
+}
+
+/* Efecto de transición para el botón back-to-top */
+.back-to-top {
+  transition: all 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+}
+
+/* Responsive para divisores */
+@media (max-width: 768px) {
+  .section-divider {
+    height: 30px;
+  }
+  
+  .section-divider.final-divider {
+    height: 40px;
+  }
+  
+  .divider-line {
+    max-width: 150px;
+  }
+  
+  .divider-accent {
+    margin: 0 20px;
+  }
+  
+  .section.section-hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-divider {
+    height: 25px;
+  }
+  
+  .section-divider.final-divider {
+    height: 35px;
+  }
+  
+  .divider-line {
+    max-width: 120px;
+  }
+  
+  .divider-accent {
+    margin: 0 16px;
+    width: 3px;
+    height: 3px;
+  }
+  
+  .divider-accent.large {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* Soporte para preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .section-header,
+  .service-card,
+  .project-card,
+  .tech-category-compact {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
