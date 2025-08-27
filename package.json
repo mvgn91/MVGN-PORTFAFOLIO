@@ -1,0 +1,21 @@
+{
+  "name": "mvgn-labs-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio profesional de MVGN Labs - Desarrollador Web y Diseñador Digital",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Sitio estático - no requiere build'",
+    "start": "echo 'Sitio estático - abrir index.html en navegador'"
+  },
+  "keywords": [
+    "portfolio",
+    "desarrollo-web",
+    "diseño-digital",
+    "mvgn-labs"
+  ],
+  "author": "Armando Ibañez",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

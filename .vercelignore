@@ -1,14 +1,34 @@
-# Archivos de desarrollo que no necesitamos en producción
+# Archivos de desarrollo que no necesitan ser desplegados
 node_modules/
 .env
 .env.local
 .env.production
+.env.development
+
+# Archivos de sistema
 .DS_Store
 Thumbs.db
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Archivos de Git
 .git/
 .gitignore
 
-# Archivos de desarrollo
-package-lock.json 
+# Archivos de build (si los hubiera)
+dist/
+build/
+
+# Archivos de logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos temporales
+*.tmp
+*.temp 
