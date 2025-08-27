@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Armando Ibañez - Desarrollador Web & Diseñador Digital en MVGN Labs. Versión móvil revolucionaria tipo app premium.">
+  <title>MVGN Labs - Revolución Móvil</title>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  
+  <!-- Fuentes críticas -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" as="style">
+  
+  <!-- CSS crítico inline para carga rápida -->
+  <style>
+    /* Estilos críticos mínimos para evitar FOUC */
+    body { 
+      background: #0a0a0a; 
+      color: #FFFFFF; 
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .revolutionary-header { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: 70px; 
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+      backdrop-filter: blur(25px);
+      z-index: 1000;
+    }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(25px);
+      z-index: 1000;
+    }
+  </style>
+  
+  <!-- CSS principal revolucionario -->
+  <link rel="stylesheet" href="css/mobile-revolutionary.css">
+</head>
+<body>
+  <!-- Header Revolucionario -->
+  <header class="revolutionary-header">
+    <div class="header-content">
+      <!-- Logo Flotante con Efectos de Levitación -->
+      <div class="floating-logo">
+        <div class="logo-container">
+          <img src="assets/favicon.png" alt="MVGN Labs" class="logo-image">
+          <div class="logo-glow"></div>
+          <div class="logo-particles"></div>
+        </div>
+      </div>
+      
+      <!-- Indicadores de Scroll -->
+      <div class="scroll-indicators">
+        <div class="scroll-dot active" data-section="hero"></div>
+        <div class="scroll-dot" data-section="about"></div>
+        <div class="scroll-dot" data-section="services"></div>
+        <div class="scroll-dot" data-section="projects"></div>
+        <div class="scroll-dot" data-section="contact"></div>
+      </div>
+      
+      <!-- Botón de Menú con Animación "Construcción" -->
+      <button class="construction-menu-btn" id="construction-menu-btn">
+        <div class="menu-line line-1"></div>
+        <div class="menu-line line-2"></div>
+        <div class="menu-line line-3"></div>
+        <div class="construction-particles"></div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menú de Construcción -->
+  <nav class="construction-menu" id="construction-menu">
+    <div class="menu-background">
+      <div class="construction-grid"></div>
+      <div class="energy-waves"></div>
+    </div>
+    <div class="menu-content">
+      <div class="menu-item" data-section="hero">
+        <div class="menu-icon">🏠</div>
+        <span>Inicio</span>
+        <div class="menu-particles"></div>
+      </div>
+      <div class="menu-item" data-section="about">
+        <div class="menu-icon">👤</div>
+        <span>Sobre Mí</span>
+        <div class="menu-particles"></div>
+      </div>
+      <div class="menu-item" data-section="services">
+        <div class="menu-icon">⚙️</div>
+        <span>Servicios</span>
+        <div class="menu-particles"></div>
+      </div>
+      <div class="menu-item" data-section="projects">
+        <div class="menu-icon">🎯</div>
+        <span>Proyectos</span>
+        <div class="menu-particles"></div>
+      </div>
+      <div class="menu-item" data-section="contact">
+        <div class="menu-icon">📞</div>
+        <span>Contacto</span>
+        <div class="menu-particles"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <main class="revolutionary-main">
+    <!-- Hero Section Revolucionario -->
+    <section id="hero" class="hero-revolutionary">
+      <div class="hero-background">
+        <div class="holographic-gradients"></div>
+        <div class="floating-particles"></div>
+        <div class="energy-field"></div>
+      </div>
+      
+      <div class="hero-content">
+        <!-- Foto de Perfil Flotante con Efectos 3D -->
+        <div class="floating-profile-photo">
+          <div class="profile-container">
+            <img src="assets/profile.jpg" alt="Armando Ibañez - MVGN Labs" class="profile-image">
+            <div class="profile-orbit">
+              <div class="orbit-particle particle-1"></div>
+              <div class="orbit-particle particle-2"></div>
+              <div class="orbit-particle particle-3"></div>
+            </div>
+            <div class="profile-glow"></div>
+            <div class="construction-effect"></div>
+          </div>
+        </div>
+        
+        <!-- Tarjetas de Información Deslizables -->
+        <div class="info-cards-container">
+          <div class="cards-track">
+            <div class="info-card active" data-card="1">
+              <h1 class="hero-title">Armando Ibañez</h1>
+              <div class="card-particles"></div>
+            </div>
+            <div class="info-card" data-card="2">
+              <p class="hero-subtitle">Desarrollador Web & Diseñador Digital</p>
+              <div class="card-particles"></div>
+            </div>
+            <div class="info-card" data-card="3">
+              <p class="hero-description">Especializado en React, Node.js y diseño UX/UI. +3 años creando experiencias digitales excepcionales</p>
+              <div class="card-particles"></div>
+            </div>
+          </div>
+          
+          <!-- Indicadores de Progreso -->
+          <div class="card-indicators">
+            <div class="card-dot active" data-card="1"></div>
+            <div class="card-dot" data-card="2"></div>
+            <div class="card-dot" data-card="3"></div>
+          </div>
+        </div>
+        
+        <!-- Botones de Acción Flotantes -->
+        <div class="floating-action-buttons">
+          <button class="action-btn primary-btn" data-action="projects">
+            <div class="btn-particles"></div>
+            <span>Ver Proyectos</span>
+            <div class="btn-liquid"></div>
+          </button>
+          <button class="action-btn secondary-btn" data-action="contact">
+            <div class="btn-particles"></div>
+            <span>Contactar</span>
+            <div class="btn-liquid"></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre Mí - Timeline Interactivo -->
+    <section id="about" class="about-timeline">
+      <div class="section-header">
+        <h2 class="section-title">Sobre Mí</h2>
+        <div class="title-particles"></div>
+      </div>
+      
+      <div class="timeline-container">
+        <div class="timeline-line">
+          <div class="timeline-energy"></div>
+        </div>
+        
+        <div class="timeline-item" data-year="2020">
+          <div class="timeline-marker">
+            <div class="marker-icon">🚀</div>
+            <div class="marker-particles"></div>
+          </div>
+          <div class="timeline-content">
+            <h3>Inicio del Viaje</h3>
+            <p>Comienzo en el mundo del desarrollo web</p>
+            <div class="content-particles"></div>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-year="2021">
+          <div class="timeline-marker">
+            <div class="marker-icon">💻</div>
+            <div class="marker-particles"></div>
+          </div>
+          <div class="timeline-content">
+            <h3>Primeros Proyectos</h3>
+            <p>Desarrollo de sitios web y aplicaciones</p>
+            <div class="content-particles"></div>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-year="2022">
+          <div class="timeline-marker">
+            <div class="marker-icon">🎨</div>
+            <div class="marker-particles"></div>
+          </div>
+          <div class="timeline-content">
+            <h3>Especialización UX/UI</h3>
+            <p>Enfoque en experiencia de usuario</p>
+            <div class="content-particles"></div>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-year="2023">
+          <div class="timeline-marker">
+            <div class="marker-icon">🔥</div>
+            <div class="marker-particles"></div>
+          </div>
+          <div class="timeline-content">
+            <h3>MVGN Labs</h3>
+            <p>Creación de la marca y expansión</p>
+            <div class="content-particles"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios - Carousel 3D -->
+    <section id="services" class="services-carousel">
+      <div class="section-header">
+        <h2 class="section-title">Servicios</h2>
+        <div class="title-particles"></div>
+      </div>
+      
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="service-card" data-service="web">
+            <div class="card-3d-container">
+              <div class="card-front">
+                <div class="service-icon">🌐</div>
+                <h3>Diseño Web</h3>
+                <div class="card-particles"></div>
+              </div>
+              <div class="card-back">
+                <p>Sitios web modernos y responsivos con HTML, CSS, JavaScript y React.js.</p>
+                <div class="back-particles"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card" data-service="branding">
+            <div class="card-3d-container">
+              <div class="card-front">
+                <div class="service-icon">🎨</div>
+                <h3>Branding & Identidad</h3>
+                <div class="card-particles"></div>
+              </div>
+              <div class="card-back">
+                <p>Identidad visual y posicionamiento de marca para diferenciarte.</p>
+                <div class="back-particles"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card" data-service="marketing">
+            <div class="card-3d-container">
+              <div class="card-front">
+                <div class="service-icon">📈</div>
+                <h3>Marketing Digital</h3>
+                <div class="card-particles"></div>
+              </div>
+              <div class="card-back">
+                <p>Estrategias integrales de marketing digital para tu presencia online.</p>
+                <div class="back-particles"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card" data-service="support">
+            <div class="card-3d-container">
+              <div class="card-front">
+                <div class="service-icon">🔧</div>
+                <h3>Soporte Técnico</h3>
+                <div class="card-particles"></div>
+              </div>
+              <div class="card-back">
+                <p>Reparación y mantenimiento de equipos informáticos.</p>
+                <div class="back-particles"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Indicadores de Carousel -->
+        <div class="carousel-indicators">
+          <div class="carousel-dot active" data-service="web"></div>
+          <div class="carousel-dot" data-service="branding"></div>
+          <div class="carousel-dot" data-service="marketing"></div>
+          <div class="carousel-dot" data-service="support"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos - Galería Inmersiva -->
+    <section id="projects" class="projects-gallery">
+      <div class="section-header">
+        <h2 class="section-title">Proyectos</h2>
+        <div class="title-particles"></div>
+      </div>
+      
+      <!-- Filtros por Categoría -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">
+          <span>Todos</span>
+          <div class="filter-particles"></div>
+        </button>
+        <button class="filter-btn" data-filter="web">
+          <span>Web</span>
+          <div class="filter-particles"></div>
+        </button>
+        <button class="filter-btn" data-filter="branding">
+          <span>Branding</span>
+          <div class="filter-particles"></div>
+        </button>
+        <button class="filter-btn" data-filter="marketing">
+          <span>Marketing</span>
+          <div class="filter-particles"></div>
+        </button>
+      </div>
+      
+      <!-- Grid de Proyectos Masonry -->
+      <div class="projects-masonry">
+        <div class="project-item" data-category="web" data-project="notaria">
+          <div class="project-image">
+            <img src="assets/captura notaria80.png" alt="Notaría 80 GDL">
+            <div class="project-overlay">
+              <div class="overlay-particles"></div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Notaría 80 GDL</h3>
+            <p>Sitio web corporativo profesional</p>
+            <div class="project-particles"></div>
+          </div>
+        </div>
+        
+        <div class="project-item" data-category="web" data-project="pietrafina">
+          <div class="project-image">
+            <img src="assets/captura pietrafina.png" alt="Pietrafina MX">
+            <div class="project-overlay">
+              <div class="overlay-particles"></div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Pietrafina MX</h3>
+            <p>Sitio web corporativo avanzado</p>
+            <div class="project-particles"></div>
+          </div>
+        </div>
+        
+        <div class="project-item" data-category="marketing" data-project="crm">
+          <div class="project-image">
+            <img src="assets/crm captura.png" alt="CRM de Prospección">
+            <div class="project-overlay">
+              <div class="overlay-particles"></div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>CRM de Prospección</h3>
+            <p>Sistema de gestión de clientes</p>
+            <div class="project-particles"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto - Hub de Comunicación -->
+    <section id="contact" class="contact-hub">
+      <div class="section-header">
+        <h2 class="section-title">Contacto</h2>
+        <div class="title-particles"></div>
+      </div>
+      
+      <div class="contact-container">
+        <!-- Botones de Contacto Animados -->
+        <div class="contact-buttons">
+          <button class="contact-btn whatsapp-btn" data-contact="whatsapp">
+            <div class="btn-breathing"></div>
+            <div class="btn-particles"></div>
+            <span>WhatsApp</span>
+            <div class="btn-energy"></div>
+          </button>
+          
+          <button class="contact-btn email-btn" data-contact="email">
+            <div class="btn-breathing"></div>
+            <div class="btn-particles"></div>
+            <span>Email</span>
+            <div class="btn-energy"></div>
+          </button>
+        </div>
+        
+        <!-- Redes Sociales Interactivas -->
+        <div class="social-hub">
+          <div class="social-item" data-social="linkedin">
+            <div class="social-icon">💼</div>
+            <div class="social-particles"></div>
+            <div class="connection-lines"></div>
+          </div>
+          
+          <div class="social-item" data-social="github">
+            <div class="social-icon">🐙</div>
+            <div class="social-particles"></div>
+            <div class="connection-lines"></div>
+          </div>
+          
+          <div class="social-item" data-social="portfolio">
+            <div class="social-icon">🎯</div>
+            <div class="social-particles"></div>
+            <div class="connection-lines"></div>
+          </div>
+        </div>
+        
+        <!-- Mapa Interactivo -->
+        <div class="location-map">
+          <div class="map-container">
+            <div class="map-marker">
+              <div class="marker-pulse"></div>
+              <div class="marker-glow"></div>
+            </div>
+            <div class="location-info">
+              <h4>Tlajomulco de Zúñiga, Jalisco</h4>
+              <p>Disponible para trabajo remoto en todo México</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <div class="nav-container">
+      <div class="nav-item active" data-section="hero">
+        <div class="nav-icon">🏠</div>
+        <span>Inicio</span>
+        <div class="nav-indicator"></div>
+      </div>
+      
+      <div class="nav-item" data-section="about">
+        <div class="nav-icon">👤</div>
+        <span>Sobre Mí</span>
+        <div class="nav-indicator"></div>
+      </div>
+      
+      <div class="nav-item" data-section="services">
+        <div class="nav-icon">⚙️</div>
+        <span>Servicios</span>
+        <div class="nav-indicator"></div>
+      </div>
+      
+      <div class="nav-item" data-section="projects">
+        <div class="nav-icon">🎯</div>
+        <span>Proyectos</span>
+        <div class="nav-indicator"></div>
+      </div>
+      
+      <div class="nav-item" data-section="contact">
+        <div class="nav-icon">📞</div>
+        <span>Contacto</span>
+        <div class="nav-indicator"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sistema de Partículas Interactivo -->
+  <div class="particle-system">
+    <div class="finger-follower"></div>
+    <div class="magnetic-field"></div>
+  </div>
+
+  <!-- JavaScript Revolucionario -->
+  <script src="js/mobile-revolutionary.js"></script>
+</body>
+</html>

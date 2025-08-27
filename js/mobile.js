@@ -6,6 +6,9 @@
 class MobilePortfolio {
   constructor() {
     this.init();
+    this.currentScrollY = 0;
+    this.isScrolling = false;
+    this.touchStartTime = 0;
   }
 
   init() {
@@ -14,6 +17,10 @@ class MobilePortfolio {
     this.setupSmoothScroll();
     this.setupTouchInteractions();
     this.setupPerformanceOptimizations();
+    this.setupParallaxEffects();
+    this.setupParticleEffects();
+    this.setupAdvancedAnimations();
+    this.setupGestureControls();
   }
 
   /**
@@ -77,18 +84,27 @@ class MobilePortfolio {
     menu.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    // Animar elementos del menú
+    // Animar elementos del menú con efecto escalonado
     const menuItems = menu.querySelectorAll('a');
     menuItems.forEach((item, index) => {
       item.style.opacity = '0';
-      item.style.transform = 'translateX(-20px)';
+      item.style.transform = 'translateX(-30px) scale(0.9)';
       
       setTimeout(() => {
-        item.style.transition = 'all 0.3s ease';
+        item.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
         item.style.opacity = '1';
-        item.style.transform = 'translateX(0)';
-      }, index * 100);
+        item.style.transform = 'translateX(0) scale(1)';
+      }, index * 120);
     });
+
+    // Efecto de fondo del menú
+    menu.style.backdropFilter = 'blur(0px)';
+    menu.style.backgroundColor = 'rgba(10, 10, 10, 0.5)';
+    
+    setTimeout(() => {
+      menu.style.backdropFilter = 'blur(25px)';
+      menu.style.backgroundColor = 'rgba(10, 10, 10, 0.98)';
+    }, 100);
   }
 
   /**
@@ -127,7 +143,8 @@ class MobilePortfolio {
 
     // Observar secciones completas
     const sections = document.querySelectorAll('.mobile-section');
-    sections.forEach(section => {
+    sections.forEach((section, index) => {
+      section.style.setProperty('--card-index', index);
       observer.observe(section);
     });
 
@@ -139,7 +156,7 @@ class MobilePortfolio {
   }
 
   /**
-   * Animar elemento
+   * Animar elemento con efectos mejorados
    */
   animateElement(element) {
     if (element.classList.contains('fade-in-up')) return;
@@ -147,6 +164,22 @@ class MobilePortfolio {
     // Animación especial para secciones
     if (element.classList.contains('mobile-section')) {
       element.classList.add('visible');
+      
+      // Animar cards dentro de la sección
+      const cards = element.querySelectorAll('.mobile-card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px) scale(0.95)';
+          
+          setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1)';
+          }, 50);
+        }, index * 150);
+      });
+      
       return;
     }
     
@@ -156,7 +189,7 @@ class MobilePortfolio {
     const cards = element.closest('.mobile-grid');
     if (cards) {
       const cardIndex = Array.from(cards.children).indexOf(element);
-      element.style.animationDelay = `${cardIndex * 0.15}s`;
+      element.style.animationDelay = `${cardIndex * 0.2}s`;
     }
   }
 
@@ -184,19 +217,33 @@ class MobilePortfolio {
   }
 
   /**
-   * Configurar interacciones táctiles
+   * Configurar interacciones táctiles mejoradas
    */
   setupTouchInteractions() {
     // Mejorar feedback táctil para botones
     const interactiveElements = document.querySelectorAll('.mobile-hero-cta, .mobile-card, .mobile-float-contact');
     
     interactiveElements.forEach(element => {
-      element.addEventListener('touchstart', () => {
+      element.addEventListener('touchstart', (e) => {
+        this.touchStartTime = Date.now();
         element.style.transform = 'scale(0.95)';
+        
+        // Efecto de ripple
+        this.createRippleEffect(e, element);
       });
       
       element.addEventListener('touchend', () => {
-        element.style.transform = '';
+        const touchDuration = Date.now() - this.touchStartTime;
+        
+        if (touchDuration < 200) {
+          // Tocar rápido - efecto de rebote
+          element.style.transform = 'scale(1.05)';
+          setTimeout(() => {
+            element.style.transform = '';
+          }, 150);
+        } else {
+          element.style.transform = '';
+        }
       });
       
       element.addEventListener('touchcancel', () => {
@@ -206,34 +253,290 @@ class MobilePortfolio {
 
     // Swipe para cerrar menú
     let touchStartY = 0;
+    let touchStartX = 0;
     let touchEndY = 0;
+    let touchEndX = 0;
     
     document.addEventListener('touchstart', (e) => {
       touchStartY = e.changedTouches[0].screenY;
+      touchStartX = e.changedTouches[0].screenX;
     });
     
     document.addEventListener('touchend', (e) => {
       touchEndY = e.changedTouches[0].screenY;
-      this.handleSwipe(touchStartY, touchEndY);
+      touchEndX = e.changedTouches[0].screenX;
+      this.handleSwipe(touchStartY, touchEndY, touchStartX, touchEndX);
     });
   }
 
   /**
-   * Manejar gestos de swipe
+   * Crear efecto de ripple
    */
-  handleSwipe(startY, endY) {
-    const swipeThreshold = 50;
-    const swipeDistance = startY - endY;
+  createRippleEffect(event, element) {
+    const ripple = document.createElement('span');
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.touches[0].clientX - rect.left - size / 2;
+    const y = event.touches[0].clientY - rect.top - size / 2;
     
-    if (swipeDistance > swipeThreshold) {
-      // Swipe hacia arriba - cerrar menú si está abierto
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      
-      if (mobileMenu && mobileMenu.classList.contains('active')) {
-        this.closeMobileMenu(mobileMenuBtn, mobileMenu);
+    ripple.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      left: ${x}px;
+      top: ${y}px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+    `;
+    
+    element.style.position = 'relative';
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+  }
+
+  /**
+   * Manejar gestos de swipe mejorados
+   */
+  handleSwipe(startY, endY, startX, endX) {
+    const swipeThreshold = 50;
+    const swipeDistanceY = startY - endY;
+    const swipeDistanceX = startX - endX;
+    
+    if (Math.abs(swipeDistanceY) > swipeThreshold) {
+      if (swipeDistanceY > swipeThreshold) {
+        // Swipe hacia arriba - cerrar menú si está abierto
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+          this.closeMobileMenu(mobileMenuBtn, mobileMenu);
+        }
       }
     }
+    
+    if (Math.abs(swipeDistanceX) > swipeThreshold) {
+      // Swipe horizontal - navegar entre secciones
+      this.handleHorizontalSwipe(swipeDistanceX > 0 ? 'left' : 'right');
+    }
+  }
+
+  /**
+   * Manejar swipe horizontal
+   */
+  handleHorizontalSwipe(direction) {
+    const sections = ['#hero', '#about', '#services', '#projects', '#contact'];
+    const currentSection = this.getCurrentSection();
+    const currentIndex = sections.indexOf(currentSection);
+    
+    let targetSection;
+    if (direction === 'left' && currentIndex < sections.length - 1) {
+      targetSection = sections[currentIndex + 1];
+    } else if (direction === 'right' && currentIndex > 0) {
+      targetSection = sections[currentIndex - 1];
+    }
+    
+    if (targetSection) {
+      const target = document.querySelector(targetSection);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+
+  /**
+   * Obtener sección actual
+   */
+  getCurrentSection() {
+    const sections = ['#hero', '#about', '#services', '#projects', '#contact'];
+    const scrollPosition = window.scrollY + 100;
+    
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.querySelector(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        return sections[i];
+      }
+    }
+    
+    return '#hero';
+  }
+
+  /**
+   * Configurar efectos de parallax sutiles
+   */
+  setupParallaxEffects() {
+    let ticking = false;
+    
+    const updateParallax = () => {
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.5;
+      
+      // Efecto parallax sutil en el hero
+      const hero = document.querySelector('.mobile-hero');
+      if (hero) {
+        hero.style.transform = `translateY(${rate * 0.3}px)`;
+      }
+      
+      // Efecto parallax en partículas
+      const heroAfter = document.querySelector('.mobile-hero::after');
+      if (heroAfter) {
+        heroAfter.style.transform = `translateY(${rate * 0.1}px)`;
+      }
+      
+      ticking = false;
+    };
+    
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
+  }
+
+  /**
+   * Configurar efectos de partículas interactivas
+   */
+  setupParticleEffects() {
+    // Crear partículas flotantes adicionales
+    this.createFloatingParticles();
+    
+    // Efecto de partículas al hacer scroll
+    window.addEventListener('scroll', () => {
+      this.updateParticleOpacity();
+    });
+  }
+
+  /**
+   * Crear partículas flotantes
+   */
+  createFloatingParticles() {
+    const hero = document.querySelector('.mobile-hero');
+    if (!hero) return;
+    
+    for (let i = 0; i < 8; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'floating-particle';
+      particle.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 4 + 2}px;
+        height: ${Math.random() * 4 + 2}px;
+        background: rgba(255, 76, 76, ${Math.random() * 0.3 + 0.1});
+        border-radius: 50%;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: floatParticle ${Math.random() * 10 + 10}s linear infinite;
+        animation-delay: ${Math.random() * 5}s;
+        pointer-events: none;
+        z-index: 1;
+      `;
+      
+      hero.appendChild(particle);
+    }
+  }
+
+  /**
+   * Actualizar opacidad de partículas
+   */
+  updateParticleOpacity() {
+    const scrolled = window.pageYOffset;
+    const particles = document.querySelectorAll('.floating-particle');
+    
+    particles.forEach((particle, index) => {
+      const opacity = Math.max(0.1, 1 - (scrolled * 0.001) - (index * 0.1));
+      particle.style.opacity = opacity;
+    });
+  }
+
+  /**
+   * Configurar animaciones avanzadas
+   */
+  setupAdvancedAnimations() {
+    // Animación de entrada para el hero
+    this.animateHeroEntrance();
+    
+    // Animación de scroll para cards
+    this.setupCardScrollAnimations();
+  }
+
+  /**
+   * Animar entrada del hero
+   */
+  animateHeroEntrance() {
+    const heroContent = document.querySelector('.mobile-hero-content');
+    if (!heroContent) return;
+    
+    // Efecto de entrada escalonado
+    const elements = heroContent.querySelectorAll('*');
+    elements.forEach((element, index) => {
+      if (element.tagName !== 'DIV' || element.classList.contains('mobile-profile-photo')) {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+          element.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }, index * 100 + 500);
+      }
+    });
+  }
+
+  /**
+   * Configurar animaciones de scroll para cards
+   */
+  setupCardScrollAnimations() {
+    const cards = document.querySelectorAll('.mobile-card');
+    
+    cards.forEach((card, index) => {
+      card.style.setProperty('--card-index', index);
+      
+      // Efecto de entrada escalonado
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(40px) scale(0.9)';
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              card.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0) scale(1)';
+            }, index * 200);
+          }
+        });
+      });
+      
+      observer.observe(card);
+    });
+  }
+
+  /**
+   * Configurar controles de gestos
+   */
+  setupGestureControls() {
+    // Doble tap para ir al inicio
+    let lastTap = 0;
+    document.addEventListener('touchend', (e) => {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      
+      if (tapLength < 500 && tapLength > 0) {
+        // Doble tap detectado
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+      lastTap = currentTime;
+    });
   }
 
   /**

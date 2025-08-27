@@ -1,0 +1,121 @@
+/* ========================================
+   RESPONSIVE FIX - ARREGLAR PROBLEMAS DE RESPONSIVIDAD
+   ======================================== */
+
+/* Prevenir scroll horizontal */
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  min-width: 320px !important;
+}
+
+/* Contenedores principales */
+.container, .section, .header, .nav, .nav-content, .main {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Hero section */
+.hero .container, .hero-content, .hero-profile-container, .hero-title, .hero-actions {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Projects section */
+.projects-grid, .project-card {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Skills section */
+.skills-chips, .skill-chip {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Footer */
+.footer, .footer-content, .footer-bottom {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Grid fixes */
+.skills-chips {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+/* Project images */
+.project-image {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Contact section responsive */
+@media (min-width: 640px) {
+  .contact-content {
+    flex-direction: row !important;
+    gap: 3rem !important;
+    align-items: flex-start !important;
+  }
+  
+  .contact-info {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+    flex: 1 !important;
+  }
+  
+  .contact-form {
+    flex: 1 !important;
+    padding: 2.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-info {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+  
+  .contact-item {
+    padding: 2rem !important;
+  }
+  
+  .contact-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  
+  .contact-details h4 {
+    font-size: 1.2rem !important;
+  }
+  
+  .contact-details p {
+    font-size: 1rem !important;
+  }
+  
+  .contact-form {
+    padding: 3rem !important;
+  }
+  
+  .form-title {
+    font-size: 1.75rem !important;
+  }
+  
+  .form-subtitle {
+    font-size: 1rem !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contact-content {
+    gap: 4rem !important;
+  }
+  
+  .contact-info {
+    gap: 2.5rem !important;
+  }
+  
+  .contact-form {
+    padding: 3.5rem !important;
+  }
+}
