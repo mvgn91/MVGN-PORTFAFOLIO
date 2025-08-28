@@ -45,8 +45,8 @@ mobile-*.html
 profilecard-*.css
 profilecard-*.js
 
-# Archivos de transiciones y efectos específicos
-splash.css
-splash.js
-particles.js
-section-dividers.js 
+# NOTA: Los siguientes archivos SÍ son necesarios para el funcionamiento del sitio
+# splash.css - Necesario para el splash screen
+# splash.js - Necesario para la funcionalidad del splash
+# particles.js - Necesario para efectos de partículas
+# section-dividers.js - Necesario para divisores de sección 

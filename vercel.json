@@ -6,23 +6,23 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/index.html"
+      "source": "/",
+      "destination": "/index.html"
     },
     {
-      "src": "/mobile",
-      "dest": "/mobile-profilecard.html"
+      "source": "/mobile",
+      "destination": "/mobile-profilecard.html"
     },
     {
-      "src": "/desktop",
-      "dest": "/main.html"
+      "source": "/desktop",
+      "destination": "/main.html"
     }
   ],
   "headers": [
     {
-      "source": "**/*.js",
+      "source": "/(.*).js",
       "headers": [
         {
           "key": "Cache-Control",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "source": "**/*.css",
+      "source": "/(.*).css",
       "headers": [
         {
           "key": "Cache-Control",
@@ -40,7 +40,7 @@
       ]
     },
     {
-      "source": "**/*.(png|jpg|jpeg|gif|svg|ico)",
+      "source": "/(.*).(png|jpg|jpeg|gif|svg|ico)",
       "headers": [
         {
           "key": "Cache-Control",
