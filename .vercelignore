@@ -40,10 +40,10 @@ INFORMACION_PROYECTO_*.md
 # Archivos de testing (no requeridos para producción)
 # test-*.html
 
-# Archivos de desarrollo móvil específicos
+# Archivos de desarrollo móvil específicos (NO excluir todos los profilecard)
 mobile-*.html
-profilecard-*.css
-profilecard-*.js
+# profilecard-*.css - NO excluir, main.html los necesita
+# profilecard-*.js - NO excluir, main.html los necesita
 
 # NOTA: Los siguientes archivos SÍ son necesarios para el funcionamiento del sitio
 # splash.css - Necesario para el splash screen
