@@ -48,9 +48,16 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/section-dividers.css">
   <link rel="stylesheet" href="css/hero-minimal.css">
+  <link rel="stylesheet" href="css/galaxy.css">
+  
+  <!-- ProfileCard Desktop CSS -->
+  <link rel="stylesheet" href="css/profilecard-desktop.css">
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
   <!-- Dynamic Background Canvas -->
@@ -106,11 +113,13 @@
   <main role="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section" aria-label="Presentación principal">
-      <!-- Dynamic Background -->
+      <!-- Galaxy Background -->
       <div class="hero-dynamic-bg">
-        <div class="bg-grid"></div>
-        <div class="bg-particles"></div>
+        <canvas id="galaxy-canvas" class="galaxy-container"></canvas>
       </div>
+      
+      <!-- Glassmorphism Layer -->
+      <div class="hero-glassmorphism"></div>
       
       <!-- Main Hero Content -->
       <div class="hero-content">
@@ -194,53 +203,30 @@
         
         <!-- Right Column - Visual Elements -->
         <div class="hero-visual-column">
-          <!-- Floating Code Animation -->
+          <!-- Terminal Criptica -->
           <div class="hero-code-animation">
             <div class="code-terminal">
               <div class="terminal-header">
-                <span class="terminal-title">neural_interface.exe</span>
+                <div class="terminal-title">MVGN Terminal</div>
                 <div class="terminal-controls">
-                  <span class="control-dot"></span>
-                  <span class="control-dot"></span>
-                  <span class="control-dot"></span>
+                  <div class="control-dot"></div>
+                  <div class="control-dot"></div>
+                  <div class="control-dot"></div>
                 </div>
               </div>
               <div class="terminal-content">
-                <div class="code-line typing-effect" data-text="> initializing quantum_core...">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> loading consciousness_matrix...">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> establishing neural_link...">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> accessing void_database...">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> quantum_entanglement: ACTIVE">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> reality_shift_protocol: ENABLED">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> summoning digital_demons...">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> ERROR: consciousness_overflow">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> rebooting quantum_mind...">
-                  <span class="cursor">|</span>
-                </div>
-                <div class="code-line typing-effect" data-text="> entering digital_void...">
-                  <span class="cursor">|</span>
-                </div>
+                <div class="code-line" data-text="> Inicializando sistema MVGN...</div>
+                <div class="code-line" data-text="> Cargando módulos de desarrollo...</div>
+                <div class="code-line" data-text="> Conectando a Firebase...</div>
+                <div class="code-line" data-text="> Sincronizando base de datos...</div>
+                <div class="code-line" data-text="> Verificando autenticación...</div>
+                <div class="code-line" data-text="> Cargando componentes React...</div>
+                <div class="code-line" data-text="> Optimizando rendimiento...</div>
+                <div class="code-line" data-text="> Sistema listo para desarrollo</div>
+                <div class="code-line" data-text="> Bienvenido a MVGN Labs <span class='cursor'>_</span></div>
               </div>
             </div>
           </div>
-          
-
         </div>
       </div>
       
@@ -263,11 +249,13 @@
       </div>
       
       <div class="about-content" data-animate>
-        <!-- Header principal con imagen y título -->
+        <!-- Header principal con ProfileCard y título -->
         <div class="about-hero">
           <div class="about-profile-image">
-            <img src="assets/profile.jpg" alt="MVGN Labs - Diseñador Web & Técnico en Computación" class="profile-image">
-            <div class="image-overlay"></div>
+            <!-- ProfileCard Desktop integrado -->
+            <div id="profileCardDesktop" class="pc-card-wrapper-desktop">
+              <!-- El ProfileCard Desktop se renderizará aquí con JavaScript -->
+            </div>
           </div>
           
           <div class="about-intro">
@@ -1616,9 +1604,14 @@
 
   <!-- JavaScript -->
   <script src="js/particles.js"></script>
+  <script src="js/galaxy.js" defer></script>
+  <script src="js/galaxy-init.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/section-dividers.js" defer></script>
   <script src="js/device-detector.js" defer></script>
+  <script src="js/profilecard-desktop.js" defer></script>
+  
+
 </body>
 </html>
 

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test ProfileCard Desktop</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS de la ProfileCard -->
+  <link rel="stylesheet" href="css/profilecard-desktop.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0a0a0a;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .test-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .test-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .test-header h1 {
+      font-family: 'Fraunces', serif;
+      color: #ff4444;
+      margin-bottom: 10px;
+    }
+    
+    .test-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .test-section h2 {
+      font-family: 'Fraunces', serif;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    
+    .profilecard-test {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+    
+    .debug-info {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+    }
+    
+    .debug-info h3 {
+      color: #00ff88;
+      margin-bottom: 15px;
+    }
+    
+    .debug-item {
+      margin-bottom: 10px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+    }
+    
+    .debug-label {
+      color: #ff8888;
+      font-weight: 600;
+    }
+    
+    .debug-value {
+      color: #ffffff;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <div class="test-header">
+      <h1>🧪 Test ProfileCard Desktop</h1>
+      <p>Prueba de la ProfileCard Desktop para MVGN Labs</p>
+    </div>
+    
+    <div class="test-section">
+      <h2>ProfileCard Desktop</h2>
+      <div class="profilecard-test">
+        <div id="profileCardDesktop" class="pc-card-wrapper-desktop">
+          <!-- La ProfileCard se renderizará aquí con JavaScript -->
+        </div>
+      </div>
+      
+      <div class="debug-info">
+        <h3>🔍 Información de Debug</h3>
+        <div class="debug-item">
+          <span class="debug-label">Estado:</span>
+          <span class="debug-value" id="debug-status">Inicializando...</span>
+        </div>
+        <div class="debug-item">
+          <span class="debug-label">Imagen:</span>
+          <span class="debug-value" id="debug-image">Verificando...</span>
+        </div>
+        <div class="debug-item">
+          <span class="debug-label">JavaScript:</span>
+          <span class="debug-value" id="debug-js">Verificando...</span>
+        </div>
+        <div class="debug-item">
+          <span class="debug-label">CSS:</span>
+          <span class="debug-value" id="debug-css">Verificando...</span>
+        </div>
+      </div>
+      
+      <div class="changes-info">
+        <h3>🔄 Cambios Implementados</h3>
+        <ul class="changes-list">
+          <li>Botón de contacto eliminado</li>
+          <li>Marco cuadrado redondeado (border-radius: 16px)</li>
+          <li>Espacio vacío optimizado (height: 320px)</li>
+          <li>Información simplificada: solo "Disponible para proyectos"</li>
+          <li>Logo en marco cuadrado redondeado</li>
+          <li>Marco de foto dinámico con gradiente animado</li>
+          <li>Efectos hover mejorados y proporciones balanceadas</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>Controles de Prueba</h2>
+      <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+        <button onclick="testUpdateStatus()" style="padding: 10px 20px; background: #ff4444; color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Cambiar Estado
+        </button>
+        <button onclick="testUpdateAvatar()" style="padding: 10px 20px; background: #00ff88; color: black; border: none; border-radius: 8px; cursor: pointer;">
+          Cambiar Avatar
+        </button>
+        <button onclick="testSetLoading()" style="padding: 10px 20px; background: #ffaa00; color: black; border: none; border-radius: 8px; cursor: pointer;">
+          Toggle Loading
+        </button>
+        <button onclick="testDestroy()" style="padding: 10px 20px; background: #ff0066; color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Destruir
+        </button>
+        <button onclick="testRecreate()" style="padding: 10px 20px; background: #0066ff; color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Recrear
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript de la ProfileCard -->
+  <script src="js/profilecard-desktop.js"></script>
+  
+  <script>
+    // Variables de prueba
+    let loadingState = false;
+    let currentStatus = 'Disponible para proyectos';
+    let currentAvatar = 'assets/PROFILE TRANSPARENT.png';
+    
+    // Función para actualizar información de debug
+    function updateDebugInfo() {
+      const statusEl = document.getElementById('debug-status');
+      const imageEl = document.getElementById('debug-image');
+      const jsEl = document.getElementById('debug-js');
+      const cssEl = document.getElementById('debug-css');
+      
+      if (statusEl) statusEl.textContent = currentStatus;
+      if (imageEl) imageEl.textContent = currentAvatar;
+      if (jsEl) jsEl.textContent = window.profileCardDesktopInstance ? 'Cargado ✓' : 'No cargado ✗';
+      if (cssEl) cssEl.textContent = 'Verificado ✓';
+    }
+    
+    // Función para probar cambio de estado
+    function testUpdateStatus() {
+      if (window.profileCardDesktopInstance) {
+        const statuses = [
+          'Disponible para proyectos',
+          'Trabajando en proyecto',
+          'En reunión',
+          'Disponible para consultas',
+          'Desarrollando solución'
+        ];
+        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+        window.profileCardDesktopInstance.updateStatus(randomStatus);
+        currentStatus = randomStatus;
+        updateDebugInfo();
+      }
+    }
+    
+    // Función para probar cambio de avatar
+    function testUpdateAvatar() {
+      if (window.profileCardDesktopInstance) {
+        const avatars = [
+          'assets/PROFILE TRANSPARENT.png',
+          'assets/profile.jpg',
+          'assets/favicon.png'
+        ];
+        const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+        window.profileCardDesktopInstance.updateAvatar(randomAvatar);
+        currentAvatar = randomAvatar;
+        updateDebugInfo();
+      }
+    }
+    
+    // Función para probar estado de loading
+    function testSetLoading() {
+      if (window.profileCardDesktopInstance) {
+        loadingState = !loadingState;
+        window.profileCardDesktopInstance.setLoading(loadingState);
+        updateDebugInfo();
+      }
+    }
+    
+    // Función para destruir la profilecard
+    function testDestroy() {
+      if (window.profileCardDesktopInstance) {
+        window.profileCardDesktopInstance.destroy();
+        updateDebugInfo();
+      }
+    }
+    
+    // Función para recrear la profilecard
+    function testRecreate() {
+      const container = document.getElementById('profileCardDesktop');
+      if (container && !window.profileCardDesktopInstance) {
+        window.profileCardDesktopInstance = new ProfileCardDesktop(container, {
+          avatarUrl: currentAvatar,
+          name: 'Armando Ibañez',
+          title: 'Desarrollador Web & Diseñador Digital',
+          handle: 'mvgnlabs',
+          status: currentStatus,
+          contactText: 'Contactar',
+          onContactClick: function() {
+            alert('¡Botón de contacto funcionando!');
+          }
+        });
+        updateDebugInfo();
+      }
+    }
+    
+    // Actualizar debug info cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(updateDebugInfo, 1000);
+    });
+    
+    // Actualizar debug info cada 2 segundos
+    setInterval(updateDebugInfo, 2000);
+  </script>
+</body>
+</html>

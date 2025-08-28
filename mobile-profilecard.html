@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Armando Ibañez - Desarrollador Web & Diseñador Digital en MVGN Labs. Portfolio móvil 100% responsive inspirado en Stripe/Apple.">
+  <meta name="description" content="Armando Ibañez - Desarrollador Web & Diseñador Digital en MVGN Labs. Portfolio móvil con ProfileCard interactivo.">
   <title>MVGN Labs - Portfolio Profesional</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="css/contact-new-design.css">
   <link rel="stylesheet" href="css/responsive-fix.css">
   <link rel="stylesheet" href="css/section-dividers.css">
+  
+  <!-- CSS del ProfileCard -->
+  <link rel="stylesheet" href="css/profilecard.css">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -64,80 +67,41 @@
     /* Ajustar la sección hero para que no tenga espacio extra */
     .hero {
       margin-top: 0;
-      padding-top: 80px; /* Solo el espacio necesario para el header fijo */
+      padding-top: 60px; /* Reducido de 80px a 60px para menos espacio */
     }
     
-    /* Hacer la foto más grande y prominente */
-    .hero-profile-image {
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 3px solid #ff4444;
-      box-shadow: 0 0 20px rgba(255, 68, 68, 0.6), 0 0 40px rgba(255, 68, 68, 0.3);
+    /* Optimizar espaciado en móviles */
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 50px;
+      }
+      
+      .hero-profilecard-container {
+        padding: 12px;
+        margin-bottom: 1rem;
+      }
     }
     
-    .hero-profile-image:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255, 68, 68, 0.8), 0 0 60px rgba(255, 68, 68, 0.4), 0 10px 30px rgba(255, 68, 68, 0.2);
-      border-color: #ff6666;
+    @media (max-width: 480px) {
+      .hero {
+        padding-top: 45px;
+      }
+      
+      .hero-profilecard-container {
+        padding: 10px;
+        margin-bottom: 0.8rem;
+      }
     }
     
-    /* Modal para la foto */
-    .photo-modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(10px);
-    }
-    
-    .photo-modal-content {
-      position: relative;
-      margin: auto;
-      padding: 20px;
-      width: 100%;
-      height: 100%;
+    /* Contenedor del ProfileCard */
+    .hero-profilecard-container {
       display: flex;
-      align-items: center;
       justify-content: center;
-    }
-    
-    .photo-modal img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    }
-    
-    .photo-modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: #fff;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
       align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .photo-modal-close:hover {
-      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 1.5rem;
+      padding: 15px;
+      width: 100%;
+      box-sizing: border-box;
     }
     
     /* Asegurar que las secciones mantengan su espaciado */
@@ -196,14 +160,6 @@
   </style>
 </head>
 <body>
-  <!-- Modal para la foto -->
-  <div id="photoModal" class="photo-modal">
-    <div class="photo-modal-content">
-      <span class="photo-modal-close" onclick="closePhotoModal()">&times;</span>
-      <img id="modalImage" src="assets/profile.jpg" alt="Armando Ibañez - Vista Completa">
-    </div>
-  </div>
-
   <!-- Botón Scroll to Top -->
   <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()" aria-label="Volver arriba">
     <i data-lucide="arrow-up"></i>
@@ -225,7 +181,6 @@
         
         <div class="nav-menu" id="nav-menu">
           <a href="#hero" class="nav-link">Inicio</a>
-          <a href="#about" class="nav-link">Sobre Mí</a>
           <a href="#projects" class="nav-link">Proyectos</a>
           <a href="#skills" class="nav-link">Habilidades</a>
           <a href="#contact" class="nav-link">Contacto</a>
@@ -235,13 +190,15 @@
   </header>
 
   <main class="main">
-    <!-- Hero Section -->
+    <!-- Hero Section con ProfileCard -->
     <section id="hero" class="hero section">
       <div class="container">
         <div class="hero-content">
-          <!-- Foto de perfil arriba del título -->
-          <div class="hero-profile-container">
-            <img src="assets/profile.jpg" alt="Armando Ibañez" class="hero-profile-image" onclick="openPhotoModal()">
+          <!-- ProfileCard integrado -->
+          <div class="hero-profilecard-container">
+            <div id="profileCard" class="pc-card-wrapper">
+              <!-- El ProfileCard se renderizará aquí con JavaScript -->
+            </div>
           </div>
           
           <h1 class="hero-title">
@@ -262,41 +219,7 @@
       </div>
     </section>
 
-    <!-- About Section - Combinada -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Sobre Mí</h2>
-          <p class="section-subtitle">Técnico y creativo con experiencia en tecnología, ventas y marketing digital</p>
-        </div>
-        
-        <div class="about-content">
-          <div class="about-text">
-            <h3 class="about-name">Armando Ibañez</h3>
-            <p class="about-bio">
-              Soy un técnico y creativo con experiencia en tecnología, ventas y marketing digital. 
-              Me especializo en transformar ideas en soluciones tecnológicas y estrategias de comunicación 
-              que generan resultados reales. Operando desde Tlajomulco de Zúñiga, Jalisco, México.
-            </p>
-            
-            <div class="about-stats">
-              <div class="stat">
-                <span class="stat-number">2+</span>
-                <span class="stat-label">Años de Experiencia</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">15+</span>
-                <span class="stat-label">Proyectos Completados</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">8+</span>
-                <span class="stat-label">Clientes Satisfechos</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <!-- Projects Section -->
     <section id="projects" class="section">
@@ -359,33 +282,34 @@
           </div>
           
           <div class="project-card">
-            <h3 class="project-title">JULDRA UNIFORMES</h3>
-            <p class="project-description">E-commerce completo con sistema de pedidos y gestión de inventario.</p>
+            <h3 class="project-title">Catálogo Online - JULDRA UNIFORMES</h3>
+            <p class="project-description">Catálogo digital interactivo con diseño profesional, navegación intuitiva, galería de productos y sistema de contacto integrado.</p>
             <div class="project-tags">
-              <span class="tag">E-commerce</span>
-              <span class="tag">React</span>
-              <span class="tag">Stripe</span>
-              <span class="tag">Admin Panel</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Responsive</span>
+              <span class="tag">UX/UI</span>
             </div>
             <div class="project-actions">
-              <button class="btn btn-secondary btn-sm">
-                <i data-lucide="eye"></i>
-                Ver Demo
-              </button>
+              <a href="https://mvgn91.github.io/JULDRA-CATALOGO-VIRTUAL/" target="_blank" class="btn btn-primary btn-sm">
+                <i data-lucide="external-link"></i>
+                Ver proyecto
+              </a>
             </div>
           </div>
           
           <div class="project-card">
             <h3 class="project-title">Sabor y Salud YouTube</h3>
-            <p class="project-description">Canal de YouTube con edición profesional y estrategias de marketing digital.</p>
+            <p class="project-description">Editor y productor del programa de YouTube "Sabor y Salud", auspiciado por Pietrafina MX. Producción de contenido digital y estrategia de marketing.</p>
             <div class="project-tags">
               <span class="tag">YouTube</span>
-              <span class="tag">Edición</span>
-              <span class="tag">Marketing</span>
-              <span class="tag">SEO</span>
+              <span class="tag">Edición de Video</span>
+              <span class="tag">Marketing Digital</span>
+              <span class="tag">Producción</span>
             </div>
             <div class="project-actions">
-              <a href="https://www.youtube.com/@saborysalud" target="_blank" class="btn btn-primary btn-sm">
+              <a href="https://www.youtube.com/@pietrafinamx" target="_blank" class="btn btn-primary btn-sm">
                 <i data-lucide="youtube"></i>
                 Ver Canal
               </a>
@@ -523,7 +447,7 @@
     </section>
   </main>
 
-    <!-- Footer - Reducido -->
+  <!-- Footer - Reducido -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -601,33 +525,9 @@
 
   <!-- JavaScript -->
   <script src="js/mobile-responsive.js"></script>
+  <script src="js/profilecard.js"></script>
   
   <script>
-    // Funciones para el modal de la foto
-    function openPhotoModal() {
-      document.getElementById('photoModal').style.display = 'block';
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closePhotoModal() {
-      document.getElementById('photoModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Cerrar modal al hacer clic fuera de la imagen
-    document.getElementById('photoModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closePhotoModal();
-      }
-    });
-    
-    // Cerrar modal con la tecla Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closePhotoModal();
-      }
-    });
-    
     // Funcionalidad del botón Scroll to Top
     function scrollToTop() {
       window.scrollTo({

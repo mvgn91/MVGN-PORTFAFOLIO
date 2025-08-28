@@ -1,13 +1,13 @@
 # Archivos de desarrollo que no necesitan ser desplegados
 node_modules/
-.env
-.env.local
-.env.production
-.env.development
+.env*
+*.env
 
 # Archivos de sistema
 .DS_Store
 Thumbs.db
+*.tmp
+*.temp
 
 # Archivos de IDE
 .vscode/
@@ -18,6 +18,7 @@ Thumbs.db
 # Archivos de Git
 .git/
 .gitignore
+.snapshots/
 
 # Archivos de build (si los hubiera)
 dist/
@@ -29,6 +30,23 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Archivos temporales
-*.tmp
-*.temp 
+# Archivos de documentación de desarrollo
+README_*.md
+CHECKLIST_*.md
+DEMO_*.md
+TRANSICIONES_*.md
+INFORMACION_PROYECTO_*.md
+
+# Archivos de testing (no requeridos para producción)
+# test-*.html
+
+# Archivos de desarrollo móvil específicos
+mobile-*.html
+profilecard-*.css
+profilecard-*.js
+
+# Archivos de transiciones y efectos específicos
+splash.css
+splash.js
+particles.js
+section-dividers.js 

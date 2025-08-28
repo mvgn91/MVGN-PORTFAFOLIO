@@ -127,9 +127,9 @@
 /* Header principal con imagen y título */
 .about-hero {
   display: flex;
-  align-items: center;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-md);
+  align-items: flex-start; /* Cambiado de center a flex-start para mejor alineación */
+  gap: var(--spacing-xl); /* Aumentado de lg a xl para más espacio */
+  padding: var(--spacing-lg); /* Aumentado de md a lg para más espacio */
   background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
   border: 1px solid var(--border-primary);
   border-radius: 20px;
@@ -191,15 +191,16 @@
 .about-intro {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md); /* Aumentado de sm a md para mejor espaciado */
   flex: 1;
   min-width: 0;
-  justify-content: center;
+  justify-content: flex-start; /* Cambiado de center a flex-start */
+  padding-top: var(--spacing-sm); /* Añadido padding superior para alineación */
 }
 
 .about-heading {
   font-family: 'Fraunces', serif;
-  font-size: 2rem;
+  font-size: 2.5rem; /* Aumentado de 2rem a 2.5rem */
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: var(--spacing-xs);
@@ -212,8 +213,8 @@
 
 .about-description {
   font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 1.2rem; /* Aumentado de 1rem a 1.2rem */
+  line-height: 1.5; /* Aumentado de 1.4 a 1.5 */
   color: var(--text-secondary);
   margin-bottom: var(--spacing-xs);
   font-weight: 400;
