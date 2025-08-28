@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "comment": "Configuración optimizada para deploy con galaxia y glassmorphism",
   "builds": [
     {
       "src": "**/*",
