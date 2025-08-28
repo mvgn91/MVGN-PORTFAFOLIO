@@ -41,7 +41,7 @@ INFORMACION_PROYECTO_*.md
 # test-*.html
 
 # Archivos de desarrollo móvil específicos (NO excluir todos los profilecard)
-mobile-*.html
+# mobile-*.html - NO excluir, necesario para la ruta /mobile
 # profilecard-*.css - NO excluir, main.html los necesita
 # profilecard-*.js - NO excluir, main.html los necesita
 
