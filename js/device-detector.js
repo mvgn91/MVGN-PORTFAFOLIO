@@ -10,7 +10,7 @@ class DeviceDetector {
 
   init() {
     // Solo ejecutar en la página principal
-    if (window.location.pathname.includes('mobile.html')) {
+    if (window.location.pathname.includes('/mobile')) {
       return; // Ya estamos en la versión móvil
     }
 
@@ -149,7 +149,7 @@ class DeviceDetector {
     const currentHash = window.location.hash;
     
     // Construir nueva URL
-    let mobileUrl = '/mobile.html';
+    let mobileUrl = '/mobile';
     
     // Mantener parámetros de búsqueda
     if (currentSearch) {

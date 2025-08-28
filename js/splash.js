@@ -55,7 +55,7 @@ class SplashScreen {
   redirectToMainSite() {
     // Detectar si es móvil o desktop
     const isMobile = this.isMobileDevice();
-    const targetUrl = isMobile ? 'mobile.html' : 'main.html';
+    const targetUrl = isMobile ? '/mobile' : '/desktop';
     
     // Mostrar información de redirección
     this.showRedirectInfo(isMobile);
