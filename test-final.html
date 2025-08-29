@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Final - Logo MVGN Labs</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/metallic-terminal.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      font-family: 'Arial', sans-serif;
+      color: white;
+      min-height: 100vh;
+    }
+    
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .test-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .test-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+    
+    .test-info {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .test-info h3 {
+      margin-top: 0;
+      color: #4ecdc4;
+    }
+    
+    .test-info ul {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .test-info li {
+      margin-bottom: 8px;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 12px 24px;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .back-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .status-indicator {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 2s infinite;
+    }
+    
+    .status-ok { background-color: #27ae60; }
+    .status-error { background-color: #e74c3c; }
+    .status-loading { background-color: #f39c12; }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    
+    .manual-test {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    
+    .test-button {
+      background: linear-gradient(45deg, #3498db, #2980b9);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .test-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1 class="test-title">Test Final - Logo MVGN Labs</h1>
+    <p class="test-subtitle">Verificación del sistema LogoSimple</p>
+    
+    <div class="test-info">
+      <h3>Estado del Sistema:</h3>
+      <div id="system-status">
+        <span class="status-indicator status-loading"></span>
+        Verificando...
+      </div>
+    </div>
+    
+    <!-- Terminal Metálica -->
+    <div class="hero-code-animation">
+      <div class="code-terminal">
+        <div class="terminal-header">
+          <div class="terminal-title">MVGN Terminal v2.0</div>
+          <div class="terminal-controls">
+            <div class="control-dot"></div>
+            <div class="control-dot"></div>
+            <div class="control-dot"></div>
+          </div>
+        </div>
+        <div class="terminal-content">
+          <!-- El logo se renderizará aquí -->
+          <div class="terminal-loading">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Inicializando logo...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="manual-test">
+      <h4>Pruebas Manuales:</h4>
+      <button class="test-button" onclick="testLogoSimple()">Test LogoSimple</button>
+      <button class="test-button" onclick="testImageLoad()">Test Carga de Imagen</button>
+      <button class="test-button" onclick="testCanvas()">Test Canvas</button>
+      <button class="test-button" onclick="clearTerminal()">Limpiar Terminal</button>
+    </div>
+    
+    <div class="test-info">
+      <h3>Información de Debug:</h3>
+      <div id="debug-output">Esperando inicialización...</div>
+    </div>
+    
+    <div class="test-info">
+      <h3>Instrucciones:</h3>
+      <ul>
+        <li>1. <strong>Esperar:</strong> El logo debería aparecer automáticamente</li>
+        <li>2. <strong>Verificar:</strong> Que se vea el logo de MVGN Labs</li>
+        <li>3. <strong>Probar:</strong> Los botones de prueba manual</li>
+        <li>4. <strong>Revisar:</strong> La consola del navegador para errores</li>
+      </ul>
+    </div>
+    
+    <a href="main.html" class="back-link">← Volver al Portafolio Principal</a>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/logo-simple.js"></script>
+  
+  <script>
+    let logoSimple = null;
+    let statusCheckInterval = null;
+    
+    // Función de estado del sistema
+    function updateSystemStatus() {
+      const statusElement = document.getElementById('system-status');
+      const debugOutput = document.getElementById('debug-output');
+      
+      const info = {
+        'LogoSimple Class': typeof window.LogoSimple !== 'undefined',
+        'Canvas Element': document.querySelector('.metallic-logo-canvas') !== null,
+        'Image Loaded': logoSimple && logoSimple.image && logoSimple.image.complete,
+        'Animation Running': logoSimple && logoSimple.animationId !== null
+      };
+      
+      let debugText = '';
+      let allGood = true;
+      
+      Object.entries(info).forEach(([key, value]) => {
+        const status = value ? '✅' : '❌';
+        const statusClass = value ? 'status-ok' : 'status-error';
+        debugText += `${status} ${key}: ${value ? 'OK' : 'ERROR'}\n`;
+        if (!value) allGood = false;
+      });
+      
+      // Estado general
+      if (allGood) {
+        statusElement.innerHTML = '<span class="status-indicator status-ok"></span>Sistema funcionando correctamente';
+      } else {
+        statusElement.innerHTML = '<span class="status-indicator status-error"></span>Sistema con errores';
+      }
+      
+      debugOutput.innerHTML = debugText.replace(/\n/g, '<br>');
+    }
+    
+    // Función de prueba manual
+    function testLogoSimple() {
+      console.log('=== Test LogoSimple ===');
+      
+      if (typeof window.LogoSimple === 'undefined') {
+        console.error('❌ LogoSimple no está disponible');
+        alert('LogoSimple no está disponible');
+        return;
+      }
+      
+      console.log('✅ LogoSimple está disponible');
+      
+      const terminalContent = document.querySelector('.terminal-content');
+      if (!terminalContent) {
+        console.error('❌ Contenedor terminal-content no encontrado');
+        alert('Contenedor no encontrado');
+        return;
+      }
+      
+      console.log('✅ Contenedor encontrado, creando instancia...');
+      
+      try {
+        logoSimple = new window.LogoSimple(terminalContent);
+        console.log('✅ Instancia creada exitosamente');
+        alert('LogoSimple creado exitosamente');
+      } catch (error) {
+        console.error('❌ Error creando instancia:', error);
+        alert('Error creando instancia: ' + error.message);
+      }
+    }
+    
+    function testImageLoad() {
+      console.log('=== Test Carga de Imagen ===');
+      
+      const img = new Image();
+      img.onload = () => {
+        console.log('✅ Imagen cargada:', img.width, 'x', img.height);
+        alert('Imagen cargada: ' + img.width + ' x ' + img.height);
+      };
+      
+      img.onerror = () => {
+        console.error('❌ Error cargando imagen');
+        alert('Error cargando imagen');
+      };
+      
+      img.src = 'assets/favicon.png';
+    }
+    
+    function testCanvas() {
+      console.log('=== Test Canvas ===');
+      
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      if (!ctx) {
+        console.error('❌ Canvas 2D no disponible');
+        alert('Canvas 2D no disponible');
+        return;
+      }
+      
+      console.log('✅ Canvas 2D disponible');
+      
+      // Dibujar algo simple
+      canvas.width = 100;
+      canvas.height = 100;
+      ctx.fillStyle = '#ff0000';
+      ctx.fillRect(0, 0, 100, 100);
+      
+      console.log('✅ Canvas funcionando correctamente');
+      alert('Canvas funcionando correctamente');
+    }
+    
+    function clearTerminal() {
+      const terminalContent = document.querySelector('.terminal-content');
+      if (terminalContent) {
+        terminalContent.innerHTML = `
+          <div class="terminal-loading">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Terminal limpiada</div>
+          </div>
+        `;
+        console.log('✅ Terminal limpiada');
+        alert('Terminal limpiada');
+      }
+    }
+    
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Página de prueba cargada');
+      
+      // Verificar estado cada segundo
+      statusCheckInterval = setInterval(updateSystemStatus, 1000);
+      
+      // Verificación inicial después de 2 segundos
+      setTimeout(() => {
+        updateSystemStatus();
+        
+        // Auto-inicializar si es posible
+        const terminalContent = document.querySelector('.terminal-content');
+        if (terminalContent && typeof window.LogoSimple !== 'undefined') {
+          console.log('Auto-inicializando LogoSimple...');
+          try {
+            logoSimple = new window.LogoSimple(terminalContent);
+          } catch (error) {
+            console.error('Error en auto-inicialización:', error);
+          }
+        }
+      }, 2000);
+    });
+    
+    // Limpiar al salir
+    window.addEventListener('beforeunload', () => {
+      if (statusCheckInterval) {
+        clearInterval(statusCheckInterval);
+      }
+      if (logoSimple) {
+        logoSimple.destroy();
+      }
+    });
+  </script>
+</body>
+</html>

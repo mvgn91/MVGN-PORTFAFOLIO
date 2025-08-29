@@ -1,0 +1,298 @@
+/* Metallic Terminal CSS - Terminal con logo metálico para MVGN Labs */
+
+.hero-code-animation {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.code-terminal {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: grab;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.code-terminal:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.code-terminal:active {
+  cursor: grabbing;
+  transform: translateY(-2px) scale(1.01);
+}
+
+.terminal-header {
+  background: linear-gradient(90deg, #2c2c2c 0%, #3a3a3a 50%, #2c2c2c 100%);
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.terminal-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 20%, 
+    rgba(255, 255, 255, 0.6) 50%, 
+    rgba(255, 255, 255, 0.3) 80%, 
+    transparent 100%);
+  animation: terminalGlow 3s ease-in-out infinite;
+}
+
+@keyframes terminalGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.terminal-title {
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff5f56 0%, #e0443e 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.control-dot:nth-child(2) {
+  background: linear-gradient(135deg, #ffbd2e 0%, #dea123 100%);
+}
+
+.control-dot:nth-child(3) {
+  background: linear-gradient(135deg, #27c93f 0%, #1aab29 100%);
+}
+
+.control-dot:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.terminal-content {
+  padding: 50px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+/* Canvas del logo metálico */
+.metallic-logo-canvas {
+  width: 250px;
+  height: 250px;
+  border-radius: 16px;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.metallic-logo-canvas:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Efectos de partículas alrededor del logo */
+.terminal-content::before,
+.terminal-content::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.terminal-content::before {
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: particleFloat1 8s ease-in-out infinite;
+}
+
+.terminal-content::after {
+  background: radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: particleFloat2 10s ease-in-out infinite reverse;
+}
+
+@keyframes particleFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10px, -10px) scale(1.1); }
+}
+
+@keyframes particleFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-15px, 15px) scale(0.9); }
+}
+
+/* Indicador de carga */
+.terminal-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0.8;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-code-animation {
+    max-width: 100%;
+    margin: 0 20px;
+  }
+  
+  .code-terminal {
+    border-radius: 12px;
+  }
+  
+  .terminal-header {
+    padding: 12px 16px;
+  }
+  
+  .terminal-title {
+    font-size: 16px;
+  }
+  
+  .terminal-content {
+    padding: 30px 20px;
+    min-height: 250px;
+  }
+  
+  .metallic-logo-canvas {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-content {
+    padding: 20px 15px;
+    min-height: 200px;
+  }
+  
+  .metallic-logo-canvas {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .control-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Efectos de profundidad */
+.code-terminal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    transparent 20%, 
+    transparent 80%, 
+    rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  border-radius: 16px;
+}
+
+/* Animación de entrada */
+.code-terminal {
+  animation: terminalEntrance 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+}
+
+@keyframes terminalEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Efecto de brillo en hover */
+.code-terminal:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%);
+  animation: shine 1.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}

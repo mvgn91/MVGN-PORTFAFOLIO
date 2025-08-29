@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Terminal Simple - MVGN Labs</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/metallic-terminal.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      font-family: 'Arial', sans-serif;
+      color: white;
+      min-height: 100vh;
+    }
+    
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .test-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .test-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+    
+    .test-info {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .test-info h3 {
+      margin-top: 0;
+      color: #4ecdc4;
+    }
+    
+    .test-info ul {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .test-info li {
+      margin-bottom: 8px;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 12px 24px;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .back-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .debug-info {
+      background: rgba(255, 0, 0, 0.1);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-family: monospace;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1 class="test-title">Terminal Simple MVGN Labs</h1>
+    <p class="test-subtitle">Página de prueba para verificar que el logo se muestre</p>
+    
+    <div class="test-info">
+      <h3>Estado del Sistema:</h3>
+      <div id="system-status">Verificando...</div>
+    </div>
+    
+    <!-- Terminal Metálica -->
+    <div class="hero-code-animation">
+      <div class="code-terminal">
+        <div class="terminal-header">
+          <div class="terminal-title">MVGN Terminal v2.0</div>
+          <div class="terminal-controls">
+            <div class="control-dot"></div>
+            <div class="control-dot"></div>
+            <div class="control-dot"></div>
+          </div>
+        </div>
+        <div class="terminal-content">
+          <!-- El logo metálico se renderizará aquí -->
+          <div class="terminal-loading">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Inicializando logo metálico...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="debug-info">
+      <h4>Información de Debug:</h4>
+      <div id="debug-output">Esperando inicialización...</div>
+    </div>
+    
+    <div class="test-info">
+      <h3>Instrucciones de Uso:</h3>
+      <ul>
+        <li>🖱️ <strong>Hover:</strong> Pasa el mouse sobre la terminal para efectos</li>
+        <li>🖱️ <strong>Click:</strong> Haz click en el logo para efectos</li>
+        <li>🖱️ <strong>Arrastre:</strong> Puedes mover la terminal arrastrándola</li>
+        <li>📱 <strong>Touch:</strong> Funciona perfectamente en dispositivos móviles</li>
+      </ul>
+    </div>
+    
+    <a href="main.html" class="back-link">← Volver al Portafolio Principal</a>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/metallic-paint-simple.js"></script>
+  <script src="js/metallic-terminal-init.js"></script>
+  
+  <script>
+    // Debug y monitoreo
+    function updateDebugInfo() {
+      const debugOutput = document.getElementById('debug-output');
+      const systemStatus = document.getElementById('system-status');
+      
+      const info = {
+        'MetallicPaintSimple': typeof window.MetallicPaintSimple !== 'undefined',
+        'MetallicPaint': typeof window.MetallicPaint !== 'undefined',
+        'MetallicTerminal': typeof window.MetallicTerminal !== 'undefined',
+        'Canvas': document.querySelector('.metallic-logo-canvas') !== null,
+        'Image': document.querySelector('img') !== null
+      };
+      
+      let debugText = '';
+      let statusText = '';
+      
+      Object.entries(info).forEach(([key, value]) => {
+        const status = value ? '✅' : '❌';
+        debugText += `${status} ${key}: ${value ? 'Disponible' : 'No disponible'}\n`;
+      });
+      
+      // Verificar si hay errores en consola
+      const hasErrors = console.error.calls && console.error.calls.length > 0;
+      if (hasErrors) {
+        debugText += '\n⚠️ Errores detectados en consola';
+        statusText = '⚠️ Sistema con errores';
+      } else if (info.Canvas && info.Image) {
+        statusText = '✅ Sistema funcionando correctamente';
+      } else {
+        statusText = '❌ Sistema no inicializado';
+      }
+      
+      debugOutput.innerHTML = debugText.replace(/\n/g, '<br>');
+      systemStatus.innerHTML = statusText;
+    }
+    
+    // Actualizar cada segundo
+    setInterval(updateDebugInfo, 1000);
+    
+    // Verificación inicial
+    setTimeout(updateDebugInfo, 2000);
+    
+    // Log de eventos
+    console.log('Página de prueba cargada');
+    
+    // Verificar WebGL
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+    console.log('WebGL disponible:', !!gl);
+    console.log('WebGL2 disponible:', !!canvas.getContext('webgl2'));
+  </script>
+</body>
+</html>

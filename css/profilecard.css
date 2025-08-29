@@ -747,35 +747,30 @@
 
 
 
-/* Estados táctiles para dispositivos móviles */
+/* Estados táctiles para dispositivos móviles - OPTIMIZADOS */
 @media (hover: none) and (pointer: coarse) {
   .pc-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.15s ease;
   }
   
   .pc-card:active {
-    transform: translate3d(0, -4px, 0.1px) scale(0.99);
-    box-shadow: 
-      rgba(255, 68, 68, 0.2) 0 12px 25px -3px,
-      0 15px 30px rgba(255, 68, 68, 0.15);
-    border-color: rgba(255, 68, 68, 0.3);
+    transform: translateY(-2px);
+    box-shadow: rgba(255, 68, 68, 0.15) 0 8px 16px -2px;
   }
   
   .pc-contact-btn:active {
-    transform: translateY(-1px) scale(0.98);
-    background: rgba(255, 68, 68, 0.4);
-    transition: all 0.1s ease;
-    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);
+    transform: translateY(-1px);
+    background: rgba(255, 68, 68, 0.3);
+    transition: background 0.1s ease;
   }
   
   .pc-user-info:active {
-    transform: translateY(-1px) scale(0.99);
-    transition: transform 0.1s ease;
-    background: linear-gradient(135deg, #1f1f1f 0%, #2f2f2f 100%);
+    background: rgba(255, 68, 68, 0.1);
+    transition: background 0.1s ease;
   }
   
   .pc-mini-avatar:active {
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition: transform 0.1s ease;
   }
 }
@@ -814,6 +809,40 @@
   will-change: transform, box-shadow;
 }
 
+/* Optimizaciones específicas para móvil */
+@media (hover: none) and (pointer: coarse) {
+  .pc-card {
+    will-change: transform;
+    contain: layout style;
+  }
+  
+  .pc-avatar-content .avatar {
+    will-change: auto;
+  }
+  
+  .pc-contact-btn {
+    will-change: background;
+  }
+  
+  .pc-user-info {
+    will-change: background;
+  }
+  
+  /* Desactivar efectos 3D complejos en móvil */
+  .pc-card-wrapper {
+    perspective: none;
+  }
+  
+  .pc-card {
+    transform-style: flat;
+  }
+  
+  .pc-avatar-content .avatar {
+    transform-style: flat;
+    backface-visibility: hidden;
+  }
+}
+
 /* Efecto de pulso sutil para el botón de contacto */
 @keyframes subtle-pulse {
   0%, 100% {
@@ -830,6 +859,13 @@
 
 .pc-contact-btn:hover {
   animation: none;
+}
+
+/* Desactivar animación de pulso en móvil para mejor rendimiento */
+@media (hover: none) and (pointer: coarse) {
+  .pc-contact-btn {
+    animation: none;
+  }
 }
 
 /* Mejoras de contraste para mejor legibilidad */

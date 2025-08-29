@@ -3,22 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Armando Ibañez - Desarrollador Web & Diseñador Digital en MVGN Labs. Especialista en HTML, CSS, JavaScript, React y Firebase. Portafolio de proyectos web profesionales en Guadalajara.">
-  <meta name="keywords" content="desarrollador web, diseñador digital, HTML, CSS, JavaScript, React, Firebase, Guadalajara, portafolio, MVGN Labs">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Armando Ibañez - Desarrollador Web & Diseñador Digital en MVGN Labs. Especialista en HTML, CSS, JavaScript, React y Firebase. Portafolio de proyectos web profesionales en Tlajomulco, Jalisco.">
+  <meta name="keywords" content="desarrollador web, diseñador digital, HTML, CSS, JavaScript, React, Firebase, Tlajomulco, Jalisco, portafolio, MVGN Labs, desarrollo web profesional">
   <meta name="author" content="Armando Ibañez">
-  <meta property="og:title" content="Armando Ibañez - MVGN Labs | Desarrollador Web & Diseñador Digital">
-  <meta property="og:description" content="Portafolio profesional de desarrollo web y diseño digital. Especialista en tecnologías modernas y soluciones creativas.">
-  <meta property="og:image" content="/assets/profile.jpg">
-  <meta property="og:url" content="https://mvgnlabs.com">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mvgnlabs.com/desktop">
+  <meta property="og:title" content="Armando Ibañez - MVGN Labs | Desarrollador Web & Diseñador Digital">
+  <meta property="og:description" content="Portafolio profesional de desarrollo web y diseño digital. Especialista en tecnologías modernas y soluciones creativas para empresas.">
+  <meta property="og:image" content="https://mvgnlabs.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MVGN Labs - Portafolio Profesional">
+  <meta property="og:site_name" content="MVGN Labs">
+  <meta property="og:locale" content="es_ES">
+  
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Armando Ibañez - MVGN Labs">
-  <meta name="twitter:description" content="Desarrollador Web & Diseñador Digital profesional">
-  <meta name="twitter:image" content="/assets/profile.jpg">
+  <meta name="twitter:url" content="https://mvgnlabs.com/desktop">
+  <meta name="twitter:title" content="Armando Ibañez - MVGN Labs | Desarrollador Web & Diseñador Digital">
+  <meta name="twitter:description" content="Portafolio profesional de desarrollo web y diseño digital.">
+  <meta name="twitter:image" content="https://mvgnlabs.com/assets/og-image.png">
+  <meta name="twitter:image:alt" content="MVGN Labs - Portafolio Profesional">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://mvgnlabs.com/desktop">
+  
   <title>Armando Ibañez - MVGN Labs | Desarrollador Web & Diseñador Digital</title>
-  <link rel="canonical" href="https://mvgnlabs.com">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="apple-touch-icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon.png">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
   
   <!-- Preload critical fonts -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&display=swap" as="style">
@@ -53,11 +74,18 @@
   <!-- ProfileCard Desktop CSS -->
   <link rel="stylesheet" href="css/profilecard-desktop.css">
   
+  <!-- Terminal Teatral CSS -->
+  <link rel="stylesheet" href="css/theatrical-terminal.css">
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  
+  <!-- SEO y Analytics -->
+  <script src="/js/structured-data.js"></script>
+  <script src="/js/analytics.js"></script>
 </head>
 <body>
   <!-- Dynamic Background Canvas -->
@@ -201,33 +229,13 @@
           </div>
         </div>
         
-        <!-- Right Column - Visual Elements -->
-        <div class="hero-visual-column">
-          <!-- Terminal Criptica -->
-          <div class="hero-code-animation">
-            <div class="code-terminal">
-              <div class="terminal-header">
-                <div class="terminal-title">MVGN Terminal</div>
-                <div class="terminal-controls">
-                  <div class="control-dot"></div>
-                  <div class="control-dot"></div>
-                  <div class="control-dot"></div>
-                </div>
-              </div>
-              <div class="terminal-content">
-                <div class="code-line" data-text="> Inicializando sistema MVGN...</div>
-                <div class="code-line" data-text="> Cargando módulos de desarrollo...</div>
-                <div class="code-line" data-text="> Conectando a Firebase...</div>
-                <div class="code-line" data-text="> Sincronizando base de datos...</div>
-                <div class="code-line" data-text="> Verificando autenticación...</div>
-                <div class="code-line" data-text="> Cargando componentes React...</div>
-                <div class="code-line" data-text="> Optimizando rendimiento...</div>
-                <div class="code-line" data-text="> Sistema listo para desarrollo</div>
-                <div class="code-line" data-text="> Bienvenido a MVGN Labs <span class='cursor'>_</span></div>
-              </div>
+                  <!-- Right Column - Visual Elements -->
+          <div class="hero-visual-column">
+            <!-- Terminal Teatral -->
+            <div class="terminal-content">
+              <!-- La terminal teatral se renderizará aquí -->
             </div>
           </div>
-        </div>
       </div>
       
       <!-- Scroll Indicator -->
@@ -1610,6 +1618,9 @@
   <script src="js/section-dividers.js" defer></script>
   <script src="js/device-detector.js" defer></script>
   <script src="js/profilecard-desktop.js" defer></script>
+  
+  <!-- Terminal Teatral JavaScript -->
+  <script src="js/theatrical-terminal.js" defer></script>
   
 
 </body>

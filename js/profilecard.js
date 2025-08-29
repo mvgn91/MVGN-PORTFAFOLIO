@@ -129,7 +129,18 @@ class ProfileCard {
 
     let isPointerActive = false;
     let lastMoveTime = 0;
-    const throttleDelay = 16; // ~60fps
+    let throttleDelay = 16; // ~60fps para desktop
+    
+    // Detectar dispositivo móvil para ajustar throttling
+    const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const isSmallMobile = window.matchMedia('(max-width: 480px)').matches;
+    
+    if (isMobile) {
+      throttleDelay = 32; // ~30fps para móvil normal
+    }
+    if (isSmallMobile) {
+      throttleDelay = 50; // ~20fps para móvil pequeño
+    }
 
     const handlePointerMove = (event) => {
       const now = performance.now();
@@ -152,8 +163,10 @@ class ProfileCard {
 
     const handlePointerLeave = (event) => {
       isPointerActive = false;
+      // Reducir duración de animación en móvil
+      const animationDuration = isMobile ? 300 : 500;
       this.createSmoothAnimation(
-        500, // SMOOTH_DURATION reducido
+        animationDuration,
         event.offsetX,
         event.offsetY
       );
@@ -165,16 +178,26 @@ class ProfileCard {
       const { beta, gamma } = event;
       if (!beta || !gamma) return;
 
+      // Reducir sensibilidad en móvil
+      let sensitivity = this.options.mobileTiltSensitivity;
+      if (isMobile) {
+        sensitivity = sensitivity * 0.6; // Reducir sensibilidad en móvil
+      }
+      if (isSmallMobile) {
+        sensitivity = sensitivity * 0.4; // Reducir aún más en móvil pequeño
+      }
+
       this.updateCardTransform(
-        this.card.clientHeight / 2 + gamma * this.options.mobileTiltSensitivity,
-        this.card.clientWidth / 2 + (beta - 20) * this.options.mobileTiltSensitivity
+        this.card.clientHeight / 2 + gamma * sensitivity,
+        this.card.clientWidth / 2 + (beta - 20) * sensitivity
       );
     };
 
     const handleClick = () => {
-      // Feedback táctil mejorado
+      // Feedback táctil mejorado - reducido en móvil
       if (navigator.vibrate) {
-        navigator.vibrate(50); // Vibración sutil
+        const vibrationDuration = isMobile ? 20 : 50; // Menos vibración en móvil
+        navigator.vibrate(vibrationDuration);
       }
       
       if (!this.options.enableMobileTilt || location.protocol !== 'https:') return;
@@ -294,18 +317,25 @@ class ProfileCard {
   }
 
   handleContactClick() {
-    // Feedback táctil al hacer clic en contacto
+    // Feedback táctil al hacer clic en contacto - optimizado para móvil
+    const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const isSmallMobile = window.matchMedia('(max-width: 480px)').matches;
+    
     if (navigator.vibrate) {
-      navigator.vibrate(30);
+      const vibrationDuration = isMobile ? 15 : 30; // Menos vibración en móvil
+      navigator.vibrate(vibrationDuration);
     }
     
-    // Pequeña animación visual
+    // Pequeña animación visual - reducida en móvil
     const btn = this.container.querySelector('.pc-contact-btn');
     if (btn) {
-      btn.style.transform = 'scale(0.95)';
+      const scale = isMobile ? 0.97 : 0.95; // Efecto más sutil en móvil
+      const duration = isMobile ? 100 : 150; // Más rápido en móvil
+      
+      btn.style.transform = `scale(${scale})`;
       setTimeout(() => {
         btn.style.transform = '';
-      }, 150);
+      }, duration);
     }
     
     this.options.onContactClick();
