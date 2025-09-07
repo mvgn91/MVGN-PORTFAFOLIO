@@ -106,15 +106,39 @@
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   filter: brightness(1.05) contrast(1.0) saturate(1.0);
-  /* Sin animaciones complejas */
-  transition: transform 0.2s ease;
+  /* Transición ultra ligera para móvil */
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
   will-change: transform;
+  /* Cursor pointer para indicar que es clickeable */
+  cursor: pointer;
 }
 
-.pc-card-mobile:active .pc-avatar-content-mobile .avatar {
-  transform: translateX(-50%) scale(1.02);
-  box-shadow: 0 12px 32px var(--shadow-heavy);
-  border-color: rgba(255, 68, 68, 0.25);
+/* Efecto de clic optimizado para móvil - MUY ligero */
+.pc-avatar-content-mobile .avatar:active {
+  transform: translateX(-50%) scale(0.98);
+  box-shadow: 0 6px 20px var(--shadow-medium);
+  border-color: rgba(255, 68, 68, 0.3);
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+/* Efecto de pulso sutil al hacer clic */
+.pc-avatar-content-mobile .avatar.clicked {
+  animation: avatarClickPulse 0.3s ease-out;
+}
+
+@keyframes avatarClickPulse {
+  0% {
+    transform: translateX(-50%) scale(0.98);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.01);
+    box-shadow: 0 8px 24px rgba(255, 68, 68, 0.2);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 8px 24px var(--shadow-medium);
+  }
 }
 
 /* Información del usuario - Diseño simplificado */
@@ -430,6 +454,8 @@
     /* Optimizar imagen en móvil */
     image-rendering: auto;
     will-change: auto;
+    /* Efecto de clic ultra ligero para móvil */
+    transition: transform 0.05s ease, box-shadow 0.05s ease;
   }
 
   .pc-user-info-mobile,
@@ -445,6 +471,38 @@
 
   .pc-contact-btn-mobile:active {
     transform: scale(0.95);
+  }
+
+  /* Efecto de clic en avatar ultra optimizado para móvil */
+  .pc-avatar-content-mobile .avatar:active {
+    transform: translateX(-50%) scale(0.97);
+    box-shadow: 0 4px 16px var(--shadow-medium);
+    transition: transform 0.03s ease, box-shadow 0.03s ease;
+  }
+
+  /* Desactivar animación de pulso en dispositivos de baja potencia */
+  .pc-avatar-content-mobile .avatar.clicked {
+    animation: none;
+    transform: translateX(-50%) scale(0.98);
+  }
+}
+
+/* Optimizaciones adicionales para dispositivos de muy baja potencia */
+@media (hover: none) and (pointer: coarse) and (max-width: 480px) {
+  .pc-avatar-content-mobile .avatar {
+    /* Sin transiciones en móviles pequeños para máximo rendimiento */
+    transition: none;
+  }
+
+  .pc-avatar-content-mobile .avatar:active {
+    /* Efecto instantáneo sin transición */
+    transform: translateX(-50%) scale(0.96);
+    box-shadow: 0 2px 12px var(--shadow-light);
+  }
+
+  .pc-avatar-content-mobile .avatar.clicked {
+    /* Sin animación de pulso en móviles pequeños */
+    animation: none;
   }
 }
 
