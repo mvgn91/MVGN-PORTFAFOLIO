@@ -1,363 +1,131 @@
-/**
- * MVGN Labs - Detector de Dispositivos
- * Redirige automáticamente a la versión apropiada del sitio
- */
-
+// Device Detector - Detección inteligente de dispositivos móviles
 class DeviceDetector {
   constructor() {
-    this.init();
+    this.isMobile = false;
+    this.isTablet = false;
+    this.isDesktop = false;
+    this.isLowEndDevice = false;
+    this.deviceType = 'desktop';
+    
+    this.detectDevice();
   }
 
-  init() {
-    // Solo ejecutar en la página principal
-    if (window.location.pathname.includes('/mobile')) {
-      return; // Ya estamos en la versión móvil
-    }
-
-    // Detectar dispositivo y redirigir si es necesario
-    this.detectAndRedirect();
-  }
-
-  /**
-   * Detectar tipo de dispositivo y redirigir
-   */
-  detectAndRedirect() {
-    const isMobile = this.isMobileDevice();
-    const isTablet = this.isTabletDevice();
-    const isSmallScreen = this.isSmallScreen();
-    const prefersMobile = this.userPrefersMobile();
-
-    // Condiciones para mostrar versión móvil
-    if (isMobile || isTablet || isSmallScreen || prefersMobile) {
-      this.redirectToMobile();
-    }
-  }
-
-  /**
-   * Detectar si es dispositivo móvil
-   */
-  isMobileDevice() {
+  detectDevice() {
+    // Detectar tipo de dispositivo
     const userAgent = navigator.userAgent.toLowerCase();
-    const mobileKeywords = [
-      'android', 'iphone', 'ipod', 'ipad', 'blackberry', 
-      'windows phone', 'mobile', 'tablet'
-    ];
-
-    return mobileKeywords.some(keyword => userAgent.includes(keyword));
-  }
-
-  /**
-   * Detectar si es tablet
-   */
-  isTabletDevice() {
-    const userAgent = navigator.userAgent.toLowerCase();
+    const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+    const isTabletUA = /ipad|android(?!.*mobile)|tablet/i.test(userAgent);
     
-    // Detectar iPad específicamente
-    if (userAgent.includes('ipad')) {
-      return true;
-    }
-    
-    // Para Android, ser más específico
-    if (userAgent.includes('android')) {
-      // Solo considerar tablet si tiene características específicas de tablet
-      const isTabletKeyword = userAgent.includes('tablet') || userAgent.includes('mobile');
-      if (isTabletKeyword) {
-        return true;
-      }
-    }
-    
-    // Verificar por tamaño de pantalla solo si es muy específico
+    // Detectar por características de pantalla
     const screenWidth = window.screen.width;
     const screenHeight = window.screen.height;
-    
-    // Solo considerar tablet si está en un rango muy específico
-    // y tiene proporciones típicas de tablet
-    const isTabletSize = (screenWidth >= 768 && screenWidth <= 1024) && 
-                        (screenHeight >= 768 && screenHeight <= 1024) &&
-                        Math.abs(screenWidth - screenHeight) < 200; // Proporciones similares
-
-    return isTabletSize;
-  }
-
-  /**
-   * Detectar si la pantalla es pequeña
-   */
-  isSmallScreen() {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     
-    // Solo considerar pantalla pequeña si AMBAS dimensiones son pequeñas
-    // Esto evita falsos positivos en laptops con resoluciones como 1366x768
-    return viewportWidth < 768 && viewportHeight < 768;
-  }
-
-  /**
-   * Verificar preferencias del usuario
-   */
-  userPrefersMobile() {
-    // Verificar si el usuario ya ha elegido una versión
-    const userChoice = localStorage.getItem('mvgn-version-preference');
+    // Detectar por características táctiles
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isHoverCapable = window.matchMedia('(hover: hover)').matches;
     
-    if (userChoice === 'mobile') {
-      return true;
+    // Detectar por características de hardware
+    const hardwareConcurrency = navigator.hardwareConcurrency || 1;
+    const deviceMemory = navigator.deviceMemory || 4;
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    
+    // Determinar tipo de dispositivo
+    if (isTabletUA || (isMobileUA && screenWidth >= 768)) {
+      this.isTablet = true;
+      this.deviceType = 'tablet';
+    } else if (isMobileUA || (isTouchDevice && !isHoverCapable) || viewportWidth <= 768) {
+      this.isMobile = true;
+      this.deviceType = 'mobile';
+    } else {
+      this.isDesktop = true;
+      this.deviceType = 'desktop';
     }
     
-    if (userChoice === 'desktop') {
-      return false;
-    }
-
-    // Verificar preferencias del sistema
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Detectar dispositivos de baja potencia
+    this.isLowEndDevice = this.detectLowEndDevice(hardwareConcurrency, deviceMemory, connection);
     
-    // Si el usuario prefiere movimiento reducido, sugerir versión móvil
-    if (prefersReducedMotion) {
-      return true;
-    }
-
-    return false;
+    // Aplicar optimizaciones según el dispositivo
+    this.applyDeviceOptimizations();
+    
+    console.log('Device Detection:', {
+      type: this.deviceType,
+      isMobile: this.isMobile,
+      isTablet: this.isTablet,
+      isDesktop: this.isDesktop,
+      isLowEndDevice: this.isLowEndDevice,
+      screenSize: `${screenWidth}x${screenHeight}`,
+      viewportSize: `${viewportWidth}x${viewportHeight}`,
+      hardwareConcurrency,
+      deviceMemory
+    });
   }
 
-  /**
-   * Forzar versión desktop (para debug o preferencia del usuario)
-   */
-  forceDesktop() {
-    localStorage.setItem('mvgn-version-preference', 'desktop');
-    console.log('🖥️ Forzando versión desktop...');
-    // Recargar la página para aplicar el cambio
-    window.location.reload();
+  detectLowEndDevice(hardwareConcurrency, deviceMemory, connection) {
+    // Detectar dispositivos de baja potencia
+    const lowConcurrency = hardwareConcurrency <= 2;
+    const lowMemory = deviceMemory <= 2;
+    const slowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
+    const isAndroidLowEnd = /android.*chrome\/[.0-9]* (mobile|mini)/i.test(navigator.userAgent);
+    
+    return lowConcurrency || lowMemory || slowConnection || isAndroidLowEnd;
   }
 
-  /**
-   * Forzar versión móvil (para debug o preferencia del usuario)
-   */
-  forceMobile() {
-    localStorage.setItem('mvgn-version-preference', 'mobile');
-    console.log('📱 Forzando versión móvil...');
-    this.redirectToMobile();
-  }
-
-  /**
-   * Redirigir a la versión móvil
-   */
-  redirectToMobile() {
-    // Debug: mostrar información antes de redirigir
-    this.logDetectionInfo();
+  applyDeviceOptimizations() {
+    // Aplicar optimizaciones CSS según el dispositivo
+    const root = document.documentElement;
     
-    const currentPath = window.location.pathname;
-    const currentSearch = window.location.search;
-    const currentHash = window.location.hash;
-    
-    // Construir nueva URL
-    let mobileUrl = '/mobile';
-    
-    // Mantener parámetros de búsqueda
-    if (currentSearch) {
-      mobileUrl += currentSearch;
+    if (this.isMobile || this.isLowEndDevice) {
+      root.classList.add('mobile-device');
+      root.classList.add('optimized-performance');
+      
+      // Reducir efectos para dispositivos móviles
+      root.style.setProperty('--animation-duration', '0.2s');
+      root.style.setProperty('--transition-duration', '0.15s');
+      root.style.setProperty('--blur-intensity', '2px');
     }
     
-    // Mantener hash/ancla
-    if (currentHash) {
-      mobileUrl += currentHash;
-    }
-
-    // Redirigir
-    window.location.href = mobileUrl;
-  }
-
-  /**
-   * Log de información de detección para debug
-   */
-  logDetectionInfo() {
-    console.log('🔍 MVGN Device Detector - Debug Info:');
-    console.log('User Agent:', navigator.userAgent);
-    console.log('Screen Size:', `${window.screen.width}x${window.screen.height}`);
-    console.log('Viewport Size:', `${window.innerWidth}x${window.innerHeight}`);
-    console.log('Is Mobile:', this.isMobileDevice());
-    console.log('Is Tablet:', this.isTabletDevice());
-    console.log('Is Small Screen:', this.isSmallScreen());
-    console.log('User Prefers Mobile:', this.userPrefersMobile());
-    console.log('Redirecting to mobile version...');
-  }
-
-  /**
-   * Mostrar banner de cambio de versión
-   */
-  showVersionBanner() {
-    // Crear banner
-    const banner = document.createElement('div');
-    banner.className = 'version-banner';
-    banner.innerHTML = `
-      <div class="version-banner-content">
-        <span>¿Prefieres la versión móvil?</span>
-        <div class="version-banner-buttons">
-          <button onclick="deviceDetector.switchToMobile()" class="btn-mobile">Sí, versión móvil</button>
-          <button onclick="deviceDetector.dismissBanner()" class="btn-dismiss">No, mantener desktop</button>
-        </div>
-      </div>
-    `;
-
-    // Agregar estilos
-    const styles = document.createElement('style');
-    styles.textContent = `
-      .version-banner {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, #FF4C4C, #FF6666);
-        color: white;
-        padding: 15px;
-        z-index: 10000;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        animation: slideDown 0.5s ease;
-      }
+    if (this.isLowEndDevice) {
+      root.classList.add('low-end-device');
       
-      .version-banner-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        font-family: 'Poppins', sans-serif;
-      }
-      
-      .version-banner-buttons {
-        display: flex;
-        gap: 10px;
-      }
-      
-      .btn-mobile, .btn-dismiss {
-        padding: 8px 16px;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.3s ease;
-      }
-      
-      .btn-mobile {
-        background: white;
-        color: #FF4C4C;
-      }
-      
-      .btn-dismiss {
-        background: rgba(255,255,255,0.2);
-        color: white;
-        border: 1px solid rgba(255,255,255,0.3);
-      }
-      
-      .btn-mobile:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      }
-      
-      .btn-dismiss:hover {
-        background: rgba(255,255,255,0.3);
-      }
-      
-      @keyframes slideDown {
-        from { transform: translateY(-100%); }
-        to { transform: translateY(0); }
-      }
-      
-      @media (max-width: 768px) {
-        .version-banner-content {
-          flex-direction: column;
-          gap: 15px;
-          text-align: center;
-        }
-        
-        .version-banner-buttons {
-          justify-content: center;
-        }
-      }
-    `;
-
-    document.head.appendChild(styles);
-    document.body.appendChild(banner);
-
-    // Auto-ocultar después de 10 segundos
-    setTimeout(() => {
-      this.dismissBanner();
-    }, 10000);
-  }
-
-  /**
-   * Cambiar a versión móvil
-   */
-  switchToMobile() {
-    localStorage.setItem('mvgn-version-preference', 'mobile');
-    this.redirectToMobile();
-  }
-
-  /**
-   * Ocultar banner
-   */
-  dismissBanner() {
-    const banner = document.querySelector('.version-banner');
-    if (banner) {
-      banner.style.animation = 'slideUp 0.5s ease forwards';
-      setTimeout(() => {
-        banner.remove();
-      }, 500);
+      // Optimizaciones adicionales para dispositivos de baja potencia
+      root.style.setProperty('--animation-duration', '0.1s');
+      root.style.setProperty('--transition-duration', '0.1s');
+      root.style.setProperty('--blur-intensity', '1px');
     }
     
-    // Agregar estilos para animación de salida
-    if (!document.querySelector('#slide-up-styles')) {
-      const slideUpStyles = document.createElement('style');
-      slideUpStyles.id = 'slide-up-styles';
-      slideUpStyles.textContent = `
-        @keyframes slideUp {
-          from { transform: translateY(0); }
-          to { transform: translateY(-100%); }
-        }
-      `;
-      document.head.appendChild(slideUpStyles);
+    if (this.isTablet) {
+      root.classList.add('tablet-device');
+    }
+    
+    if (this.isDesktop) {
+      root.classList.add('desktop-device');
     }
   }
 
-  /**
-   * Métodos de utilidad
-   */
-  
-  // Obtener información del dispositivo
-  getDeviceInfo() {
-    return {
-      userAgent: navigator.userAgent,
-      platform: navigator.platform,
-      language: navigator.language,
-      cookieEnabled: navigator.cookieEnabled,
-      onLine: navigator.onLine,
-      screenWidth: window.screen.width,
-      screenHeight: window.screen.height,
-      viewportWidth: window.innerWidth,
-      viewportHeight: window.innerHeight,
-      pixelRatio: window.devicePixelRatio,
-      isMobile: this.isMobileDevice(),
-      isTablet: this.isTabletDevice(),
-      isSmallScreen: this.isSmallScreen()
-    };
+  shouldUseMobileOptimized() {
+    return this.isMobile || this.isLowEndDevice;
   }
 
-  // Log de información del dispositivo (para debugging)
-  logDeviceInfo() {
-    console.log('MVGN Labs - Device Info:', this.getDeviceInfo());
+  shouldUseTabletOptimized() {
+    return this.isTablet && !this.isLowEndDevice;
+  }
+
+  shouldUseDesktopVersion() {
+    return this.isDesktop && !this.isLowEndDevice;
+  }
+
+  getOptimizationLevel() {
+    if (this.isLowEndDevice) return 'ultra-light';
+    if (this.isMobile) return 'mobile-optimized';
+    if (this.isTablet) return 'tablet-optimized';
+    return 'desktop-full';
   }
 }
 
-// Inicializar detector
-const deviceDetector = new DeviceDetector();
-
-// Exponer globalmente para uso en consola
-window.deviceDetector = deviceDetector;
-
-// Funciones de debug disponibles en consola
-console.log('🔧 MVGN Device Detector - Comandos disponibles:');
-console.log('deviceDetector.forceDesktop() - Forzar versión desktop');
-console.log('deviceDetector.forceMobile() - Forzar versión móvil');
-console.log('deviceDetector.logDetectionInfo() - Ver información de detección');
-console.log('localStorage.removeItem("mvgn-version-preference") - Resetear preferencias');
+// Crear instancia global
+window.deviceDetector = new DeviceDetector();
 
 // Exportar para uso en otros módulos
 if (typeof module !== 'undefined' && module.exports) {

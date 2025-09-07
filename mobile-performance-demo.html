@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVGN Labs - Demo Optimización Móvil</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .demo-header h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6666 100%);
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .demo-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .performance-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .version-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .version-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ff6666;
+        }
+
+        .version-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6666;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .demo-section h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ff6666;
+        }
+
+        .profilecard-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #ff4444 0%, #ff6666 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 68, 68, 0.3);
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+        }
+
+        .control-btn.secondary {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+        }
+
+        .control-btn.secondary:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .device-info {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .device-info h4 {
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .device-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .performance-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .control-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>MVGN Labs</h1>
+            <p>Demo de Optimización Móvil - ProfileCard</p>
+        </div>
+
+        <div class="device-info">
+            <h4>📱 Información del Dispositivo</h4>
+            <p><strong>Tipo:</strong> <span id="deviceType">Detectando...</span></p>
+            <p><strong>Optimización:</strong> <span id="optimizationLevel">Detectando...</span></p>
+            <p><strong>Versión Cargada:</strong> <span id="loadedVersion">Detectando...</span></p>
+        </div>
+
+        <div class="performance-comparison">
+            <div class="version-card">
+                <h3>📱 Versión Móvil Optimizada</h3>
+                <p>Diseñada específicamente para dispositivos móviles con máximo rendimiento</p>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">0.2s</div>
+                        <div class="metric-label">Transiciones</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">60 FPS</div>
+                        <div class="metric-label">Rendimiento</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">25MB</div>
+                        <div class="metric-label">Memoria</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">10%</div>
+                        <div class="metric-label">CPU</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card">
+                <h3>💻 Versión Desktop Completa</h3>
+                <p>Con todos los efectos visuales y animaciones 3D</p>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">0.8s</div>
+                        <div class="metric-label">Transiciones</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">30 FPS</div>
+                        <div class="metric-label">Rendimiento</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">45MB</div>
+                        <div class="metric-label">Memoria</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">40%</div>
+                        <div class="metric-label">CPU</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>🎯 ProfileCard en Acción</h3>
+            <p>La versión se carga automáticamente según tu dispositivo para optimizar el rendimiento.</p>
+            <div class="profilecard-container">
+                <div id="profileCardDesktop"></div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>🧪 Testing Manual</h3>
+            <p>Prueba diferentes versiones para ver la diferencia de rendimiento:</p>
+            <div class="controls">
+                <button class="control-btn" onclick="loadVersion('mobile')">
+                    📱 Cargar Versión Móvil
+                </button>
+                <button class="control-btn" onclick="loadVersion('desktop')">
+                    💻 Cargar Versión Desktop
+                </button>
+                <button class="control-btn secondary" onclick="loadVersion('auto')">
+                    🤖 Detección Automática
+                </button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <a href="test-mobile-optimized.html" class="control-btn">
+                📱 Solo Versión Móvil
+            </a>
+            <a href="test-profilecard.html" class="control-btn secondary">
+                💻 Solo Versión Desktop
+            </a>
+            <a href="main.html" class="control-btn">
+                🏠 Portafolio Completo
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/device-detector.js"></script>
+    <script src="js/smart-profilecard-loader.js"></script>
+    
+    <script>
+        // Actualizar información del dispositivo
+        function updateDeviceInfo() {
+            if (window.deviceDetector) {
+                document.getElementById('deviceType').textContent = window.deviceDetector.deviceType;
+                document.getElementById('optimizationLevel').textContent = window.deviceDetector.getOptimizationLevel();
+            }
+            
+            if (window.smartProfileCardLoader) {
+                const versionInfo = window.smartProfileCardLoader.getLoadedVersion();
+                document.getElementById('loadedVersion').textContent = versionInfo.version || 'Cargando...';
+            }
+        }
+
+        // Cargar versión específica
+        function loadVersion(version) {
+            if (window.smartProfileCardLoader) {
+                window.smartProfileCardLoader.reloadWithVersion(version);
+                setTimeout(updateDeviceInfo, 500);
+            }
+        }
+
+        // Actualizar información cada 2 segundos
+        setInterval(updateDeviceInfo, 2000);
+        
+        // Actualizar al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(updateDeviceInfo, 1000);
+        });
+    </script>
+</body>
+</html>
