@@ -1,0 +1,145 @@
+/* ========================================
+   CONTACT SECTION - DISEÑO CON TARJETAS REDONDEADAS CLICKEABLES
+   ======================================== */
+
+.contact-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  align-items: center !important;
+}
+
+/* Diseño de tarjetas redondeadas para información de contacto */
+.contact-info {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem !important;
+  margin-bottom: 2rem !important;
+  width: 100% !important;
+  max-width: 900px !important;
+}
+
+.contact-item {
+  position: relative !important;
+  background: radial-gradient(135deg, var(--bg-card) 0%, var(--bg-overlay) 100%) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: 20px !important;
+  padding: 2rem !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  min-height: 200px !important;
+  user-select: none !important;
+}
+
+.contact-item:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 60px rgba(220, 38, 38, 0.4) !important;
+  border-color: var(--accent-primary) !important;
+}
+
+.contact-item:active {
+  transform: translateY(-4px) scale(0.98) !important;
+}
+
+.contact-item::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)) !important;
+  transform: scaleX(0) !important;
+  transition: transform 0.4s ease !important;
+}
+
+.contact-item:hover::before {
+  transform: scaleX(1) !important;
+}
+
+.contact-item:hover .contact-icon {
+  transform: scale(1.2) !important;
+  color: var(--accent-primary) !important;
+}
+
+.contact-icon {
+  width: 32px !important;
+  height: 32px !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 1rem !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  display: block !important;
+}
+
+.contact-details h4 {
+  color: var(--text-primary) !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+.contact-details p {
+  color: var(--text-secondary) !important;
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Responsive para el nuevo diseño */
+@media (max-width: 768px) {
+  .contact-info {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 400px !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .contact-info {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2.5rem !important;
+    max-width: 900px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-info {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 3rem !important;
+    max-width: 1000px !important;
+  }
+  
+  .contact-item {
+    padding: 2.5rem !important;
+    min-height: 220px !important;
+  }
+  
+  .contact-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .contact-details h4 {
+    font-size: 1.2rem !important;
+  }
+  
+  .contact-details p {
+    font-size: 1rem !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contact-info {
+    gap: 3.5rem !important;
+    max-width: 1100px !important;
+  }
+}

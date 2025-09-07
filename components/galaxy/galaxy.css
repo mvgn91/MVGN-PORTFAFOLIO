@@ -1,0 +1,100 @@
+/* Galaxy Effect Styles */
+.galaxy-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.galaxy-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero section adjustments for Galaxy background */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.hero-dynamic-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Remove old background elements completely */
+.bg-grid,
+.bg-particles,
+.hero-dynamic-bg::before,
+.hero-dynamic-bg::after {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Override any radar animations */
+@keyframes radarPulse,
+@keyframes radarScan,
+@keyframes radarEcho {
+  from, to {
+    opacity: 0 !important;
+    transform: none !important;
+  }
+}
+
+/* Glassmorphism Layer */
+.hero-glassmorphism {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.005); /* Minimal intensity */
+  backdrop-filter: blur(2px); /* Minimal blur */
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.01); /* Minimal border intensity */
+  border-radius: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure hero content is above the galaxy and glassmorphism */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-scroll-indicator {
+  position: relative;
+  z-index: 2;
+}
+
+/* Galaxy canvas specific styles */
+#galaxy-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100vh;
+  }
+  
+  .galaxy-container {
+    height: 100vh;
+  }
+}

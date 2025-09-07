@@ -1,0 +1,265 @@
+/* ========================================
+   SPLASH SCREEN - MVGN LABS
+   Versión Minimalista con Fondo Dinámico
+   ======================================== */
+
+/* Reset y configuración base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0a0a0a;
+  color: #FFFFFF;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Fondo dinámico elegante */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 76, 76, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 76, 76, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 76, 76, 0.05) 0%, transparent 50%);
+  animation: backgroundShift 8s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* Contenedor principal */
+.splash-container {
+  text-align: center;
+  max-width: 500px;
+  padding: 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Logo simplificado */
+.logo-container {
+  margin-bottom: 4rem;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 25px rgba(255, 76, 76, 0.5));
+  border-radius: 20px;
+}
+
+/* Nombre de la marca */
+.brand-name {
+  font-family: 'Fraunces', serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.brand-tagline {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  color: #CCCCCC;
+  margin-bottom: 4rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1s forwards;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Barra de carga minimalista */
+.loading-container {
+  margin: 3rem 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1.5s forwards;
+}
+
+.loading-text {
+  font-size: 1.1rem;
+  color: #888888;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.loading-bar {
+  width: 300px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #FF4C4C, #FF6B6B);
+  border-radius: 2px;
+  width: 0%;
+  animation: loadingProgress 3s ease-in-out 2s forwards;
+  box-shadow: 0 0 15px rgba(255, 76, 76, 0.6);
+}
+
+/* Información del sistema */
+.system-info {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  font-size: 0.8rem;
+  color: #555555;
+  font-family: 'JetBrains Mono', monospace;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 2s forwards;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border-left: 2px solid #FF4C4C;
+}
+
+.system-info::before {
+  content: '>';
+  color: #FF4C4C;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes loadingProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes backgroundShift {
+  0% {
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 76, 76, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 76, 76, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 76, 76, 0.05) 0%, transparent 50%);
+  }
+  100% {
+    background: 
+      radial-gradient(circle at 80% 80%, rgba(255, 76, 76, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 20% 20%, rgba(255, 76, 76, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(255, 76, 76, 0.08) 0%, transparent 50%);
+  }
+}
+
+/* Responsive para tablets */
+@media (max-width: 1024px) {
+  .splash-container {
+    max-width: 450px;
+    padding: 2.5rem;
+  }
+  
+  .brand-name {
+    font-size: 3rem;
+  }
+  
+  .brand-tagline {
+    font-size: 1.2rem;
+  }
+  
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .loading-bar {
+    width: 250px;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .splash-container {
+    padding: 2rem;
+    max-width: 100%;
+  }
+  
+  .brand-name {
+    font-size: 2.5rem;
+  }
+  
+  .brand-tagline {
+    font-size: 1.1rem;
+  }
+  
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .loading-bar {
+    width: 200px;
+  }
+  
+  .system-info {
+    left: 1rem;
+    bottom: 1rem;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .splash-container {
+    padding: 1.5rem;
+  }
+  
+  .brand-name {
+    font-size: 2rem;
+  }
+  
+  .brand-tagline {
+    font-size: 1rem;
+  }
+  
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .loading-bar {
+    width: 180px;
+  }
+  
+  .loading-text {
+    font-size: 1rem;
+  }
+}

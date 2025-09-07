@@ -1,0 +1,459 @@
+/* =========================
+   TERMINAL TEATRAL CSS
+========================= */
+
+:root {
+  --bg: #0b0f12;
+  --fg: #d6f5d6;         /* verdoso legible */
+  --muted: #7ad67a;
+  --accent: #a8ffd1;
+  --warn: #ffd9a8;
+  --glitch: #88fffb;
+  --red-glow: #ff4444;
+  --cyber-blue: #00ffff;
+  --cyber-purple: #ff00ff;
+  --cyber-green: #00ff00;
+  --cyber-yellow: #ffff00;
+  --cyber-orange: #ff8800;
+  --font: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Contenedor de la terminal */
+.hero .hero-visual-column .terminal-content { /* Increased specificity */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: transparent !important; /* Fix for conflict */
+  min-height: auto !important; /* Fix for conflict */
+  /* Mover más a la izquierda para alinear con el botón de scroll */
+  padding-left: 80px;
+  padding-right: 0;
+}
+
+/* Frame principal de la terminal */
+.theatrical-frame {
+  width: min(480px, 90vw); /* Reducido de 600px a 480px */
+  height: min(380px, 60vh); /* Reducido de 500px a 380px */
+  background: #0a0e11;
+  border-radius: 16px;
+  border: 1px solid #1e2a33;
+  /* Efectos de sombra roja y brillo cyberpunk */
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,.55), 
+    inset 0 0 0 1px rgba(255,255,255,.02),
+    0 0 30px rgba(255, 68, 68, 0.3),
+    0 0 60px rgba(255, 68, 68, 0.1),
+    0 0 100px rgba(0, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 68, 68, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  /* Efecto de brillo cyberpunk */
+  position: relative;
+}
+
+/* Efecto de brillo cyberpunk adicional */
+.theatrical-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 68, 68, 0.1) 25%,
+    rgba(0, 255, 255, 0.1) 50%,
+    rgba(255, 0, 255, 0.1) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Topbar de la terminal */
+.theatrical-topbar {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border-bottom: 1px solid #12202a;
+  background: linear-gradient(180deg, #0f151a, #0c1115);
+  position: relative;
+  z-index: 2;
+}
+
+/* Dots de control */
+.theatrical-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.theatrical-dot.red {
+  background: #ff5f56;
+  box-shadow: 0 0 8px rgba(255, 95, 86, 0.6);
+}
+
+.theatrical-dot.yellow {
+  background: #ffbd2e;
+  box-shadow: 0 0 8px rgba(255, 189, 46, 0.6);
+}
+
+.theatrical-dot.green {
+  background: #27c93f;
+  box-shadow: 0 0 8px rgba(39, 201, 63, 0.6);
+}
+
+/* Título de la terminal */
+.theatrical-title {
+  margin-left: 8px;
+  font-size: 12px;
+  color: #9fb3c8;
+  opacity: .85;
+  text-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+}
+
+/* Terminal principal */
+.theatrical-terminal {
+  flex: 1;
+  overflow: auto;
+  padding: 18px;
+  scrollbar-width: thin;
+  scrollbar-color: #244652 transparent;
+  position: relative;
+  z-index: 2;
+  background: var(--bg);
+}
+
+.theatrical-terminal::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.theatrical-terminal::-webkit-scrollbar-thumb {
+  background: #244652;
+  border-radius: 8px;
+}
+
+/* Líneas de texto con colores cyberpunk */
+.theatrical-line {
+  white-space: pre;
+  word-break: break-word;
+  font-size: 14.5px;
+  letter-spacing: .2px;
+  transform: translateZ(0);
+  /* Color de texto por defecto para asegurar visibilidad */
+  color: var(--fg);
+  /* Efecto de brillo cyberpunk */
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Colores multicolor para el texto */
+.theatrical-line.muted {
+  color: var(--cyber-green);
+  text-shadow: 
+    0 0 5px var(--cyber-green),
+    0 0 10px rgba(0, 255, 0, 0.4);
+}
+
+.theatrical-line.warn {
+  color: var(--cyber-yellow);
+  text-shadow: 
+    0 0 5px var(--cyber-yellow),
+    0 0 10px rgba(255, 255, 0, 0.4);
+}
+
+.theatrical-line.accent {
+  color: var(--cyber-blue);
+  text-shadow: 
+    0 0 5px var(--cyber-blue),
+    0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+.theatrical-line.glitch {
+  color: var(--cyber-purple);
+  text-shadow: 
+    0 0 5px var(--cyber-purple),
+    0 0 10px rgba(255, 0, 255, 0.4);
+}
+
+/* Nuevos colores cyberpunk */
+.theatrical-line.cyber-red {
+  color: var(--red-glow);
+  text-shadow: 
+    0 0 5px var(--red-glow),
+    0 0 10px rgba(255, 68, 68, 0.4);
+}
+
+.theatrical-line.cyber-orange {
+  color: var(--cyber-orange);
+  text-shadow: 
+    0 0 5px var(--cyber-orange),
+    0 0 10px rgba(255, 136, 0, 0.4);
+}
+
+/* Efecto de brillo mejorado */
+.theatrical-line.glow {
+  text-shadow: 
+    0 0 8px rgba(168,255,209,.4), 
+    0 0 18px rgba(122,214,122,.3),
+    0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+/* cursor parpadeante */
+.theatrical-caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.05em;
+  background: var(--fg);
+  vertical-align: bottom;
+  margin-left: 3px;
+  animation: caretBlink .9s steps(1,end) infinite;
+  box-shadow: 0 0 8px var(--fg);
+}
+
+@keyframes caretBlink {
+  50% { opacity: 0 }
+}
+
+/* efecto wave per-letter */
+.theatrical-wave span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-6px);
+  animation: waveIn .45s ease-out forwards;
+}
+
+@keyframes waveIn {
+  to {
+    opacity: 1; 
+    transform: translateX(0)
+  }
+}
+
+/* falling rain per-letter */
+.theatrical-rain span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-1.25em);
+  animation: fall .38s cubic-bezier(.2,.65,.25,1) forwards;
+}
+
+@keyframes fall {
+  60% { opacity: 1 }
+  to {
+    opacity: 1; 
+    transform: translateY(0)
+  }
+}
+
+/* pequeño flicker para oráculo al fijar */
+.theatrical-oracleFix {
+  animation: oracle .26s linear 1;
+}
+
+@keyframes oracle {
+  0% { text-shadow: 0 0 0 rgba(136,255,251,0) }
+  40% { text-shadow: 0 0 10px rgba(136,255,251,.8) }
+  100% { text-shadow: 0 0 0 rgba(136,255,251,0) }
+}
+
+/* respiración (espaciado entre escenas) */
+.theatrical-scene-gap {
+  height: 10px;
+}
+
+.theatrical-softfade {
+  animation: softfade .4s ease-out 1;
+}
+
+@keyframes softfade {
+  from { opacity: .4 }
+  to { opacity: 1 }
+}
+
+/* =========================
+   NUEVAS ANIMACIONES ESCANDALOSAS
+========================= */
+
+/* Efecto de glitch por carácter */
+@keyframes glitchChar {
+  0%, 100% { 
+    transform: translate(0);
+    text-shadow: 0 0 5px currentColor;
+  }
+  10% { 
+    transform: translate(-2px, 2px);
+    text-shadow: 2px 0 0 #ff0000, -2px 0 0 #00ffff;
+  }
+  20% { 
+    transform: translate(2px, -2px);
+    text-shadow: -2px 0 0 #ff0000, 2px 0 0 #00ffff;
+  }
+  30% { 
+    transform: translate(-2px, -2px);
+    text-shadow: 2px 0 0 #ff0000, -2px 0 0 #00ffff;
+  }
+  40% { 
+    transform: translate(2px, 2px);
+    text-shadow: -2px 0 0 #ff0000, 2px 0 0 #00ffff;
+  }
+  50% { 
+    transform: translate(0);
+    text-shadow: 0 0 5px currentColor;
+  }
+}
+
+/* Glitch final */
+@keyframes finalGlitch {
+  0%, 100% { 
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  25% { 
+    transform: translate(-3px, 3px);
+    filter: hue-rotate(90deg);
+  }
+  50% { 
+    transform: translate(3px, -3px);
+    filter: hue-rotate(180deg);
+  }
+  75% { 
+    transform: translate(-3px, -3px);
+    filter: hue-rotate(270deg);
+  }
+}
+
+/* Efecto de pulso de advertencia */
+@keyframes warningPulse {
+  0%, 100% { 
+    transform: scale(1);
+    text-shadow: 0 0 5px currentColor;
+  }
+  50% { 
+    transform: scale(1.1);
+    text-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+  }
+}
+
+/* Efecto de shake para advertencias */
+@keyframes warningShake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+/* Efecto de flotación para profecías */
+@keyframes prophecyFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    text-shadow: 0 0 5px currentColor;
+  }
+  25% { 
+    transform: translateY(-2px) rotate(1deg);
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  50% { 
+    transform: translateY(0) rotate(0deg);
+    text-shadow: 0 0 5px currentColor;
+  }
+  75% { 
+    transform: translateY(2px) rotate(-1deg);
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+}
+
+/* Efecto de caída matrix */
+@keyframes matrixDrop {
+  0% { 
+    transform: translateY(-20px);
+    opacity: 0;
+    text-shadow: 0 0 5px currentColor;
+  }
+  50% { 
+    transform: translateY(0);
+    opacity: 1;
+    text-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+  }
+  100% { 
+    transform: translateY(0);
+    opacity: 1;
+    text-shadow: 0 0 5px currentColor;
+  }
+}
+
+/* Efecto de aparición de runas */
+@keyframes runicAppear {
+  0% { 
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+    text-shadow: 0 0 5px currentColor;
+  }
+  50% { 
+    transform: scale(1.2) rotate(90deg);
+    opacity: 0.8;
+    text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    text-shadow: 0 0 5px currentColor;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .theatrical-frame {
+    width: 90vw;
+    height: 55vh; /* Ajustado para el nuevo tamaño */
+  }
+  
+  .theatrical-terminal {
+    padding: 12px;
+  }
+  
+  .theatrical-line {
+    font-size: 13px;
+  }
+  
+  .hero .hero-visual-column .terminal-content {
+    padding: 15px;
+    padding-left: 50px; /* Ajuste para móvil */
+    padding-right: 0;
+  }
+}
+
+/* Hero specific adjustments (added later for conflict resolution) */
+.hero .hero-visual-column .terminal-content .theatrical-frame {
+  max-width: 100%;
+  max-height: 100%;
+  /* Efectos mejorados para el hero */
+  box-shadow: 
+    0 15px 40px rgba(0,0,0,.7), 
+    inset 0 0 0 1px rgba(255,255,255,.03),
+    0 0 25px rgba(255, 68, 68, 0.4),
+    0 0 50px rgba(255, 68, 68, 0.15),
+    0 0 80px rgba(0, 255, 255, 0.15),
+    inset 0 0 15px rgba(255, 68, 68, 0.08);
+}
+
+.hero .hero-visual-column .terminal-content .theatrical-topbar {
+  background: linear-gradient(180deg, #0f151a, #0c1115);
+  border-bottom: 1px solid #1a2a35;
+}
+
+.hero .hero-visual-column .terminal-content .theatrical-terminal {
+  background: var(--bg);
+  border-radius: 0 0 16px 16px;
+}

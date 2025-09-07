@@ -1,0 +1,333 @@
+/* ProfileCard Desktop CSS - Foto protagonista con solo botón */
+
+/* Contenedor principal */
+#profileCardDesktop.pc-card-wrapper-desktop {
+  width: 100%;
+  max-width: 280px; /* Más compacta para balancear con el texto */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+/* Tarjeta principal */
+#profileCardDesktop .pc-card-desktop {
+  width: 100%;
+  background: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 50%, #1f1f1f 100%);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#profileCardDesktop .pc-card-desktop:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 12px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Contenido interno */
+#profileCardDesktop .pc-inside {
+  position: relative;
+  padding: 0; /* Sin padding para aprovechar todo el espacio */
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(42, 42, 42, 0.95) 100%);
+}
+
+/* Efectos de brillo sutiles */
+#profileCardDesktop .pc-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 0.8s ease;
+  pointer-events: none;
+}
+
+#profileCardDesktop .pc-card-desktop:hover .pc-shine {
+  left: 100%;
+}
+
+#profileCardDesktop .pc-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Sección de foto protagonista */
+#profileCardDesktop .pc-avatar-section {
+  position: relative;
+  width: 100%;
+  height: 320px; /* Altura aumentada para la foto */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineado arriba para que se corte de abajo */
+}
+
+#profileCardDesktop .pc-avatar-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineado arriba */
+}
+
+#profileCardDesktop .pc-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center; /* Se corta de abajo, mantiene la parte superior */
+  position: relative;
+  z-index: 2;
+  transition: all 0.5s ease;
+  filter: brightness(1.05) contrast(1.1);
+}
+
+#profileCardDesktop .pc-avatar-border {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #ff4444, #ff6666, #ff4444, #ff8888, #ff4444);
+  background-size: 400% 400%;
+  border-radius: 26px;
+  z-index: 1;
+  animation: borderGlow 6s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+#profileCardDesktop .pc-status-indicator {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 12px;
+  height: 12px;
+  background: #00ff88;
+  border-radius: 50%;
+  border: 2px solid #1a1a1a;
+  z-index: 3;
+  animation: pulse 3s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+/* Sección de acción */
+#profileCardDesktop .pc-action-section {
+  padding: 16px 20px 20px 20px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+#profileCardDesktop .pc-contact-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #ff4444 0%, #ff6666 100%);
+  border: none;
+  border-radius: 16px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+#profileCardDesktop .pc-contact-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+#profileCardDesktop .pc-contact-btn:hover::before {
+  left: 100%;
+}
+
+#profileCardDesktop .pc-contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 68, 68, 0.4);
+  background: linear-gradient(135deg, #ff5555 0%, #ff7777 100%);
+}
+
+#profileCardDesktop .pc-contact-btn:active {
+  transform: translateY(0);
+}
+
+#profileCardDesktop .pc-contact-btn svg {
+  transition: transform 0.3s ease;
+}
+
+#profileCardDesktop .pc-contact-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Animaciones */
+@keyframes borderGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(0, 255, 136, 0);
+  }
+}
+
+/* Animación de entrada */
+#profileCardDesktop .pc-card-desktop {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estados de carga */
+#profileCardDesktop .pc-card-desktop.loading {
+  background: linear-gradient(145deg, #2a2a2a 0%, #3a3a3a 50%, #2f2f2f 100%);
+}
+
+#profileCardDesktop .pc-card-desktop.loading .pc-avatar {
+  opacity: 0.7;
+}
+
+/* Accesibilidad */
+#profileCardDesktop .pc-card-desktop:focus-within {
+  outline: 2px solid rgba(255, 68, 68, 0.4);
+  outline-offset: 4px;
+}
+
+#profileCardDesktop .pc-contact-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+/* Integración con el layout de la sección About */
+.about-hero {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.about-profile-image {
+  flex-shrink: 0;
+  width: auto;
+  min-width: 280px; /* Ajustado al nuevo tamaño */
+  display: flex;
+  justify-content: center;
+}
+
+.about-intro {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Responsive para la integración */
+@media (max-width: 1200px) {
+  .about-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .about-profile-image {
+    min-width: auto;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .about-intro {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #profileCardDesktop.pc-card-wrapper-desktop {
+    max-width: 100%;
+  }
+  
+  #profileCardDesktop .pc-card-desktop {
+    border-radius: 20px;
+  }
+  
+  #profileCardDesktop .pc-avatar-section {
+    height: 280px; /* Más compacta en móvil */
+  }
+  
+  #profileCardDesktop .pc-action-section {
+    padding: 14px 18px 18px 18px;
+  }
+  
+  #profileCardDesktop .pc-contact-btn {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+  
+  .about-hero {
+    gap: 1.5rem;
+  }
+  
+  .about-profile-image {
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  #profileCardDesktop .pc-avatar-section {
+    height: 240px;
+  }
+  
+  #profileCardDesktop .pc-action-section {
+    padding: 12px 16px 16px 16px;
+  }
+  
+  #profileCardDesktop .pc-contact-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
