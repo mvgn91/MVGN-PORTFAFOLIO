@@ -1322,6 +1322,13 @@ section {
     }
 }
 
+/* Hide mobile bottom nav on desktop */
+@media (min-width: 1025px) {
+    .mobile-bottom-nav {
+        display: none !important;
+    }
+}
+
 /* Mobile Devices (max-width: 768px) */
 @media (max-width: 768px) {
     :root {
