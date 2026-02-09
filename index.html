@@ -20,6 +20,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/src/styles/main.css?v=mobile_fix_1">
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -31,38 +34,29 @@
     </div>
 
     <div id="app">
-        <!-- Header -->
-        <header class="header">
-            <div class="container header-content">
-                <a href="#hero" class="logo" aria-label="Inicio">
-                    <img src="/assets/favicon.png" alt="MVGN Labs">
-                </a>
-
-                <nav class="nav-desktop">
-                    <ul>
-                        <li><a href="#about">Sobre Mí</a></li>
-                        <li><a href="#services">Servicios</a></li>
-                        <li><a href="#experience">Experiencia</a></li>
-                        <li><a href="#projects">Proyectos</a></li>
-                        <li><a href="#contact">Contacto</a></li>
-                    </ul>
-                </nav>
-
-                <button class="mobile-menu-btn" aria-label="Menu">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
-        </header>
+        <!-- Desktop Nav (Icons Only/Minimal) -->
+        <nav class="nav-desktop">
+            <ul>
+                <li><a href="#about" title="Sobre Mí"><i data-lucide="user"></i><span>Sobre Mí</span></a></li>
+                <li><a href="#services" title="Servicios"><i data-lucide="layout"></i><span>Servicios</span></a></li>
+                <li><a href="#experience" title="Experiencia"><i
+                            data-lucide="briefcase"></i><span>Experiencia</span></a></li>
+                <li><a href="#projects" title="Proyectos"><i data-lucide="folder-kanban"></i><span>Proyectos</span></a>
+                </li>
+                <li><a href="#contact" title="Contacto"><i data-lucide="mail"></i><span>Contacto</span></a></li>
+            </ul>
+        </nav>
 
         <!-- Mobile Menu (Hidden by default) -->
         <div class="mobile-menu-overlay">
             <nav class="mobile-nav">
                 <button class="close-menu"><i data-lucide="x"></i></button>
-                <a href="#hero">Inicio</a>
-                <a href="#about">Sobre Mí</a>
-                <a href="#services">Servicios</a>
-                <a href="#projects">Proyectos</a>
-                <a href="#contact">Contacto</a>
+                <a href="#hero"><i data-lucide="home"></i> Inicio</a>
+                <a href="#about"><i data-lucide="user"></i> Sobre Mí</a>
+                <a href="#services"><i data-lucide="layout"></i> Servicios</a>
+                <a href="#experience"><i data-lucide="briefcase"></i> Experiencia</a>
+                <a href="#projects"><i data-lucide="folder-kanban"></i> Proyectos</a>
+                <a href="#contact"><i data-lucide="mail"></i> Contacto</a>
             </nav>
         </div>
 
@@ -228,6 +222,23 @@
                     <h2 class="section-title">Proyectos Destacados</h2>
 
                     <div class="projects-grid">
+                        <!-- Project: Wedding Invitation (New) -->
+                        <article class="project-card reveal">
+                            <div class="project-image">
+                                <img src="/assets/invitacion digital de boda.png" alt="Invitación de Bodas Digital">
+                                <span class="badge-new">Nuevo</span>
+                            </div>
+                            <div class="project-content">
+                                <h3>Invitación de Bodas Digital</h3>
+                                <p>Aplicación web para invitaciones de boda con confirmación de asistencia y
+                                    actualizaciones en tiempo real.</p>
+                                <div class="tags">
+                                    <span>React</span><span>TypeScript</span><span>CSS3</span><span>Responsive</span>
+                                </div>
+                                <a href="#contact" class="btn-link">Solicitar demo <i data-lucide="zap"></i></a>
+                            </div>
+                        </article>
+
                         <!-- Project 1 -->
                         <article class="project-card">
                             <div class="project-image">
@@ -315,6 +326,15 @@
                                 <i data-lucide="message-circle"></i>
                                 <span>WhatsApp</span>
                             </a>
+                            <a href="https://www.facebook.com/share/18xrJGkLiT/" target="_blank" class="contact-item">
+                                <i data-lucide="facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://open.spotify.com/intl-es/artist/3XBR5sxFV0RHd4Ae6Q0caF" target="_blank"
+                                class="contact-item">
+                                <i data-lucide="music"></i>
+                                <span>Spotify</span>
+                            </a>
                             <div class="contact-item">
                                 <i data-lucide="map-pin"></i>
                                 <span>Tlajomulco, Jalisco, MX</span>
@@ -331,6 +351,34 @@
                 <p>&copy; 2025 MVGN Labs. Todos los derechos reservados.</p>
             </div>
         </footer>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="mobile-bottom-nav">
+            <a href="#hero" class="nav-item active" aria-label="Inicio">
+                <i data-lucide="home"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="#about" class="nav-item" aria-label="Sobre Mí">
+                <i data-lucide="user"></i>
+                <span>Sobre Mí</span>
+            </a>
+            <a href="#services" class="nav-item" aria-label="Servicios">
+                <i data-lucide="layout"></i>
+                <span>Servicios</span>
+            </a>
+            <a href="#experience" class="nav-item" aria-label="Experiencia">
+                <i data-lucide="briefcase"></i>
+                <span>Exp.</span>
+            </a>
+            <a href="#projects" class="nav-item" aria-label="Proyectos">
+                <i data-lucide="folder-kanban"></i>
+                <span>Proyectos</span>
+            </a>
+            <a href="#contact" class="nav-item" aria-label="Contacto">
+                <i data-lucide="mail"></i>
+                <span>Contacto</span>
+            </a>
+        </nav>
     </div>
 
     <script type="module" src="./src/scripts/main.js"></script>

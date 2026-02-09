@@ -6,19 +6,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lucide Icons
     lucide.createIcons();
 
-    // Mobile Menu Toggle
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileMenu = document.querySelector('.mobile-menu-overlay');
-    const closeBtn = document.querySelector('.close-menu');
+    // Mobile Navigation Logic (Bottom Nav)
+    const navItems = document.querySelectorAll('.mobile-bottom-nav .nav-item');
+    const sections = document.querySelectorAll('section[id]');
 
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.style.display = 'flex';
+    function updateActiveNavItem() {
+        if (window.innerWidth > 1024) return;
+
+        let currentSectionId = 'hero';
+        const scrollPosition = window.scrollY + window.innerHeight / 3; // Trigger earlier
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSectionId = section.getAttribute('id');
+            }
         });
 
-        closeBtn.addEventListener('click', () => {
-            mobileMenu.style.display = 'none';
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${currentSectionId}`) {
+                item.classList.add('active');
+            }
         });
+    }
+
+    // Scroll Reveal Logic
+    const revealElements = document.querySelectorAll('section, .project-card, .service-card, .about-grid');
+    revealElements.forEach(el => el.classList.add('reveal'));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Optional: unobserve after reveal
+                // revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    if (navItems.length > 0) {
+        window.addEventListener('scroll', updateActiveNavItem);
+        updateActiveNavItem(); // Initial call
     }
 
     // Profile Card Tilt Effect
@@ -50,11 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            mobileMenu.style.display = 'none'; // Close menu on click
+            const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+            if (mobileOverlay) mobileOverlay.style.display = 'none';
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
     // Generate GitHub Style Activity Grid
